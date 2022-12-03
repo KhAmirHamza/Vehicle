@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/imgv_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/car"
+        android:padding="30dp"/>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_below="@id/imgv_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Trip"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:paddingTop="7dp"
+        android:paddingBottom="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="20dp"
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_vehicle"
+        android:layout_below="@id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_vehicle_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Vehicle"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_below="@id/tv_vehicle_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/truck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Truck/PickUp/Trailer"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/micro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Micro/Private Car"/>
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/spinner_vehicle"
+                android:layout_below="@id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tooltipText="Select Vehicle Size or Capacity"/>
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_schedule"
+        android:layout_below="@id/cv_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_schedule_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Schedule"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_below="@id/tv_schedule_header"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:layout_marginTop="-22dp"
+                android:layout_marginBottom="-22dp"
+                tools:ignore="UnusedAttribute"
+                android:layout_marginLeft="20dp"
+                />
+            <NumberPicker
+                android:id="@+id/numberPicker"
+                android:layout_below="@id/tv_schedule_header"
+                android:layout_toRightOf="@id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-7dp"
+                android:layout_marginBottom="-7dp"
+                />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_loading_point"
+        android:layout_below="@id/cv_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_loading_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Loading Location"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_loading_upazila"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_loading_header"
+                android:hint="Select Upazila/Thana"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                app:startIconTint="@color/black">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autocomplete_loading_upazila"
+                    android:layout_width="fill_parent"
+                    android:layout_height="56dp"
+                    android:baselineAligned="false"
+                    android:paddingLeft="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_full_loading_address"
+                android:layout_below="@id/text_input_layout_loading_upazila"
+                android:hint="Full Address of Loading Site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_full_loading_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_loading_landmark"
+                android:layout_below="@id/text_input_layout_full_loading_address"
+                android:hint="Landmark of Loading Site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_loading_landmark"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_unloading_point"
+        android:layout_below="@id/cv_loading_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_unloading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_unloading_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Unloading Location"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_unloading_upazila"
+                android:layout_below="@id/tv_unloading_header"
+                android:hint="Select Upazila/Thana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <AutoCompleteTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/autocomplete_unloading_upazila"
+                    android:layout_width="fill_parent"
+                    android:layout_height="56dp"
+                    android:paddingLeft="16dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_full_unloading_address"
+                android:layout_below="@id/text_input_layout_unloading_upazila"
+                android:hint="Full Address of Unloading Site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_full_unloading_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_unloading_landmark"
+                android:layout_below="@id/text_input_layout_full_unloading_address"
+                android:hint="Landmark of Unloading Site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_unloading_landmark"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_additional"
+        android:layout_below="@id/cv_unloading_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_additional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_additional_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Additional Information"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_product_description"
+                android:layout_below="@id/tv_additional_header"
+                android:hint="Product Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_trip_description"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/cbUpDownTrip"
+                android:layout_below="@id/text_input_layout_product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Up-Down Trip "/>
+
+            <CheckBox
+                android:id="@+id/cbContainAnimal"
+                android:layout_below="@id/cbUpDownTrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contain Animal "/>
+
+            <CheckBox
+                android:id="@+id/cbFragile"
+                android:layout_below="@id/cbContainAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragile "/>
+
+            <CheckBox
+                android:id="@+id/cbPerishable"
+                android:layout_below="@id/cbFragile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perishable "/>
+
+            <CheckBox
+                android:id="@+id/cbLaborNeeded"
+                android:layout_below="@id/cbPerishable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Labor Needed "/>
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>
