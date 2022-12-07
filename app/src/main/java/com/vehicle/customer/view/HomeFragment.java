@@ -54,7 +54,9 @@ public class HomeFragment extends Fragment {
     AutoCompleteTextView autocomplete_loading_upazila, autocomplete_unloading_upazila;
 
     TextInputLayout text_input_layout_full_loading_address, text_input_layout_full_unloading_address,
-            text_input_layout_loading_landmark,text_input_layout_unloading_landmark, text_input_layout_product_description;
+            text_input_layout_loading_landmark,text_input_layout_unloading_landmark, text_input_layout_product_description,
+            text_input_layout_alternative_phone_number, text_input_layout_stop_point_address,text_input_layout_person_name,
+            text_input_layout_person_mobile_number,text_input_layout_return_point_address,text_input_layout_return_date;
 
     CheckBox cbUpDownTrip, cbContainAnimal, cbFragile, cbPerishable,cbLaborNeeded;
     List<Vehicle> vehicles_t1 = new ArrayList<>();
@@ -82,6 +84,12 @@ public class HomeFragment extends Fragment {
         text_input_layout_loading_landmark = view.findViewById(R.id.text_input_layout_loading_landmark);
         text_input_layout_unloading_landmark = view.findViewById(R.id.text_input_layout_unloading_landmark);
         text_input_layout_product_description = view.findViewById(R.id.text_input_layout_product_description);
+        text_input_layout_alternative_phone_number = view.findViewById(R.id.text_input_layout_alternative_phone_number);
+        text_input_layout_stop_point_address = view.findViewById(R.id.text_input_layout_stop_point_address);
+        text_input_layout_person_name = view.findViewById(R.id.text_input_layout_person_name);
+        text_input_layout_person_mobile_number = view.findViewById(R.id.text_input_layout_person_mobile_number);
+        text_input_layout_return_point_address = view.findViewById(R.id.text_input_layout_return_point_address);
+        text_input_layout_return_date = view.findViewById(R.id.text_input_layout_return_date);
 
         datePicker = view.findViewById(R.id.datePicker);
         numberPicker = view.findViewById(R.id.numberPicker);
@@ -242,6 +250,12 @@ public class HomeFragment extends Fragment {
                 String date = datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1)+datePicker.getYear();
                 String loadingTime = numberPicker.getDisplayedValues()[numberPicker.getValue()];
                 String productDescription = text_input_layout_product_description.getEditText().getText().toString().trim();
+                String alternativePhoneNumber = text_input_layout_alternative_phone_number.getEditText().getText().toString().trim();
+                String stopAddress = text_input_layout_stop_point_address.getEditText().getText().toString().trim();
+                String stopPersonName = text_input_layout_person_name.getEditText().getText().toString().trim();
+                String stopPersonPhoneNumber = text_input_layout_person_mobile_number.getEditText().getText().toString().trim();
+                String returnAddress = text_input_layout_return_point_address.getEditText().getText().toString().trim();
+                String returnDate = text_input_layout_return_date.getEditText().getText().toString().trim();
 
                 int upDownTrip = cbUpDownTrip.isChecked()?1:0;
                 int containAnimal = cbContainAnimal.isChecked()?1:0;
@@ -272,6 +286,24 @@ public class HomeFragment extends Fragment {
                 }else if (productDescription.isEmpty()){
                     text_input_layout_product_description.setError("Enter Product Description");
                     text_input_layout_product_description.requestFocus();
+                }else if (alternativePhoneNumber.isEmpty()){
+                    text_input_layout_alternative_phone_number.setError("Enter Alternative Phone Number");
+                    text_input_layout_alternative_phone_number.requestFocus();
+                }else if (stopAddress.isEmpty()){
+                    text_input_layout_stop_point_address.setError("Enter Stop Point Address");
+                    text_input_layout_stop_point_address.requestFocus();
+                }else if (stopPersonName.isEmpty()){
+                    text_input_layout_person_name.setError("Enter Person Name");
+                    text_input_layout_person_name.requestFocus();
+                }else if (stopPersonPhoneNumber.isEmpty()){
+                    text_input_layout_person_mobile_number.setError("Enter Person Mobile Number");
+                    text_input_layout_person_mobile_number.requestFocus();
+                }else if (returnAddress.isEmpty()){
+                    text_input_layout_return_point_address.setError("Enter Return Point Address");
+                    text_input_layout_return_point_address.requestFocus();
+                }else if (returnDate.isEmpty()){
+                    text_input_layout_return_date.setError("Enter Return Date");
+                    text_input_layout_return_date.requestFocus();
                 }
 
                 Vehicle selectedVehicle = radio_group.getCheckedRadioButtonId()==R.id.truck?
@@ -282,7 +314,8 @@ public class HomeFragment extends Fragment {
                         System.currentTimeMillis(), loadingUpaz,
                         loadingFullAddr, loadingLandmark, date, loadingTime, unloadingUpaz, unloadingFullAddr,
                         unloadingLandmark, productDescription,upDownTrip,containAnimal,fragile,perishable,laborNeeded,
-                        rentalPrice,paymentMethod, "Pending", new ArrayList<>());
+                        rentalPrice,paymentMethod, "Pending", (List) new ArrayList<>(),alternativePhoneNumber,
+                        stopAddress, stopPersonName,stopPersonPhoneNumber, returnAddress,returnDate);
 
 
                 DialogTripPreview dialogTripPreview = new DialogTripPreview(getContext(), trip);

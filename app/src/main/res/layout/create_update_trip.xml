@@ -360,8 +360,28 @@
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_product_description"
+                android:id="@+id/text_input_layout_alternative_phone_number"
                 android:layout_below="@id/tv_additional_header"
+                android:hint="Alternative Phone Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_alternative_phone_number"
+                    android:inputType="number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_product_description"
+                android:layout_below="@id/text_input_layout_alternative_phone_number"
                 android:hint="Product Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -386,6 +406,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Up-Down Trip "/>
+
 
             <CheckBox
                 android:id="@+id/cbContainAnimal"
@@ -415,6 +436,171 @@
                 android:layout_height="wrap_content"
                 android:text="Labor Needed "/>
 
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_stop_point"
+        android:visibility="gone"
+        android:layout_below="@id/cv_additional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_stop_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_stop_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Stop Point (Optional)"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_stop_point_address"
+                android:layout_below="@id/tv_stop_header"
+                android:hint="Enter Stop point address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_stop_point_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_person_name"
+                android:layout_below="@id/text_input_layout_stop_point_address"
+                android:hint="Person Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_person_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_person_mobile_number"
+                android:layout_below="@id/text_input_layout_person_name"
+                android:hint="Person Mobile Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_person_mobile_number"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_return_point"
+        android:visibility="visible"
+        android:layout_below="@id/cv_stop_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+        <RelativeLayout
+            android:id="@+id/rl_return_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_return_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Return Point"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:paddingTop="7dp"
+                android:paddingBottom="5dp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_return_point_address"
+                android:layout_below="@id/tv_return_header"
+                android:hint="Enter Return point address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_return_point_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_return_date"
+                android:layout_below="@id/text_input_layout_return_point_address"
+                android:hint="Return Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:textColorHint="@color/black"
+                app:startIconTint="@color/black"
+                app:endIconTint="@color/black"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_return_date"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

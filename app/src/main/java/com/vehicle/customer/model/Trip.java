@@ -19,6 +19,12 @@ public class Trip {
     String unloadingFullAddress;
     String unloadingLandmark;
     String description;
+    String alternative_phone_number;
+    String stopAddress;
+    String stopPointPersonName;
+    String stopPointPersonPhoneNumber;
+    String returnAddress;
+    String returnDate;
     int upDownTrip;
     int containAnimal;
     int fragile;
@@ -37,7 +43,9 @@ public class Trip {
                 long createdAtMills, String loadingUpazilaThana, String loadingFullAddress, String loadingLandmark, String loadingDate,
                 String loadingTime, String unloadingUpazilaThana, String unloadingFullAddress, String unloadingLandmark, String description,
                 int upDownTrip, int containAnimal, int fragile, int perishable, int laborNeeded,
-                @Nullable int rentalPrice, @Nullable int paymentMethod, String status, List<Bid> bids) {
+                @Nullable int rentalPrice, @Nullable int paymentMethod, String status, List<Bid> bids,
+                String alternative_phone_number, String stopAddress, String stopPointPersonName,
+                String stopPointPersonPhoneNumber, String returnAddress, String returnDate) {
         this.id = id;
         this.customer = customer;
         this.driver = driver;
@@ -61,6 +69,12 @@ public class Trip {
         this.paymentMethod = paymentMethod;
         this.status = status;
         this.bids = bids;
+        this.alternative_phone_number = alternative_phone_number;
+        this.stopAddress = stopAddress;
+        this.stopPointPersonName = stopPointPersonName;
+        this.stopPointPersonPhoneNumber = stopPointPersonPhoneNumber;
+        this.returnAddress = returnAddress;
+        this.returnDate = returnDate;
     }
 
     public List<Bid> getBids() {
@@ -245,6 +259,54 @@ public class Trip {
 
     public void setPaymentMethod(int paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public String getAlternative_phone_number() {
+        return alternative_phone_number;
+    }
+
+    public void setAlternative_phone_number(String alternative_phone_number) {
+        this.alternative_phone_number = alternative_phone_number;
+    }
+
+    public String getStopAddress() {
+        return stopAddress;
+    }
+
+    public void setStopAddress(String stopAddress) {
+        this.stopAddress = stopAddress;
+    }
+
+    public String getStopPointPersonName() {
+        return stopPointPersonName;
+    }
+
+    public void setStopPointPersonName(String stopPointPersonName) {
+        this.stopPointPersonName = stopPointPersonName;
+    }
+
+    public String getStopPointPersonPhoneNumber() {
+        return stopPointPersonPhoneNumber;
+    }
+
+    public void setStopPointPersonPhoneNumber(String stopPointPersonPhoneNumber) {
+        this.stopPointPersonPhoneNumber = stopPointPersonPhoneNumber;
+    }
+
+    public String getReturnAddress() {
+        return returnAddress;
+    }
+
+    public void setReturnAddress(String returnAddress) {
+        this.returnAddress = returnAddress;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
 
     public class Bid{
