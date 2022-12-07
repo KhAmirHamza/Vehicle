@@ -9,6 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+
         <ImageView
             android:id="@+id/imgv_close"
             android:layout_width="50dp"
@@ -154,7 +156,12 @@
                     android:textSize="14sp"
                     />
 
-
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"/>
 
 
             </RelativeLayout>
@@ -237,10 +244,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Apply for Bidding"
+            android:text="Start Bidding"
             android:textAllCaps="false"
             android:layout_marginBottom="20dp"
             />
+
+
     </RelativeLayout>
 
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/all_trips"
+        android:title="All Trip"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_format_list_numbered_24"/>
+
+    <item android:id="@+id/running_trip"
+        android:title="Running Trip"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_checklist_24"/>
+
+    <item android:id="@+id/profile"
+        android:title="Profile"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_outline_account_circle_24"/>
+</menu>

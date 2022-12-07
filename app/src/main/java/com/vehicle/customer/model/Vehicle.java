@@ -2,8 +2,8 @@ package com.vehicle.customer.model;
 
 import androidx.annotation.Nullable;
 
-class Vehicle {
-    int id;
+public class Vehicle {
+    String id;
     String Model;
     String type;
     String openOrCovered;
@@ -22,7 +22,7 @@ class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(int id, String type, String openOrCovered, int size, int capacity, int length, int weight, int height) {
+    public Vehicle(String id, String type, String openOrCovered, int size, int capacity, int length, int weight, int height) {
         this.id = id;
         this.type = type;
         this.openOrCovered = openOrCovered;
@@ -33,7 +33,7 @@ class Vehicle {
         this.height = height;
     }
 
-    public Vehicle(@Nullable int id, String model, String type, String openOrCovered, int size, int capacity, int length, int weight, int height, String metro, String serial, String number, String imageUrl, String documentImageUrl) {
+    public Vehicle(@Nullable String id, String model, String type, String openOrCovered, int size, int capacity, int length, int weight, int height, String metro, String serial, String number, String imageUrl, String documentImageUrl) {
         this.id = id;
         Model = model;
         this.type = type;
@@ -50,11 +50,11 @@ class Vehicle {
         this.number = number;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

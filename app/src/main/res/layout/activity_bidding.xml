@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.BiddingActivity"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bidding..."
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
+
+   <com.google.android.material.card.MaterialCardView
+       android:id="@+id/cv_1"
+       android:layout_below="@+id/tv_header"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:cardElevation="8dp"
+       app:cardCornerRadius="15dp"
+       android:layout_marginTop="20dp"
+       >
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:paddingTop="10dp"
+           android:paddingBottom="10dp">
+           <TextView
+               android:id="@+id/tv_car_details"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Pickup, 7 feet 1 Ton (Open)"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               />
+           <TextView
+               android:id="@+id/tv_car_date_time"
+               android:layout_below="@+id/tv_car_details"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="( 9 AM , 18/11/2022 )"
+               android:textColor="@color/black"
+               android:textSize="14sp"
+               android:layout_marginTop="9dp"
+               />
+           <TextView
+               android:id="@+id/tv_1"
+               android:layout_alignParentRight="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Time Left"
+               android:textColor="@color/black"
+               android:textSize="14sp"
+               android:layout_marginEnd="5dp"
+               />
+           <TextView
+               android:id="@+id/tv_time_left"
+               android:layout_below="@+id/tv_1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="10:50"
+               android:paddingStart="7dp"
+               android:paddingEnd="7dp"
+               android:textStyle="bold"
+               android:layout_alignParentEnd="true"
+               android:textColor="#002C02"
+               android:layout_centerHorizontal="true"
+               android:textSize="18sp"
+               android:layout_marginTop="7dp"
+               />
+       </RelativeLayout>
+   </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_below="@+id/cv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Bidders:"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recy_bid"
+        android:layout_below="@id/tv_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/iv_bid"
+        android:layout_marginTop="5dp"
+        />
+
+
+
+
+</RelativeLayout>

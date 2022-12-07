@@ -26,6 +26,7 @@ import com.vehicle.customer.R;
 import com.vehicle.customer.model.Address;
 import com.vehicle.customer.model.Customer;
 import com.vehicle.customer.model.Trip;
+import com.vehicle.customer.model.Vehicle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +57,8 @@ public class HomeFragment extends Fragment {
             text_input_layout_loading_landmark,text_input_layout_unloading_landmark, text_input_layout_product_description;
 
     CheckBox cbUpDownTrip, cbContainAnimal, cbFragile, cbPerishable,cbLaborNeeded;
+    List<Vehicle> vehicles_t1 = new ArrayList<>();
+    List<Vehicle> vehicles_t2 = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,24 +88,49 @@ public class HomeFragment extends Fragment {
         spinner_vehicle = view.findViewById(R.id.spinner_vehicle);
         radio_group = view.findViewById(R.id.radio_group);
 
+        Vehicle vehicle1 = new Vehicle(null,"Mdl", "Pickup", "Open",7, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
+        Vehicle vehicle2 = new Vehicle(null,"Mdl", "Truck", "Covered",7, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
+        Vehicle vehicle3 = new Vehicle(null,"Mdl", "Truck", "Open",9, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
+        Vehicle vehicle4 = new Vehicle(null,"Mdl", "Trailer", "Covered",9, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
+        vehicles_t1.add(vehicle1);
+        vehicles_t1.add(vehicle2);
+        vehicles_t1.add(vehicle3);
+        vehicles_t1.add(vehicle4);
 
         String[] trucks = {
                 "Choose a Truck/Pickup/Trailer",
                 "7 Feet 1 Ton (Open)",
-                "7 Feet 1 Ton (Open)",
                 "7 Feet 1 Ton (Covered)",
                 "9 Feet 1.5 Ton (Open)",
                 "9 Feet 1.5 Ton (Covered)",
-                "11 Feet 2 Ton (Open)",
-                "11 Feet 2 Ton (Covered)"
+
         };
+        /*
+        "11 Feet 2 Ton (Open)",
+        "11 Feet 2 Ton (Covered)"
+                */
+
+        Vehicle car1 = new Vehicle(null,"Mdl", "Private Car", "AC",4, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
+        Vehicle car2 = new Vehicle(null,"Mdl", "Private Car", "",4, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
+        Vehicle car3 = new Vehicle(null,"Mdl", "Micro", "AC",5, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
+        Vehicle car4 = new Vehicle(null,"Mdl", "Micro", "",5, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
+        vehicles_t2.add(car1);
+        vehicles_t2.add(car2);
+        vehicles_t2.add(car3);
+        vehicles_t2.add(car4);
+
+
         String[] cars ={
                 "Choose a Private Car/Micro",
                 "4 seated Private Car",
                 "4 seated Private Car(AC)",
                 "5 seated Private Car",
                 "5 seated Private Car(AC)",
-                "6 seated Private Car",
+
+        };
+
+        /*
+        *    "6 seated Private Car",
                 "6 seated Private Car(AC)",
                 "7 seated private Car",
                 "7 seated Private Car(AC)",
@@ -117,8 +145,8 @@ public class HomeFragment extends Fragment {
                 "10 seated Micro Bus",
                 "10 seated Micro Bus(AC)",
                 "11 seated Micro Bus",
-                "11 seated Micro Bus(AC)",
-        };
+                "11 seated Micro Bus(AC)"
+        * */
 
         ArrayAdapter<String> trucksAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, trucks);
         ArrayAdapter<String> carsAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, cars);
@@ -165,7 +193,7 @@ public class HomeFragment extends Fragment {
             }
         };
 
-        ArrayAdapter<String> scheduleAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.timeEng));
+        //ArrayAdapter<String> scheduleAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.timeEng));
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(23);
         numberPicker.setDisplayedValues(getResources().getStringArray(R.array.timeEng));
@@ -246,14 +274,19 @@ public class HomeFragment extends Fragment {
                     text_input_layout_product_description.requestFocus();
                 }
 
-                Trip trip = new Trip(null, customer, null, spinner_vehicle.getSelectedItem().toString(),
+                Vehicle selectedVehicle = radio_group.getCheckedRadioButtonId()==R.id.truck?
+                        vehicles_t1.get(spinner_vehicle.getSelectedItemPosition()-1):
+                        vehicles_t2.get(spinner_vehicle.getSelectedItemPosition()-1);
+
+                Trip trip = new Trip(null, customer, null, selectedVehicle,
                         System.currentTimeMillis(), loadingUpaz,
                         loadingFullAddr, loadingLandmark, date, loadingTime, unloadingUpaz, unloadingFullAddr,
                         unloadingLandmark, productDescription,upDownTrip,containAnimal,fragile,perishable,laborNeeded,
-                        rentalPrice,paymentMethod);
+                        rentalPrice,paymentMethod, "Pending", new ArrayList<>());
 
 
                 DialogTripPreview dialogTripPreview = new DialogTripPreview(getContext(), trip);
+                dialogTripPreview.setCancelable(true);
                 dialogTripPreview.show();
             }
         });

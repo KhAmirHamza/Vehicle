@@ -2,11 +2,13 @@ package com.vehicle.customer.model;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 public class Trip {
     String id;
     Customer customer;
     Driver driver;
-    String selectedCar;
+    Vehicle vehicle;
     long createdAtMills;
     String loadingUpazilaThana;
     String loadingFullAddress;
@@ -25,19 +27,21 @@ public class Trip {
     int rentalPrice;
     int paymentMethod;
 
+    String status;
+    List<Bid> bids;
 
     public Trip() {
     }
 
-    public Trip(@Nullable String id, Customer customer, @Nullable  Driver driver, @Nullable  String selectedCar,
+    public Trip(@Nullable String id, Customer customer, @Nullable  Driver driver, @Nullable  Vehicle vehicle,
                 long createdAtMills, String loadingUpazilaThana, String loadingFullAddress, String loadingLandmark, String loadingDate,
                 String loadingTime, String unloadingUpazilaThana, String unloadingFullAddress, String unloadingLandmark, String description,
                 int upDownTrip, int containAnimal, int fragile, int perishable, int laborNeeded,
-                @Nullable int rentalPrice, @Nullable int paymentMethod) {
+                @Nullable int rentalPrice, @Nullable int paymentMethod, String status, List<Bid> bids) {
         this.id = id;
         this.customer = customer;
         this.driver = driver;
-        this.selectedCar = selectedCar;
+        this.vehicle = vehicle;
         this.createdAtMills = createdAtMills;
         this.loadingUpazilaThana = loadingUpazilaThana;
         this.loadingFullAddress = loadingFullAddress;
@@ -55,6 +59,24 @@ public class Trip {
         this.laborNeeded = laborNeeded;
         this.rentalPrice = rentalPrice;
         this.paymentMethod = paymentMethod;
+        this.status = status;
+        this.bids = bids;
+    }
+
+    public List<Bid> getBids() {
+        return bids;
+    }
+
+    public void setBids(List<Bid> bids) {
+        this.bids = bids;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getId() {
@@ -81,12 +103,12 @@ public class Trip {
         this.driver = driver;
     }
 
-    public String getSelectedCar() {
-        return selectedCar;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setSelectedCar(String selectedCar) {
-        this.selectedCar = selectedCar;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public long getCreatedAtMills() {
@@ -225,22 +247,22 @@ public class Trip {
         this.paymentMethod = paymentMethod;
     }
 
-    class Bid{
+    public class Bid{
         String id;
         int bidPrice;
         Driver driver;
-        int selectedCar;
+        Vehicle vehicle;
         int paymentMethod;
         String description;
 
         public Bid() {
         }
 
-        public Bid(@Nullable String id, int bidPrice, Driver driver, int selectedCar, int paymentMethod, String description) {
+        public Bid(@Nullable String id, int bidPrice, Driver driver, Vehicle vehicle, int paymentMethod, String description) {
             this.id = id;
             this.bidPrice = bidPrice;
             this.driver = driver;
-            this.selectedCar = selectedCar;
+            this.vehicle = vehicle;
             this.paymentMethod = paymentMethod;
             this.description = description;
         }
@@ -269,12 +291,12 @@ public class Trip {
             this.driver = driver;
         }
 
-        public int getSelectedCar() {
-            return selectedCar;
+        public Vehicle getVehicle() {
+            return vehicle;
         }
 
-        public void setSelectedCar(int selectedCar) {
-            this.selectedCar = selectedCar;
+        public void setVehicle(Vehicle vehicle) {
+            this.vehicle = vehicle;
         }
 
         public int getPaymentMethod() {
