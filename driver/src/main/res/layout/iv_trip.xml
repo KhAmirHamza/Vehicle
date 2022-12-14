@@ -41,11 +41,10 @@
                 android:paddingTop="2dp"
                 android:paddingRight="7dp"
                 android:paddingBottom="2dp"
-                android:text="Bidding: 17:31"
+                android:text="Bidding"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtv_trip_id"
@@ -161,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cv_trip_header"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_additional"

@@ -18,7 +18,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.vehicle.customer.R;
 
@@ -164,8 +168,10 @@ public class VerificationActivity extends AppCompatActivity {
                     Log.d(VerificationActivity.TAG, "signInWithCredential:success");
                     //Toast.makeText(VerificationActivity.this, "signInWithCredential:success", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onComplete: phoneNumber: "+ phoneNumber);
-                    startActivity(new Intent(VerificationActivity.this, ProfileSetUpActivity.class)
-                            .putExtra("phoneNumber", phoneNumber));
+
+                    //todo.......................
+                   /* startActivity(new Intent(VerificationActivity.this, ProfileSetUpActivity.class)
+                            .putExtra("phoneNumber", phoneNumber));*/
                     finish();
                     return;
                 }
