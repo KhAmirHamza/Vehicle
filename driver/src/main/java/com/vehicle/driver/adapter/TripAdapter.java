@@ -157,6 +157,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             btn_start_bidding.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //todo...
+
+
 
                 }
             });

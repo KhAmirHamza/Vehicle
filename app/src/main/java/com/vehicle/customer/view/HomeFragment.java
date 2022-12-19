@@ -1,7 +1,6 @@
 package com.vehicle.customer.view;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.vehicle.customer.R;
+import com.vehicle.customer.adapter.AutoCompleteAddressAdapter;
 import com.vehicle.customer.model.Address;
 import com.vehicle.customer.model.Customer;
 import com.vehicle.customer.model.Trip;
@@ -219,9 +219,17 @@ public class HomeFragment extends Fragment {
         Toast.makeText(getContext(), "Address Size: "+addresses.size(), Toast.LENGTH_SHORT).show();
 
 
-        ArrayAdapter<String> upazilaAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, addressNames);
+        //ArrayAdapter<String> upazilaAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, addressNames);
         ArrayAdapter<String> upazilaAdapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, addressNames);
-        autocomplete_loading_upazila.setAdapter(upazilaAdapter);
+        //AddressAdapter addressAdapter = new AddressAdapter(getContext(), addressNames);
+
+        List<String> list = new ArrayList<>();
+        for (String s : addressNames) {
+            list.add(s);
+        }
+        AutoCompleteAddressAdapter addressAdapter = new AutoCompleteAddressAdapter(getContext(), list);
+        //AutoCompleteAdapter addressAdapter = new AutoCompleteAdapter(getContext(), Arrays.asList(addressNames));
+        autocomplete_loading_upazila.setAdapter(addressAdapter);
         autocomplete_unloading_upazila.setAdapter(upazilaAdapter2);
 
 

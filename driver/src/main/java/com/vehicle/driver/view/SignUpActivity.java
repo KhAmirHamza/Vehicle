@@ -1,26 +1,16 @@
-package com.vehicle.customer.view;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import com.vehicle.customer.R;
+package com.vehicle.driver.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-
-
-
+import com.vehicle.driver.R;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SignUpActivity";
@@ -62,7 +52,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if (!text_input_layout_phone_number.getEditText().getText().toString().isEmpty()){
                 progressbar.setVisibility(View.VISIBLE);
                 //todo... verify Registration
-
 
             }
             else {
