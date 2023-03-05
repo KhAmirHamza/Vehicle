@@ -20,6 +20,31 @@
             android:layout_alignParentTop="true"
             android:layout_above="@+id/btm_nav"
             />
+  <!--      <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCreateTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+
+            android:contentDescription="Add new Budget"
+            android:layout_above="@+id/btm_nav"
+            android:src="@android:drawable/ic_input_add" />
+-->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabCreateTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Click to Create Trip"
+            android:layout_above="@+id/btm_nav"
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            app:icon="@android:drawable/ic_input_add"
+            app:layout_anchorGravity="bottom|right|end"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/btm_nav"

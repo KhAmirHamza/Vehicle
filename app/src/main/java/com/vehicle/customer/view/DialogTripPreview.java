@@ -1,5 +1,6 @@
 package com.vehicle.customer.view;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 import com.vehicle.customer.R;
 import com.vehicle.customer.model.Trip;
 
@@ -30,7 +32,7 @@ public class DialogTripPreview extends Dialog {
     MaterialButton btn_review;
     ProgressBar progressbar;
 
-
+Activity activity;
 
 
 
@@ -39,8 +41,9 @@ public class DialogTripPreview extends Dialog {
     Trip trip;
 
 
-    public DialogTripPreview(@NonNull Context context, Trip trip) {
+    public DialogTripPreview(@NonNull Activity context, Trip trip) {
         super(context, android.R.style.Theme_Holo_Light_Dialog);
+        this.activity = context;
         this.trip = trip;
     }
 
@@ -90,7 +93,16 @@ public class DialogTripPreview extends Dialog {
                 db.collection("trip").add(trip).addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     //startActivity(new Intent(AddUpdateMoneyReceiveActivity.this, HomeActivity.class));
-                    Toast.makeText(getContext(), "Trip added for bidding successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Trip added for bidding successfully", Toast.LENGTH_SHORT).show();
+
+                    String welcomeText = "Thank you for submitting a bid. Drivers will tell you the rate. Wait and confirm.";
+
+                    DialogWelcome dialogWelcome = new DialogWelcome(getContext(), welcomeText);
+                    dialogWelcome.setCancelable(true);
+                    dialogWelcome.show();
+
+                    activity.startActivity(new Intent(activity,MainActivity.class));
+                    activity.finish();
                     cancel();
                     progressbar.setVisibility(View.GONE);
                 }).addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
@@ -102,16 +114,38 @@ public class DialogTripPreview extends Dialog {
         });
     }
 
+/*    if (vehicle.getType().equalsIgnoreCase("Truck")||
+            vehicle.getType().equalsIgnoreCase("Pickup")||
+            vehicle.getType().equalsIgnoreCase("Trailer")){
+
+        holder.txtv_vehicle_model.setText(vehicle.getModel());
+        holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
+        holder.txtv_vehicle_year.setText(", Year: "+vehicle.getYear());
+        holder.txtv_vehicle_description.setText(vehicle.getSize()+" ("+vehicle.getVariety()+")");
+        if (vehicle.getVehicleImageUrl() != null) Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
+
+    }else {
+        holder.txtv_vehicle_model.setText(vehicle.getModel());
+        holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
+        holder.txtv_vehicle_year.setText(", Year: "+vehicle.getYear());
+        holder.txtv_vehicle_description.setText(vehicle.getSeat()+" Seated"+" ("+vehicle.getVariety()+")");
+        Toast.makeText(context, "Sit: "+vehicle.getSeat(), Toast.LENGTH_SHORT).show();
+        if (vehicle.getVehicleImageUrl() != "") Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
+
+    }*/
+
     String getVehicleDetails(Trip trip){
         if (trip.getVehicle()==null) return "...";
-        else if (trip.getVehicle().getType().equalsIgnoreCase("Truck/PickUp/Trailer")){
+        else if (trip.getVehicle().getType().equalsIgnoreCase("Truck")||
+                trip.getVehicle().getType().equalsIgnoreCase("Pickup")||
+                trip.getVehicle().getType().equalsIgnoreCase("Trailer")){
             return trip.getVehicle().getType()+", "
-                    +trip.getVehicle().getSize()+" Feet "
-                    +trip.getVehicle().getCapacity()+" Ton ("
-                    +trip.getVehicle().getOpenOrCovered()+")";
+                    +trip.getVehicle().getSize()+" ("
+                    +trip.getVehicle().getVariety()+")";
         }else {
             return trip.getVehicle().getType()+", "
-                    +trip.getVehicle().getSize()+" Seats ";
+                    +trip.getVehicle().getSeat()+" Seats "+" ("
+                    +trip.getVehicle().getVariety()+")";
         }
     }
 

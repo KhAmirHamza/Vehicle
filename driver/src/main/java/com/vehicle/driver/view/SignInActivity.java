@@ -92,7 +92,8 @@ public class SignInActivity extends AppCompatActivity {
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e) {
 
                         if (e != null) {
-                            Log.w(TAG, "Listen failed.", e);
+                            Log.w(TAG, "Listen failed: "+e.getMessage());
+                            progressbar.setVisibility(View.GONE);
                             return;
                         }
 
@@ -102,12 +103,19 @@ public class SignInActivity extends AppCompatActivity {
                         String password = textInputLayout_password.getEditText().getText().toString();
                         phoneNumber = countryCode + phoneNumber;
 
-                        assert value != null;
-                        for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value))
-                            if (doc.get("name") != null) {
-                                Driver driver = doc.toObject(Driver.class);
+                        //assert value != null;
+                        if (value == null || value.getDocuments().size()<1) {
+                            progressbar.setVisibility(View.GONE);
+                            Toast.makeText(SignInActivity.this, "Registration First...", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                        }
+                        for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)) {
+                            Driver driver = doc.toObject(Driver.class);
+                            if (driver.getName() != null) {
+                                progressbar.setVisibility(View.GONE);
+                                driver.setId(doc.getId());
                                 if (driver.getPhoneNumber().equalsIgnoreCase(phoneNumber) &&
-                                driver.getPassword().equalsIgnoreCase(password)){
+                                        driver.getPassword().equalsIgnoreCase(password)) {
                                     SharedPreferences sharedPreferences = getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
                                     sharedPreferences.edit().putString("DRIVER_PHONE_NUMBER", phoneNumber).apply();
                                     sharedPreferences.edit().putString("DRIVER_PHONE_EMAIL", driver.getEmail()).apply();
@@ -116,17 +124,19 @@ public class SignInActivity extends AppCompatActivity {
                                     sharedPreferences.edit().putString("DRIVER_PASSWORD", password).apply();
                                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                                     finish();
-                                    return;
+                                } else {
+                                    Toast.makeText(SignInActivity.this, "Does not match Phone Number or Password", Toast.LENGTH_SHORT).show();
+                                    progressbar.setVisibility(View.GONE);
                                 }
+                            } else {
+                                Toast.makeText(SignInActivity.this, "Something went wrong, try again!", Toast.LENGTH_SHORT).show();
+                                progressbar.setVisibility(View.GONE);
                             }
-                        Toast.makeText(SignInActivity.this, "Does not match Phone Number or Password", Toast.LENGTH_SHORT).show();
-                        progressbar.setVisibility(View.GONE);
+                        }
                     }
                 });
             }
         });
-
-
 
         btn_goto_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +159,7 @@ public class SignInActivity extends AppCompatActivity {
 //            //Toast.makeText(this, "User Sign in", Toast.LENGTH_SHORT).show();
 //        } else
         if(!sharedPreferences.getString("DRIVER_PHONE_NUMBER", "null").equalsIgnoreCase("null") &&
-                sharedPreferences.getString("DRIVER_PHONE_NUMBER", "null") != null) {
+                sharedPreferences.getString("DRIVER_PASSWORD", "null") != null) {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
             finish();
             //Toast.makeText(this, "User Sign in", Toast.LENGTH_SHORT).show();

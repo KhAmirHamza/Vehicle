@@ -15,6 +15,7 @@ public class Driver {
     int totalTrips;
     int completeTrips;
     int Due;
+    String referCode;
     List<Vehicle> vehicles;
 
     public Driver() {
@@ -31,7 +32,7 @@ public class Driver {
         this.completeTrips = completeTrips;
     }
 
-    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles) {
+    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles,String referCode) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -43,6 +44,7 @@ public class Driver {
         this.completeTrips = completeTrips;
         Due = due;
         this.vehicles = vehicles;
+        this.referCode = referCode;
     }
 
     public String getId() {
@@ -124,16 +126,30 @@ public class Driver {
     public void setDue(int due) {
         Due = due;
     }
-
+/*
     public List<Vehicle> getCars() {
         return vehicles;
     }
 
     public void setCars(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
+    }*/
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
 
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 
+    public String getReferCode() {
+        return referCode;
+    }
+
+    public void setReferCode(String referCode) {
+        this.referCode = referCode;
+    }
 }
 
 

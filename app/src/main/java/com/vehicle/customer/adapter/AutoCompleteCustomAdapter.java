@@ -18,18 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AutoCompleteAddressAdapter extends ArrayAdapter<String> {
-    private List<String> addressListFull;
+public class AutoCompleteCustomAdapter extends ArrayAdapter<String> {
+    private List<String> dataListFull;
 
-    public AutoCompleteAddressAdapter(@NonNull Context context, @NonNull List<String> addressList) {
-        super(context, 0, addressList);
-        addressListFull = new ArrayList<>(addressList);
+    public AutoCompleteCustomAdapter(@NonNull Context context, @NonNull List<String> dataListFull) {
+        super(context, 0, dataListFull);
+        this.dataListFull = new ArrayList<>(dataListFull);
     }
 
     @NonNull
     @Override
     public Filter getFilter() {
-        return addressFilter;
+        return dataFilter;
     }
 
     @NonNull
@@ -41,30 +41,30 @@ public class AutoCompleteAddressAdapter extends ArrayAdapter<String> {
             );
         }
 
-        TextView txtv_address = convertView.findViewById(R.id.txtv_address);
+        TextView txtv_title = convertView.findViewById(R.id.txtv_title);
         //ImageView imageViewFlag = convertView.findViewById(R.id.image_view_flag);
 
-        String countryItem = getItem(position);
+        String dataItem = getItem(position);
 
-        if (countryItem != null) {
-           txtv_address.setText(countryItem);
+        if (dataItem != null) {
+           txtv_title.setText(dataItem);
         }
 
         return convertView;
     }
 
-    private Filter addressFilter = new Filter() {
+    private Filter dataFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             List<String> suggestions = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                suggestions.addAll(addressListFull);
+                suggestions.addAll(dataListFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (String item : addressListFull) {
+                for (String item : dataListFull) {
                     if (item.toLowerCase().contains(filterPattern)) {
                         suggestions.add(item);
                     }

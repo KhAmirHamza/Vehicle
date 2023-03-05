@@ -14,6 +14,51 @@
       },
       "oauth_client": [
         {
+          "client_id": "903534237677-vc25e6oo35b344qesng4lvtroj4f3s0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vehicle.customer",
+            "certificate_hash": "2e29f7a37046eca45f3d026afb3ccbdc1a537351"
+          }
+        },
+        {
+          "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoLrlRV-oazq_vtvjJ4OqAjUdaMsBMKj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903534237677:android:e70c911cd12277c24639e4",
+        "android_client_info": {
+          "package_name": "com.vehicle.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "903534237677-otptucj7f13ao323gafmoc1umm8951le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vehicle.driver",
+            "certificate_hash": "2e29f7a37046eca45f3d026afb3ccbdc1a537351"
+          }
+        },
+        {
           "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView btm_nav;
     FrameLayout content_layout;
     SwipeRefreshLayout swiperefresh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

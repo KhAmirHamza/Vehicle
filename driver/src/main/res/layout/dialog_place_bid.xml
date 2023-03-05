@@ -1,122 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_loading_point"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
-        <RelativeLayout
-            android:id="@+id/rl_loading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:layout_marginBottom="10dp"
-            >
-            <TextView
-                android:id="@+id/tv_h1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enter required info..."
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="7dp"
-                android:paddingBottom="5dp"
-                />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <com.google.android.material.card.MaterialCardView
+           android:id="@+id/cv_loading_point"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="15dp"
+           app:cardElevation="8dp">
+           <RelativeLayout
+               android:id="@+id/rl_loading"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingStart="10dp"
+               android:paddingEnd="10dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginTop="7dp"
+               >
+
+
+               <TextView
+                   android:id="@+id/tv_h1"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Enter required bidding info"
+                   android:textAlignment="center"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"
+                   android:textSize="18sp"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:layout_marginBottom="5dp"
+                   />
 
 
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_bid_price"
-                android:layout_below="@id/tv_h1"
-                android:hint="Enter Bid Price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:textColorHint="@color/black"
-                app:startIconTint="@color/black"
-                app:endIconTint="@color/black"
-                app:endIconMode="clear_text"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/text_input_layout_bid_price"
+                   android:layout_below="@id/tv_h1"
+                   android:hint="Enter Bid Price"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:minWidth="150dp"
+                   android:textColorHint="@color/black"
+                   app:startIconTint="@color/black"
+                   app:endIconTint="@color/black"
+                   app:endIconMode="clear_text"
+                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_bid_price"
-                    android:inputType="number"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/edt_bid_price"
+                       android:inputType="number"
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content" />
+               </com.google.android.material.textfield.TextInputLayout>
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/text_input_layout_advance"
+                   android:layout_below="@id/text_input_layout_bid_price"
+                   android:hint="Enter Advance Tk"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:minWidth="150dp"
+                   android:textColorHint="@color/black"
+                   app:startIconTint="@color/black"
+                   app:endIconTint="@color/black"
+                   app:endIconMode="clear_text"
+                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_description"
-                android:layout_below="@id/text_input_layout_bid_price"
-                android:hint="Enter Requirements"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minWidth="150dp"
-                android:textColorHint="@color/black"
-                app:startIconTint="@color/black"
-                app:endIconTint="@color/black"
-                app:endIconMode="clear_text"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/edt_advance"
+                       android:inputType="numberDecimal"
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content" />
+               </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edt_description"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+               <com.google.android.material.textfield.TextInputLayout
+                   android:id="@+id/text_input_layout_description"
+                   android:layout_below="@id/text_input_layout_advance"
+                   android:hint="Enter Requirements"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:minWidth="150dp"
+                   android:textColorHint="@color/black"
+                   app:startIconTint="@color/black"
+                   app:endIconTint="@color/black"
+                   app:endIconMode="clear_text"
+                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <TextView
-                android:id="@+id/tv_payment_method"
-                android:layout_below="@id/text_input_layout_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select Payment Method"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="7dp"
-                android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
-                />
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_below="@id/tv_payment_method"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/hand_cash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hand Cash"
-                    android:checked="true"/>
-
-                <RadioButton
-                    android:id="@+id/bkash"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="bKash"/>
-            </RadioGroup>
-
-
-        </RelativeLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+                   <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/edt_description"
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content" />
+               </com.google.android.material.textfield.TextInputLayout>
 
 
 
+               <TextView
+                   android:id="@+id/tv_payment_method"
+                   android:layout_below="@id/text_input_layout_description"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Select Payment Method"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"
+                   android:textSize="16sp"
+                   android:paddingTop="7dp"
+                   android:paddingBottom="5dp"
+                   android:layout_marginTop="10dp"
+                   />
+               <RadioGroup
+                   android:id="@+id/radio_groupPayment"
+                   android:layout_below="@id/tv_payment_method"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
 
-</RelativeLayout>
+                   <RadioButton
+                       android:id="@+id/hand_cash"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Hand Cash"
+                       android:checked="true"/>
+
+                   <RadioButton
+                       android:id="@+id/bkash"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="bKash"/>
+               </RadioGroup>
+
+               <TextView
+                   android:id="@+id/tv_selectVehicle"
+                   android:layout_below="@id/radio_groupPayment"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Select Vehicle"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"
+                   android:textSize="16sp"
+                   android:paddingTop="7dp"
+                   android:paddingBottom="5dp"
+                   android:layout_marginTop="10dp"
+                   />
+
+               <Spinner
+                   android:id="@+id/spinnerSelectVehicle"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/tv_selectVehicle"
+                   android:layout_marginStart="5dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginEnd="5dp"
+                   android:layout_marginBottom="5dp" />
+
+               <com.google.android.material.button.MaterialButton
+                   android:id="@+id/btnSubmitBid"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginBottom="10dp"
+                   android:layout_below="@+id/spinnerSelectVehicle"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Submit Bid"
+                   android:textAllCaps="false"
+                   />
+
+           </RelativeLayout>
+
+       </com.google.android.material.card.MaterialCardView>
+
+
+   </RelativeLayout>
+
+
+</ScrollView>

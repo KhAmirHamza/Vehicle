@@ -170,14 +170,15 @@ public class VerificationActivity extends AppCompatActivity {
                     Log.d(TAG, "onComplete: phoneNumber: "+ phoneNumber);
 
                     //todo.......................
-                   /* startActivity(new Intent(VerificationActivity.this, ProfileSetUpActivity.class)
-                            .putExtra("phoneNumber", phoneNumber));*/
+                    startActivity(new Intent(VerificationActivity.this, ProfileSetUpActivity.class)
+                            .putExtra("phoneNumber", phoneNumber));
                     finish();
-                    return;
                 }
-                Log.w(VerificationActivity.TAG, "signInWithCredential:failure", task.getException());
-                if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(VerificationActivity.this, "The verification code entered is invalid", Toast.LENGTH_SHORT).show();
+                else{
+                    Log.w(VerificationActivity.TAG, "signInWithCredential:failure", task.getException());
+                    if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                        Toast.makeText(VerificationActivity.this, "The verification code entered is invalid", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

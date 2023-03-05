@@ -6,380 +6,491 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.TripFragment">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!-- TODO: Update blank fragment layout -->
-
-        <ImageView
-            android:id="@+id/imgv_vehicle"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/car"
-            android:layout_marginTop="20dp"/>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_1"
-            android:layout_below="@id/imgv_vehicle"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvNoTrip"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tv_car_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pickup, 7 feet 1 Ton (Open)"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_trip_status"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bidding"
-                    android:textColor="@color/white"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:paddingLeft="7dp"
-                    android:paddingRight="7dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:background="@drawable/bg_txtv_ontheway"
-                    />
-                <TextView
-                    android:id="@+id/txtv_trip_id"
-                    android:layout_below="@+id/tv_car_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="T_547357645647"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingRight="7dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:textColor="@color/black"
-/>
-
-                <TextView
-                    android:id="@+id/tv_loading_date_time"
-                    android:layout_below="@id/tv_car_details"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="9 AM , 18/11/2022"
-                    android:textColor="@color/black"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="7dp"
-                    android:paddingRight="7dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    />
-
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_3"
-            android:layout_below="@id/cv_1"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="300dp"
+            android:text="You have not any running Trip!\n Create now..."/>
+        <RelativeLayout
+            android:id="@+id/rlTripFragment"
+            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_height="wrap_content">
+            <!-- TODO: Update blank fragment layout -->
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/imgv_vehicle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/car"
+                android:layout_marginTop="20dp"/>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_1"
+                android:layout_below="@id/imgv_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tv_show_bidding"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Show Bidders ▼"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:background="@drawable/bg_txtv_completed"
-                    />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recy_biders"
-                    android:visibility="gone"
-                    android:layout_below="@id/tv_show_bidding"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/iv_bid"/>
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_loading_unloading"
-            android:layout_below="@id/cv_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                >
-                <TextView
-                    android:id="@+id/tv_loading_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Loading Location"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingTop="7dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_loading_upazila_district"
-                    android:layout_below="@+id/tv_loading_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="▷ Upazila: Mirpur, District: Dhaka"
-                    android:textSize="14sp"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_loading_full_address"
-                    android:layout_below="@+id/tv_loading_upazila_district"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="▷ Full Address: Mirpur-1, Dhaka-1207"
-                    android:textSize="14sp"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_unloading_header"
-                    android:layout_below="@+id/tv_loading_full_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Unloading Location"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_unloading_upazila_district"
-                    android:layout_below="@+id/tv_unloading_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="▷ Upazila: Dhanmondi, District: Dhaka"
-                    android:textSize="14sp"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_unloading_full_address"
-                    android:layout_below="@+id/tv_unloading_upazila_district"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="▷ Full Address: Dhanmondi-1, Dhaka-1205"
-                    android:textSize="14sp"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_description_header"
-                    android:layout_below="@+id/tv_unloading_full_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Product Description"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:paddingTop="7dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_description"
-                    android:layout_below="@+id/tv_description_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="▷ Fragile Product, You have to carry it very safely"
-                    android:textSize="14sp"
-                    />
+                android:layout_marginTop="20dp">
 
-                <ProgressBar
-                    android:id="@+id/progressbar"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:visibility="gone"/>
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_car_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pickup, 7 feet 1 Ton (Open)"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_trip_status"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="Bidding"
+                        android:textColor="@color/white"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="@drawable/bg_txtv_ontheway"
+
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit ="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/txtv_trip_id"
+                        android:layout_below="@+id/tv_car_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="T_547357645647"
+                        android:textSize="12sp"
+                        android:layout_marginTop="5dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="2dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_loading_date_time"
+                        android:layout_below="@id/tv_car_details"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9 AM , 18/11/2022"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        />
 
 
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_additional"
-            android:layout_below="@id/cv_loading_unloading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_3"
+                android:layout_below="@id/cv_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:layout_marginBottom="10dp"
-                >
-                <TextView
-                    android:id="@+id/tv_up_down_trip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="✔ Up-Down Trip"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_contain_animal"
-                    android:layout_below="@+id/tv_up_down_trip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="✔ Contain Animal"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_fragile_product"
-                    android:layout_below="@+id/tv_contain_animal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="✔ Fragile Product"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_perishable_product"
-                    android:layout_below="@+id/tv_fragile_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="✔ Perishable Product"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_labor_needed"
-                    android:layout_below="@+id/tv_perishable_product"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="✔ Labor Needed"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
 
-        <!-- TODO: Update blank fragment layout -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cv_driver_details"
-            android:layout_below="@id/cv_additional"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="8dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
-            <RelativeLayout
+                    <TextView
+                        android:id="@+id/tv_show_bidding"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See and confirm a bidder a few minutes later at bid end"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:textAlignment="center"
+                        android:background="@drawable/bg_txtv_completed"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recy_biders"
+                        android:visibility="gone"
+                        android:layout_below="@id/tv_show_bidding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/iv_bid"/>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_loading_unloading"
+                android:layout_below="@id/cv_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/txtv_h2"
-                    android:layout_width="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Driver Details"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="5dp"/>
-                <ImageView
-                    android:id="@+id/imgv_driver"
-                    android:layout_below="@id/txtv_h2"
-                    android:layout_width="55dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/tv_loading_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Loading Location"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="7dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_loading_upazila_district"
+                        android:layout_below="@+id/tv_loading_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Upazila: Mirpur, District: Dhaka"
+                        android:textSize="14sp"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_loading_full_address"
+                        android:layout_below="@+id/tv_loading_upazila_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Full Address: Mirpur-1, Dhaka-1207"
+                        android:textSize="14sp"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_unloading_header"
+                        android:layout_below="@+id/tv_loading_full_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Unloading Location"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_unloading_upazila_district"
+                        android:layout_below="@+id/tv_unloading_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Upazila: Dhanmondi, District: Dhaka"
+                        android:textSize="14sp"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_unloading_full_address"
+                        android:layout_below="@+id/tv_unloading_upazila_district"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Full Address: Dhanmondi-1, Dhaka-1205"
+                        android:textSize="14sp"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_description_header"
+                        android:layout_below="@+id/tv_unloading_full_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Product Description"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="7dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_below="@+id/tv_description_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Fragile Product, You have to carry it very safely"
+                        android:textSize="14sp"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"/>
+
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_additional"
+                android:layout_below="@id/cv_loading_unloading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_outline_person_24"
-                    android:layout_marginEnd="10dp"/>
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <TextView
+                        android:id="@+id/tv_up_down_trip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Up-Down Trip"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_contain_animal"
+                        android:layout_below="@+id/tv_up_down_trip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Contain Animal"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_fragile_product"
+                        android:layout_below="@+id/tv_contain_animal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Fragile Product"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_perishable_product"
+                        android:layout_below="@+id/tv_fragile_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Perishable Product"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_labor_needed"
+                        android:layout_below="@+id/tv_perishable_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Labor Needed"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/txtv_driver_name"
-                    android:layout_below="@id/txtv_h2"
-                    android:layout_toRightOf="@id/imgv_driver"
-                    android:layout_width="wrap_content"
+            <!-- TODO: Update blank fragment layout -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_driver_details"
+                android:layout_below="@id/cv_additional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="50dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Md. ............"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:id="@+id/txtv_driver_email"
-                    android:layout_below="@id/txtv_driver_name"
-                    android:layout_toRightOf="@id/imgv_driver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=".......@gmail.com"
-                    android:textSize="14sp"/>
-                <TextView
-                    android:id="@+id/txtv_driver_phone_number"
-                    android:layout_below="@id/txtv_driver_email"
-                    android:layout_toRightOf="@id/imgv_driver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+880111........"
-                    android:textSize="14sp"
-                    android:textIsSelectable="true"
-                    android:clickable="true"/>
-            </RelativeLayout>
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
 
-        </com.google.android.material.card.MaterialCardView>
+                        <TextView
+                            android:id="@+id/txtv_h2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Driver Details"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="5dp"/>
+                        <ImageView
+                            android:id="@+id/imgv_driver"
+                            android:layout_below="@id/txtv_h2"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_outline_person_24"
+                            android:layout_marginEnd="10dp"/>
+
+                        <TextView
+                            android:id="@+id/txtv_driver_name"
+                            android:layout_below="@id/txtv_h2"
+                            android:layout_toRightOf="@id/imgv_driver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Md. ............"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:id="@+id/txtv_driver_email"
+                            android:layout_below="@id/txtv_driver_name"
+                            android:layout_toRightOf="@id/imgv_driver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=".......@gmail.com"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/txtv_driver_phone_number"
+                            android:layout_below="@id/txtv_driver_email"
+                            android:layout_toRightOf="@id/imgv_driver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+880111........"
+                            android:textSize="14sp"
+                            android:autoLink="phone"
+                            android:textIsSelectable="true"
+                            android:clickable="true"/>
 
 
-    </RelativeLayout>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
+                        <TextView
+                            android:id="@+id/txtv_h3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vehicle Details"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="5dp"/>
+
+
+                        <ImageView
+                            android:id="@+id/imgv_car"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/car"
+                            android:layout_below="@id/txtv_h3"
+                            android:adjustViewBounds="true"
+                            android:layout_marginRight="15dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/txtv_vehicle_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/imgv_car"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="sm-tha-00-0166"
+                            android:textSize="16sp"
+                            android:visibility="visible"
+                            android:layout_below="@id/txtv_h3"
+                            />
+
+                        <TextView
+                            android:id="@+id/txtv_vehicle_model"
+                            android:layout_toRightOf="@id/imgv_car"
+                            android:layout_below="@id/txtv_vehicle_number"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="3dp"
+                            android:drawablePadding="5dp"
+                            android:text="..."
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txtv_vehicle_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtv_vehicle_model"
+                            android:layout_toRightOf="@id/imgv_car"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Model Year: 2005"
+                            android:textSize="16sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/txtv_vehicle_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtv_vehicle_number"
+                            android:layout_toRightOf="@id/imgv_car"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="1 ton, 7 feet"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
@@ -17,12 +18,14 @@ import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.vehicle.customer.R;
-import com.vehicle.customer.adapter.AutoCompleteAddressAdapter;
+import com.vehicle.customer.adapter.AutoCompleteCustomAdapter;
 import com.vehicle.customer.model.Address;
 import com.vehicle.customer.model.Customer;
 import com.vehicle.customer.model.Trip;
@@ -40,27 +43,36 @@ import java.util.List;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
-    Spinner spinner_vehicle;
     RadioGroup radio_group;
     final Calendar myCalendar= Calendar.getInstance();
     MaterialButton btn_review;
     DatePickerDialog.OnDateSetListener date;
-    DatePicker datePicker;
-    NumberPicker numberPicker;
+    DatePicker datePicker, datePickerReturnSchedule;
+    NumberPicker numberPicker, numberPickerReturnSchedule;
 
     List<Address> addresses = new ArrayList<>();
     String[] addressNames;
-
+    String variety = "";
     AutoCompleteTextView autocomplete_loading_upazila, autocomplete_unloading_upazila;
+    MaterialCardView cv_additional;
 
     TextInputLayout text_input_layout_full_loading_address, text_input_layout_full_unloading_address,
             text_input_layout_loading_landmark,text_input_layout_unloading_landmark, text_input_layout_product_description,
-            text_input_layout_alternative_phone_number, text_input_layout_stop_point_address,text_input_layout_person_name,
-            text_input_layout_person_mobile_number,text_input_layout_return_point_address,text_input_layout_return_date;
+             text_input_layout_stop_point_address, text_input_layout_stopPointPerson_name,
+            text_input_layout_stopPointPerson_mobile_number,text_input_layout_return_point_address,
+            text_input_layout_loadingAlternative_person_number, text_input_layout_loadingArea,
+            text_input_layout_unloading_area, text_input_layout_unloading_personName,
+            text_input_layout_unloading_mobileNumber;
 
-    CheckBox cbUpDownTrip, cbContainAnimal, cbFragile, cbPerishable,cbLaborNeeded;
-    List<Vehicle> vehicles_t1 = new ArrayList<>();
-    List<Vehicle> vehicles_t2 = new ArrayList<>();
+    //CheckBox cbUpDownTrip;
+    CheckBox cbContainAnimal, cbFragile, cbPerishable,cbLaborNeeded, cbWeightAlert,cbLengthAlert;
+
+
+    Spinner spinner_vehicle, spinner_vehicleVariety, spinner_vehicle_size, spinner_vehicle_seat,
+            spinner_product_category;
+    TextView tv_vehicle_size, tv_vehicle_seat, tv_vehicle_variety_header, tv_loading_header,tv_unloading_header;
+
+    String seat, size;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,11 +80,26 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view     = inflater.inflate(R.layout.fragment_home, container, false);
 
-        cbUpDownTrip = view.findViewById(R.id.cbUpDownTrip);
+        spinner_vehicleVariety = view.findViewById(R.id.spinner_vehicleVariety);
+        spinner_vehicle_size = view.findViewById(R.id.spinner_vehicle_size);
+        spinner_vehicle_seat = view.findViewById(R.id.spinner_vehicle_seat);
+        spinner_product_category = view.findViewById(R.id.spinner_product_category);
+
+        tv_vehicle_size = view.findViewById(R.id.tv_vehicle_size);
+        tv_vehicle_seat = view.findViewById(R.id.tv_vehicle_seat);
+        tv_vehicle_variety_header = view.findViewById(R.id.tv_vehicle_variety_header);
+        tv_loading_header = view.findViewById(R.id.tv_loading_header);
+        tv_unloading_header = view.findViewById(R.id.tv_unloading_header);
+
+        cv_additional = view.findViewById(R.id.cv_additional);
+
+        //cbUpDownTrip = view.findViewById(R.id.cbUpDownTrip);
         cbFragile = view.findViewById(R.id.cbFragile);
         cbPerishable = view.findViewById(R.id.cbPerishable);
         cbContainAnimal = view.findViewById(R.id.cbContainAnimal);
         cbLaborNeeded = view.findViewById(R.id.cbLaborNeeded);
+        cbWeightAlert = view.findViewById(R.id.cbWeightAlert);
+        cbLengthAlert = view.findViewById(R.id.cbLengthAlert);
 
         btn_review = view.findViewById(R.id.btn_review);
 
@@ -84,83 +111,49 @@ public class HomeFragment extends Fragment {
         text_input_layout_loading_landmark = view.findViewById(R.id.text_input_layout_loading_landmark);
         text_input_layout_unloading_landmark = view.findViewById(R.id.text_input_layout_unloading_landmark);
         text_input_layout_product_description = view.findViewById(R.id.text_input_layout_product_description);
-        text_input_layout_alternative_phone_number = view.findViewById(R.id.text_input_layout_alternative_phone_number);
         text_input_layout_stop_point_address = view.findViewById(R.id.text_input_layout_stop_point_address);
-        text_input_layout_person_name = view.findViewById(R.id.text_input_layout_person_name);
-        text_input_layout_person_mobile_number = view.findViewById(R.id.text_input_layout_person_mobile_number);
+        text_input_layout_stopPointPerson_name = view.findViewById(R.id.text_input_layout_stopPointPerson_name);
+        text_input_layout_stopPointPerson_mobile_number = view.findViewById(R.id.text_input_layout_stopPointPerson_mobile_number);
         text_input_layout_return_point_address = view.findViewById(R.id.text_input_layout_return_point_address);
-        text_input_layout_return_date = view.findViewById(R.id.text_input_layout_return_date);
+        text_input_layout_loadingAlternative_person_number = view.findViewById(R.id.text_input_layout_loadingAlternative_person_number);
+        text_input_layout_loadingArea = view.findViewById(R.id.text_input_layout_loadingArea);
+        text_input_layout_unloading_area = view.findViewById(R.id.text_input_layout_unloading_area);
+        text_input_layout_unloading_personName = view.findViewById(R.id.text_input_layout_unloading_personName);
+        text_input_layout_unloading_mobileNumber = view.findViewById(R.id.text_input_layout_unloading_mobileNumber);
 
         datePicker = view.findViewById(R.id.datePicker);
+        datePickerReturnSchedule = view.findViewById(R.id.datePickerReturnSchedule);
         numberPicker = view.findViewById(R.id.numberPicker);
+        numberPickerReturnSchedule = view.findViewById(R.id.numberPickerReturnSchedule);
         spinner_vehicle = view.findViewById(R.id.spinner_vehicle);
-        radio_group = view.findViewById(R.id.radio_group);
-
-        Vehicle vehicle1 = new Vehicle(null,"Mdl", "Pickup", "Open",7, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
-        Vehicle vehicle2 = new Vehicle(null,"Mdl", "Truck", "Covered",7, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
-        Vehicle vehicle3 = new Vehicle(null,"Mdl", "Truck", "Open",9, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
-        Vehicle vehicle4 = new Vehicle(null,"Mdl", "Trailer", "Covered",9, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
-        vehicles_t1.add(vehicle1);
-        vehicles_t1.add(vehicle2);
-        vehicles_t1.add(vehicle3);
-        vehicles_t1.add(vehicle4);
-
-        String[] trucks = {
-                "Choose a Truck/Pickup/Trailer",
-                "7 Feet 1 Ton (Open)",
-                "7 Feet 1 Ton (Covered)",
-                "9 Feet 1.5 Ton (Open)",
-                "9 Feet 1.5 Ton (Covered)",
-
-        };
-        /*
-        "11 Feet 2 Ton (Open)",
-        "11 Feet 2 Ton (Covered)"
-                */
-
-        Vehicle car1 = new Vehicle(null,"Mdl", "Private Car", "AC",4, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
-        Vehicle car2 = new Vehicle(null,"Mdl", "Private Car", "",4, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","12345","url", "dUrl");
-        Vehicle car3 = new Vehicle(null,"Mdl", "Micro", "AC",5, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
-        Vehicle car4 = new Vehicle(null,"Mdl", "Micro", "",5, 1, 0, 0, 0, "Dhaka-Metro", "SerialNo","789","url", "dUrl");
-        vehicles_t2.add(car1);
-        vehicles_t2.add(car2);
-        vehicles_t2.add(car3);
-        vehicles_t2.add(car4);
 
 
-        String[] cars ={
-                "Choose a Private Car/Micro",
-                "4 seated Private Car",
-                "4 seated Private Car(AC)",
-                "5 seated Private Car",
-                "5 seated Private Car(AC)",
+        ArrayAdapter<String> vehicleTypeAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.vehicle_type));
+        spinner_vehicle.setAdapter(vehicleTypeAdapter);
 
-        };
+        ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.openCovered));
+        spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
 
-        /*
-        *    "6 seated Private Car",
-                "6 seated Private Car(AC)",
-                "7 seated private Car",
-                "7 seated Private Car(AC)",
-                "8 seated Private Car",
-                "8 seated Private Car(AC)",
-                "7 seated Micro Bus",
-                "7 seated Micro Bus(AC)",
-                "8 seated Micro Bus",
-                "8 seated Micro Bus(AC)",
-                "9 seated Micro Bus",
-                "9 seated Micro Bus(AC)",
-                "10 seated Micro Bus",
-                "10 seated Micro Bus(AC)",
-                "11 seated Micro Bus",
-                "11 seated Micro Bus(AC)"
-        * */
+        ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.pickupSize));
+        spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
 
-        ArrayAdapter<String> trucksAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, trucks);
-        ArrayAdapter<String> carsAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, cars);
-        spinner_vehicle.setAdapter(trucksAdapter);
+        ArrayAdapter<String> vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.privateCarSeat));
+        spinner_vehicle_seat.setAdapter(vehicleSeatAdapter);
+        ArrayAdapter<String> productCategory = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.productCategory));
+        spinner_product_category.setAdapter(productCategory);
 
-        radio_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+   /*     radio_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (radio_group.getCheckedRadioButtonId()==R.id.truck){
@@ -173,7 +166,7 @@ public class HomeFragment extends Fragment {
                     spinner_vehicle.setAdapter(carsAdapter);
                 }
             }
-        });
+        });*/
 
   /*     btn_schedule.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -205,6 +198,9 @@ public class HomeFragment extends Fragment {
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(23);
         numberPicker.setDisplayedValues(getResources().getStringArray(R.array.timeEng));
+        numberPickerReturnSchedule.setMinValue(0);
+        numberPickerReturnSchedule.setMaxValue(23);
+        numberPickerReturnSchedule.setDisplayedValues(getResources().getStringArray(R.array.timeEng));
 
 
 
@@ -216,7 +212,7 @@ public class HomeFragment extends Fragment {
             addressNames[i] = addresses.get(i).getName();
         }
 
-        Toast.makeText(getContext(), "Address Size: "+addresses.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "Address Size: "+addresses.size(), Toast.LENGTH_SHORT).show();
 
 
         //ArrayAdapter<String> upazilaAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, addressNames);
@@ -227,7 +223,7 @@ public class HomeFragment extends Fragment {
         for (String s : addressNames) {
             list.add(s);
         }
-        AutoCompleteAddressAdapter addressAdapter = new AutoCompleteAddressAdapter(getContext(), list);
+        AutoCompleteCustomAdapter addressAdapter = new AutoCompleteCustomAdapter(getContext(), list);
         //AutoCompleteAdapter addressAdapter = new AutoCompleteAdapter(getContext(), Arrays.asList(addressNames));
         autocomplete_loading_upazila.setAdapter(addressAdapter);
         autocomplete_unloading_upazila.setAdapter(upazilaAdapter2);
@@ -236,15 +232,123 @@ public class HomeFragment extends Fragment {
         //todo...prepare trip...
 
         //Toast.makeText(getContext(), "Division Size: "+divisions.size(), Toast.LENGTH_SHORT).show();
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("Customer", Context.MODE_PRIVATE);
-        String customerName = sharedPreferences.getString("name","");
-        String phoneNumber = sharedPreferences.getString("phoneNumber","");;
-        String customerPass = sharedPreferences.getString("password","");;
-        String customerEmail = sharedPreferences.getString("email","");;
-        String customerImageUrl = sharedPreferences.getString("imageUrl","");;
-        String customerAddress = sharedPreferences.getString("address","");;
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
+        String customerName = sharedPreferences.getString("CUSTOMER_NAME","");
+        String phoneNumber = sharedPreferences.getString("CUSTOMER_PHONE_NUMBER","");;
+        String customerPass = "Hidden";
+        String customerEmail = sharedPreferences.getString("CUSTOMER_EMAIL","");;
+        String customerImageUrl = sharedPreferences.getString("CUSTOMER_IMAGE_URL","");;
+        String customerAddress = sharedPreferences.getString("CUSTOMER_ADDRESS","");;
         Customer customer = new Customer(null, customerName,phoneNumber, customerPass, customerEmail,
                 customerImageUrl, customerAddress);
+
+
+        spinner_vehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                setVehicleUiBehaviour(position);
+/*                if(position==0){
+                    tv_vehicle_seat.setVisibility(View.GONE);
+                    spinner_vehicle_seat.setVisibility(View.GONE);
+                    tv_vehicle_size.setVisibility(View.VISIBLE);
+                    spinner_vehicle_size.setVisibility(View.VISIBLE);
+                    seat = "0";
+                    ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.pickupSize));
+                    spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.openCovered));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+
+                }else if(position==1){
+                    tv_vehicle_seat.setVisibility(View.GONE);
+                    spinner_vehicle_seat.setVisibility(View.GONE);
+                    tv_vehicle_size.setVisibility(View.VISIBLE);
+                    spinner_vehicle_size.setVisibility(View.VISIBLE);
+                    seat = "0";
+                    ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.truckSize));
+                    spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.openCovered));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+
+                }else if(position==2){
+                    tv_vehicle_seat.setVisibility(View.GONE);
+                    spinner_vehicle_seat.setVisibility(View.GONE);
+                    tv_vehicle_size.setVisibility(View.VISIBLE);
+                    spinner_vehicle_size.setVisibility(View.VISIBLE);
+                    seat = "0";
+                    ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.trailerSize));
+                    spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.openCovered));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+
+
+                }else if(position==3){
+                    tv_vehicle_seat.setVisibility(View.VISIBLE);
+                    spinner_vehicle_seat.setVisibility(View.VISIBLE);
+                    spinner_vehicle_size.setVisibility(View.GONE);
+                    tv_vehicle_size.setVisibility(View.GONE);
+                    size = "0";
+                    ArrayAdapter<String> vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.privateCarSeat));
+                    spinner_vehicle_seat.setAdapter(vehicleSeatAdapter);
+
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.acNonAc));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+
+                }else if(position==4){
+                    tv_vehicle_seat.setVisibility(View.VISIBLE);
+                    spinner_vehicle_seat.setVisibility(View.VISIBLE);
+                    tv_vehicle_size.setVisibility(View.GONE);
+                    spinner_vehicle_size.setVisibility(View.GONE);
+                    size = "0";
+                    ArrayAdapter<String> vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.microBusSeat));
+                    spinner_vehicle_seat.setAdapter(vehicleSeatAdapter);
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.acNonAc));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+                }else if(position==5){
+                    tv_vehicle_seat.setVisibility(View.VISIBLE);
+                    spinner_vehicle_seat.setVisibility(View.VISIBLE);
+                    tv_vehicle_size.setVisibility(View.GONE);
+                    spinner_vehicle_size.setVisibility(View.GONE);
+                    size = "0";
+                    ArrayAdapter<String> vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.tourBusSeat));
+                    spinner_vehicle_seat.setAdapter(vehicleSeatAdapter);
+                    ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_list_item_1,
+                            getResources().getStringArray(R.array.acNonAc));
+                    spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+                }*/
+                tv_vehicle_variety_header.setVisibility(position==2?View.GONE:View.VISIBLE);
+                spinner_vehicleVariety.setVisibility(position==2?View.GONE:View.VISIBLE);
+                variety = position==2?"":variety;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         btn_review.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,23 +359,42 @@ public class HomeFragment extends Fragment {
                 String unloadingFullAddr = text_input_layout_full_unloading_address.getEditText().getText().toString();
                 String loadingLandmark = text_input_layout_loading_landmark.getEditText().getText().toString();
                 String unloadingLandmark = text_input_layout_unloading_landmark.getEditText().getText().toString();
-                String date = datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1)+datePicker.getYear();
+                String loadingDate = datePicker.getDayOfMonth()+"/"+(datePicker.getMonth()+1)+"/"+datePicker.getYear();
+                String returnDate = datePickerReturnSchedule.getDayOfMonth()+"/"+(datePickerReturnSchedule.getMonth()+1)+datePickerReturnSchedule.getYear();
                 String loadingTime = numberPicker.getDisplayedValues()[numberPicker.getValue()];
+                String returnTime = numberPickerReturnSchedule.getDisplayedValues()[numberPickerReturnSchedule.getValue()];
                 String productDescription = text_input_layout_product_description.getEditText().getText().toString().trim();
-                String alternativePhoneNumber = text_input_layout_alternative_phone_number.getEditText().getText().toString().trim();
-                String stopAddress = text_input_layout_stop_point_address.getEditText().getText().toString().trim();
-                String stopPersonName = text_input_layout_person_name.getEditText().getText().toString().trim();
-                String stopPersonPhoneNumber = text_input_layout_person_mobile_number.getEditText().getText().toString().trim();
+                String stopAddress = "none ";
+                //String stopAddress = text_input_layout_stop_point_address.getEditText().getText().toString().trim();
+                String stopPointPersonName = text_input_layout_stopPointPerson_name.getEditText().getText().toString().trim();
+                String stopPersonPhoneNumber = text_input_layout_stopPointPerson_mobile_number.getEditText().getText().toString().trim();
                 String returnAddress = text_input_layout_return_point_address.getEditText().getText().toString().trim();
-                String returnDate = text_input_layout_return_date.getEditText().getText().toString().trim();
+                String loadingAlternative_person_number = text_input_layout_loadingAlternative_person_number.getEditText().getText().toString().trim();
+                String loadingArea = text_input_layout_loadingArea.getEditText().getText().toString().trim();
+                String unloadingArea = text_input_layout_unloading_area.getEditText().getText().toString().trim();
+                String unloading_personName = text_input_layout_unloading_personName.getEditText().getText().toString().trim();
+                String unloading_mobileNumber = text_input_layout_unloading_mobileNumber.getEditText().getText().toString().trim();
 
-                int upDownTrip = cbUpDownTrip.isChecked()?1:0;
+                //int upDownTrip = cbUpDownTrip.isChecked()?1:0;
+                int upDownTrip = 0;
                 int containAnimal = cbContainAnimal.isChecked()?1:0;
                 int fragile = cbFragile.isChecked()?1:0;
                 int perishable = cbPerishable.isChecked()?1:0;
                 int laborNeeded = cbLaborNeeded.isChecked()?1:0;
+                int lengthAlert = cbLengthAlert.isChecked()?1:0;
+                int weightAlert = cbWeightAlert.isChecked()?1:0;
                 int rentalPrice = 0;
-                int paymentMethod = 0;
+                String paymentMethod = "None";
+
+
+                size = spinner_vehicle_size.getVisibility()==View.VISIBLE ?
+                        spinner_vehicle_size.getSelectedItem().toString().trim() : "0";
+                seat = spinner_vehicle_seat.getVisibility()==View.VISIBLE ?
+                        spinner_vehicle_seat.getSelectedItem().toString().trim() : "0";
+                variety = spinner_vehicleVariety.getSelectedItem().toString();
+                String type = spinner_vehicle.getSelectedItem().toString();
+                String productCategory = spinner_product_category.getSelectedItem().toString();
+
 
                 if (!isStringContainsInArray(loadingUpaz, addressNames)){
                     autocomplete_loading_upazila.setError("Select an Valid Address");
@@ -294,45 +417,130 @@ public class HomeFragment extends Fragment {
                 }else if (productDescription.isEmpty()){
                     text_input_layout_product_description.setError("Enter Product Description");
                     text_input_layout_product_description.requestFocus();
-                }else if (alternativePhoneNumber.isEmpty()){
-                    text_input_layout_alternative_phone_number.setError("Enter Alternative Phone Number");
-                    text_input_layout_alternative_phone_number.requestFocus();
-                }else if (stopAddress.isEmpty()){
+                }/*else if (stopAddress.isEmpty()){
                     text_input_layout_stop_point_address.setError("Enter Stop Point Address");
                     text_input_layout_stop_point_address.requestFocus();
-                }else if (stopPersonName.isEmpty()){
-                    text_input_layout_person_name.setError("Enter Person Name");
-                    text_input_layout_person_name.requestFocus();
+                }*/else if (stopPointPersonName.isEmpty()){
+                    text_input_layout_stopPointPerson_name.setError("Enter Person Name");
+                    text_input_layout_stopPointPerson_name.requestFocus();
                 }else if (stopPersonPhoneNumber.isEmpty()){
-                    text_input_layout_person_mobile_number.setError("Enter Person Mobile Number");
-                    text_input_layout_person_mobile_number.requestFocus();
+                    text_input_layout_stopPointPerson_mobile_number.setError("Enter Person Mobile Number");
+                    text_input_layout_stopPointPerson_mobile_number.requestFocus();
                 }else if (returnAddress.isEmpty()){
                     text_input_layout_return_point_address.setError("Enter Return Point Address");
                     text_input_layout_return_point_address.requestFocus();
-                }else if (returnDate.isEmpty()){
-                    text_input_layout_return_date.setError("Enter Return Date");
-                    text_input_layout_return_date.requestFocus();
+                }else if (loadingAlternative_person_number.isEmpty()){
+                    text_input_layout_loadingAlternative_person_number.setError("Enter Loading Alt. Person Number");
+                    text_input_layout_loadingAlternative_person_number.requestFocus();
+                } else if (unloading_personName.isEmpty()){
+                    text_input_layout_unloading_personName.setError("Enter Unloading person Name");
+                    text_input_layout_unloading_personName.requestFocus();
+                }else if (unloading_mobileNumber.isEmpty()){
+                    text_input_layout_unloading_mobileNumber.setError("Enter Unloading person mobile number");
+                    text_input_layout_unloading_mobileNumber.requestFocus();
+                }else if (unloadingArea.isEmpty()){
+                    text_input_layout_unloading_area.setError("Enter Unloading Area");
+                    text_input_layout_unloading_area.requestFocus();
+                }else if (loadingArea.isEmpty()){
+                    text_input_layout_loadingArea.setError("Enter loading Area");
+                    text_input_layout_loadingArea.requestFocus();
                 }
 
-                Vehicle selectedVehicle = radio_group.getCheckedRadioButtonId()==R.id.truck?
-                        vehicles_t1.get(spinner_vehicle.getSelectedItemPosition()-1):
-                        vehicles_t2.get(spinner_vehicle.getSelectedItemPosition()-1);
-
-                Trip trip = new Trip(null, customer, null, selectedVehicle,
-                        System.currentTimeMillis(), loadingUpaz,
-                        loadingFullAddr, loadingLandmark, date, loadingTime, unloadingUpaz, unloadingFullAddr,
-                        unloadingLandmark, productDescription,upDownTrip,containAnimal,fragile,perishable,laborNeeded,
-                        rentalPrice,paymentMethod, "Pending", (List) new ArrayList<>(),alternativePhoneNumber,
-                        stopAddress, stopPersonName,stopPersonPhoneNumber, returnAddress,returnDate);
+                Vehicle vehicle = new Vehicle(null, "", type, variety, seat,
+                        size, "","", "", "","",
+                        "","", "");
 
 
-                DialogTripPreview dialogTripPreview = new DialogTripPreview(getContext(), trip);
+
+                Trip trip = new Trip(null, customer, null, vehicle,
+                        System.currentTimeMillis(), loadingUpaz, loadingFullAddr,loadingArea, loadingLandmark, loadingDate, loadingTime,
+                        loadingAlternative_person_number,
+                        unloadingUpaz, unloadingFullAddr,unloadingArea, unloadingLandmark, unloading_personName,unloading_mobileNumber,
+                        productDescription, productCategory,
+                        upDownTrip,containAnimal,fragile,perishable,laborNeeded, rentalPrice, paymentMethod,
+                        lengthAlert, weightAlert, "Bidding", (List) new ArrayList<>(),
+                        stopAddress, stopPointPersonName,0, stopPersonPhoneNumber, returnAddress,returnDate, returnTime);
+
+
+                DialogTripPreview dialogTripPreview = new DialogTripPreview(getActivity(), trip);
                 dialogTripPreview.setCancelable(true);
                 dialogTripPreview.show();
             }
         });
 
+
+
+
+
         return view;
+    }
+
+    private void setVehicleUiBehaviour(int position){
+        ArrayAdapter<String> vehicleSeatAdapter = null, vehicleSizeAdapter = null;
+        //tv_vehicle_variety_header.setVisibility(View.VISIBLE);
+        //spinner_vehicleVariety.setVisibility(View.VISIBLE);
+        if(position==0){
+            vehicleSizeAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.pickupSize));
+        }else if(position==1){
+            vehicleSizeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,
+                    getResources().getStringArray(R.array.truckSize));
+        }else if(position==2){
+            vehicleSizeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,
+                    getResources().getStringArray(R.array.trailerSize));
+        }else if(position==3){
+            vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.privateCarSeat));
+        }else if(position==4){
+            vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.microBusSeat));
+        }else if(position==5){
+            vehicleSeatAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tourBusSeat));
+            //tv_vehicle_variety_header.setVisibility(View.GONE);
+           // spinner_vehicleVariety.setVisibility(View.GONE);
+        }
+
+        if (position==0||position==1||position==2){
+            tv_vehicle_seat.setVisibility(View.GONE);
+            spinner_vehicle_seat.setVisibility(View.GONE);
+            tv_vehicle_size.setVisibility(View.VISIBLE);
+            spinner_vehicle_size.setVisibility(View.VISIBLE);
+            seat = "0";
+            ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1,
+                    getResources().getStringArray(R.array.openCovered));
+            spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+            spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
+            tv_loading_header.setText("Detail information on load location");
+            tv_unloading_header.setText("Detail information on unload location");
+            text_input_layout_loading_landmark.setHint("Landmark of loading Site");
+            text_input_layout_unloading_landmark.setHint("Landmark of Unloading Site");
+            text_input_layout_unloading_personName.setVisibility(View.VISIBLE);
+            text_input_layout_unloading_mobileNumber.setVisibility(View.VISIBLE);
+            cv_additional.setVisibility(View.VISIBLE);
+        }else{
+            tv_vehicle_seat.setVisibility(View.VISIBLE);
+            spinner_vehicle_seat.setVisibility(View.VISIBLE);
+            spinner_vehicle_size.setVisibility(View.GONE);
+            tv_vehicle_size.setVisibility(View.GONE);
+            size = "0";
+            ArrayAdapter<String> vehicleVarietyAdapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_list_item_1,
+                    getResources().getStringArray(R.array.acNonAc));
+            spinner_vehicleVariety.setAdapter(vehicleVarietyAdapter);
+
+            spinner_vehicle_seat.setAdapter(vehicleSeatAdapter);
+            tv_loading_header.setText("Detail info on trip start location");
+            tv_unloading_header.setText("Detail info on trip end location");
+            text_input_layout_loading_landmark.setHint("Landmark of trip start Site");
+            text_input_layout_unloading_landmark.setHint("Landmark of trip end Site");
+            text_input_layout_unloading_personName.setVisibility(View.GONE);
+            text_input_layout_unloading_mobileNumber.setVisibility(View.GONE);
+            cv_additional.setVisibility(View.GONE);
+
+        }
+
     }
 
     private boolean isStringContainsInArray(String stringToCheck, String[] addressNames){
@@ -342,8 +550,7 @@ public class HomeFragment extends Fragment {
         }
         return result;
     }
-
-
+    
     public List<Address> getAddresses(){
         //loadDistrict...
         JSONArray jsonArray;

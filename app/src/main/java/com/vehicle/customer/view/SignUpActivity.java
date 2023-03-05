@@ -1,9 +1,14 @@
 package com.vehicle.customer.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.vehicle.customer.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +23,9 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.vehicle.customer.model.Customer;
 
-
+import java.util.Objects;
 
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
@@ -62,6 +68,40 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if (!text_input_layout_phone_number.getEditText().getText().toString().isEmpty()){
                 progressbar.setVisibility(View.VISIBLE);
                 //todo... verify Registration
+
+                Log.d(TAG, "onResponse: phone_number: "+phoneNumber);
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("customer").addSnapshotListener(new com.google.firebase.firestore.EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e) {
+
+                        if (e != null) {
+                            Log.w(TAG, "Listen failed.", e);
+                            return;
+                        }
+
+                        assert value != null;
+                        int user = 0;
+                        for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)){
+                            if (doc.get("name") != null) {
+                                Customer customer = doc.toObject(Customer.class);
+                                if (customer.getPhoneNumber().equalsIgnoreCase(phoneNumber)){
+                                    user = 1;
+                                }
+                            }
+                        }
+                        progressbar.setVisibility(View.GONE);
+                        if (user==1) {
+                            Toast.makeText(SignUpActivity.this, "This number is already used in other account, Try another...", Toast.LENGTH_SHORT).show();
+                        }else{
+                            startActivity(new Intent(SignUpActivity.this, VerificationActivity.class)
+                                    .putExtra("phoneNumber", phoneNumber));
+                            finish();
+                        }
+
+                    }
+                });
 
 
             }

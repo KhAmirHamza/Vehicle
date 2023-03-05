@@ -4,50 +4,39 @@ import androidx.annotation.Nullable;
 
 public class Vehicle {
     String id;
-    String Model;
-    String type;
-    String openOrCovered;
-    int capacity;
-    int size;
-    int length;
-    int weight;
-    int height;
-    String imageUrl;
-    String documentImageUrl;
-    String licenceImageUrl;
+    String model; //every vehicle has own model name
+    String type; // for truck,pickup,trailer..etc...
+    String variety; //open, covered, ac, non ac
+    String seat; //micro,bus,private car seat
+    String size; // for truck,pickup,trailer..etc...
+    String vehicleImageUrl;
+    String brtaDocumentImageUrl;
+    String nidImageUrl;
     String metro;
     String serial;
     String number;
+    String year;
+    String driverMobileNumber;
 
     public Vehicle() {
+
     }
 
-    public Vehicle(String id, String type, String openOrCovered, int size, int capacity, int length, int weight, int height) {
+    public Vehicle( @Nullable String id, String model, String type, String variety, String seat, String size, String metro, String serial, String number, String year,  String vehicleImageUrl, String brtaDocumentImageUrl, String nidImageUrl, String driverMobileNumber) {
         this.id = id;
+        this.model = model;
         this.type = type;
-        this.openOrCovered = openOrCovered;
+        this.variety = variety;
+        this.seat = seat;
         this.size = size;
-        this.capacity = capacity;
-        this.length = length;
-        this.weight = weight;
-        this.height = height;
-    }
-
-    public Vehicle(@Nullable String id, String model, String type, String openOrCovered, int size, int capacity, int length, int weight, int height, String metro, String serial, String number, String imageUrl, String documentImageUrl) {
-        this.id = id;
-        Model = model;
-        this.type = type;
-        this.openOrCovered = openOrCovered;
-        this.size = size;
-        this.capacity = capacity;
-        this.length = length;
-        this.weight = weight;
-        this.height = height;
-        this.imageUrl = imageUrl;
-        this.documentImageUrl = documentImageUrl;
+        this.vehicleImageUrl = vehicleImageUrl;
+        this.brtaDocumentImageUrl = brtaDocumentImageUrl;
+        this.nidImageUrl = nidImageUrl;
         this.metro = metro;
         this.serial = serial;
         this.number = number;
+        this.year = year;
+        this.driverMobileNumber = driverMobileNumber;
     }
 
     public String getId() {
@@ -59,11 +48,11 @@ public class Vehicle {
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        this.model = model;
     }
 
     public String getType() {
@@ -74,76 +63,52 @@ public class Vehicle {
         this.type = type;
     }
 
-    public String getOpenOrCovered() {
-        return openOrCovered;
+    public String getVariety() {
+        return variety;
     }
 
-    public void setOpenOrCovered(String openOrCovered) {
-        this.openOrCovered = openOrCovered;
+    public void setVariety(String variety) {
+        this.variety = variety;
     }
 
-    public int getSize() {
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
+    }
+
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public String getVehicleImageUrl() {
+        return vehicleImageUrl;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setVehicleImageUrl(String vehicleImageUrl) {
+        this.vehicleImageUrl = vehicleImageUrl;
     }
 
-    public int getLength() {
-        return length;
+    public String getBrtaDocumentImageUrl() {
+        return brtaDocumentImageUrl;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setBrtaDocumentImageUrl(String brtaDocumentImageUrl) {
+        this.brtaDocumentImageUrl = brtaDocumentImageUrl;
     }
 
-    public int getWeight() {
-        return weight;
+    public String getNidImageUrl() {
+        return nidImageUrl;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getDocumentImageUrl() {
-        return documentImageUrl;
-    }
-
-    public void setDocumentImageUrl(String documentImageUrl) {
-        this.documentImageUrl = documentImageUrl;
-    }
-
-    public String getLicenceImageUrl() {
-        return licenceImageUrl;
-    }
-
-    public void setLicenceImageUrl(String licenceImageUrl) {
-        this.licenceImageUrl = licenceImageUrl;
+    public void setNidImageUrl(String nidImageUrl) {
+        this.nidImageUrl = nidImageUrl;
     }
 
     public String getMetro() {
@@ -168,5 +133,21 @@ public class Vehicle {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getDriverMobileNumber() {
+        return driverMobileNumber;
+    }
+
+    public void setDriverMobileNumber(String driverMobileNumber) {
+        this.driverMobileNumber = driverMobileNumber;
     }
 }

@@ -25,7 +25,7 @@ public class Trip {
     int perishable;
     int laborNeeded;
     int rentalPrice;
-    int paymentMethod;
+    String finalPayMethod;
 
     String status;
     List<Bid> bids;
@@ -38,7 +38,7 @@ public class Trip {
                 long createdAtMills, String loadingUpazilaThana, String loadingFullAddress, String loadingLandmark, String loadingDate,
                 String loadingTime, String unloadingUpazilaThana, String unloadingFullAddress, String unloadingLandmark, String description,
                 int upDownTrip, int containAnimal, int fragile, int perishable, int laborNeeded,
-                @Nullable int rentalPrice, @Nullable int paymentMethod, String status, List<Bid> bids) {
+                @Nullable int rentalPrice, @Nullable String finalPayMethod, String status, List<Bid> bids) {
         this.id = id;
         this.customer = customer;
         this.driver = driver;
@@ -59,7 +59,7 @@ public class Trip {
         this.perishable = perishable;
         this.laborNeeded = laborNeeded;
         this.rentalPrice = rentalPrice;
-        this.paymentMethod = paymentMethod;
+        this.finalPayMethod = finalPayMethod;
         this.status = status;
         this.bids = bids;
     }
@@ -240,31 +240,33 @@ public class Trip {
         this.rentalPrice = rentalPrice;
     }
 
-    public int getPaymentMethod() {
-        return paymentMethod;
+    public String getFinalPayMethod() {
+        return finalPayMethod;
     }
 
-    public void setPaymentMethod(int paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setFinalPayMethod(String finalPayMethod) {
+        this.finalPayMethod = finalPayMethod;
     }
 
-    public class Bid{
+    public static class Bid{
         String id;
         int bidPrice;
         Driver driver;
         Vehicle vehicle;
-        int paymentMethod;
+        String reqPayMethod;
+        int advance;
         String description;
 
         public Bid() {
         }
 
-        public Bid(@Nullable String id, int bidPrice, Driver driver, Vehicle vehicle, int paymentMethod, String description) {
+        public Bid(@Nullable String id, int bidPrice, Driver driver, Vehicle vehicle, String reqPayMethod, int advance, String description) {
             this.id = id;
             this.bidPrice = bidPrice;
             this.driver = driver;
             this.vehicle = vehicle;
-            this.paymentMethod = paymentMethod;
+            this.reqPayMethod = reqPayMethod;
+            this.advance = advance;
             this.description = description;
         }
 
@@ -300,12 +302,20 @@ public class Trip {
             this.vehicle = vehicle;
         }
 
-        public int getPaymentMethod() {
-            return paymentMethod;
+        public String getReqPayMethod() {
+            return reqPayMethod;
         }
 
-        public void setPaymentMethod(int paymentMethod) {
-            this.paymentMethod = paymentMethod;
+        public void setReqPayMethod(String reqPayMethod) {
+            this.reqPayMethod = reqPayMethod;
+        }
+
+        public int getAdvance() {
+            return advance;
+        }
+
+        public void setAdvance(int advance) {
+            this.advance = advance;
         }
 
         public String getDescription() {

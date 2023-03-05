@@ -244,7 +244,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Start Bidding"
+            android:text="Publish for Bidding"
             android:textAllCaps="false"
             android:layout_marginBottom="20dp"
             />

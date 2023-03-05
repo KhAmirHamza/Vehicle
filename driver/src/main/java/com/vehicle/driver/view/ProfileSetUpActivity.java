@@ -45,9 +45,9 @@ public class ProfileSetUpActivity extends AppCompatActivity {
     private static final String TAG = "ProfileSetUpActivity";
     private static final int PICK_IMAGE = 1;
 
-    TextInputLayout text_input_layout_name,text_input_layout_email,text_input_layout_phone_number,
+    TextInputLayout text_input_layout_name,text_input_layout_email,text_input_layout_phone_number, text_input_layout_refer_code,
             text_input_layout_password, text_input_layout_confirm_pass;
-    String name, email, phone_number, password;
+    String name, email, phone_number, password, refer_code;
     Button btn_choose_image,btn_submit_profile;
     ImageView imgv_pharmacy_image;
     ProgressBar progressDialog;
@@ -73,6 +73,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
         text_input_layout_phone_number = findViewById(R.id.text_input_layout_phone_number);
         text_input_layout_password = findViewById(R.id.text_input_layout_password);
         text_input_layout_confirm_pass = findViewById(R.id.text_input_layout_confirm_pass);
+        text_input_layout_refer_code = findViewById(R.id.text_input_layout_refer_code);
 
         btn_submit_profile = findViewById(R.id.btn_submit_profile);
         progressDialog = findViewById(R.id.progressbar_add_deliveryman);
@@ -102,7 +103,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
     private void receiveImageFromDeviceRequest(int requestCode, int resultCode, @Nullable Intent data){
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
-            imgv_pharmacy_image.setImageURI(imageUri);
+            //imgv_pharmacy_image.setImageURI(imageUri);
 
             try {
                 // Defining the child of storageReference
@@ -139,7 +140,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                 }
 
                 byte[] bitmapdata = byteArrayOutputStream.toByteArray();
-
+                imgv_pharmacy_image.setImageBitmap(bitmap);
                 ref.putBytes(bitmapdata)
                         .addOnSuccessListener(
                                 new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -150,10 +151,13 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                                         ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Uri> task) {
+                                                Log.d(TAG, "onComplete: Image Uploaded");
+                                                Toast.makeText(ProfileSetUpActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
 
                                                 btn_submit_profile.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
+                                                        Log.d(TAG, "onClick: called");
 
                                                         progressDialog.setVisibility(View.VISIBLE);
                                                         name = text_input_layout_name.getEditText().getText().toString();
@@ -161,13 +165,13 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                                                         phone_number = text_input_layout_phone_number.getEditText().getText().toString();
                                                         password = text_input_layout_password.getEditText().getText().toString();
                                                         String confirm_pass = text_input_layout_confirm_pass.getEditText().getText().toString();
+                                                        refer_code = text_input_layout_refer_code.getEditText().getText().toString();
 
                                                         if (name.isEmpty()) {
                                                             text_input_layout_name.setError("Name required!");
                                                             text_input_layout_name.requestFocus();
                                                         } else if (email.isEmpty()) {
-                                                            text_input_layout_email.setError("Date of Birth required!");
-                                                            text_input_layout_email.requestFocus();
+                                                            email = "";
                                                         } else if (password.isEmpty()) {
                                                             text_input_layout_password.setError("Password required!");
                                                             text_input_layout_password.requestFocus();
@@ -177,7 +181,7 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                                                         } else {
                                                             List<Vehicle> vehicles= new ArrayList<>();
                                                             Driver driver = new Driver(null, name, phone_number, password ,email, task.getResult().toString(),
-                                                                    "",0,0,0, vehicles);
+                                                                    "",0,0,0, vehicles, refer_code);
 
                                                             addDriver(driver);
                                                         }
@@ -241,9 +245,11 @@ public class ProfileSetUpActivity extends AppCompatActivity {
             sharedPreferences.edit().putString("DRIVER_NAME", name).apply();
             sharedPreferences.edit().putString("DRIVER_ID", documentReference.getId()).apply();
             sharedPreferences.edit().putString("DRIVER_PASSWORD", password).apply();
+            DialogWelcome dialogWelcome = new DialogWelcome(getApplicationContext(), "Welcome to "+getResources().getString(R.string.app_name)+"\n  Always stay with us!");
+            dialogWelcome.setCancelable(true);
+            dialogWelcome.show();
             startActivity(new Intent(ProfileSetUpActivity.this, MainActivity.class));
 
-            startActivity(new Intent(ProfileSetUpActivity.this, MainActivity.class));
             finish();
         }).addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
 

@@ -6,12 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.HomeFragment"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <include
             android:id="@+id/lay_trip"
-            layout="@layout/create_update_trip"/>
+            layout="@layout/create_update_trip" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_review"
@@ -24,5 +26,4 @@
             android:layout_marginRight="20dp"
             />
     </RelativeLayout>
-
 </androidx.core.widget.NestedScrollView>

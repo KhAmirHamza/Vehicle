@@ -1,15 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ProfileFragment">
+    tools:context=".view.ProfileFragment"
+    android:nestedScrollingEnabled="false">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/layoutProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imgv_profile_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="15dp"
+            app:civ_border_color="#8D9694"
+            app:civ_border_width="2dp"
+            android:src="@drawable/ic_outline_person_24"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardview_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgv_profile_image"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txtv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/ic_outline_name_24"
+                    android:drawablePadding="5dp"
+                    android:text="Khandakar Amir Hamza"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtv_name"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/ic_email_black_24dp"
+                    android:drawablePadding="5dp"
+                    android:text="kh1amirhamza@gmail.com"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtv_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtv_email"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/ic_call_black_24dp"
+                    android:drawablePadding="5dp"
+                    android:text="01705187083"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardview_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardview_1"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/txtv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawablePadding="5dp"
+                    android:text="Payment:"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtv_due"
+                    android:layout_below="@id/txtv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableLeft="@drawable/ic_outline_info_24"
+                    android:drawablePadding="5dp"
+                    android:text="Due : 500tk"
+                    android:textColor="#FF0000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtv_due"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:drawablePadding="5dp"
+                    android:text="Notification:"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+                <TextView
+                    android:id="@+id/txtv_notification_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtv_3"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:drawableLeft="@drawable/ic_outline_notifications_24"
+                    android:drawablePadding="5dp"
+                    android:text="Area: Mirpur,Dhaka"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_change_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="Set Area"
+                    android:textAllCaps="false"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/txtv_3"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:layout_marginTop="-5dp"
+
+                    />
+
+
+
+
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/txtv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/cardview_2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Your Vehicle List"
+            android:textSize="13dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_vehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Click &amp; Add Vehicle"
+            android:layout_marginEnd="5dp"
+            android:textAllCaps="false"
+            android:textSize="13dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/cardview_2"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:layout_marginTop="10dp"
+
+            />
+        <!--android:drawableLeft="@drawable/ic_outline_directions_car_24"
+-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_vehicles"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_below="@id/txtv_1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/iv_vehicle"
+            />
+
+    </RelativeLayout>
 
 </FrameLayout>

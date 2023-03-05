@@ -1,23 +1,29 @@
 package com.vehicle.driver.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.DialogCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 
 import com.google.android.material.card.MaterialCardView;
+import com.vehicle.driver.Constants;
 import com.vehicle.driver.R;
 import com.vehicle.driver.model.Trip;
-import com.vehicle.driver.model.Vehicle;
+import com.vehicle.driver.view.BiddingDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +35,13 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
     private static final String TAG = "TripAdapter";
     RecyclerView recyclerView;
     public OnClickListener onClickListener;
-
+    String driverPhoneNumber;
     View view;
 
-    public TripAdapter(Activity context) {
+    public TripAdapter(Activity context, String driverPhoneNumber) {
         this.context = context;
+        this.driverPhoneNumber = driverPhoneNumber;
         this.trips = new ArrayList<>();
-
-
     }
     public void setData(List<Trip> trips, RecyclerView recyclerView ){
 
@@ -49,8 +54,53 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
     @NonNull
     @Override
     public TripAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_trip, parent,
-                        false));
+
+        if(viewType == 0){
+            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_trip_taken, parent,
+                    false));
+        }else{
+            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_trip, parent,
+                    false));
+        }
+
+
+
+    }
+    boolean isBidPlaced( int position){
+        boolean bidPlaced = false;
+        if (trips.get(position).getBids()!=null && trips.get(position).getBids().size()>0){
+            for (Trip.Bid bid : trips.get(position).getBids()) {
+                if (bid.getDriver().getPhoneNumber().equalsIgnoreCase(driverPhoneNumber)) {
+                    bidPlaced = true;
+                    break;
+                }
+            }
+            return  bidPlaced;
+        }else{
+            return false;
+        }
+    }
+
+
+
+    @Override
+    public int getItemViewType(int position) {
+            if (isBidPlaced(position)){
+                return 0;
+            }else{
+                return 1;
+            }
+
+
+
+
+      /*  if (trips.get(position).getDriver() != null &&
+                trips.get(position).getDriver().getPhoneNumber()!=null &&
+                trips.get(position).getDriver().getPhoneNumber().equalsIgnoreCase(driverPhoneNumber)){
+
+        }*/
+
+        //return super.getItemViewType(position);
     }
 
     @Override
@@ -60,17 +110,34 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         holder.tv_car_details.setText(details==null?"...": details);
         holder.tv_loading_date_time.setText("( "+trip.getLoadingTime()+", "+trip.getLoadingDate()+" )");
         holder.txtv_trip_id.setText(""+trip.getId());
-        long rMills = trip.getCreatedAtMills()+1000*30*60;
+        long rMills = trip.getCreatedAtMills()+1000* Constants.BIDDING_TIME_MINUTES *60;
         long cMills = System.currentTimeMillis();
 
         if(cMills>rMills && trip.getStatus().equalsIgnoreCase("Bidding")){
-            String status = trip.getStatus().isEmpty()?"":
+            /*String status = trip.getStatus().isEmpty()?"":
                     cMills>rMills && trip.getStatus().equalsIgnoreCase("Bidding")?
-                            "Time Expired": trip.getStatus();
-            holder.tv_trip_status.setText(status);
+                            "Time Expired": trip.getStatus();*/
+            String status = trip.getStatus().isEmpty()?"" : "Time Expired";
+
+            if (isBidPlaced(position)){
+                holder.tv_trip_status.setText("Bid Placed");
+                holder.btn_start_bidding.setVisibility(View.GONE);
+                //holder.tv_trip_status.setText(""+bidPlaced);
+            }else{
+                holder.tv_trip_status.setText(status);
+            }
+
         }else{
-            setCountDownTimer(holder.tv_trip_status, rMills-cMills);
+            if (isBidPlaced(position)){
+                holder.tv_trip_status.setText("Bid Placed");
+                holder.btn_start_bidding.setVisibility(View.GONE);
+                //holder.tv_trip_status.setText(""+bidPlaced);
+            }else{
+                setCountDownTimer(holder.tv_trip_status, rMills-cMills);
+            }
         }
+        holder.tv_trip_status.setSelected(true);
+
 
         holder.tv_loading_upazila_district.setText("Area-->"+trip.getLoadingUpazilaThana());
         holder.tv_loading_full_address.setText("Full Address-->"+trip.getLoadingFullAddress() +"\nLandMark-->"+trip.getLoadingLandmark());
@@ -117,7 +184,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         MaterialButton btn_start_bidding;
-        LinearLayout lay_trip_details;
+        RelativeLayout lay_trip_details;
         MaterialCardView cv_trip_header;
         TextView tv_car_details,tv_loading_date_time,tv_loading_upazila_district,
                 tv_loading_full_address,tv_unloading_upazila_district,
@@ -143,7 +210,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             tv_labor_needed =  findViewById(R.id.tv_labor_needed);
             txtv_trip_id =  findViewById(R.id.txtv_trip_id);
             tv_trip_status =  findViewById(R.id.tv_trip_status);
-
             lay_trip_details =  view.findViewById(R.id.lay_trip_details);
             btn_start_bidding =  view.findViewById(R.id.btn_start_bidding);
             cv_trip_header =  view.findViewById(R.id.cv_trip_header);
@@ -157,18 +223,18 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             btn_start_bidding.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //todo...
+                    // todo...
+                    // Dialog dialog = new Dialog.B
+                    BiddingDialog biddingDialog = new BiddingDialog(context,
+                            trips.get(getAdapterPosition()).getVehicle().getType(),
+                            trips.get(getAdapterPosition()).getVehicle().getVariety(),
+                            trips.get(getAdapterPosition()).getId()
+                    );
 
-
-
+                    biddingDialog.setCancelable(true);
+                    biddingDialog.show();
                 }
             });
-
-
-
-
-
-
         }
     }
     String getVehicleDetails(Trip trip){
@@ -176,15 +242,14 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         else if (
                 trip.getVehicle().getType().equalsIgnoreCase("Truck") ||
                 trip.getVehicle().getType().equalsIgnoreCase("PickUp") ||
-                trip.getVehicle().getType().equalsIgnoreCase("Trailer")
-        ){
-            return trip.getVehicle().getType()+", "
-                    +trip.getVehicle().getSize()+" Feet "
-                    +trip.getVehicle().getCapacity()+" Ton ("
-                    +trip.getVehicle().getOpenOrCovered()+")";
+                trip.getVehicle().getType().equalsIgnoreCase("Trailer")){
+
+            return trip.getVehicle().getType()+", "+trip.getVehicle().getSize()+" ("
+                    +trip.getVehicle().getVariety()+")";
         }else {
             return trip.getVehicle().getType()+", "
-                    +trip.getVehicle().getSize()+" Seated ";
+                    +trip.getVehicle().getSeat()+" Seated ("
+                    +trip.getVehicle().getVariety()+")";
         }
     }
     public void setCountDownTimer(TextView textView, long remainingMills){
