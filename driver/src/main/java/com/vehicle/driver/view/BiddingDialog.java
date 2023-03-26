@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -12,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +47,7 @@ public class BiddingDialog extends Dialog {
     String vehicleType, vehicleVariety;
     String documentId;
     Activity activity;
+    TextView txtvOwnersAmount,txtvServiceCharge;
 
     public BiddingDialog(@NonNull Activity context, String vehicleType, String vehicleVariety, String documentId) {
         super(context);
@@ -69,6 +73,34 @@ public class BiddingDialog extends Dialog {
         spinnerSelectVehicle = findViewById(R.id.spinnerSelectVehicle);
         radio_groupPayment = findViewById(R.id.radio_groupPayment);
         btnSubmitBid = findViewById(R.id.btnSubmitBid);
+        txtvOwnersAmount = findViewById(R.id.txtvOwnersAmount);
+        txtvServiceCharge = findViewById(R.id.txtvServiceCharge);
+        text_input_layout_bid_price.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (text_input_layout_bid_price.getEditText().getText()==null ||
+                        text_input_layout_bid_price.getEditText().getText().length()<1) return;
+
+                double bidPrice= Integer.parseInt(text_input_layout_bid_price.getEditText().getText().toString());
+                int ownersAmount = (int) ((bidPrice / 100)*97);
+                int serviceCharge = (int) ((bidPrice/100)*3);
+                Toast.makeText(activity, "price: "+serviceCharge, Toast.LENGTH_SHORT).show();
+
+                txtvOwnersAmount.setText("Owners Amount: "+ownersAmount+" tk (97%)");
+                txtvServiceCharge.setText("Service Charge: "+serviceCharge+" tk (3%)");
+
+            }
+        });
 
         getDriver();
     }
@@ -78,6 +110,11 @@ public class BiddingDialog extends Dialog {
         advance = Integer.parseInt(text_input_layout_advance.getEditText().getText().toString());
         description = text_input_layout_description.getEditText().getText().toString();
         paymentMethod = radio_groupPayment.getCheckedRadioButtonId()==R.id.hand_cash? "HandCash" : "bKash";
+        if (advance> (bidPrice/2)){
+            text_input_layout_advance.getEditText().setError("Amount should not be more than 50% of Bid Price");
+            text_input_layout_advance.getEditText().requestFocus();
+            return;
+        }
 
         Trip.Bid bid = new Trip.Bid();
         bid.setBidPrice(bidPrice);
@@ -118,13 +155,9 @@ public class BiddingDialog extends Dialog {
                 if (task.isSuccessful()) {
                     //Toast.makeText(getContext(), "Bid successfully placed!", Toast.LENGTH_SHORT).show();
                     String welcomeText = "Thank you for participating in the bid. If your bid wins it will be added to the current trip.";
-                    DialogWelcome dialogWelcome = new DialogWelcome(getContext(), welcomeText);
-                    dialogWelcome.setCancelable(true);
+                    DialogWelcome dialogWelcome = new DialogWelcome(activity, welcomeText,new Intent(getContext(), MainActivity.class));
+                    dialogWelcome.setCancelable(false);
                     dialogWelcome.show();
-
-                    getContext().startActivity(new Intent(getContext(), MainActivity.class));
-                    activity.finish();
-                    cancel();
                 }else{
                     Toast.makeText(getContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -171,6 +204,7 @@ public class BiddingDialog extends Dialog {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     Driver driver = task.getResult().toObject(Driver.class);
+                    driver.setId(task.getResult().getId());
                     if (driver==null){
                         Toast.makeText(getContext(), "Driver Not Found! "+id, Toast.LENGTH_SHORT).show();
                     }else{

@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -124,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:text="To"
                         android:layout_alignBaseline="@id/tv_unloading_upazila_district"
-                        />
+                  />
 
                     <TextView
                         android:id="@+id/tv_loading_upazila_district"
@@ -192,115 +191,6 @@
                         />
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/cv_loading_unloading"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_loading_date_time"
-                            android:layout_marginTop="5dp">
-
-                            <LinearLayout
-                                android:id="@+id/lay7"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toBottomOf="@+id/lay_1"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_marginBottom="10dp">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Fr"/>
-                                <ImageView
-                                    android:id="@+id/imgv_direction"
-                                    android:layout_width="20dp"
-                                    android:layout_height="50dp"
-                                    android:scaleType="centerCrop"
-                                    android:scaleY="1"
-                                    android:visibility="visible"
-                                    android:src="@drawable/loading_point"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="To"
-                                    android:layout_marginBottom="20dp"/>
-                            </LinearLayout>
-
-
-
-                            <RelativeLayout
-                                android:id="@+id/lay_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingEnd="10dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toEndOf="@+id/lay7"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <TextView
-                                    android:id="@+id/tv_loading_upazila_district"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:drawableLeft="@drawable/ic_outline_play_arrow_24"
-                                    android:paddingBottom="5dp"
-                                    android:text="Upazila: Mirpur, District: Dhaka"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#185A09"
-                                    />
-
-                                <TextView
-                                    android:visibility="gone"
-                                    android:id="@+id/tv_loading_full_address"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tv_loading_upazila_district"
-                                    android:drawableLeft="@drawable/ic_outline_play_arrow_24"
-                                    android:paddingBottom="5dp"
-                                    android:text="Full Address: Mirpur-1, Dhaka-1207"
-                                    android:textSize="14sp"
-                                    android:textColor="#185A09"
-                                    />
-
-                                <View
-                                    android:id="@+id/view_1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="0.7dp"
-                                    android:layout_below="@+id/tv_loading_full_address"
-                                    android:layout_marginRight="50dp"
-                                    android:background="#6a6969" />
-
-                                <TextView
-                                    android:id="@+id/tv_unloading_upazila_district"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/view_1"
-                                    android:layout_marginTop="5dp"
-                                    android:drawableLeft="@drawable/ic_outline_play_arrow_24"
-                                    android:paddingBottom="5dp"
-                                    android:textColor="#0E023C"
-                                    android:textStyle="bold"
-                                    android:text="Upazila: Dhanmondi, District: Dhaka"
-                                    android:textSize="14sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_unloading_full_address"
-                                    android:visibility="gone"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tv_unloading_upazila_district"
-                                    android:drawableLeft="@drawable/ic_outline_play_arrow_24"
-                                    android:textColor="#0E023C"
-                                    android:text="Full Address: Dhanmondi-1, \10Dhaka-1205"
-                                    android:textSize="14sp"
-                                    android:layout_marginBottom="10dp"/>
-                            </RelativeLayout>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-            -->
 
             <TextView
                 android:id="@+id/tv_description_header"
@@ -400,7 +290,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_start_bidding"
+            android:id="@+id/btn_complete_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cv_additional"
@@ -408,7 +298,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Participate Bidding"
+            android:text="Click to Complete Trip"
             android:textAllCaps="false" />
     </RelativeLayout>
 </RelativeLayout>

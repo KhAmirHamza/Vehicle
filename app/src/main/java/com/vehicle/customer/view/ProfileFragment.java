@@ -1,11 +1,13 @@
 package com.vehicle.customer.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -29,6 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
     CircleImageView imgv_profile_image;
     TextView txtv_name, txtv_email,txtv_phone_number;
+    MaterialButton btnLogOut;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +44,26 @@ public class ProfileFragment extends Fragment {
         txtv_name = view.findViewById(R.id.txtv_name);
         txtv_email = view.findViewById(R.id.txtv_email);
         txtv_phone_number = view.findViewById(R.id.txtv_phone_number);
+        btnLogOut = view.findViewById(R.id.btnLogOut);
         getCustomer();
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setCancelable(true);
+                builder.setTitle("Do you want to log out?");
+                builder.setPositiveButton("Log Out", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
+                        sharedPreferences.edit().clear().apply();
+                        startActivity(new Intent(getContext(), SignInActivity.class));
+                        getActivity().finish();
+                    }
+                });
+                builder.show();
+            }
+        });
         return  view;
     }
 

@@ -480,7 +480,7 @@ public class CreateTripActivity extends AppCompatActivity {
 
 
                 DialogTripPreview dialogTripPreview = new DialogTripPreview(getActivity(), trip);
-                dialogTripPreview.setCancelable(true);
+                dialogTripPreview.setCancelable(false);
                 dialogTripPreview.show();
             }
         });
@@ -560,6 +560,7 @@ public class CreateTripActivity extends AppCompatActivity {
         }
 
     }
+
 
     private boolean isStringContainsInArray(String stringToCheck, String[] addressNames){
         boolean result = false;

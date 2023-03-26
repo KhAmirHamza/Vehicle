@@ -1,6 +1,11 @@
 package com.vehicle.customer.view;
 
+import static com.vehicle.customer.Constants.CUSTOMER_SUPPORT_NUMBER;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -8,6 +13,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.DialogCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +32,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -64,6 +72,8 @@ public class TripFragment extends Fragment {
 
     ImageView imgv_car;
     TextView txtv_vehicle_model,txtv_vehicle_number,txtv_vehicle_year,txtv_vehicle_description;
+    MaterialButton btnDeleteTrip;
+    LinearLayout laySelectedDriverInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,6 +102,7 @@ public class TripFragment extends Fragment {
         tv_trip_status =  findViewById(R.id.tv_trip_status);
         tv_trip_status.setSelected(true);
         tv_show_bidding =  findViewById(R.id.tv_show_bidding);
+        tv_show_bidding.setSelected(true);
         txtv_driver_name =  findViewById(R.id.txtv_driver_name);
         txtv_driver_email =  findViewById(R.id.txtv_driver_email);
         txtv_driver_phone_number =  findViewById(R.id.txtv_driver_phone_number);
@@ -104,6 +115,57 @@ public class TripFragment extends Fragment {
         txtv_vehicle_number =  findViewById(R.id.txtv_vehicle_number);
         txtv_vehicle_year =  findViewById(R.id.txtv_vehicle_year);
         txtv_vehicle_description =  findViewById(R.id.txtv_vehicle_description);
+        laySelectedDriverInfo = view.findViewById(R.id.laySelectedDriverInfo);
+
+        btnDeleteTrip =(MaterialButton)  findViewById(R.id.btnDeleteTrip);
+        btnDeleteTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Do you want to delete this current trip?");
+                builder.setCancelable(true);
+
+                if (trip.getStatus().equalsIgnoreCase("Trip Confirmed")||
+                        trip.getStatus().equalsIgnoreCase("Deleted")||
+                        trip.getStatus().equalsIgnoreCase("Placed")||
+                        trip.getStatus().equalsIgnoreCase("Cancelled")||
+                        trip.getStatus().equalsIgnoreCase("Confirm")||
+                        trip.getStatus().equalsIgnoreCase("Delete")||
+                        trip.getStatus().equalsIgnoreCase("Running")||
+                        trip.getStatus().equalsIgnoreCase("Cancel")){
+
+                    builder.setMessage("Your trip is now Active, you need to contact with Support Center.");
+                    builder.setPositiveButton("Call Now", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse("tel:"+CUSTOMER_SUPPORT_NUMBER));
+                            startActivity(intent);
+                        }
+                    });
+                }else{
+                    builder.setPositiveButton("Click to Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //todo...
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("trip").document(trip.getId()).delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(getContext(), "Trip successfully  deleted", Toast.LENGTH_SHORT).show();
+                                            requireActivity().finish();
+                                            requireActivity().overridePendingTransition(0, 0);
+                                            startActivity(requireActivity().getIntent());
+                                            requireActivity().overridePendingTransition(0, 0);
+                                        }
+                                    });
+                        }
+                    });
+                }
+                builder.show();
+            }
+        });
 
         getTrips();
         return view;
@@ -173,6 +235,7 @@ public class TripFragment extends Fragment {
 
         Driver driver = trip.getDriver();
         if (driver!=null){
+            laySelectedDriverInfo.setVisibility(View.VISIBLE);
             String vehicleImageUrl = trip.getVehicle().getVehicleImageUrl();
             String driverImageUrl = driver.getImageUrl();
             Picasso.get().load(driverImageUrl).into(imgv_driver);
@@ -182,8 +245,9 @@ public class TripFragment extends Fragment {
 
             Picasso.get().load(driverImageUrl).into(imgv_driver);
             Picasso.get().load(vehicleImageUrl).into(imgv_vehicle);
+            setVehicleInfo(trip.getVehicle());
         }
-        setVehicleInfo(trip.getVehicle());
+
 
         tv_show_bidding.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,13 +326,15 @@ public class TripFragment extends Fragment {
 
                 if (e != null) {
                     Log.w(TAG, "Listen failed.", e);
-                    Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 assert value != null;
                 if (value.getDocuments().size()<1) {
-                    Toast.makeText(getActivity(), "No Trip Found!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "No Trip Found! Create Trip...", Toast.LENGTH_SHORT).show();
+                    rlTripFragment.setVisibility(View.GONE);
+                    tvNoTrip.setVisibility(View.VISIBLE);
                     return;
                 }
 
@@ -294,7 +360,7 @@ public class TripFragment extends Fragment {
                 }
 
                 trip = trips.get(trips.size()-1);//Taking only latest Trip for bidding,because client didn't want trip history
-                Toast.makeText(getActivity(), ": "+trip.getLoadingDate(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), ": "+trip.getLoadingDate(), Toast.LENGTH_LONG).show();
                 setViews();
 
                 if (trip.getStatus().equalsIgnoreCase("Bidding")){
@@ -317,15 +383,14 @@ public class TripFragment extends Fragment {
             @Override
             public void onClick(View view, @Nullable Trip.Bid bid, int position) {
                 //Toast.makeText(getActivity(), bid.getDriver().getName(), Toast.LENGTH_SHORT).show();
-
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-
 
                 trip.setVehicle(bid.getVehicle());
                 trip.setDriver(bid.getDriver());
                 trip.setAdvancePay(bid.getAdvance());
                 trip.setFinalPayMethod(bid.getReqPayMethod());
-                trip.setStatus("Trip Running");
+                trip.setRentalPrice(bid.getBidPrice());
+                trip.setStatus("Trip Confirmed");
 
                 DocumentReference tripRef = db.collection("trip").document(trip.getId());
                 tripRef.set(trip).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -333,6 +398,8 @@ public class TripFragment extends Fragment {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Driver Selected!", Toast.LENGTH_SHORT).show();
+                            //todo... notification...
+
                             getContext().startActivity(new Intent(getContext(), MainActivity.class));
                             getActivity().finish();
                         }else{

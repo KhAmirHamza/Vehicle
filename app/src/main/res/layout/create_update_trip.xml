@@ -321,7 +321,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_full_loading_address"
-                    android:text="House Name (for villager)/Number (for town):        ,\nRoad No:        ,\nBlock:      "
+                    android:text="For villagers-\nHouse Name/Point: \n\nFor town/city-\nHouse no:\nRoad:\nBlock:"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -452,7 +452,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_full_unloading_address"
-                    android:text="House Name (for villager)/Number (for town):        ,\nRoad No:        ,\nBlock:      "
+                    android:text="For villagers-\nHouse Name/Point: \n\nFor town/city-\nHouse no:\nRoad:\nBlock:"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>

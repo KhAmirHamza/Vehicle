@@ -251,11 +251,11 @@ public class ProfileSetUpActivity extends AppCompatActivity {
             sharedPreferences.edit().putString("CUSTOMER_ID", documentReference.getId()).apply();
             sharedPreferences.edit().putString("CUSTOMER_PASSWORD", password).apply();
             sharedPreferences.edit().putString("CUSTOMER_ADDRESS", address).apply();
-            DialogWelcome dialogWelcome = new DialogWelcome(getApplicationContext(), "Welcome to "+getResources().getString(R.string.app_name)+"\n  Always stay with us!");
-            dialogWelcome.setCancelable(true);
+            DialogWelcome dialogWelcome = new DialogWelcome(ProfileSetUpActivity.this,
+                    "Welcome to "+getResources().getString(R.string.app_name)+"\n  Always stay with us!",
+                    new Intent(ProfileSetUpActivity.this, MainActivity.class));
+            dialogWelcome.setCancelable(false);
             dialogWelcome.show();
-            startActivity(new Intent(ProfileSetUpActivity.this, MainActivity.class));
-            finish();
         }).addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
 
         //progressDialog.dismiss();

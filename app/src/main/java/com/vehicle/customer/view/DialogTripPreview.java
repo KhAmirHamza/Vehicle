@@ -1,9 +1,12 @@
 package com.vehicle.customer.view;
 
+import static com.vehicle.customer.Constants.MAIN_URL;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +16,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.JsonObject;
 import com.squareup.picasso.Picasso;
 import com.vehicle.customer.R;
+import com.vehicle.customer.model.Driver;
+import com.vehicle.customer.model.FCM;
 import com.vehicle.customer.model.Trip;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DialogTripPreview extends Dialog {
     private static final String TAG = "DialogTripPreview";
@@ -31,13 +56,8 @@ public class DialogTripPreview extends Dialog {
 
     MaterialButton btn_review;
     ProgressBar progressbar;
-
+    List<String> tokens = new ArrayList<>();
 Activity activity;
-
-
-
-
-
     Trip trip;
 
 
@@ -81,7 +101,7 @@ Activity activity;
         tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
 
-
+        getFilteredDriverFcmTokens();
         btn_review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,46 +113,14 @@ Activity activity;
                 db.collection("trip").add(trip).addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
                     //startActivity(new Intent(AddUpdateMoneyReceiveActivity.this, HomeActivity.class));
-                    //Toast.makeText(getContext(), "Trip added for bidding successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Trip added for bidding successfully", Toast.LENGTH_SHORT).show();
+                    sendNotificationToDrivers();
 
-                    String welcomeText = "Thank you for submitting a bid. Drivers will tell you the rate. Wait and confirm.";
-
-                    DialogWelcome dialogWelcome = new DialogWelcome(getContext(), welcomeText);
-                    dialogWelcome.setCancelable(true);
-                    dialogWelcome.show();
-
-                    activity.startActivity(new Intent(activity,MainActivity.class));
-                    activity.finish();
-                    cancel();
-                    progressbar.setVisibility(View.GONE);
                 }).addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
-
-
-
 
             }
         });
     }
-
-/*    if (vehicle.getType().equalsIgnoreCase("Truck")||
-            vehicle.getType().equalsIgnoreCase("Pickup")||
-            vehicle.getType().equalsIgnoreCase("Trailer")){
-
-        holder.txtv_vehicle_model.setText(vehicle.getModel());
-        holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
-        holder.txtv_vehicle_year.setText(", Year: "+vehicle.getYear());
-        holder.txtv_vehicle_description.setText(vehicle.getSize()+" ("+vehicle.getVariety()+")");
-        if (vehicle.getVehicleImageUrl() != null) Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
-
-    }else {
-        holder.txtv_vehicle_model.setText(vehicle.getModel());
-        holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
-        holder.txtv_vehicle_year.setText(", Year: "+vehicle.getYear());
-        holder.txtv_vehicle_description.setText(vehicle.getSeat()+" Seated"+" ("+vehicle.getVariety()+")");
-        Toast.makeText(context, "Sit: "+vehicle.getSeat(), Toast.LENGTH_SHORT).show();
-        if (vehicle.getVehicleImageUrl() != "") Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
-
-    }*/
 
     String getVehicleDetails(Trip trip){
         if (trip.getVehicle()==null) return "...";
@@ -148,5 +136,70 @@ Activity activity;
                     +trip.getVehicle().getVariety()+")";
         }
     }
+    void sendNotificationToDrivers(){
+        FCM fcm = new FCM("New Order Published!",
+                "New Trip has been published for your Area! Check it out now!", tokens);
+        ApiClient.getInstance(MAIN_URL).sendNotification(fcm).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() == null) {
+                        Log.d(TAG, "onResponse: Order Data is null");
+                        return;
+                    }
+                    Log.d(TAG, "onResponse: Successful");
+                    String welcomeText = "Thank you for submitting a bid. Drivers will tell you the rate. Wait and confirm.";
+                    DialogWelcome dialogWelcome = new DialogWelcome(activity, welcomeText, new Intent(activity,MainActivity.class));
+                    dialogWelcome.setCancelable(false);
+                    dialogWelcome.show();
+                    progressbar.setVisibility(View.GONE);
+                }else {
+                    //Toast.makeText(OrderActivity.this, "ResponseError: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onResponse: ResponseError: " + response.errorBody().toString());
+                }
+            }
 
-}
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                progressbar.setVisibility(View.GONE);
+                // Toast.makeText(OrderActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
+                Log.d(TAG, "onFailure: " + t.getMessage());
+                //Log.d(OrderActivity.TAG, "onFailure: " + t.getCause().toString());
+            }
+        });
+    }
+
+    public void getFilteredDriverFcmTokens(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("driver").whereEqualTo("fcmArea", trip.getLoadingUpazilaThana())
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                if (error != null) {
+                                    Log.w(TAG, "Listen failed: " + error.getMessage());
+                                    progressbar.setVisibility(View.GONE);
+                                    return;
+                                }
+                                if (value == null || value.getDocuments().size() < 1) {
+                                    progressbar.setVisibility(View.GONE);
+                                    Toast.makeText(activity, "Registration First...", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)) {
+                                        Driver driver = doc.toObject(Driver.class);
+                                        if (driver.getName() != null) {
+                                            progressbar.setVisibility(View.GONE);
+                                            tokens.add(driver.getFcmToken());
+                                            Toast.makeText(activity, driver.getFcmToken(), Toast.LENGTH_SHORT).show();
+
+                                        } else {
+                                            Toast.makeText(activity, "No Driver Found.1", Toast.LENGTH_SHORT).show();
+                                            progressbar.setVisibility(View.GONE);
+                                        }
+                                    }
+                                }
+                            }
+
+                        });
+        }
+    }

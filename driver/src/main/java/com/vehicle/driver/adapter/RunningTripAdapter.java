@@ -1,41 +1,43 @@
 package com.vehicle.driver.adapter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.DialogCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.vehicle.driver.Constants;
 import com.vehicle.driver.R;
 import com.vehicle.driver.model.Trip;
 import com.vehicle.driver.view.BiddingDialog;
+import com.vehicle.driver.view.MainActivity;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 
-import kotlin.collections.ArrayDeque;
-
-public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> implements Filterable {
+public class RunningTripAdapter extends RecyclerView.Adapter<RunningTripAdapter.MyViewHolder> {
 
     Activity context;
     List<Trip> trips;
@@ -44,40 +46,25 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
     public OnClickListener onClickListener;
     String driverPhoneNumber;
     View view;
-    List<Trip> copyTrips;
 
-    public TripAdapter(Activity context, String driverPhoneNumber) {
+    public RunningTripAdapter(Activity context, String driverPhoneNumber) {
         this.context = context;
         this.driverPhoneNumber = driverPhoneNumber;
         this.trips = new ArrayList<>();
-        //this.copyTrips = new ArrayList<>();
     }
-    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Trip> trips, RecyclerView recyclerView ){
 
-        this.trips.clear();
-        //this.copyTrips.clear();
+        this.trips = null;
         this.trips = trips;
-        this.copyTrips = new ArrayDeque<>(trips);
         this.recyclerView = recyclerView;
-
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public TripAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        if(viewType == 0){
-            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_trip_taken, parent,
+    public RunningTripAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_running_trip, parent,
                     false));
-        }else{
-            return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.iv_trip, parent,
-                    false));
-        }
-
-
-
     }
     boolean isBidPlaced( int position){
         boolean bidPlaced = false;
@@ -95,29 +82,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
     }
 
 
-
     @Override
-    public int getItemViewType(int position) {
-            if (isBidPlaced(position)){
-                return 0;
-            }else{
-                return 1;
-            }
-
-
-
-
-      /*  if (trips.get(position).getDriver() != null &&
-                trips.get(position).getDriver().getPhoneNumber()!=null &&
-                trips.get(position).getDriver().getPhoneNumber().equalsIgnoreCase(driverPhoneNumber)){
-
-        }*/
-
-        //return super.getItemViewType(position);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull TripAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RunningTripAdapter.MyViewHolder holder, int position) {
         Trip trip = trips.get(position);
         String details = getVehicleDetails(trip);
         holder.tv_car_details.setText(details==null?"...": details);
@@ -126,29 +92,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         long rMills = trip.getCreatedAtMills()+1000* Constants.BIDDING_TIME_MINUTES *60;
         long cMills = System.currentTimeMillis();
 
-        if(cMills>rMills && trip.getStatus().equalsIgnoreCase("Bidding")){
-            /*String status = trip.getStatus().isEmpty()?"":
-                    cMills>rMills && trip.getStatus().equalsIgnoreCase("Bidding")?
-                            "Time Expired": trip.getStatus();*/
-            String status = trip.getStatus().isEmpty()?"" : "Time Expired";
-
-            if (isBidPlaced(position)){
-                holder.tv_trip_status.setText("Bid Placed");
-                holder.btn_start_bidding.setVisibility(View.GONE);
-                //holder.tv_trip_status.setText(""+bidPlaced);
-            }else{
-                holder.tv_trip_status.setText(status);
-            }
-
-        }else{
-            if (isBidPlaced(position)){
-                holder.tv_trip_status.setText("Bid Placed");
-                holder.btn_start_bidding.setVisibility(View.GONE);
-                //holder.tv_trip_status.setText(""+bidPlaced);
-            }else{
-                setCountDownTimer(holder.tv_trip_status, rMills-cMills);
-            }
-        }
+        holder.tv_trip_status.setText(trip.getStatus());
         holder.tv_trip_status.setSelected(true);
 
 
@@ -163,30 +107,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         holder.tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         holder.tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
 
-
-        /*Driver driver = trip.getDriver();
-        if (driver!=null) {
-            String vehicleImageUrl = "";
-
-            for (int i = 0; i < trip.getDriver().getCars().size(); i++) {
-                if (trip.getSelectedCar().contains(trip.getDriver().getCars().get(i).getOpenOrCovered()) &&
-                        trip.getSelectedCar().contains(trip.getDriver().getCars().get(i).getType()) &&
-                        (trip.getSelectedCar().contains(trip.getDriver().getCars().get(i).getCapacity() + "")
-                                || trip.getSelectedCar().contains(trip.getDriver().getCars().get(i).getSize() + ""))
-                ) {
-                    vehicleImageUrl = trip.getDriver().getCars().get(i).getImageUrl();
-                }
-
-
-            }
-            String driverImageUrl = driver.getImageUrl();
-            if (driverImageUrl != null) Picasso.get().load(driverImageUrl).into(imgv_driver);
-            txtv_driver_email.setText(driver.getEmail());
-            txtv_driver_name.setText(driver.getName());
-            txtv_driver_phone_number.setText(driver.getPhoneNumber());
-            Picasso.get().load(driverImageUrl).into(imgv_driver);
-            Picasso.get().load(vehicleImageUrl).into(imgv_vehicle);*/
-        //}
     }
 
     @Override
@@ -194,51 +114,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         return trips.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            /* access modifiers changed from: protected */
-
-            public Filter.FilterResults performFiltering(CharSequence constraint) {
-                CharSequence loading = constraint.subSequence(0, (constraint.toString().indexOf('+'))).toString().toLowerCase(Locale.ROOT);
-                CharSequence unloading = constraint.subSequence((constraint.toString().indexOf('+')+1), constraint.length());
-                List<Trip> filterTripList = new ArrayList<>();
-                if (constraint.equals("+")) {
-                    filterTripList.addAll(copyTrips);
-                } else {
-
-                    //String filterPattern = constraint.toString().toLowerCase().trim();
-                    for (Trip trip : copyTrips) {
-                        if(
-                                (loading.length()>1 &&
-                                        trip.getLoadingUpazilaThana().toLowerCase(Locale.ROOT).contains(loading) ||
-                                (unloading.length()>1 && trip.getUnloadingUpazilaThana().toLowerCase(Locale.ROOT).contains(unloading)))
-                        ){
-                            filterTripList.add(trip);
-                            Toast.makeText(context, "loading: "+loading+"Unloading: "+unloading, Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                }
-                Filter.FilterResults filterResults = new Filter.FilterResults();
-                filterResults.values = filterTripList;
-                return filterResults;
-            }
-
-            /* access modifiers changed from: protected */
-
-            @SuppressLint("NotifyDataSetChanged")
-            public void publishResults(CharSequence constraint, Filter.FilterResults results) {
-                trips.clear();
-                trips.addAll((Collection) results.values);
-                notifyDataSetChanged();
-            }
-        };
-    }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialButton btn_start_bidding;
+        MaterialButton btn_complete_trip;
         RelativeLayout lay_trip_details;
         MaterialCardView cv_trip_header;
         TextView tv_car_details,tv_loading_date_time,tv_loading_upazila_district,
@@ -266,7 +144,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             txtv_trip_id =  findViewById(R.id.txtv_trip_id);
             tv_trip_status =  findViewById(R.id.tv_trip_status);
             lay_trip_details =  view.findViewById(R.id.lay_trip_details);
-            btn_start_bidding =  view.findViewById(R.id.btn_start_bidding);
+            btn_complete_trip =  view.findViewById(R.id.btn_complete_trip);
             cv_trip_header =  view.findViewById(R.id.cv_trip_header);
             cv_trip_header.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -277,19 +155,63 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
                 }
             });
 
-            btn_start_bidding.setOnClickListener(new View.OnClickListener() {
+            btn_complete_trip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // todo...
-                    // Dialog dialog = new Dialog.B
-                    BiddingDialog biddingDialog = new BiddingDialog(context,
-                            trips.get(getAdapterPosition()).getVehicle().getType(),
-                            trips.get(getAdapterPosition()).getVehicle().getVariety(),
-                            trips.get(getAdapterPosition()).getId()
-                    );
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    Trip trip= trips.get(getAdapterPosition());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Have you completed trip?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            trip.setStatus("Trip Completed");
+                            SharedPreferences sharedPreferences = context.getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
+                            driverPhoneNumber = sharedPreferences.getString("DRIVER_PHONE_NUMBER", "null");
 
-                    biddingDialog.setCancelable(true);
-                    biddingDialog.show();
+                            String driverID = trip.getDriver().getId();
+                            //todo...
+                            //DocumentReference tripRef = db.collection("trip").document(trip.getId())
+                            DocumentReference tripRef = db.collection("trip").document(trip.getId());
+                            tripRef.set(trip).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        //Toast.makeText(context, "Trip Completed!", Toast.LENGTH_SHORT).show();
+                                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                        Map<String,Object> driverDueMap = new HashMap<>();
+                                        double bidPrice= trip.getRentalPrice();
+                                        //int ownersAmount = (int) ((bidPrice / 100)*97);
+                                        int serviceCharge = (int) ((bidPrice/100)*3);
+                                        //serviceCharge+=trip.getDriver().getDue();
+                                        Toast.makeText(context, "DUE: "+trip.getDriver().getDue()+"\nService: "+serviceCharge, Toast.LENGTH_SHORT).show();
+                                        driverDueMap.put("due", serviceCharge);
+                                        db.collection("driver").document(driverID).update(driverDueMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                //Toast.makeText(context, "DueSuccessfully Updated!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                        context.startActivity(new Intent(context, MainActivity.class));
+                                        context.finish();
+                                    }else{
+                                        Toast.makeText(context, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+                    builder.setCancelable(true);
+                    builder.show();
+
+
+
                 }
             });
         }

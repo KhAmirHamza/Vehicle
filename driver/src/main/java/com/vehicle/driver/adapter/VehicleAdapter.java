@@ -34,8 +34,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
     public VehicleAdapter(Activity context) {
         this.context = context;
         this.vehicles = new ArrayList<>();
-
-
     }
     public void setData(List<Vehicle> vehicles, RecyclerView recyclerView ){
 

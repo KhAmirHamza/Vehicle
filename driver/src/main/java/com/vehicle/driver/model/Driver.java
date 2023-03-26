@@ -14,14 +14,16 @@ public class Driver {
     String address;
     int totalTrips;
     int completeTrips;
-    int Due;
+    int due;
     String referCode;
     List<Vehicle> vehicles;
+    String fcmToken;
+    String fcmArea;
 
     public Driver() {
     }
 
-    public Driver(String id, String name, String phoneNumber, String email, String imageUrl, String address, int totalTrips, int completeTrips) {
+/*    public Driver(String id, String name, String phoneNumber, String email, String imageUrl, String address, int totalTrips, int completeTrips) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -30,9 +32,9 @@ public class Driver {
         this.address = address;
         this.totalTrips = totalTrips;
         this.completeTrips = completeTrips;
-    }
+    }*/
 
-    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles,String referCode) {
+    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles,String referCode, String fcmToken,  String fcmArea) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -42,9 +44,11 @@ public class Driver {
         this.address = address;
         this.totalTrips = totalTrips;
         this.completeTrips = completeTrips;
-        Due = due;
+        this.due = due;
         this.vehicles = vehicles;
         this.referCode = referCode;
+        this.fcmToken = fcmToken;
+        this.fcmArea = fcmArea;
     }
 
     public String getId() {
@@ -120,11 +124,11 @@ public class Driver {
     }
 
     public int getDue() {
-        return Due;
+        return due;
     }
 
     public void setDue(int due) {
-        Due = due;
+        this.due = due;
     }
 /*
     public List<Vehicle> getCars() {
@@ -149,6 +153,22 @@ public class Driver {
 
     public void setReferCode(String referCode) {
         this.referCode = referCode;
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
+    }
+
+    public String getFcmArea() {
+        return fcmArea;
+    }
+
+    public void setFcmArea(String fcmArea) {
+        this.fcmArea = fcmArea;
     }
 }
 

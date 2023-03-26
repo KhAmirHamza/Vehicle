@@ -43,28 +43,64 @@
 
 
 
-               <com.google.android.material.textfield.TextInputLayout
-                   android:id="@+id/text_input_layout_bid_price"
-                   android:layout_below="@id/tv_h1"
-                   android:hint="Enter Bid Price"
+                   <com.google.android.material.textfield.TextInputLayout
+                       android:layout_below="@id/tv_h1"
+                       android:id="@+id/text_input_layout_bid_price"
+                       android:hint="Enter Bid Price"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:minWidth="150dp"
+                       android:textColorHint="@color/black"
+                       app:startIconTint="@color/black"
+                       app:endIconTint="@color/black"
+                       app:endIconMode="clear_text"
+                       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                       <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/edt_bid_price"
+                           android:inputType="number"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content" />
+                   </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                   <TextView
+                       android:id="@+id/txtvOwnersAmount"
+                       android:layout_below="@id/text_input_layout_bid_price"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Owners Amount: "
+                       android:textStyle="bold"
+                       android:textColor="@color/black"
+                       android:layout_marginTop="2dp"/>
+                   <TextView
+                       android:id="@+id/txtvServiceCharge"
+                       android:layout_below="@id/txtvOwnersAmount"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/black"
+                       android:text="Service Charge: "
+                       android:textStyle="bold"
+                       android:textSize="12sp"
+                       android:layout_marginTop="2dp"/>
+                    <TextView
+                   android:id="@+id/txtvLateFee"
+                   android:layout_below="@id/txtvServiceCharge"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:minWidth="150dp"
-                   android:textColorHint="@color/black"
-                   app:startIconTint="@color/black"
-                   app:endIconTint="@color/black"
-                   app:endIconMode="clear_text"
-                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                   android:text="Late Start Fee (only for return trip): 125tk/hour or Negotiation"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
 
-                   <com.google.android.material.textfield.TextInputEditText
-                       android:id="@+id/edt_bid_price"
-                       android:inputType="number"
-                       android:layout_width="fill_parent"
-                       android:layout_height="wrap_content" />
-               </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="2dp"/>
+
+
+
                <com.google.android.material.textfield.TextInputLayout
                    android:id="@+id/text_input_layout_advance"
-                   android:layout_below="@id/text_input_layout_bid_price"
+                   android:layout_below="@id/txtvLateFee"
                    android:hint="Enter Advance Tk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
@@ -85,7 +121,7 @@
                <com.google.android.material.textfield.TextInputLayout
                    android:id="@+id/text_input_layout_description"
                    android:layout_below="@id/text_input_layout_advance"
-                   android:hint="Enter Requirements"
+                   android:hint="Enter Requirements (If Any)"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:minWidth="150dp"

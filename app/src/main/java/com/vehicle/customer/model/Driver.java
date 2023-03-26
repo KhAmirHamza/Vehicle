@@ -15,12 +15,13 @@ public class Driver {
     int totalTrips;
     int completeTrips;
     int Due;
+    String fcmToken;
     List<Vehicle> vehicles;
 
     public Driver() {
     }
 
-    public Driver(String id, String name, String phoneNumber, String email, String imageUrl, String address, int totalTrips, int completeTrips) {
+    public Driver(String id, String name, String phoneNumber, String email, String imageUrl, String address, int totalTrips, int completeTrips, String fcmToken) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -29,9 +30,10 @@ public class Driver {
         this.address = address;
         this.totalTrips = totalTrips;
         this.completeTrips = completeTrips;
+        this.fcmToken = fcmToken;
     }
 
-    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles) {
+    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles, String fcmToken) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -43,6 +45,7 @@ public class Driver {
         this.completeTrips = completeTrips;
         Due = due;
         this.vehicles = vehicles;
+        this.fcmToken = fcmToken;
     }
 
     public String getId() {
@@ -133,7 +136,21 @@ public class Driver {
         this.vehicles = vehicles;
     }
 
+    public String getFcmToken() {
+        return fcmToken;
+    }
 
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
+    }
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 }
 
 

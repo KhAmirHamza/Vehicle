@@ -6,9 +6,29 @@
     tools:context=".view.RunningTripFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        >
+
+        <TextView
+            android:id="@+id/tv_h1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Running Trips"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textStyle="bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_running_trips"
+            android:layout_below="@id/tv_h1"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/iv_trip"/>
+
+    </RelativeLayout>
+
 
 </FrameLayout>

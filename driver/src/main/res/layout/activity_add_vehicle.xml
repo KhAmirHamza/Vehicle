@@ -216,12 +216,16 @@
                       android:id="@+id/spinner_metro"
                       android:layout_marginTop="10dp"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"
+                      style="@style/spinner_style"
+                      />
                   <Spinner
                       android:id="@+id/spinner_serial"
                       android:layout_marginTop="10dp"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"
+                      style="@style/spinner_style"
+                      />
 
               </LinearLayout>
 
@@ -233,7 +237,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:minWidth="120dp"
+                        android:minWidth="110dp"
                         android:textColorHint="@color/black"
                         app:startIconTint="@color/black"
                         app:endIconTint="@color/black"
@@ -262,7 +266,9 @@
                         android:layout_below="@id/tv_vehicle_year"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"/>
+                        android:tooltipText="Select Vehicle Size or Capacity"
+                        style="@style/spinner_style"
+                        />
 
 
 

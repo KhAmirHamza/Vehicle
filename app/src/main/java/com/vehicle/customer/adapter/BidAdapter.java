@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,30 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
         holder.tv_driver_name.setText(bids.get(position).getDriver().getName());
         holder.tv_price.setText(bids.get(position).getBidPrice()+" Tk");
         holder.tv_vehicle_size.setText(getVehicleDetails(bids.get(position).getVehicle()));
+
+
+        Vehicle vehicle = bids.get(position).getVehicle();
+        if (vehicle!=null){
+            if (vehicle.getType().equalsIgnoreCase("Truck")||
+                    vehicle.getType().equalsIgnoreCase("Pickup")||
+                    vehicle.getType().equalsIgnoreCase("Trailer")){
+
+                holder.txtv_vehicle_model.setText(vehicle.getModel());
+                holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
+                holder.txtv_vehicle_year.setText("Model Year: "+vehicle.getYear());
+                holder.txtv_vehicle_description.setText(vehicle.getSize()+" ("+vehicle.getVariety()+")");
+                if (vehicle.getVehicleImageUrl() != null) Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
+
+            }else {
+                holder.txtv_vehicle_model.setText(vehicle.getModel());
+                holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
+                holder.txtv_vehicle_year.setText("Model Year: "+vehicle.getYear());
+                holder.txtv_vehicle_description.setText(vehicle.getSeat()+" Seated"+" ("+vehicle.getVariety()+")");
+                Toast.makeText(context, "Sit: "+vehicle.getSeat(), Toast.LENGTH_SHORT).show();
+                if (vehicle.getVehicleImageUrl() != "") Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
+
+            }
+        }
     }
 
     String getVehicleDetails(Vehicle vehicle){
@@ -85,6 +110,8 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
         MaterialButton btn_confirm_bid;
         ImageView imgv_driver;
         TextView tv_driver_name, tv_price, tv_vehicle_size;
+        ImageView imgv_car;
+        TextView txtv_vehicle_model,txtv_vehicle_number,txtv_vehicle_year,txtv_vehicle_description;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +120,12 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
             tv_price = itemView.findViewById(R.id.tv_price);
             imgv_driver = itemView.findViewById(R.id.imgv_driver);
             tv_vehicle_size = itemView.findViewById(R.id.tv_vehicle_size);
+
+            imgv_car =  itemView.findViewById(R.id.imgv_car);
+            txtv_vehicle_model =  itemView.findViewById(R.id.txtv_vehicle_model);
+            txtv_vehicle_number =  itemView.findViewById(R.id.txtv_vehicle_number);
+            txtv_vehicle_year =  itemView.findViewById(R.id.txtv_vehicle_year);
+            txtv_vehicle_description =  itemView.findViewById(R.id.txtv_vehicle_description);
             btn_confirm_bid.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -108,5 +141,6 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
     public void setOnClickListener(OnClickListener onClickListener){
         this.onClickListener = onClickListener;
     }
+
 
 }

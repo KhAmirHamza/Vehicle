@@ -84,6 +84,24 @@
                     android:text="01705187083"
                     android:textSize="14sp" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log Out"
+                    android:id="@+id/btnLogOut"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeWidth="0dp"
+                    android:layout_below="@id/txtv_phone_number"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:textAllCaps="false"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="3dp"
+                    android:textColor="#B6003E"
+                    android:layout_marginStart="3dp"
+                    android:drawableLeft="@android:drawable/ic_lock_power_off"/>
+
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 

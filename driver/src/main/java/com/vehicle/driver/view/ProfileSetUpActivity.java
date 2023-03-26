@@ -181,13 +181,12 @@ public class ProfileSetUpActivity extends AppCompatActivity {
                                                         } else {
                                                             List<Vehicle> vehicles= new ArrayList<>();
                                                             Driver driver = new Driver(null, name, phone_number, password ,email, task.getResult().toString(),
-                                                                    "",0,0,0, vehicles, refer_code);
+                                                                    "",0,0,0, vehicles, refer_code, "","");
 
                                                             addDriver(driver);
                                                         }
                                                     }
                                                 });
-
 
                                             }
                                         });
@@ -245,12 +244,12 @@ public class ProfileSetUpActivity extends AppCompatActivity {
             sharedPreferences.edit().putString("DRIVER_NAME", name).apply();
             sharedPreferences.edit().putString("DRIVER_ID", documentReference.getId()).apply();
             sharedPreferences.edit().putString("DRIVER_PASSWORD", password).apply();
-            DialogWelcome dialogWelcome = new DialogWelcome(getApplicationContext(), "Welcome to "+getResources().getString(R.string.app_name)+"\n  Always stay with us!");
-            dialogWelcome.setCancelable(true);
+            DialogWelcome dialogWelcome = new DialogWelcome(ProfileSetUpActivity.this,
+                    "Welcome to "+getResources().getString(R.string.app_name)+"\n  Always stay with us!",
+                    new Intent(ProfileSetUpActivity.this, AddVehicleActivity.class));
+            dialogWelcome.setCancelable(false);
             dialogWelcome.show();
-            startActivity(new Intent(ProfileSetUpActivity.this, MainActivity.class));
 
-            finish();
         }).addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
 
         //progressDialog.dismiss();

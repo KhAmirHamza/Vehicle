@@ -26,6 +26,7 @@
             android:layout_height="wrap_content">
             <!-- TODO: Update blank fragment layout -->
 
+
             <ImageView
                 android:id="@+id/imgv_vehicle"
                 android:layout_width="200dp"
@@ -34,6 +35,26 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/car"
                 android:layout_marginTop="20dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDeleteTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Delete Current Trip"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:insetBottom="0dp"
+                android:insetTop="0dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:padding="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="2dp"
+                android:backgroundTint="#FF69B7"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textColor="#000000"/>
+
+
 
 
             <com.google.android.material.card.MaterialCardView
@@ -100,20 +121,19 @@
 
                     <TextView
                         android:id="@+id/tv_loading_date_time"
-                        android:layout_below="@id/tv_car_details"
-                        android:layout_alignParentEnd="true"
+                        android:layout_below="@id/txtv_trip_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9 AM , 18/11/2022"
+
                         android:textColor="@color/black"
-                        android:layout_centerHorizontal="true"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
                         android:paddingLeft="7dp"
                         android:paddingRight="7dp"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="0dp"
                         />
 
 
@@ -139,11 +159,11 @@
                     <TextView
                         android:id="@+id/tv_show_bidding"
                         android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:text="See and confirm a bidder a few minutes later at bid end"
+                        android:text="Trip Continue - Confirm a bidder within bid end time"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
@@ -151,12 +171,31 @@
                         android:paddingBottom="2dp"
                         android:textAlignment="center"
                         android:background="@drawable/bg_txtv_completed"
+
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit ="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         />
+                    <TextView
+                        android:id="@+id/txtvLateFee"                        android:layout_below="@id/tv_show_bidding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Late Start Fee (only for return trip): 125tk/hour or Negotiation"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:layout_marginTop="2dp"/>
+
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recy_biders"
                         android:visibility="gone"
-                        android:layout_below="@id/tv_show_bidding"
+                        android:layout_below="@id/txtvLateFee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:listitem="@layout/iv_bid"/>
@@ -167,6 +206,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_loading_unloading"
+                android:visibility="gone"
                 android:layout_below="@id/cv_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -274,6 +314,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="8dp"
+
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
@@ -347,9 +388,11 @@
                 android:layout_marginBottom="50dp">
 
                 <LinearLayout
+                    android:id="@+id/laySelectedDriverInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

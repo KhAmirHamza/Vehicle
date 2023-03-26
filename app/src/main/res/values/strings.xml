@@ -1,10 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Vehicle</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!--
-Night at 12 o'clock
--->
+    <!--Night at 12 o'clock-->
+
+    <string name="hintWriteCityDistrict">
+        <font size="12">Write City/District and select from popup</font>
+    </string>
+
+
+
     <string-array name="timeEng">
         <item> 12 AM</item>
         <item> 1 AM</item>
