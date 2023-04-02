@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/imgv_car"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/car"
+                android:adjustViewBounds="true"
+                android:layout_marginRight="15dp"
+                />
+
+            <TextView
+                android:id="@+id/txtv_vehicle_model"
+                android:layout_toRightOf="@id/imgv_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="3dp"
+                android:drawablePadding="5dp"
+                android:text="TATA ACE EX 2 (Open)"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtv_vehicle_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtv_vehicle_model"
+                android:layout_toRightOf="@id/imgv_car"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="sm-tha-00-0166"
+                android:textSize="16sp"
+                android:visibility="visible" />
+            <TextView
+                android:id="@+id/txtv_vehicle_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtv_vehicle_number"
+                android:layout_toRightOf="@id/imgv_car"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Year: 2005"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txtv_vehicle_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtv_vehicle_year"
+                android:layout_toRightOf="@id/imgv_car"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="1 ton, 7 feet"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

@@ -17,5 +17,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Vehicle"
-include ':app'
 include ':driver'
+include ':customer'

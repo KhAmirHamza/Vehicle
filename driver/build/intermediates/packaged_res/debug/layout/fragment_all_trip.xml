@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.AllTripFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_h1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Trip"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textStyle="bold"/>
+        <RelativeLayout
+            android:id="@+id/layFilter"
+            android:layout_below="@id/tv_h1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="8"
+            >
+            <TextView
+                android:id="@+id/t1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="From: "
+                android:textSize="12sp"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_loading_upazila"
+                android:layout_toRightOf="@id/t1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintWriteCityDistrict"
+                android:textColorHint="@color/black"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                app:startIconTint="@color/black"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/autocomplete_loading_upazila"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/t2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="To: "
+                android:layout_below="@id/text_input_layout_loading_upazila"
+                android:textAlignment="textEnd"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_unloading_upazila"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintWriteCityDistrict"
+                android:textColorHint="@color/black"
+                android:layout_alignLeft="@id/text_input_layout_loading_upazila"
+                android:layout_below="@id/text_input_layout_loading_upazila"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
+                app:startIconTint="@color/black">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autocomplete_unloading_upazila"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:textSize="14sp"
+                    android:paddingLeft="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilter"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click to Filter"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textAllCaps="false"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:insetBottom="0dp"
+                android:textSize="12sp"
+                android:padding="2dp"
+                android:textStyle="bold"/>
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_all_trips"
+            android:layout_below="@id/layFilter"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/iv_trip"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

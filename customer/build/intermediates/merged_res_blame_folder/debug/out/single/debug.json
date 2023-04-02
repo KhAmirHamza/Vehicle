@@ -1,0 +1,222 @@
+[
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_ic_call_black_24dp.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/ic_call_black_24dp.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_dialog_add_vehicle.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/dialog_add_vehicle.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_iv_bidding.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/iv_bidding.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_bg_txtv_ontheway.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/bg_txtv_ontheway.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_car.jpg.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/car.jpg"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_bg_txtv_active.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/bg_txtv_active.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_bg_txtv_completed.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/bg_txtv_completed.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_ic_password_black_24dp.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/ic_password_black_24dp.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_home_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_home_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/menu_menu_top_right.xml.flat",
+        "source": "com.vehicle.customer-main-42:/menu/menu_top_right.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_ic_outline_email_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/ic_outline_email_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_person_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_person_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_iv_vehicle.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/iv_vehicle.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_fragment_home.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_sign_in.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_list_item_simple.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/list_item_simple.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.vehicle.customer-pngs-35:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/xml_backup_rules.xml.flat",
+        "source": "com.vehicle.customer-main-42:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_pick_image.png.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/pick_image.png"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_dialog_welcome.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/dialog_welcome.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_fragment_profile.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_create_update_trip.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/create_update_trip.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_directions_car_filled_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_directions_car_filled_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_bidding.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_bidding.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_ic_outline_name_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/ic_outline_name_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/menu_bottom_navigation.xml.flat",
+        "source": "com.vehicle.customer-main-42:/menu/bottom_navigation.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_date_range_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_date_range_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_verification.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_verification.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_iv_bid.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/iv_bid.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_main.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_sms_sent.png.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/sms_sent.png"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_sign_up.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_bg_txtv_pending.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/bg_txtv_pending.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_bg_txtv_cancelled.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/bg_txtv_cancelled.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_close_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_close_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_dialog_trip_review.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/dialog_trip_review.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable_ic_outline_account_circle_24.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable/ic_outline_account_circle_24.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/drawable-v24_ic_email_black_24dp.xml.flat",
+        "source": "com.vehicle.customer-main-42:/drawable-v24/ic_email_black_24dp.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_profile_set_up.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_profile_set_up.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/xml_data_extraction_rules.xml.flat",
+        "source": "com.vehicle.customer-main-42:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_activity_create_trip.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/activity_create_trip.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.vehicle.customer-main-42:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.vehicle.customer-merged_res-40:/layout_fragment_trip.xml.flat",
+        "source": "com.vehicle.customer-main-42:/layout/fragment_trip.xml"
+    }
+]

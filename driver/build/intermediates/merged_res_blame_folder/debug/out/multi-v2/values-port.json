@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.vehicle.driver-mergeDebugResources-49:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\55544a83c80b761697e140dd14dfcdef\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}
