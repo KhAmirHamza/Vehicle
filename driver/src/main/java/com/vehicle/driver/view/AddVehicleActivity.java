@@ -1,17 +1,34 @@
 package com.vehicle.driver.view;
 
+import static android.Manifest.permission_group.CAMERA;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -27,60 +44,67 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.drjacky.imagepicker.ImagePicker;
+import com.github.drjacky.imagepicker.constant.ImageProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.api.LogDescriptor;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+
 import com.vehicle.driver.R;
 import com.vehicle.driver.adapter.AutoCompleteCustomAdapter;
 import com.vehicle.driver.model.Driver;
 import com.vehicle.driver.model.Vehicle;
+import com.vehicle.driver.utils.CustomCameraGallery;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Function;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
 
 public class AddVehicleActivity extends AppCompatActivity {
     private static final String TAG = "AddVehicleActivity";
-    TextInputLayout text_input_layout_model_name,text_input_layout_vehicle_number,
-            text_input_layout_sit,text_input_layout_length, text_input_layout_capacity;
-    LinearLayout lay_vehicle_image,lay_brta_image,lay_nid_image;
+    TextInputLayout text_input_layout_model_name, text_input_layout_vehicle_number,
+            text_input_layout_sit, text_input_layout_length, text_input_layout_capacity;
+    LinearLayout lay_vehicle_image, lay_brta_image, lay_nid_image;
     MaterialButton btn_submit_vehicle;
     StorageReference storageReference;
-    String vehicleImageUrl="", nid_image_url="", brta_image_url="";
+    String vehicleImageUrl = "", nid_image_url = "", brta_image_url = "";
     ImageView imgv_vehicle_licence, imgv_brta_document, imgv_nid;
     ProgressBar progressbar_add_vehicle;
     Driver driver = null;
 
 
-
-    String[] imageUrls = new String[]{"","",""};
+    String[] imageUrls = new String[]{"", "", ""};
 
     AutoCompleteTextView autocomplete_model_name;
 
-    Spinner spinner_vehicle,spinner_metro, spinner_serial, spinner_vehicleVariety, spinner_vehicle_size, spinner_vehicle_seat, spinner_vehicle_year;
+    Spinner spinner_vehicle, spinner_metro, spinner_serial, spinner_vehicleVariety, spinner_vehicle_size, spinner_vehicle_seat, spinner_vehicle_year;
     TextView tv_vehicle_size, tv_vehicle_seat;
 
     String seat, year, size;
-
-
-
-
-
-
-
-
+    CustomCameraGallery customCameraGallery;
+    CustomCameraGallery.MyCamera myCamera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,8 +125,6 @@ public class AddVehicleActivity extends AppCompatActivity {
         tv_vehicle_seat = findViewById(R.id.tv_vehicle_seat);
 
 
-
-
         autocomplete_model_name = findViewById(R.id.autocomplete_model_name);
 
         imgv_vehicle_licence = findViewById(R.id.imgv_vehicle_licence);
@@ -118,6 +140,9 @@ public class AddVehicleActivity extends AppCompatActivity {
         lay_nid_image = findViewById(R.id.lay_nid_image);
         progressbar_add_vehicle = findViewById(R.id.progressbar_add_vehicle);
         btn_submit_vehicle = findViewById(R.id.btn_submit_vehicle);
+
+
+        customCameraGallery = new CustomCameraGallery();
 
         ArrayAdapter<String> vehicleTypeAdapter = new ArrayAdapter<String>(AddVehicleActivity.this,
                 android.R.layout.simple_list_item_1,
@@ -149,30 +174,37 @@ public class AddVehicleActivity extends AppCompatActivity {
         lay_vehicle_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                /*Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);*/
+                //pickImage(1);
+                chooseImage(0);
+
             }
         });
 
         lay_brta_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                /*Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), 2);
+                //pickImage(2);*/
+                chooseImage(1);
             }
         });
 
         lay_nid_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                /*Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 3);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 3);*/
+                // pickImage(3);
+                chooseImage(2);
             }
         });
         btn_submit_vehicle.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +217,7 @@ public class AddVehicleActivity extends AppCompatActivity {
         spinner_vehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                if(position==0){
+                if (position == 0) {
                     tv_vehicle_seat.setVisibility(View.GONE);
                     spinner_vehicle_seat.setVisibility(View.GONE);
                     tv_vehicle_size.setVisibility(View.VISIBLE);
@@ -201,7 +233,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                             getResources().getStringArray(R.array.openCovered));
                     spinner_vehicleVariety.setAdapter(vehicleVariety);
 
-                }else if(position==1){
+                } else if (position == 1) {
                     tv_vehicle_seat.setVisibility(View.GONE);
                     spinner_vehicle_seat.setVisibility(View.GONE);
                     tv_vehicle_size.setVisibility(View.VISIBLE);
@@ -216,13 +248,13 @@ public class AddVehicleActivity extends AppCompatActivity {
                             getResources().getStringArray(R.array.openCovered));
                     spinner_vehicleVariety.setAdapter(vehicleVariety);
 
-                }else if(position==2){
+                } else if (position == 2) {
                     tv_vehicle_seat.setVisibility(View.GONE);
                     spinner_vehicle_seat.setVisibility(View.GONE);
                     tv_vehicle_size.setVisibility(View.VISIBLE);
                     spinner_vehicle_size.setVisibility(View.VISIBLE);
                     seat = "0";
-                     ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(AddVehicleActivity.this,
+                    ArrayAdapter<String> vehicleSizeAdapter = new ArrayAdapter<String>(AddVehicleActivity.this,
                             android.R.layout.simple_list_item_1,
                             getResources().getStringArray(R.array.trailerSize));
                     spinner_vehicle_size.setAdapter(vehicleSizeAdapter);
@@ -232,7 +264,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                             getResources().getStringArray(R.array.openCovered));
                     spinner_vehicleVariety.setAdapter(vehicleVariety);
 
-                }else if(position==3){
+                } else if (position == 3) {
                     tv_vehicle_seat.setVisibility(View.VISIBLE);
                     spinner_vehicle_seat.setVisibility(View.VISIBLE);
                     spinner_vehicle_size.setVisibility(View.GONE);
@@ -247,7 +279,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                             getResources().getStringArray(R.array.acNonAc));
                     spinner_vehicleVariety.setAdapter(vehicleVariety);
 
-                }else if(position==4){
+                } else if (position == 4) {
                     tv_vehicle_seat.setVisibility(View.VISIBLE);
                     spinner_vehicle_seat.setVisibility(View.VISIBLE);
                     tv_vehicle_size.setVisibility(View.GONE);
@@ -262,7 +294,7 @@ public class AddVehicleActivity extends AppCompatActivity {
                             getResources().getStringArray(R.array.acNonAc));
                     spinner_vehicleVariety.setAdapter(vehicleVariety);
 
-                }else if(position==5){
+                } else if (position == 5) {
                     tv_vehicle_seat.setVisibility(View.VISIBLE);
                     spinner_vehicle_seat.setVisibility(View.VISIBLE);
                     tv_vehicle_size.setVisibility(View.GONE);
@@ -311,12 +343,76 @@ public class AddVehicleActivity extends AppCompatActivity {
                 getResources().getStringArray(R.array.serial));
         spinner_serial.setAdapter(vehicleSerial);
 
-    }
-    void submitVehicle(){
+        myCamera = new CustomCameraGallery.MyCamera() {
+            @Override
+            public void gotUri(Uri picUri, int requestCode) {
+                byte[] compressedImage = customCameraGallery.compressImage(picUri);
+                uploadImage(requestCode, compressedImage);
+                if (requestCode == 0) {
+                    imgv_vehicle_licence.setImageURI(picUri);
+                    btn_submit_vehicle.setVisibility(View.VISIBLE);
+                }else if (requestCode == 1) {
+                    imgv_brta_document.setImageURI(picUri);
+                }else if (requestCode == 2) {
+                    imgv_nid.setImageURI(picUri);
+                }
+            }
 
-        size = spinner_vehicle_size.getVisibility()==View.VISIBLE ?
+            @Override
+            public void somethingWrong(String errorMessage) {
+
+            }
+        };
+        //customCameraGallery.checkAndRequestPermission();
+    }
+
+
+/*
+    void pickImage(int requestCode){
+        ActivityResultLauncher<Intent> launcher=
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),(ActivityResult result)->{
+                    if(result.getResultCode()==RESULT_OK){
+                        Uri uri=result.getData().getData();
+                        // Use the uri to load the image
+                        receiveImageFromDeviceRequest(requestCode, result.getResultCode(), result.getData());
+                    }else if(result.getResultCode()== ImagePicker.RESULT_ERROR){
+                        // Use ImagePicker.Companion.getError(result.getData()) to show an error
+                    }
+                });
+        ImagePicker.with(this).bothCameraGallery().createIntent();
+
+       */
+/* ImagePicker.Companion.with(this)
+                .crop()
+                .cropOval()
+                .provider(ImageProvider.BOTH)
+                .maxResultSize(512,512,true)
+                .provider(ImageProvider.BOTH) //Or bothCameraGallery()
+                .createIntentFromDialog((Function1)(new Function1(){
+                    public Object invoke(Object var1){
+                        this.invoke((Intent)var1);
+                        return Unit.INSTANCE;
+                    }
+
+                    public void invoke(@NotNull Intent it){
+                        Intrinsics.checkNotNullParameter(it,"it");
+                        launcher.launch(it);
+                    }
+                }));*//*
+
+    }
+*/
+
+    void chooseImage(int requestCode) {
+
+        customCameraGallery.pickImage(AddVehicleActivity.this, myCamera, requestCode);
+    }
+
+    void submitVehicle() {
+
+        size = spinner_vehicle_size.getVisibility() == View.VISIBLE ?
                 spinner_vehicle_size.getSelectedItem().toString().trim() : "0";
-        seat = spinner_vehicle_seat.getVisibility()==View.VISIBLE ?
+        seat = spinner_vehicle_seat.getVisibility() == View.VISIBLE ?
                 spinner_vehicle_seat.getSelectedItem().toString().trim() : "0";
         String variety = spinner_vehicleVariety.getSelectedItem().toString();
         String type = spinner_vehicle.getSelectedItem().toString();
@@ -326,12 +422,12 @@ public class AddVehicleActivity extends AppCompatActivity {
         String vehicle_serial = spinner_serial.getSelectedItem().toString().trim();
         String vehicle_number = text_input_layout_vehicle_number.getEditText().getText().toString().trim();
 
-       vehicleImageUrl = imageUrls[0];
+        vehicleImageUrl = imageUrls[0];
         brta_image_url = imageUrls[1];
         nid_image_url = imageUrls[2];
         SharedPreferences sp1 = getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
-        String driverMobileNumber = sp1.getString("DRIVER_PHONE_NUMBER",null);
-        if(driverMobileNumber==null
+        String driverMobileNumber = sp1.getString("DRIVER_PHONE_NUMBER", null);
+        if (driverMobileNumber == null
                 || vehicle_model.isEmpty()
                 || vehicle_metro.isEmpty()
                 || vehicle_serial.isEmpty()) {
@@ -339,8 +435,8 @@ public class AddVehicleActivity extends AppCompatActivity {
             return;
         }
         Vehicle vehicle = new Vehicle(null, vehicle_model, type, variety, seat,
-                size, vehicle_metro,vehicle_serial, vehicle_number, year,vehicleImageUrl,
-                brta_image_url,nid_image_url, driverMobileNumber);
+                size, vehicle_metro, vehicle_serial, vehicle_number, year, vehicleImageUrl,
+                brta_image_url, nid_image_url, driverMobileNumber);
 
 
         List<Vehicle> vehicles = driver.getVehicles();
@@ -349,7 +445,7 @@ public class AddVehicleActivity extends AppCompatActivity {
 
         if (vehicle.getVehicleImageUrl().equalsIgnoreCase("")
                 || vehicle.getBrtaDocumentImageUrl().equalsIgnoreCase("")
-                || vehicle.getNidImageUrl().equalsIgnoreCase("")){
+                || vehicle.getNidImageUrl().equalsIgnoreCase("")) {
             Toast.makeText(this, "Please Upload Documents...", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -357,13 +453,18 @@ public class AddVehicleActivity extends AppCompatActivity {
         //Toast.makeText(AddVehicleActivity.this, vehicle.getModel() , Toast.LENGTH_SHORT).show();
 
     }
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         receiveImageFromDeviceRequest(requestCode,resultCode, data);
     }
+*/
 
+
+/*
     private void receiveImageFromDeviceRequest(int requestCode, int resultCode, Intent data) {
+        Bitmap bitmap;
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             imgv_vehicle_licence.setImageURI(data.getData());
             btn_submit_vehicle.setVisibility(View.GONE);
@@ -376,6 +477,7 @@ public class AddVehicleActivity extends AppCompatActivity {
             imgv_brta_document.setImageURI(data.getData());
             btn_submit_vehicle.setVisibility(View.GONE);
             imageUrls[1] = null;
+            Log.d(TAG, "receiveImageFromDeviceRequest: old: "+data.getData().toString());
             uploadImage(1,compressImage(data));
 
         }else if (requestCode == 3 && resultCode == RESULT_OK && data != null) {
@@ -385,44 +487,45 @@ public class AddVehicleActivity extends AppCompatActivity {
             uploadImage(2,compressImage(data));
         }
     }
-    byte[] compressImage(Intent data){
+*/
+   /* byte[] compressImage(Intent data){
         Uri imageUri = data.getData();
         byte[] bitmapdata;
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-        int height = bitmap.getHeight();
-        int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+            int width = bitmap.getWidth();
 
-        //Compressed file size if greater than 1 MB;
-        if (height>=3000){
-            bitmap = Bitmap.createScaledBitmap(bitmap, width/3, height/3, true);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+            //Compressed file size if greater than 1 MB;
+            if (height>=3000){
+                bitmap = Bitmap.createScaledBitmap(bitmap, width/3, height/3, true);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
 
-        }else if (height>=2500){
-            bitmap = Bitmap.createScaledBitmap(bitmap, (int) (width/2.5), (int) (height/2.5), true);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream);
-        }else if (height>=2000){
-            bitmap = Bitmap.createScaledBitmap(bitmap, (width/2),  (height/2), true);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
-        }else if (height>=1500){
-            bitmap = Bitmap.createScaledBitmap(bitmap, (int) (width/1.5), (int) (height/1.5), true);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
-        }else {
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        }
+            }else if (height>=2500){
+                bitmap = Bitmap.createScaledBitmap(bitmap, (int) (width/2.5), (int) (height/2.5), true);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream);
+            }else if (height>=2000){
+                bitmap = Bitmap.createScaledBitmap(bitmap, (width/2),  (height/2), true);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+            }else if (height>=1500){
+                bitmap = Bitmap.createScaledBitmap(bitmap, (int) (width/1.5), (int) (height/1.5), true);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
+            }else {
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            }
 
-        bitmapdata = byteArrayOutputStream.toByteArray();
+            bitmapdata = byteArrayOutputStream.toByteArray();
             return bitmapdata;
         } catch (IOException e) {
             e.printStackTrace();
             return bitmapdata = null;
         }
-    }
+    }*/
 
     private void updateDriver(Driver driver) {
-       // p.setVisibility(View.VISIBLE);
+        // p.setVisibility(View.VISIBLE);
         //todo...submit budget data to server...
         progressbar_add_vehicle.setVisibility(View.VISIBLE);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -445,11 +548,11 @@ public class AddVehicleActivity extends AppCompatActivity {
         });
     }
 
-    void uploadImage(int position, byte[] bitmapdata){
+    void uploadImage(int position, byte[] bitmapData) {
         String imageRef = "images/" + UUID.randomUUID().toString();
         StorageReference ref = storageReference.child(imageRef);
         progressbar_add_vehicle.setVisibility(View.VISIBLE);
-        ref.putBytes(bitmapdata)
+        ref.putBytes(bitmapData)
                 .addOnSuccessListener(
                         new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -461,33 +564,35 @@ public class AddVehicleActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         progressbar_add_vehicle.setVisibility(View.GONE);
                                         //getUrl(task.getResult().toString());
-                                        Toast.makeText(getApplicationContext(), "Image "+position+" Uploaded", Toast.LENGTH_SHORT).show();
-                                        imageUrls[position]  = task.getResult().toString();
-                                        if (imageUrls[0]!=null && imageUrls[1]!=null&& imageUrls[2]!=null)
-                                            btn_submit_vehicle.setVisibility(View.VISIBLE);
+                                        Toast.makeText(getApplicationContext(), "Image " + position + " Uploaded", Toast.LENGTH_SHORT).show();
+                                        imageUrls[position] = null;
+                                        imageUrls[position] = task.getResult().toString();
+
+                                       // if (imageUrls[0] != null && imageUrls[1] != null && imageUrls[2] != null)
+                                       //     btn_submit_vehicle.setVisibility(View.VISIBLE);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         progressbar_add_vehicle.setVisibility(View.GONE);
-                                        Toast.makeText(getApplicationContext(), "Failed: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
                         });
     }
 
-    public void getDriver(){
+    public void getDriver() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         SharedPreferences sp = getSharedPreferences("AUTHENTICATION", Context.MODE_PRIVATE);
-        String id = sp.getString("DRIVER_ID",null);
-        String notification = sp.getString("NOTIFICATION","None");
+        String id = sp.getString("DRIVER_ID", null);
+        String notification = sp.getString("NOTIFICATION", "None");
 
-        if (id==null) {
+        if (id == null) {
             Toast.makeText(getApplicationContext(), "You are not sign in.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), SignInActivity.class));
             finish();
-        }else{
+        } else {
             progressbar_add_vehicle.setVisibility(View.VISIBLE);
 
             DocumentReference documentReference = db.collection("driver").document(id);
@@ -496,9 +601,9 @@ public class AddVehicleActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     progressbar_add_vehicle.setVisibility(View.GONE);
                     driver = task.getResult().toObject(Driver.class);
-                    if (driver==null) return;
+                    if (driver == null) return;
                     driver.setId(documentReference.getId());
-                    if (driver ==null){
+                    if (driver == null) {
 
                         Toast.makeText(getApplicationContext(), "Driver Not Found!", Toast.LENGTH_SHORT).show();
                     }
@@ -507,10 +612,34 @@ public class AddVehicleActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressbar_add_vehicle.setVisibility(View.GONE);
-                    Toast.makeText(AddVehicleActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddVehicleActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        customCameraGallery.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        customCameraGallery.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        customCameraGallery.onRestoreInstanceState(savedInstanceState);
+    }
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        customCameraGallery.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 }

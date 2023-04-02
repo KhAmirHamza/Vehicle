@@ -1,6 +1,7 @@
 package com.vehicle.customer.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.view.View;
 import android.view.WindowInsets;
@@ -12,6 +13,13 @@ public class SystemUI {
     public SystemUI(Activity activity) {
         this.activity = activity;
 
+    }
+    public static void reloadActivity(Activity activity){
+        activity.finish();
+        activity.overridePendingTransition(0, 0);
+        activity.startActivity(activity.getIntent()
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        activity.overridePendingTransition(0, 0);
     }
 
     public void hideSystemUI() {

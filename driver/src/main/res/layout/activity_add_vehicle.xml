@@ -394,6 +394,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_submit_vehicle"
+                android:visibility="invisible"
                 android:layout_below="@id/cv_vehicle_licence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -4,9 +4,7 @@ import static com.vehicle.customer.Constants.MAIN_URL;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,20 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.JsonObject;
-import com.squareup.picasso.Picasso;
 import com.vehicle.customer.R;
 import com.vehicle.customer.model.Driver;
 import com.vehicle.customer.model.FCM;
@@ -37,10 +25,7 @@ import com.vehicle.customer.model.Trip;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +37,7 @@ public class DialogTripPreview extends Dialog {
             tv_loading_full_address,tv_unloading_upazila_district,
             tv_unloading_full_address,tv_description,tv_up_down_trip,
             tv_contain_animal,tv_fragile_product,tv_perishable_product,
-            tv_labor_needed;
+            tv_labor_needed,tv_loading_nearAt,tv_unloading_nearAt;
 
     MaterialButton btn_review;
     ProgressBar progressbar;
@@ -61,10 +46,9 @@ Activity activity;
     Trip trip;
 
 
-    public DialogTripPreview(@NonNull Activity context, Trip trip) {
+    public DialogTripPreview(@NonNull Activity context) {
         super(context, android.R.style.Theme_Holo_Light_Dialog);
         this.activity = context;
-        this.trip = trip;
     }
 
     @Override
@@ -84,16 +68,21 @@ Activity activity;
         tv_fragile_product =  findViewById(R.id.tv_fragile_product);
         tv_perishable_product =  findViewById(R.id.tv_perishable_product);
         tv_labor_needed =  findViewById(R.id.tv_labor_needed);
+        tv_loading_nearAt =  findViewById(R.id.tv_loading_nearAt);
+        tv_unloading_nearAt =  findViewById(R.id.tv_unloading_nearAt);
+
         progressbar =  findViewById(R.id.progressbar);
 
         btn_review =  findViewById(R.id.btn_review);
 
         tv_car_details.setText(getVehicleDetails(trip));
         tv_car_date_time.setText("( "+trip.getLoadingTime()+", "+trip.getLoadingDate()+" )");
-        tv_loading_upazila_district.setText("Area-->"+trip.getLoadingUpazilaThana());
-        tv_loading_full_address.setText("Full Address-->"+trip.getLoadingFullAddress() +"\nLandMark-->"+trip.getLoadingLandmark());
-        tv_unloading_upazila_district.setText("Area-->"+trip.getUnloadingUpazilaThana());
-        tv_unloading_full_address.setText("Full Address-->"+trip.getUnloadingFullAddress() +"\nLandMark-->"+trip.getUnloadingLandmark());
+        tv_loading_upazila_district.setText("Area: "+trip.getLoadingUpazilaThana());
+        tv_loading_nearAt.setText("Near At: "+trip.getLoadingArea());
+        tv_loading_full_address.setText("Full Address: "+trip.getLoadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other:"+trip.getLoadingLandmark());
+        tv_unloading_upazila_district.setText("Area: "+trip.getUnloadingUpazilaThana());
+        tv_unloading_nearAt.setText("Near At: "+trip.getUnloadingArea());
+        tv_unloading_full_address.setText("Full Address: "+trip.getUnloadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other: "+trip.getUnloadingLandmark());
         tv_description.setText(trip.getDescription());
         tv_up_down_trip.setVisibility(trip.getUpDownTrip()==1? View.VISIBLE:View.GONE);
         tv_contain_animal.setVisibility(trip.getContainAnimal()==1? View.VISIBLE:View.GONE);
@@ -101,11 +90,11 @@ Activity activity;
         tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
 
-        getFilteredDriverFcmTokens();
         btn_review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //todo... submit trip for bidding
+                getFilteredTokens(trip);
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 trip.setStatus("Bidding");
                 progressbar.setVisibility(View.VISIBLE);
@@ -139,24 +128,25 @@ Activity activity;
     void sendNotificationToDrivers(){
         FCM fcm = new FCM("New Order Published!",
                 "New Trip has been published for your Area! Check it out now!", tokens);
+        //Toast.makeText(activity, "Tokens: "+tokens.size(), Toast.LENGTH_SHORT).show();
         ApiClient.getInstance(MAIN_URL).sendNotification(fcm).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() == null) {
-                        Log.d(TAG, "onResponse: Order Data is null");
-                        return;
-                    }
+                //if (response.isSuccessful()) {
+                    //if (response.body() == null) {
+                    //    Log.d(TAG, "onResponse: Order Data is null");
+                    //    return;
+                    //}
                     Log.d(TAG, "onResponse: Successful");
-                    String welcomeText = "Thank you for submitting a bid. Drivers will tell you the rate. Wait and confirm.";
+                    String welcomeText = "Thank you for publishing a bid. Drivers will tell you the rate. Wait and confirm.";
                     DialogWelcome dialogWelcome = new DialogWelcome(activity, welcomeText, new Intent(activity,MainActivity.class));
                     dialogWelcome.setCancelable(false);
                     dialogWelcome.show();
                     progressbar.setVisibility(View.GONE);
-                }else {
+               // }else {
                     //Toast.makeText(OrderActivity.this, "ResponseError: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "onResponse: ResponseError: " + response.errorBody().toString());
-                }
+               //     Log.d(TAG, "onResponse: ResponseError: " + response.message());
+               // }
             }
 
             @Override
@@ -170,36 +160,29 @@ Activity activity;
         });
     }
 
-    public void getFilteredDriverFcmTokens(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("driver").whereEqualTo("fcmArea", trip.getLoadingUpazilaThana())
-                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                            @Override
-                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                                if (error != null) {
-                                    Log.w(TAG, "Listen failed: " + error.getMessage());
-                                    progressbar.setVisibility(View.GONE);
-                                    return;
-                                }
-                                if (value == null || value.getDocuments().size() < 1) {
-                                    progressbar.setVisibility(View.GONE);
-                                    Toast.makeText(activity, "Registration First...", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)) {
-                                        Driver driver = doc.toObject(Driver.class);
-                                        if (driver.getName() != null) {
-                                            progressbar.setVisibility(View.GONE);
-                                            tokens.add(driver.getFcmToken());
-                                            Toast.makeText(activity, driver.getFcmToken(), Toast.LENGTH_SHORT).show();
-
-                                        } else {
-                                            Toast.makeText(activity, "No Driver Found.1", Toast.LENGTH_SHORT).show();
-                                            progressbar.setVisibility(View.GONE);
-                                        }
-                                    }
-                                }
-                            }
-
-                        });
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //getFilteredDriverFcmTokens();
     }
+    List<Driver> drivers = new ArrayList<>();
+
+    public void setDrivers(List<Driver> drivers){
+        this.drivers = drivers;
+    }
+    void getFilteredTokens(Trip trip){
+        this.tokens.clear();
+
+        for (int i = 0; i < drivers.size(); i++) {
+            Log.d(TAG, "getFilteredTokens: driverSize: "+drivers.size()+", fcmToken: "+drivers.get(i).getFcmToken());
+            if (drivers.get(i).getFcmArea().equalsIgnoreCase(trip.getLoadingUpazilaThana()))
+                tokens.add(drivers.get(i).getFcmToken());
+        }
+
+
+    }
+    public void setTrip(Trip trip){
+        this.trip = null;
+        this.trip = trip;
+    }
+}

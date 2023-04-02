@@ -135,6 +135,7 @@ public class SignInActivity extends AppCompatActivity {
                     progressbar.setVisibility(View.GONE);
                     Toast.makeText(SignInActivity.this, "Registration First...", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                finish();
                 }
                 for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)) {
                     Customer customer = doc.toObject(Customer.class);

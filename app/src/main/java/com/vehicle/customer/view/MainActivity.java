@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout swiperefresh;
     String customerPhoneNumber;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         customerPhoneNumber = sharedPreferences.getString("CUSTOMER_PHONE_NUMBER",null);
 
         fabCreateTrip = findViewById(R.id.fabCreateTrip);
+        fabCreateTrip.setVisibility(View.GONE);
         content_layout = (FrameLayout) findViewById(R.id.content_layout);
         btm_nav = (BottomNavigationView) findViewById(R.id.btm_nav);
         fragmentManager = getSupportFragmentManager();
@@ -87,13 +87,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // startActivity(new Intent(MainActivity.this, SignUpActivity.class));
-        fabCreateTrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getTrips();
-            }
-        });
 
+getTrips();
     }
 
     @Override
@@ -110,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    boolean isTripRunning(){
+   /* boolean isTripRunning(){
         List<Trip> trips = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("trip").addSnapshotListener(new com.google.firebase.firestore.EventListener<QuerySnapshot>() {
@@ -143,11 +138,10 @@ public class MainActivity extends AppCompatActivity {
         });
         Toast.makeText(this, trips.size(), Toast.LENGTH_SHORT).show();
         return trips.size() > 0;
-    }
+    }*/
 
     void getTrips(){
         List<Trip> trips = new ArrayList<>();
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("trip").addSnapshotListener(new com.google.firebase.firestore.EventListener<QuerySnapshot>() {
             @Override
@@ -158,32 +152,40 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 }
+                fabCreateTrip.setVisibility(View.VISIBLE);
+                fabCreateTrip.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        assert value != null;
+                        if (value.getDocuments().size()<1) {
+                            //Toast.makeText(getApplicationContext(), "No Trip Found!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), CreateTripActivity.class));
+                        }else{
+                            for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value))
+                            // if (doc.get("date") != null)
+                            {
+                                Trip trip = doc.toObject(Trip.class);
+                                //trip.setId(doc.getId());
+                                //trips.add(trip);
+                                Toast.makeText(MainActivity.this, customerPhoneNumber, Toast.LENGTH_SHORT).show();
+                                if (trip.getCustomer().getPhoneNumber().equalsIgnoreCase(customerPhoneNumber)  &&
+                                        (!trip.getStatus().equalsIgnoreCase("Complete") ||
+                                                !trip.getStatus().equalsIgnoreCase("Cancel"))){
+                                    trip.setId(doc.getId());
+                                    trips.add(trip);
+                                }
+                            }
+                            if (trips.size()>0){
+                                Toast.makeText(MainActivity.this, "A Trip is Running! Create another after complete it.", Toast.LENGTH_LONG).show();
+                            }else{
 
-                assert value != null;
-                if (value.getDocuments().size()<1) {
-                    //Toast.makeText(getApplicationContext(), "No Trip Found!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), CreateTripActivity.class));
-                }else{
-                    for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value))
-                    // if (doc.get("date") != null)
-                    {
-                        Trip trip = doc.toObject(Trip.class);
-                        //trip.setId(doc.getId());
-                        //trips.add(trip);
-                        Toast.makeText(MainActivity.this, customerPhoneNumber, Toast.LENGTH_SHORT).show();
-                        if (trip.getCustomer().getPhoneNumber().equalsIgnoreCase(customerPhoneNumber)  &&
-                                (!trip.getStatus().equalsIgnoreCase("Complete") ||
-                                        !trip.getStatus().equalsIgnoreCase("Cancel"))){
-                            trip.setId(doc.getId());
-                            trips.add(trip);
-                        }
+                                startActivity(new Intent(getApplicationContext(), CreateTripActivity.class));
+                            }
                     }
-                    if (trips.size()>0){
-                        Toast.makeText(MainActivity.this, "A Trip is Running! Create another after complete it.", Toast.LENGTH_LONG).show();
-                    }else{
-                        startActivity(new Intent(getApplicationContext(), CreateTripActivity.class));
                     }
-                }
+                });
+
+
             }
         });
     }

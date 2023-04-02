@@ -44,8 +44,9 @@
                 android:textSize="16sp"
                 android:layout_marginTop="2dp"
                 />
-            <TextView
+        <!--    <TextView
                 android:id="@+id/tv_vehicle_size"
+                android:visibility="visible"
                 android:layout_below="@id/tv_driver_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +56,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="7dp"
                 android:textSize="14sp"
-                />
+                />-->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_confirm_bid"
                 android:layout_width="wrap_content"
@@ -76,7 +77,6 @@
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_below="@id/btn_confirm_bid"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="৳..."

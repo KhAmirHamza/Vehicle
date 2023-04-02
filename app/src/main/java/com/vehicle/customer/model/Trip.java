@@ -44,6 +44,7 @@ public class Trip {
     int lengthAlert;
     int weightAlert;
 
+
     public Trip() {
 
     }
@@ -97,6 +98,7 @@ public class Trip {
         this.returnTime = returnTime;
     }
 
+
     public String getLoadingArea() {
         return loadingArea;
     }
@@ -112,6 +114,7 @@ public class Trip {
     public void setLoadingAlternative_person_number(String loadingAlternative_person_number) {
         this.loadingAlternative_person_number = loadingAlternative_person_number;
     }
+
 
     public String getUnloadingArea() {
         return unloadingArea;

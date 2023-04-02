@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     final Fragment allTripFragment = new AllTripFragment();
     final Fragment runningTripFragmentFragment = new RunningTripFragment();
     final Fragment profileFragment = new ProfileFragment();
-    Fragment activeFragment = allTripFragment;
+    Fragment activeFragment = profileFragment;
 
     FragmentManager fragmentManager;
     BottomNavigationView btm_nav;
@@ -37,15 +37,17 @@ public class MainActivity extends AppCompatActivity {
         btm_nav = (BottomNavigationView) findViewById(R.id.btm_nav);
         fragmentManager = getSupportFragmentManager();
 
-
         btm_nav.setOnItemSelectedListener(getBottomNavigationSelectedListener());
-        fragmentManager.beginTransaction().add(R.id.content_layout, profileFragment, "3").hide(profileFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.content_layout, runningTripFragmentFragment, "2").hide(runningTripFragmentFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.content_layout, allTripFragment, "1").commit();
+        btm_nav.getMenu().getItem(2).setChecked(true);
 
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
-        swiperefresh = swipeRefreshLayout;
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        fragmentManager.beginTransaction().add(R.id.content_layout, allTripFragment, "1").hide(allTripFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.content_layout, runningTripFragmentFragment, "2").hide(runningTripFragmentFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.content_layout, profileFragment, "3").commit();
+
+        swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
+        //swiperefresh = swipeRefreshLayout;
+        swiperefresh.setNestedScrollingEnabled(false);
+        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             public void onRefresh() {
                 FragmentTransaction ft = fragmentManager.beginTransaction();
                 ft.detach(activeFragment);
@@ -81,15 +83,17 @@ public class MainActivity extends AppCompatActivity {
                 fragment = profileFragment;
                 break;
             default:
-                fragment = allTripFragment;
+                fragment = profileFragment;
                 break;
         }
 
         fragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit();
         //Toast.makeText(this, "Active: " + this.activeFragment.getTag() + "\nSelected: " + fragment.getTag(), Toast.LENGTH_SHORT).show();
         activeFragment = fragment;
-        menuItem.setChecked(true);
+       //menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
+        menuItem.setChecked(true);
+
     }
 
 }

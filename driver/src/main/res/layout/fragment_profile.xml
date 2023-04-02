@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ProfileFragment"
-    android:nestedScrollingEnabled="false">
-    <ScrollView
+    tools:context=".view.ProfileFragment">
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:nestedScrollingEnabled="false">
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
         <RelativeLayout
             android:id="@+id/layoutProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -130,12 +131,13 @@
                         android:layout_marginBottom="5dp"
                         android:drawablePadding="5dp"
                         android:text="Payment:"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/txtv_due"
-                        android:layout_below="@id/txtv_2"
+                        android:layout_toRightOf="@id/txtv_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -147,6 +149,21 @@
                         android:textColor="#FF0000"
                         android:textSize="18sp" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPayNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/txtv_due"
+                        android:layout_alignBaseline="@id/txtv_due"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Pay Now"
+                        android:textAllCaps="false"
+                        android:layout_marginLeft="20dp"
+                        />
+
+
                     <TextView
                         android:id="@+id/txtv_3"
                         android:layout_width="wrap_content"
@@ -157,7 +174,8 @@
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:drawablePadding="5dp"
-                        android:text="Notification Area:"
+                        android:textColor="@color/black"
+                        android:text="Trip start from:"
                         android:textSize="14sp"
                         android:visibility="visible" />
                     <!--  <TextView
@@ -189,7 +207,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtv_3"
                         android:hint="Write City/District and select from popup"
-                        android:minWidth="150dp"
+                        android:minWidth="12dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_toLeftOf="@id/btn_notification_area"
                         android:textColorHint="@color/black"
                         app:endIconMode="clear_text"
@@ -227,22 +247,6 @@
 
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/txtv_1"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_below="@id/cardview_2"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="10dp"
-                android:text="Your Vehicle List"
-                android:textSize="13dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:textAllCaps="false"
-                android:textStyle="bold"/>
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_vehicle"
                 android:layout_width="wrap_content"
@@ -252,20 +256,38 @@
                 android:layout_marginEnd="5dp"
                 android:textAllCaps="false"
                 android:textSize="13dp"
-                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
                 android:layout_below="@id/cardview_2"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:layout_marginTop="10dp"
 
                 />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txtv_1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/btn_add_vehicle"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:textAlignment="textStart"
+                android:text="Your Vehicle List"
+                android:textSize="13dp"
+                android:insetTop="0dp"
+
+                android:insetBottom="0dp"
+                android:textAllCaps="false"
+                android:textStyle="bold"/>
+
+
             <!--android:drawableLeft="@drawable/ic_outline_directions_car_24"
     -->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recy_vehicles"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:layout_below="@id/txtv_1"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -274,9 +296,9 @@
 
         </RelativeLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <!-- TODO: Update blank fragment layout -->
 
 
-</FrameLayout>
+</LinearLayout>

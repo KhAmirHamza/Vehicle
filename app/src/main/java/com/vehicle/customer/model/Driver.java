@@ -17,23 +17,15 @@ public class Driver {
     int Due;
     String fcmToken;
     List<Vehicle> vehicles;
+    int due;
+    String referCode;
+
+    String fcmArea;
 
     public Driver() {
     }
 
-    public Driver(String id, String name, String phoneNumber, String email, String imageUrl, String address, int totalTrips, int completeTrips, String fcmToken) {
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.imageUrl = imageUrl;
-        this.address = address;
-        this.totalTrips = totalTrips;
-        this.completeTrips = completeTrips;
-        this.fcmToken = fcmToken;
-    }
-
-    public Driver(@Nullable String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, List<Vehicle> vehicles, String fcmToken) {
+    public Driver(String id, String name, String phoneNumber, String password, String email, String imageUrl, String address, int totalTrips, int completeTrips, int due, String fcmToken, List<Vehicle> vehicles, int due1, String referCode, String fcmArea) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -44,8 +36,11 @@ public class Driver {
         this.totalTrips = totalTrips;
         this.completeTrips = completeTrips;
         Due = due;
-        this.vehicles = vehicles;
         this.fcmToken = fcmToken;
+        this.vehicles = vehicles;
+        this.due = due1;
+        this.referCode = referCode;
+        this.fcmArea = fcmArea;
     }
 
     public String getId() {
@@ -128,12 +123,20 @@ public class Driver {
         Due = due;
     }
 
-    public List<Vehicle> getCars() {
-        return vehicles;
+    public String getReferCode() {
+        return referCode;
     }
 
-    public void setCars(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+    public void setReferCode(String referCode) {
+        this.referCode = referCode;
+    }
+
+    public String getFcmArea() {
+        return fcmArea;
+    }
+
+    public void setFcmArea(String fcmArea) {
+        this.fcmArea = fcmArea;
     }
 
     public String getFcmToken() {

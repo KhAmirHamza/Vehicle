@@ -1,5 +1,7 @@
 package com.vehicle.driver.view;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -60,6 +62,7 @@ public class ProfileFragment extends Fragment {
     ArrayAdapter<String> notificationAreaAdapter;
     String driverID=" ";
     AutoCompleteCustomAdapter addressAdapter;
+    MaterialButton btnPayNow;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,10 +77,32 @@ public class ProfileFragment extends Fragment {
         btn_notification_area = view.findViewById(R.id.btn_notification_area);
         btn_add_vehicle = view.findViewById(R.id.btn_add_vehicle);
         recy_vehicles = view.findViewById(R.id.recy_vehicles);
+        recy_vehicles.setNestedScrollingEnabled(false);
         btnLogOut = view.findViewById(R.id.btnLogOut);
+        btnPayNow = view.findViewById(R.id.btnPayNow);
         text_input_layout_notifi_thana = view.findViewById(R.id.autocomplete_notificationArea);
         getAddresses();
 
+        btnPayNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Pay Using Bkash Number");
+                builder.setMessage("Send Money to this Bkash Personal Number: 01763414164");
+
+                builder.setPositiveButton("Copy Number", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("Bkash Personal:", "01763414164");
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(getContext(), "Copied: 01763414164", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setCancelable(true);
+                builder.show();
+            }
+        });
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

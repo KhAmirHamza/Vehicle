@@ -462,7 +462,8 @@ public class HomeFragment extends Fragment {
                         stopAddress, stopPointPersonName,0, stopPersonPhoneNumber, returnAddress,returnDate, returnTime);
 
 
-                DialogTripPreview dialogTripPreview = new DialogTripPreview(getActivity(), trip);
+                DialogTripPreview dialogTripPreview = new DialogTripPreview(getActivity());
+                dialogTripPreview.setTrip(trip);
                 dialogTripPreview.setCancelable(true);
                 dialogTripPreview.show();
             }

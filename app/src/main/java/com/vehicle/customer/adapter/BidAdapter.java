@@ -1,6 +1,7 @@
 package com.vehicle.customer.adapter;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,7 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
         Picasso.get().load(bids.get(position).getDriver().getImageUrl()).into(holder.imgv_driver);
         holder.tv_driver_name.setText(bids.get(position).getDriver().getName());
         holder.tv_price.setText(bids.get(position).getBidPrice()+" Tk");
-        holder.tv_vehicle_size.setText(getVehicleDetails(bids.get(position).getVehicle()));
-
+        Log.d(TAG, "onBindViewHolder: "+getVehicleDetails(bids.get(position).getVehicle()));
 
         Vehicle vehicle = bids.get(position).getVehicle();
         if (vehicle!=null){
@@ -109,7 +109,7 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
 
         MaterialButton btn_confirm_bid;
         ImageView imgv_driver;
-        TextView tv_driver_name, tv_price, tv_vehicle_size;
+        TextView tv_driver_name, tv_price;
         ImageView imgv_car;
         TextView txtv_vehicle_model,txtv_vehicle_number,txtv_vehicle_year,txtv_vehicle_description;
 
@@ -119,7 +119,6 @@ public class BidAdapter extends RecyclerView.Adapter<BidAdapter.MyViewHolder> {
             tv_driver_name = itemView.findViewById(R.id.tv_driver_name);
             tv_price = itemView.findViewById(R.id.tv_price);
             imgv_driver = itemView.findViewById(R.id.imgv_driver);
-            tv_vehicle_size = itemView.findViewById(R.id.tv_vehicle_size);
 
             imgv_car =  itemView.findViewById(R.id.imgv_car);
             txtv_vehicle_model =  itemView.findViewById(R.id.txtv_vehicle_model);

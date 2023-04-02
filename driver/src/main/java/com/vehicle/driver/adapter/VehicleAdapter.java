@@ -60,7 +60,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
 
                 holder.txtv_vehicle_model.setText(vehicle.getModel());
                 holder.txtv_vehicle_number.setText(vehicle.getMetro()+"-"+vehicle.getSerial()+"-"+vehicle.getNumber());
-                holder.txtv_vehicle_year.setText(", Year: "+vehicle.getYear());
+                holder.txtv_vehicle_year.setText("Year: "+vehicle.getYear());
                 holder.txtv_vehicle_description.setText(vehicle.getSize()+" ("+vehicle.getVariety()+")");
                 if (vehicle.getVehicleImageUrl() != null) Picasso.get().load(vehicle.getVehicleImageUrl()).into(holder.imgv_car);
 

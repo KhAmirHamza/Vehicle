@@ -84,11 +84,35 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_trip_remainingTime"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13:50"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingLeft="7dp"
+                        android:paddingRight="7dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit ="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        />
+
+                    <TextView
                         android:id="@+id/tv_trip_status"
                         android:layout_alignParentEnd="true"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="Bidding"
+                        android:text="Bid Continue - Bid Continue - Bid Continue -"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:textSize="14sp"
@@ -98,7 +122,7 @@
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
                         android:background="@drawable/bg_txtv_ontheway"
-
+                        android:layout_below="@id/tv_trip_remainingTime"
                         android:singleLine="true"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit ="marquee_forever"
@@ -130,7 +154,7 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"
-                        android:paddingLeft="7dp"
+                        android:paddingLeft="0dp"
                         android:paddingRight="7dp"
                         android:paddingTop="0dp"
                         android:paddingBottom="0dp"
@@ -141,7 +165,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_3"
+                android:id="@+id/cv_showBidding"
                 android:layout_below="@id/cv_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,7 +231,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_loading_unloading"
                 android:visibility="gone"
-                android:layout_below="@id/cv_3"
+                android:layout_below="@id/cv_showBidding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
@@ -277,24 +301,7 @@
                         android:textSize="14sp"
                         android:paddingBottom="5dp"
                         />
-                    <TextView
-                        android:id="@+id/tv_description_header"
-                        android:layout_below="@+id/tv_unloading_full_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Product Description"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:paddingTop="7dp"
-                        />
-                    <TextView
-                        android:id="@+id/tv_description"
-                        android:layout_below="@+id/tv_description_header"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="▷ Fragile Product, You have to carry it very safely"
-                        android:textSize="14sp"
-                        />
+
 
                     <ProgressBar
                         android:id="@+id/progressbar"
@@ -325,8 +332,28 @@
                     android:paddingEnd="10dp"
                     android:layout_marginBottom="10dp"
                     >
+
                     <TextView
+                        android:id="@+id/tv_description_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Product Information"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:paddingTop="7dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_below="@+id/tv_description_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="▷ Fragile Product, You have to carry it very safely"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_up_down_trip"
+                        android:layout_below="@id/tv_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="✔ Up-Down Trip"
@@ -370,6 +397,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="✔ Labor Needed"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_lengthAlert"
+                        android:layout_below="@id/tv_labor_needed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Material Length not more than vehicle length booked"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_weightAlert"
+                        android:layout_below="@id/tv_lengthAlert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="✔ Material Weight not more than vehicle weight booked"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"

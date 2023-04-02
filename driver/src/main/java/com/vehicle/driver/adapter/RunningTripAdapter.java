@@ -96,16 +96,24 @@ public class RunningTripAdapter extends RecyclerView.Adapter<RunningTripAdapter.
         holder.tv_trip_status.setSelected(true);
 
 
-        holder.tv_loading_upazila_district.setText("Area-->"+trip.getLoadingUpazilaThana());
-        holder.tv_loading_full_address.setText("Full Address-->"+trip.getLoadingFullAddress() +"\nLandMark-->"+trip.getLoadingLandmark());
-        holder.tv_unloading_upazila_district.setText("Area-->"+trip.getUnloadingUpazilaThana());
-        holder.tv_unloading_full_address.setText("Full Address-->"+trip.getUnloadingFullAddress() +"\nLandMark-->"+trip.getUnloadingLandmark());
+        holder.tv_loading_upazila_district.setText("Area: "+trip.getLoadingUpazilaThana());
+        holder.tv_loading_full_address.setText("Full Address: "+trip.getLoadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other: "+trip.getLoadingLandmark());
+        holder.tv_unloading_upazila_district.setText("Area: "+trip.getUnloadingUpazilaThana());
+        holder.tv_unloading_full_address.setText("Full Address: "+trip.getUnloadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other: "+trip.getUnloadingLandmark());
         holder.tv_description.setText(trip.getDescription().isEmpty()?"":trip.getDescription());
         holder.tv_up_down_trip.setVisibility(trip.getUpDownTrip()==1? View.VISIBLE:View.GONE);
         holder.tv_contain_animal.setVisibility(trip.getContainAnimal()==1? View.VISIBLE:View.GONE);
         holder.tv_fragile_product.setVisibility(trip.getFragile()==1? View.VISIBLE:View.GONE);
         holder.tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         holder.tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
+        holder.tv_lengthAlert.setVisibility(trip.getLengthAlert()==1? View.VISIBLE:View.GONE);
+        holder.tv_weightAlert.setVisibility(trip.getWeightAlert()==1? View.VISIBLE:View.GONE);
+        holder.tv_loading_PersonName.setText(trip.getCustomer().getName());
+        holder.tv_loading_PersonMobile.setText(trip.getCustomer().getPhoneNumber());
+        holder.tv_loading_AlterPersonMobile.setText(trip.getLoadingAlternative_person_number());
+        holder.tv_unloading_PersonName.setText(trip.getUnloading_personName());
+        holder.tv_unloading_PersonMobile.setText(trip.getUnloading_mobileNumber());
+        holder.tv_trip_price.setText(trip.getRentalPrice()+" Tk");
 
     }
 
@@ -123,11 +131,20 @@ public class RunningTripAdapter extends RecyclerView.Adapter<RunningTripAdapter.
                 tv_loading_full_address,tv_unloading_upazila_district,
                 tv_unloading_full_address,tv_description,tv_up_down_trip,
                 tv_contain_animal,tv_fragile_product,tv_perishable_product,
-                tv_labor_needed, txtv_trip_id, tv_trip_status;
+                tv_labor_needed, txtv_trip_id, tv_trip_status, tv_loading_PersonName,
+                tv_loading_PersonMobile, tv_loading_AlterPersonMobile, tv_unloading_PersonName,
+                tv_unloading_PersonMobile, tv_lengthAlert, tv_weightAlert, tv_trip_price;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
+
+            tv_loading_PersonName =  findViewById(R.id.tv_loading_PersonName);
+            tv_loading_PersonMobile =  findViewById(R.id.tv_loading_PersonMobile);
+            tv_loading_AlterPersonMobile =  findViewById(R.id.tv_loading_AlterPersonMobile);
+            tv_unloading_PersonName =  findViewById(R.id.tv_unloading_PersonName);
+            tv_unloading_PersonMobile =  findViewById(R.id.tv_unloading_PersonMobile);
+            tv_trip_price =  findViewById(R.id.tv_trip_price);
 
             tv_car_details =  findViewById(R.id.tv_car_details);
             tv_loading_date_time =  findViewById(R.id.tv_loading_date_time);
@@ -146,6 +163,8 @@ public class RunningTripAdapter extends RecyclerView.Adapter<RunningTripAdapter.
             lay_trip_details =  view.findViewById(R.id.lay_trip_details);
             btn_complete_trip =  view.findViewById(R.id.btn_complete_trip);
             cv_trip_header =  view.findViewById(R.id.cv_trip_header);
+            tv_lengthAlert =  view.findViewById(R.id.tv_lengthAlert);
+            tv_weightAlert =  view.findViewById(R.id.tv_weightAlert);
             cv_trip_header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -186,7 +205,7 @@ public class RunningTripAdapter extends RecyclerView.Adapter<RunningTripAdapter.
                                         int serviceCharge = (int) ((bidPrice/100)*3);
                                         //serviceCharge+=trip.getDriver().getDue();
                                         Toast.makeText(context, "DUE: "+trip.getDriver().getDue()+"\nService: "+serviceCharge, Toast.LENGTH_SHORT).show();
-                                        driverDueMap.put("due", serviceCharge);
+                                        driverDueMap.put("due", serviceCharge+trip.getDriver().getDue());
                                         db.collection("driver").document(driverID).update(driverDueMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

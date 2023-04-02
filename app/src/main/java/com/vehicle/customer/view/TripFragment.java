@@ -33,6 +33,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,6 +47,7 @@ import com.vehicle.customer.adapter.BidAdapter;
 import com.vehicle.customer.model.Driver;
 import com.vehicle.customer.model.Trip;
 import com.vehicle.customer.model.Vehicle;
+import com.vehicle.customer.utils.SystemUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +63,8 @@ public class TripFragment extends Fragment {
             tv_loading_full_address,tv_unloading_upazila_district,
             tv_unloading_full_address,tv_description,tv_up_down_trip,
             tv_contain_animal,tv_fragile_product,tv_perishable_product,
-            tv_labor_needed, txtv_trip_id, tv_trip_status, tv_show_bidding,txtv_driver_name,
-            txtv_driver_email, txtv_driver_phone_number;
+            tv_labor_needed,tv_lengthAlert, tv_weightAlert, txtv_trip_id, tv_trip_status, tv_show_bidding,txtv_driver_name,
+            txtv_driver_email, txtv_driver_phone_number, tv_trip_remainingTime;
     RecyclerView recy_biders;
     ImageView imgv_vehicle, imgv_driver;
     View view;
@@ -74,6 +76,7 @@ public class TripFragment extends Fragment {
     TextView txtv_vehicle_model,txtv_vehicle_number,txtv_vehicle_year,txtv_vehicle_description;
     MaterialButton btnDeleteTrip;
     LinearLayout laySelectedDriverInfo;
+    MaterialCardView cv_showBidding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,9 +101,14 @@ public class TripFragment extends Fragment {
         tv_fragile_product =  findViewById(R.id.tv_fragile_product);
         tv_perishable_product =  findViewById(R.id.tv_perishable_product);
         tv_labor_needed =  findViewById(R.id.tv_labor_needed);
+        tv_lengthAlert =  findViewById(R.id.tv_lengthAlert);
+        tv_weightAlert =  findViewById(R.id.tv_weightAlert);
         txtv_trip_id =  findViewById(R.id.txtv_trip_id);
+        tv_trip_remainingTime =  findViewById(R.id.tv_trip_remainingTime);
+        tv_trip_remainingTime.setSelected(true);
         tv_trip_status =  findViewById(R.id.tv_trip_status);
         tv_trip_status.setSelected(true);
+        cv_showBidding =  view.findViewById(R.id.cv_showBidding);
         tv_show_bidding =  findViewById(R.id.tv_show_bidding);
         tv_show_bidding.setSelected(true);
         txtv_driver_name =  findViewById(R.id.txtv_driver_name);
@@ -154,10 +162,11 @@ public class TripFragment extends Fragment {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(getContext(), "Trip successfully  deleted", Toast.LENGTH_SHORT).show();
-                                            requireActivity().finish();
+                                            SystemUI.reloadActivity(requireActivity());
+                                            /*requireActivity().finish();
                                             requireActivity().overridePendingTransition(0, 0);
                                             startActivity(requireActivity().getIntent());
-                                            requireActivity().overridePendingTransition(0, 0);
+                                            requireActivity().overridePendingTransition(0, 0);*/
                                         }
                                     });
                         }
@@ -203,17 +212,24 @@ public class TripFragment extends Fragment {
             String status = trip.getStatus().isEmpty()?"" : "Time Expired";
 
             if (isBidPlaced(trip)){
-                tv_trip_status.setText("Bid Placed");
+                tv_trip_status.setText("Bid Confirmed");
+                tv_trip_remainingTime.setVisibility(View.GONE);
             }else{
                 tv_trip_status.setText(status);
+                tv_trip_remainingTime.setVisibility(View.GONE);
             }
 
         }else{
             if (isBidPlaced(trip)){
-                tv_trip_status.setText("Bid Placed");
+                tv_trip_status.setText("Bid Confirmed");
+                tv_trip_remainingTime.setVisibility(View.GONE);
+
                 //holder.tv_trip_status.setText(""+bidPlaced);
             }else{
-                setCountDownTimer(tv_trip_status, rMills-cMills);
+                tv_trip_status.setText("Bid Continue - Bid Continue - Bid Continue -");
+                setCountDownTimer(tv_trip_remainingTime, rMills-cMills);
+                tv_trip_remainingTime.setVisibility(View.VISIBLE);
+
             }
         }
         tv_trip_status.setSelected(true);
@@ -226,12 +242,14 @@ public class TripFragment extends Fragment {
         tv_loading_full_address.setText("Full Address-->"+trip.getLoadingFullAddress() +"\nLandMark-->"+trip.getLoadingLandmark());
         tv_unloading_upazila_district.setText("Area-->"+trip.getUnloadingUpazilaThana());
         tv_unloading_full_address.setText("Full Address-->"+trip.getUnloadingFullAddress() +"\nLandMark-->"+trip.getUnloadingLandmark());
-        tv_description.setText(trip.getDescription().isEmpty()?"":trip.getDescription());
+        tv_description.setText(trip.getDescription().isEmpty ()?"":trip.getDescription());
         tv_up_down_trip.setVisibility(trip.getUpDownTrip()==1? View.VISIBLE:View.GONE);
         tv_contain_animal.setVisibility(trip.getContainAnimal()==1? View.VISIBLE:View.GONE);
         tv_fragile_product.setVisibility(trip.getFragile()==1? View.VISIBLE:View.GONE);
         tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
+        tv_lengthAlert.setVisibility(trip.getLengthAlert()==1? View.VISIBLE:View.GONE);
+        tv_weightAlert.setVisibility(trip.getWeightAlert()==1? View.VISIBLE:View.GONE);
 
         Driver driver = trip.getDriver();
         if (driver!=null){
@@ -249,7 +267,7 @@ public class TripFragment extends Fragment {
         }
 
 
-        tv_show_bidding.setOnClickListener(new View.OnClickListener() {
+        cv_showBidding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 recy_biders.setVisibility(recy_biders.getVisibility()==View.VISIBLE? View.GONE: View.VISIBLE);
@@ -300,7 +318,7 @@ public class TripFragment extends Fragment {
         new CountDownTimer(remainingMills, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                textView.setText("Bidding: " + millisUntilFinished / 1000/60 +":"+ (millisUntilFinished /1000)%60);
+                textView.setText(""+ millisUntilFinished / 1000/60 +":"+ (millisUntilFinished /1000)%60);
                 // logic to set the EditText could go here
             }
             public void onFinish() {
@@ -332,7 +350,7 @@ public class TripFragment extends Fragment {
 
                 assert value != null;
                 if (value.getDocuments().size()<1) {
-                    Toast.makeText(getActivity(), "No Trip Found! Create Trip...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No Trip Found! Create Trip...", Toast.LENGTH_SHORT).show();
                     rlTripFragment.setVisibility(View.GONE);
                     tvNoTrip.setVisibility(View.VISIBLE);
                     return;

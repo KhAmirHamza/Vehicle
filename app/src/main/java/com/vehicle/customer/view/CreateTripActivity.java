@@ -1,5 +1,6 @@
 package com.vehicle.customer.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -7,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -18,6 +20,11 @@ import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.vehicle.customer.R;
 import com.vehicle.customer.model.Address;
 
@@ -25,27 +32,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
-import android.widget.NumberPicker;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.textfield.TextInputLayout;
-import com.vehicle.customer.R;
 import com.vehicle.customer.adapter.AutoCompleteCustomAdapter;
-import com.vehicle.customer.model.Address;
 import com.vehicle.customer.model.Customer;
+import com.vehicle.customer.model.Driver;
 import com.vehicle.customer.model.Trip;
 import com.vehicle.customer.model.Vehicle;
 
@@ -55,12 +49,11 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CreateTripActivity extends AppCompatActivity {
+    private static final String TAG = "CreateTripActivity";
     RadioGroup radio_group;
     final Calendar myCalendar= Calendar.getInstance();
     MaterialButton btn_review;
@@ -91,6 +84,7 @@ public class CreateTripActivity extends AppCompatActivity {
     TextView tv_vehicle_size, tv_vehicle_seat, tv_vehicle_variety_header, tv_loading_header,tv_unloading_header;
 
     String seat, size;
+    DialogTripPreview dialogTripPreview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +138,9 @@ public class CreateTripActivity extends AppCompatActivity {
         numberPickerReturnSchedule = findViewById(R.id.numberPickerReturnSchedule);
         spinner_vehicle = findViewById(R.id.spinner_vehicle);
 
+        dialogTripPreview = new DialogTripPreview(getActivity());
+        dialogTripPreview.setCancelable(true);
+        getDriversThenReviewTrip();
 
         ArrayAdapter<String> vehicleTypeAdapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_list_item_1,
@@ -479,13 +476,52 @@ public class CreateTripActivity extends AppCompatActivity {
                         stopAddress, stopPointPersonName,0, stopPersonPhoneNumber, returnAddress,returnDate, returnTime);
 
 
-                DialogTripPreview dialogTripPreview = new DialogTripPreview(getActivity(), trip);
-                dialogTripPreview.setCancelable(false);
+
+                dialogTripPreview.setTrip(trip);
                 dialogTripPreview.show();
             }
         });
 
     }
+
+    void getDriversThenReviewTrip(){
+        List<Driver> drivers = new ArrayList<>();
+         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("driver")
+                //.whereEqualTo("fcmArea", trip.getLoadingUpazilaThana())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.w(TAG, "Listen failed: " + error.getMessage());
+
+                            return;
+                        }
+                        if (value == null || value.getDocuments().size() < 1) {
+                            //progressbar.setVisibility(View.GONE);
+                            Toast.makeText(getContext(), "No Tokens!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            for (QueryDocumentSnapshot doc : Objects.<QuerySnapshot>requireNonNull(value)) {
+                                Driver driver = doc.toObject(Driver.class);
+                                if (driver.getName() != null) {
+                                    //progressbar.setVisibility(View.GONE);
+                                    drivers.add(driver);
+                                    //Toast.makeText(getContext(), driver.getFcmToken(), Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    Toast.makeText(getContext(), "No Driver Found.1", Toast.LENGTH_SHORT).show();
+                                    //progressbar.setVisibility(View.GONE);
+                                }
+                            }
+                            dialogTripPreview.setDrivers(drivers);
+
+                        }
+                    }
+
+                });
+    }
+
+
 
     private void setVehicleUiBehaviour(int position){
         ArrayAdapter<String> vehicleSeatAdapter = null, vehicleSizeAdapter = null;

@@ -78,7 +78,7 @@
                     android:id="@+id/tv_loading_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading Location"
+                    android:text="Detail Info on Load Location"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="16sp"
@@ -95,8 +95,18 @@
                     android:paddingBottom="5dp"
                     />
                 <TextView
-                    android:id="@+id/tv_loading_full_address"
+                    android:id="@+id/tv_loading_nearAt"
                     android:layout_below="@+id/tv_loading_upazila_district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--> Near At: Mirpur-1"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:paddingBottom="5dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_loading_full_address"
+                    android:layout_below="@+id/tv_loading_nearAt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="--> Full Address: Mirpur-1, Dhaka-1207"
@@ -109,7 +119,7 @@
                     android:layout_below="@+id/tv_loading_full_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Unloading Location"
+                    android:text="Detail Info on Unload Location"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="16sp"
@@ -126,8 +136,19 @@
                     android:paddingBottom="5dp"
                     />
                 <TextView
-                    android:id="@+id/tv_unloading_full_address"
+                    android:id="@+id/tv_unloading_nearAt"
                     android:layout_below="@+id/tv_unloading_upazila_district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--> Near At: Dhanmondi-1, Dhaka-1205"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:paddingBottom="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_unloading_full_address"
+                    android:layout_below="@+id/tv_unloading_nearAt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="--> Full Address: Dhanmondi-1, Dhaka-1205"

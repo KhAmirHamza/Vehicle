@@ -30,11 +30,29 @@ public class Trip {
     String status;
     List<Bid> bids;
 
+
+    int advancePay;
+
+    String loadingArea;
+    String loadingAlternative_person_number;
+    String unloadingArea;
+    String unloading_personName;
+    String unloading_mobileNumber;
+    String productCategory;
+    String stopAddress;
+    String stopPointPersonName;
+    String stopPointPersonPhoneNumber;
+    String returnAddress;
+    String returnDate;
+    String returnTime;
+    int lengthAlert;
+    int weightAlert;
+
     public Trip() {
 
     }
 
-    public Trip(@Nullable String id, Customer customer, @Nullable  Driver driver, @Nullable  Vehicle vehicle,
+/*    public Trip(@Nullable String id, Customer customer, @Nullable  Driver driver, @Nullable  Vehicle vehicle,
                 long createdAtMills, String loadingUpazilaThana, String loadingFullAddress, String loadingLandmark, String loadingDate,
                 String loadingTime, String unloadingUpazilaThana, String unloadingFullAddress, String unloadingLandmark, String description,
                 int upDownTrip, int containAnimal, int fragile, int perishable, int laborNeeded,
@@ -62,6 +80,176 @@ public class Trip {
         this.finalPayMethod = finalPayMethod;
         this.status = status;
         this.bids = bids;
+    }*/
+
+    public Trip(@Nullable String id, Customer customer, @Nullable  Driver driver, @Nullable  Vehicle vehicle,
+                long createdAtMills, String loadingUpazilaThana, String loadingFullAddress, String loadingArea,
+                String loadingLandmark, String loadingDate, String loadingTime, String loadingAlternative_person_number,
+                String unloadingUpazilaThana, String unloadingFullAddress, String unloadingArea,
+                String unloadingLandmark, String unloading_personName, String unloading_mobileNumber, String description,
+                String productCategory, int upDownTrip, int containAnimal, int fragile, int perishable, int laborNeeded,
+                @Nullable int rentalPrice, @Nullable String finalPayMethod, int lengthAlert, int weightAlert, String status, List<Bid> bids,
+                String stopAddress, String stopPointPersonName, int advancePay,
+                String stopPointPersonPhoneNumber, String returnAddress, String returnDate, String returnTime) {
+        this.id = id;
+        this.customer = customer;
+        this.driver = driver;
+        this.vehicle = vehicle;
+        this.createdAtMills = createdAtMills;
+        this.loadingUpazilaThana = loadingUpazilaThana;
+        this.loadingFullAddress = loadingFullAddress;
+        this.loadingLandmark = loadingLandmark;
+        this.loadingDate = loadingDate;
+        this.loadingTime = loadingTime;
+        this.unloadingUpazilaThana = unloadingUpazilaThana;
+        this.unloadingFullAddress = unloadingFullAddress;
+        this.unloadingLandmark = unloadingLandmark;
+        this.description = description;
+        this.upDownTrip = upDownTrip;
+        this.containAnimal = containAnimal;
+        this.fragile = fragile;
+        this.perishable = perishable;
+        this.laborNeeded = laborNeeded;
+        this.rentalPrice = rentalPrice;
+        this.finalPayMethod = finalPayMethod;
+        this.advancePay = advancePay;
+        this.status = status;
+        this.bids = bids;
+        this.loadingArea = loadingArea;
+        this.loadingAlternative_person_number = loadingAlternative_person_number;
+        this.unloadingArea = unloadingArea;
+        this.unloading_personName = unloading_personName;
+        this.unloading_mobileNumber = unloading_mobileNumber;
+        this.productCategory = productCategory;
+        this.stopAddress = stopAddress;
+        this.stopPointPersonName = stopPointPersonName;
+        this.stopPointPersonPhoneNumber = stopPointPersonPhoneNumber;
+        this.returnAddress = returnAddress;
+        this.returnDate = returnDate;
+        this.lengthAlert = lengthAlert;
+        this.weightAlert = weightAlert;
+        this.returnTime = returnTime;
+    }
+
+
+    public int getAdvancePay() {
+        return advancePay;
+    }
+
+    public void setAdvancePay(int advancePay) {
+        this.advancePay = advancePay;
+    }
+
+    public String getLoadingArea() {
+        return loadingArea;
+    }
+
+    public void setLoadingArea(String loadingArea) {
+        this.loadingArea = loadingArea;
+    }
+
+    public String getLoadingAlternative_person_number() {
+        return loadingAlternative_person_number;
+    }
+
+    public void setLoadingAlternative_person_number(String loadingAlternative_person_number) {
+        this.loadingAlternative_person_number = loadingAlternative_person_number;
+    }
+
+    public String getUnloadingArea() {
+        return unloadingArea;
+    }
+
+    public void setUnloadingArea(String unloadingArea) {
+        this.unloadingArea = unloadingArea;
+    }
+
+    public String getUnloading_personName() {
+        return unloading_personName;
+    }
+
+    public void setUnloading_personName(String unloading_personName) {
+        this.unloading_personName = unloading_personName;
+    }
+
+    public String getUnloading_mobileNumber() {
+        return unloading_mobileNumber;
+    }
+
+    public void setUnloading_mobileNumber(String unloading_mobileNumber) {
+        this.unloading_mobileNumber = unloading_mobileNumber;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public String getStopAddress() {
+        return stopAddress;
+    }
+
+    public void setStopAddress(String stopAddress) {
+        this.stopAddress = stopAddress;
+    }
+
+    public String getStopPointPersonName() {
+        return stopPointPersonName;
+    }
+
+    public void setStopPointPersonName(String stopPointPersonName) {
+        this.stopPointPersonName = stopPointPersonName;
+    }
+
+    public String getStopPointPersonPhoneNumber() {
+        return stopPointPersonPhoneNumber;
+    }
+
+    public void setStopPointPersonPhoneNumber(String stopPointPersonPhoneNumber) {
+        this.stopPointPersonPhoneNumber = stopPointPersonPhoneNumber;
+    }
+
+    public String getReturnAddress() {
+        return returnAddress;
+    }
+
+    public void setReturnAddress(String returnAddress) {
+        this.returnAddress = returnAddress;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getReturnTime() {
+        return returnTime;
+    }
+
+    public void setReturnTime(String returnTime) {
+        this.returnTime = returnTime;
+    }
+
+    public int getLengthAlert() {
+        return lengthAlert;
+    }
+
+    public void setLengthAlert(int lengthAlert) {
+        this.lengthAlert = lengthAlert;
+    }
+
+    public int getWeightAlert() {
+        return weightAlert;
+    }
+
+    public void setWeightAlert(int weightAlert) {
+        this.weightAlert = weightAlert;
     }
 
     public List<Bid> getBids() {

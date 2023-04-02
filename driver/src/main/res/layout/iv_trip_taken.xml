@@ -34,30 +34,52 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_trip_status"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/tv_trip_remainingTime"
                 android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13:50"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtv_trip_id"
-                android:background="@drawable/bg_txtv_ontheway"
-                android:paddingLeft="7dp"
-                android:layout_marginTop="-5dp"
-                android:paddingTop="2dp"
-                android:paddingRight="7dp"
-                android:paddingBottom="2dp"
-                android:layout_marginEnd="7dp"
-                android:text="Bidding"
-                android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
 
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit ="marquee_forever"
                 android:scrollHorizontally="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_trip_status"
+                android:layout_alignParentEnd="true"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Bid Continue - Bid Continue - Bid Continue -"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/bg_txtv_ontheway"
+                android:layout_below="@id/tv_trip_remainingTime"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
 
             <TextView
                 android:id="@+id/txtv_trip_id"
@@ -182,7 +204,7 @@
 
                     <RelativeLayout
                         android:id="@+id/lay_trip_details"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_below="@+id/cv_loading_unloading"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -256,6 +278,27 @@
                             android:text="✔ Labor Needed"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_lengthAlert"
+                            android:layout_below="@id/tv_labor_needed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="✔ Material Length not more than vehicle length booked"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:layout_marginTop="5dp"
+                            />
+                        <TextView
+                            android:id="@+id/tv_weightAlert"
+                            android:layout_below="@id/tv_lengthAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="✔ Material Weight not more than vehicle weight booked"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:layout_marginTop="5dp"
+                            />
 <!--
                     </RelativeLayout>
 -->
@@ -265,11 +308,12 @@
                     android:id="@+id/btn_start_bidding"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_labor_needed"
+                    android:layout_below="@id/tv_weightAlert"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="Start Bidding"
                     android:textAllCaps="false" />
           <!--  </LinearLayout>-->

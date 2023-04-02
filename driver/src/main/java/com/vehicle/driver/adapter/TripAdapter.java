@@ -133,36 +133,43 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             String status = trip.getStatus().isEmpty()?"" : "Time Expired";
 
             if (isBidPlaced(position)){
-                holder.tv_trip_status.setText("Bid Placed");
+                holder.tv_trip_status.setText("Bid Confirmed");
                 holder.btn_start_bidding.setVisibility(View.GONE);
                 //holder.tv_trip_status.setText(""+bidPlaced);
+                holder.tv_trip_remainingTime.setVisibility(View.GONE);
             }else{
                 holder.tv_trip_status.setText(status);
+                holder.tv_trip_remainingTime.setVisibility(View.GONE);
             }
 
         }else{
             if (isBidPlaced(position)){
-                holder.tv_trip_status.setText("Bid Placed");
+                holder.tv_trip_status.setText("Bid Confirmed");
                 holder.btn_start_bidding.setVisibility(View.GONE);
+                holder.tv_trip_remainingTime.setVisibility(View.GONE);
+
                 //holder.tv_trip_status.setText(""+bidPlaced);
             }else{
-                setCountDownTimer(holder.tv_trip_status, rMills-cMills);
+                holder.tv_trip_status.setText("Bid Continue - Bid Continue - Bid Continue -");
+                setCountDownTimer(holder.tv_trip_remainingTime, rMills-cMills);
+                holder.tv_trip_remainingTime.setVisibility(View.VISIBLE);
             }
         }
         holder.tv_trip_status.setSelected(true);
 
 
-        holder.tv_loading_upazila_district.setText("Area-->"+trip.getLoadingUpazilaThana());
-        holder.tv_loading_full_address.setText("Full Address-->"+trip.getLoadingFullAddress() +"\nLandMark-->"+trip.getLoadingLandmark());
-        holder.tv_unloading_upazila_district.setText("Area-->"+trip.getUnloadingUpazilaThana());
-        holder.tv_unloading_full_address.setText("Full Address-->"+trip.getUnloadingFullAddress() +"\nLandMark-->"+trip.getUnloadingLandmark());
+        holder.tv_loading_upazila_district.setText("Area: "+trip.getLoadingUpazilaThana());
+        holder.tv_loading_full_address.setText("Full Address: "+trip.getLoadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other: "+trip.getLoadingLandmark());
+        holder.tv_unloading_upazila_district.setText("Area: "+trip.getUnloadingUpazilaThana());
+        holder.tv_unloading_full_address.setText("Full Address: "+trip.getUnloadingFullAddress() +"\nNa/O Nearby School/ Mosque/ other: "+trip.getUnloadingLandmark());
         holder.tv_description.setText(trip.getDescription().isEmpty()?"":trip.getDescription());
         holder.tv_up_down_trip.setVisibility(trip.getUpDownTrip()==1? View.VISIBLE:View.GONE);
         holder.tv_contain_animal.setVisibility(trip.getContainAnimal()==1? View.VISIBLE:View.GONE);
         holder.tv_fragile_product.setVisibility(trip.getFragile()==1? View.VISIBLE:View.GONE);
         holder.tv_perishable_product.setVisibility(trip.getPerishable()==1? View.VISIBLE:View.GONE);
         holder.tv_labor_needed.setVisibility(trip.getLaborNeeded()==1? View.VISIBLE:View.GONE);
-
+        holder.tv_lengthAlert.setVisibility(trip.getLengthAlert()==1? View.VISIBLE:View.GONE);
+        holder.tv_weightAlert.setVisibility(trip.getWeightAlert()==1? View.VISIBLE:View.GONE);
 
         /*Driver driver = trip.getDriver();
         if (driver!=null) {
@@ -230,7 +237,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             @SuppressLint("NotifyDataSetChanged")
             public void publishResults(CharSequence constraint, Filter.FilterResults results) {
                 trips.clear();
-                trips.addAll((Collection) results.values);
+                trips.addAll((Collection<? extends Trip>) results.values);
                 notifyDataSetChanged();
             }
         };
@@ -245,12 +252,14 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
                 tv_loading_full_address,tv_unloading_upazila_district,
                 tv_unloading_full_address,tv_description,tv_up_down_trip,
                 tv_contain_animal,tv_fragile_product,tv_perishable_product,
-                tv_labor_needed, txtv_trip_id, tv_trip_status;
+                tv_labor_needed, txtv_trip_id, tv_trip_status, tv_trip_remainingTime,
+                tv_weightAlert, tv_lengthAlert;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
 
+            tv_trip_remainingTime =  findViewById(R.id.tv_trip_remainingTime);
             tv_car_details =  findViewById(R.id.tv_car_details);
             tv_loading_date_time =  findViewById(R.id.tv_loading_date_time);
             tv_loading_upazila_district =  findViewById(R.id.tv_loading_upazila_district);
@@ -268,10 +277,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
             lay_trip_details =  view.findViewById(R.id.lay_trip_details);
             btn_start_bidding =  view.findViewById(R.id.btn_start_bidding);
             cv_trip_header =  view.findViewById(R.id.cv_trip_header);
+            tv_lengthAlert =  view.findViewById(R.id.tv_lengthAlert);
+            tv_weightAlert =  view.findViewById(R.id.tv_weightAlert);
             cv_trip_header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    lay_trip_details.setVisibility(lay_trip_details.getVisibility()==View.VISIBLE?View.GONE: View.VISIBLE);
+                    //lay_trip_details.setVisibility(lay_trip_details.getVisibility()==View.VISIBLE?View.GONE: View.VISIBLE);
                     tv_loading_full_address.setVisibility(tv_loading_full_address.getVisibility()==View.VISIBLE?View.GONE: View.VISIBLE);
                     tv_unloading_full_address.setVisibility(tv_unloading_full_address.getVisibility()==View.VISIBLE?View.GONE: View.VISIBLE);
                 }
@@ -313,7 +324,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.MyViewHolder> 
         new CountDownTimer(remainingMills, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                textView.setText("Bidding: " + millisUntilFinished / 1000/60 +":"+ (millisUntilFinished /1000)%60);
+                textView.setText("" + millisUntilFinished / 1000/60 +":"+ (millisUntilFinished /1000)%60);
                 // logic to set the EditText could go here
             }
 

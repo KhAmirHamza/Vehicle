@@ -31,30 +31,53 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_trip_status"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/tv_trip_price"
                 android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1500 tk"
+                android:layout_marginRight="10dp"
+                android:textColor="#116815"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtv_trip_id"
-                android:background="@drawable/bg_txtv_ontheway"
-                android:paddingLeft="7dp"
-                android:layout_marginTop="-5dp"
-                android:paddingTop="2dp"
-                android:paddingRight="7dp"
-                android:paddingBottom="2dp"
-                android:layout_marginEnd="7dp"
-                android:text="Bidding"
-                android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit ="marquee_forever"
                 android:scrollHorizontally="true"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                />
 
+            <TextView
+                android:id="@+id/tv_trip_status"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trip Running"
+                android:textColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:background="@drawable/bg_txtv_ontheway"
+                android:layout_below="@id/tv_trip_price"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
             <TextView
                 android:id="@+id/txtv_trip_id"
                 android:layout_width="wrap_content"
@@ -138,7 +161,7 @@
                         />
 
                     <TextView
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:id="@+id/tv_loading_full_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -149,14 +172,52 @@
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
-
+                        />
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/tv_loading_PersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_loading_full_address"
+                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
+                        android:paddingBottom="5dp"
+                        android:text="Name: "
+                        android:textSize="14sp"
+                        android:textColor="#185A09"
+                        android:layout_marginStart="20dp"
+                        />
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/tv_loading_PersonMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_loading_PersonName"
+                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
+                        android:paddingBottom="5dp"
+                        android:text="Mobile: "
+                        android:textSize="14sp"
+                        android:textColor="#185A09"
+                        android:layout_marginStart="20dp"
+                        />
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/tv_loading_AlterPersonMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_loading_PersonMobile"
+                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
+                        android:paddingBottom="5dp"
+                        android:text="Alternative Mobile: "
+                        android:textSize="14sp"
+                        android:textColor="#185A09"
+                        android:layout_marginStart="20dp"
                         />
 
                     <View
                         android:id="@+id/view_1"
                         android:layout_width="match_parent"
                         android:layout_height="0.7dp"
-                        android:layout_below="@+id/tv_loading_full_address"
+                        android:layout_below="@+id/tv_loading_AlterPersonMobile"
                         android:layout_marginRight="50dp"
                         android:background="#6a6969"
                         android:layout_marginStart="20dp"
@@ -178,7 +239,7 @@
 
                     <TextView
                         android:id="@+id/tv_unloading_full_address"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unloading_upazila_district"
@@ -187,6 +248,32 @@
                         android:text="Full Address: Dhanmondi-1, \10Dhaka-1205"
                         android:textSize="14sp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
+                        />
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/tv_unloading_PersonName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_unloading_full_address"
+                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
+                        android:paddingBottom="5dp"
+                        android:text="Name: "
+                        android:textSize="14sp"
+                        android:textColor="#185A09"
+                        android:layout_marginStart="20dp"
+                        />
+                    <TextView
+                        android:visibility="visible"
+                        android:id="@+id/tv_unloading_PersonMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_unloading_PersonName"
+                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
+                        android:paddingBottom="5dp"
+                        android:text="Mobile: "
+                        android:textSize="14sp"
+                        android:textColor="#185A09"
                         android:layout_marginStart="20dp"
                         />
                 </RelativeLayout>
@@ -198,7 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Product Info"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="0dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -209,6 +296,8 @@
                 android:layout_below="@+id/tv_description_header"
                 android:text="▷ Fragile Product, You have to carry it very safely"
                 android:textSize="14sp" />
+
+
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -239,6 +328,7 @@
 
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/tv_up_down_trip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -286,6 +376,26 @@
                     android:text="✔ Labor Needed"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_lengthAlert"
+                    android:layout_below="@id/tv_labor_needed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="✔ Material Length not more than vehicle length booked"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_weightAlert"
+                    android:layout_below="@id/tv_lengthAlert"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="✔ Material Weight not more than vehicle weight booked"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 
