@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="25dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
+    android:id="@+id/cv_main"
+    >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/txtv_trip_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtv_user_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_trip_id"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="User Details"/>
+
+                <TextView
+                    android:id="@+id/txtv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_user_details"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/txtv_user_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_user_name"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+
+                    android:autoLink="phone"
+                    android:textIsSelectable="true"
+                    android:clickable="true"
+                    />
+
+                <TextView
+                    android:id="@+id/txtv_driver_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_user_phone_number"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:text="Driver Details"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/txtv_driver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_driver_details"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/txtv_driver_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_driver_name"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
+                    android:autoLink="phone"
+                    android:textIsSelectable="true"
+                    android:clickable="true"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txtv_loading_trip_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_driver_phone_number"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="Trip Loading Address"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/txtv_loading_trip_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_loading_trip_details"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"/>
+
+
+                <TextView
+                    android:id="@+id/txtv_unloading_trip_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_loading_trip_address"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="Trip Loading Address"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/txtv_unloading_trip_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtv_unloading_trip_details"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="2dp"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_delete_trip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delete Trip"
+                    android:layout_below="@id/txtv_unloading_trip_address"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="10dp"/>
+
+            </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -35,7 +35,6 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="3dp"
                 android:drawablePadding="5dp"
-                android:text="TATA ACE EX 2 (Open)"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -48,7 +47,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="sm-tha-00-0166"
                 android:textSize="16sp"
                 android:visibility="visible" />
             <TextView
@@ -60,7 +58,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="Year: 2005"
                 android:textSize="16sp"
                 android:visibility="visible" />
 
@@ -73,7 +70,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="1 ton, 7 feet"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:visibility="visible" />

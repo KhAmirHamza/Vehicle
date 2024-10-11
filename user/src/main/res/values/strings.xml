@@ -1,0 +1,945 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">Tripbd-User</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <!--Night at 12 o'clock-->
+
+    <string name="hintWriteCityDistrict" translatable="false">
+        <font size="12">Write City/District and select from popup</font>
+    </string>
+
+
+    <string-array name="timeEng">
+        <item> 12 AM</item>
+        <item> 1 AM</item>
+        <item> 2 AM</item>
+        <item> 3 AM</item>
+        <item> 4 AM</item>
+        <item> 5 AM</item>
+        <item> 6 AM</item>
+        <item> 7 AM</item>
+        <item> 8 AM</item>
+        <item> 9 AM</item>
+        <item> 10 AM</item>
+        <item> 11 AM</item>
+        <item> 12 PM</item>
+        <item> 1 PM</item>
+        <item> 2 PM</item>
+        <item> 3 PM</item>
+        <item> 4 PM</item>
+        <item> 5 PM</item>
+        <item> 6 PM</item>
+        <item> 7 PM</item>
+        <item> 8 PM</item>
+        <item> 9 PM</item>
+        <item> 10 PM</item>
+        <item> 11 PM</item>
+    </string-array>
+
+    <string-array name="productCategory">
+        <item>Consumable items</item>
+        <item>Electronics Electrical items</item>
+        <item>Construction items</item>
+        <item>Agricltural Commodities</item>
+        <item>Household items</item>
+        <item>Chemical and Combustible products</item>
+        <item>Animal Feed</item>
+        <item>Live Animal</item>
+        <item>Mechineries and Heavy Equipments</item>
+        <item>Transport and Transport related items</item>
+        <item>Every day products</item>
+        <item>Industrial products</item>
+        <item>Raw Materials</item>
+        <item>Agricultural Inputs</item>
+        <item>Educational Inputs</item>
+        <item>Supporting Inputs</item>
+        <item>Garments and Textiles</item>
+        <item>Medicine and life supporting Inputs</item>
+        <item>Event Management Items </item>
+    </string-array>
+
+    <string-array name="pickupSize">
+        <item>7 feet 1 Ton</item>
+        <item>9 feet 1.5 Ton</item>
+        <item>12 feet 2 Ton</item>
+        <item>12 feet 3 Ton</item>
+    </string-array>
+
+    <string-array name="truckSize">
+        <item>13 feet 1.5 Ton -light weight</item>
+        <item>14 feet 3.5 Ton -light weight</item>
+        <item>16 feet 3.5 Ton -light weight</item>
+        <item>16 feet 5 Ton -medium weight</item>
+        <item>16 feet 8.5 Ton -medium weight</item>
+        <item>20 feet 5.5 Ton -medium weight</item>
+        <item>19.5 feet 7.5 Ton -medium weight</item>
+        <item>24 feet 8 Ton -medium weight</item>
+        <item>32 feet 7.5 Ton -medium weight</item>
+        <item> 14 feet 15 Ton -heavy weight</item>
+        <item>17.5 feet 9 Ton -heavy weight</item>
+        <item>20 feet 11 Ton -heavy weight</item>
+        <item>20 feet 15 Ton -heavy weight</item>
+        <item>22 feet 19 Ton -heavy weight</item>
+        <item>23 feet 20 Ton -heavy weight</item>
+        <item>23 feet 25 Ton -heavy weight</item>
+        <item>24 feet 25 Ton -heavy weight</item>
+        <item>28 feet 30 Ton -heavy weight</item>
+        <item>20 feet 16 Ton -heavy weight</item>
+        <item>24 feet 16 Ton -heavy weight</item>
+        <item>32 feet 16 Ton -heavy weight</item>
+
+    </string-array>
+    <string-array name="trailerSize">
+        <item>10 wheel 30 Ton flatbed</item>
+        <item>14 wheel 40 Ton flatbed</item>
+        <item>18 wheel 47 Ton flatbed</item>
+        <item>22 wheel 49Ton flatbed</item>
+        <item>26 wheel 52 Ton flatbed</item>
+        <item>40 feet 33 Ton flatbed</item>
+        <item>40 feet 34 Ton flatbed</item>
+        <item>10 wheel 30 Ton lowbed</item>
+        <item>14 wheel 40 Ton lowbed</item>
+        <item>18 wheel 47 Ton lowbed</item>
+        <item>22 wheel 49Ton lowbed</item>
+        <item>26 wheel 52 Ton lowbed</item>
+        <item>40 feet 33 Ton lowbed</item>
+        <item>40 feet 34 Ton lowbed</item>
+        <item>45 Feet 31 Ton box</item>
+
+    </string-array>
+
+
+    <string-array name="privateCarModel">
+        <item>Toyota</item>
+        <item>Toyota premio</item>
+        <item>Toyota Allion</item>
+        <item>Toyota Axio Fielder</item>
+        <item>Toyota Aqua</item>
+        <item>Toyota C-HR</item>
+        <item>Toyota probox</item>
+        <item>Toyota Harrier</item>
+        <item>Toyota prado</item>
+        <item>Toyota Crown</item>
+        <item>Toyota Prius</item>
+        <item>Toyota Hilux</item>
+        <item>Toyota Yaris</item>
+        <item>Toyota Avanza</item>
+        <item>Toyota RAV 4</item>
+        <item>Toyota Rush</item>
+        <item>Toyota Fortuner</item>
+        <item>Toyota LC 200</item>
+        <item>Toyota Camry</item>
+        <item>Toyota Dyna</item>
+        <item>Toyota Spacio</item>
+        <item>Toyota Navara</item>
+        <item>Toyota Kluger</item>
+        <item>Toyota Esquire</item>
+        <item>Toyota Fielder</item>
+        <item>Toyota Corolla</item>
+        <item>Toyota Mark</item>
+        <item>Toyota Vitz</item>
+        <item>Toyota passo</item>
+        <item>Toyota Corsa</item>
+        <item>Toyota Carina</item>
+        <item>Toyota Vios</item>
+        <item>Toyota Highlander</item>
+        <item>Toyota Vista</item>
+        <item>Toyota Starlet</item>
+        <item>Toyota Duet</item>
+        <item>Toyota Auris</item>
+        <item>Toyota Platz</item>
+        <item>Toyota Succeeed</item>
+        <item>Toyota Land Cruiser</item>
+        <item>Toyota Ractis</item>
+        <item>Toyota Ragius</item>
+        <item>Toyota Voxy</item>
+        <item>Nissan</item>
+        <item>Nissan Navara</item>
+        <item>Nissan Caravan</item>
+        <item>Nissan DAYZ-ROOX</item>
+        <item>Nissan Patrol</item>
+        <item>Nissan Cefiro</item>
+        <item>Nissan Sunny</item>
+        <item>Nissan X-Trail</item>
+        <item>Nissan Juke</item>
+        <item>Honda</item>
+        <item>Honda Vezel</item>
+        <item>Honda Grace</item>
+        <item>Honda CR-V</item>
+        <item>Honda Fit</item>
+        <item>Honda Civic</item>
+        <item>Honda Insight</item>
+        <item>Honda Accord</item>
+        <item>Mazda</item>
+        <item>Mazda Axela</item>
+        <item>Mazda CX- 3</item>
+        <item>Suzuki</item>
+        <item>Suzuki Wagon</item>
+        <item>Maruti Suzuki</item>
+        <item>Suzuki Alto</item>
+        <item>Suzuki Ciaz</item>
+        <item>Mitsubishi</item>
+        <item>Mitsubishi Lancer</item>
+        <item>Mitsubishi Pajero</item>
+        <item>Mitsubishi Mirage</item>
+        <item>Mitsubishi Gallant</item>
+        <item>Mitsubishi Outlandish</item>
+        <item>Mitsubishi Colt</item>
+        <item>Marcedes</item>
+        <item>Marcedes Benz</item>
+        <item>Ford Ecosport</item>
+        <item>Hyundai</item>
+        <item>Hyundai Santafi</item>
+        <item>Hyundai Tucson</item>
+        <item>Hyundai Accent</item>
+        <item>Hyundai Sonata</item>
+        <item>Tata</item>
+        <item>Tata Indigo</item>
+        <item>BMW</item>
+        <item>BMW X3</item>
+        <item>BMW X5</item>
+        <item>BMW 7 series</item>
+        <item>DFSK Glory</item>
+        <item>Kia Sportage</item>
+        <item>Havel Jolion</item>
+        <item>Toyota ist</item>
+
+    </string-array>
+    <string-array name="microBusModel">
+        <item>Toyota Hias</item>
+        <item>Toyota Hias Freezer</item>
+        <item>Toyota Hias DX</item>
+        <item>Toyota Hias Grand Cabin</item>
+        <item>Toyota Noah</item>
+        <item>Toyota M. Crop</item>
+        <item>Toyota Hias GL</item>
+        <item>Toyota Hias Super GL</item>
+        <item>Toyota Mini coaster</item>
+        <item>Volvo Tourist bus</item>
+        <item>Hyundai Tourist bus</item>
+        <item>MAN Tourist Bus</item>
+        <item>Hyundai H1</item>
+        <item>Suzuki Omni</item>
+        <item>Suzuki APV</item>
+        <item>Foton Microbus</item>
+        <item>Nissan Civilian</item>
+        <item>Nissan DAYZ-ROOX</item>
+        <item>Nissan Urvan</item>
+    </string-array>
+    <string-array name="tourBusModel">
+        <item>Tata Bus</item>
+        <item>Ashok Leyland Double Decker</item>
+        <item>Tata Bus 42</item>
+        <item>Ashok Leyland LYNX</item>
+        <item>Isuzy LT</item>
+        <item>Hino RC RB</item>
+        <item>Hino 1 j</item>
+        <item>Hina RG 197</item>
+        <item>Hino Urban AK 1 j</item>
+        <item>Hino RN-8 JSK</item>
+        <item>Hino RK 260</item>
+        <item>Eicher 1090</item>
+        <item>Eicher 2015</item>
+        <item>DCM DYNA</item>
+        <item>Isuzu MT 134Q</item>
+        <item>Isuzu LT 133P</item>
+        <item>Isuzu FTR 33R</item>
+        <item>Isuzu NKR 552</item>
+        <item>Tata LP 712</item>
+        <item>Tata LP 407</item>
+        <item>Tata LP 909</item>
+        <item>Tata LP 709</item>
+        <item>Tata LPO 1618</item>
+        <item>Tata LPO 1316</item>
+        <item>Tata LPO 1512</item>
+        <item>Tata LPO 1515</item>
+        <item>Tata 1616</item>
+        <item>Tata 1512 FC</item>
+        <item>Ashok Leyland Stag 1212</item>
+        <item>Hino ak ji</item>
+        <item>Issuzu LT 133P</item>
+        <item>Hino rm2</item>
+        <item>Toyota coaster</item>
+        <item>Eicher</item>
+        <item>Mitsubishi Rosa</item>
+        <item>Mitsubishi Fuso</item>
+        <item>Hino RK230</item>
+        <item>Hino RG 230</item>
+        <item>Tata TC 1109</item>
+        <item>Tata TC 1510</item>
+        <item>Tata Starbus School</item>
+        <item>Fuso BM 11 Turbo</item>
+        <item>Ashol Leyland 1818</item>
+        <item>Mistubishi Fuso FE71</item>
+        <item>Isuzu NKR 55 L</item>
+        <item>Eicher 10.90</item>
+        <item>Eicher 1212 K</item>
+        <item>Eicher 190 L</item>
+        <item>Eicher 1060</item>
+    </string-array>
+
+    <string-array name="privateCarSeat">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="microBusSeat">
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="tourBusSeat">
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>39</item>
+        <item>40</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>48</item>
+        <item>50</item>
+        <item>52</item>
+        <item>55</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="vehicle_model">
+        <item>Select Vehicle Model</item>
+        <item>Akij Rofrof</item>
+        <item>Ashok Layland</item>
+        <item>Ashok Layland Dost </item>
+        <item>Ashok Leyland Double Decker</item>
+        <item>Ashok Leyland LYNX</item>
+        <item>Ashok Leyland Stag 1212</item>
+        <item>Ashok Leyland Tusker</item>
+        <item>Ashol Leyland 1818</item>
+        <item>BMW</item>
+        <item>BMW 7 series</item>
+        <item>BMW X3</item>
+        <item>BMW X5</item>
+        <item>DCM DYNA</item>
+        <item>DFSK Glory</item>
+        <item>Drum Truck</item>
+        <item>Eicher</item>
+        <item>Eicher</item>
+        <item>Eicher 10.90</item>
+        <item>Eicher 1060</item>
+        <item>Eicher 1090</item>
+        <item>Eicher 1212 K</item>
+        <item>Eicher 190 L</item>
+        <item>Eicher 20.16 Volvo</item>
+        <item>Eicher 2015</item>
+        <item>Eicher Disel</item>
+        <item>Eicher pro</item>
+        <item>Eicher Tipper</item>
+        <item>Eicher Volvo</item>
+        <item>Ford Ecosport</item>
+        <item>Forland</item>
+        <item>Forland T3</item>
+        <item>Forland T5</item>
+        <item>Foton </item>
+        <item>Foton Microbus</item>
+        <item>Foton TM</item>
+        <item>Freedom</item>
+        <item>Fuso BM 11 Turbo</item>
+        <item>Havel Jolion</item>
+        <item>Hijet Dehatsu</item>
+        <item>Hina RG 197</item>
+        <item>Hino 1 j</item>
+        <item>Hino ak ji</item>
+        <item>Hino drun truck</item>
+        <item>Hino RC RB</item>
+        <item>Hino RG 230</item>
+        <item>Hino RK 260</item>
+        <item>Hino RK230</item>
+        <item>Hino rm2</item>
+        <item>Hino RN-8 JSK</item>
+        <item>Hino Truck</item>
+        <item>Hino Urban AK 1 j</item>
+        <item>Honda</item>
+        <item>Honda Grace</item>
+        <item>Honda Accord</item>
+        <item>Honda Civic</item>
+        <item>Honda CR-V</item>
+        <item>Honda Fit</item>
+        <item>Honda Insight</item>
+        <item>Honda Vezel</item>
+        <item>Hyundai</item>
+        <item>Hyundai Accent</item>
+        <item>Hyundai H1</item>
+        <item>Hyundai Santafi</item>
+        <item>Hyundai Sonata</item>
+        <item>Hyundai Tourist bus</item>
+        <item>Hyundai Tucson</item>
+        <item>Issuzu LT 133P</item>
+        <item>Isuzu </item>
+        <item>Isuzu 4 jb</item>
+        <item>Isuzu Dump Hidalik</item>
+        <item>Isuzu FTR 33R</item>
+        <item>Isuzu LT 133P</item>
+        <item>Isuzu MT 134Q</item>
+        <item>Isuzu NKR 55 L</item>
+        <item>Isuzu NKR 552</item>
+        <item>Isuzy LT</item>
+        <item>Jac</item>
+        <item>Jac Baureto</item>
+        <item>Jac Enargepac</item>
+        <item>Jac HFC</item>
+        <item>Jac Turbo</item>
+        <item>JMC</item>
+        <item>JMC NH 720</item>
+        <item>Jmc Regular</item>
+        <item>Kia Sportage</item>
+        <item>Mahindra</item>
+        <item>Mahindra</item>
+        <item>Mahindra Bolero</item>
+        <item>Mahindra Jheeto</item>
+        <item>Mahindra Maxximo</item>
+        <item>Mahindra Torro</item>
+        <item>Mahindro Supro</item>
+        <item>MAN Tourist Bus</item>
+        <item>Marcedes</item>
+        <item>Marcedes Benz</item>
+        <item>Maruti Suzuki</item>
+        <item>Mazda</item>
+        <item>Mazda</item>
+        <item>Mazda Axela</item>
+        <item>Mazda CX- 3</item>
+        <item>Mistubishi Fuso FE71</item>
+        <item>Mitsubishi</item>
+        <item>Mitsubishi CANTER</item>
+        <item>Mitsubishi Colt</item>
+        <item>Mitsubishi Fuso</item>
+        <item>Mitsubishi Gallant</item>
+        <item>Mitsubishi Lancer</item>
+        <item>Mitsubishi Mirage</item>
+        <item>Mitsubishi Outlandish</item>
+        <item>Mitsubishi Pajero</item>
+        <item>Mitsubishi Rosa</item>
+        <item>Nissan</item>
+        <item>Nissan Caravan</item>
+        <item>Nissan Cefiro</item>
+        <item>Nissan Civilian</item>
+        <item>Nissan DAYZ-ROOX</item>
+        <item>Nissan DAYZ-ROOX</item>
+        <item>Nissan Juke</item>
+        <item>Nissan Navara</item>
+        <item>Nissan Patrol</item>
+        <item>Nissan Sunny</item>
+        <item>Nissan Urvan</item>
+        <item>Nissan Vanette</item>
+        <item>Nissan X-Trail</item>
+        <item>Suzuki</item>
+        <item>Suzuki Alto</item>
+        <item>Suzuki APV</item>
+        <item>Suzuki Ciaz</item>
+        <item>Suzuki Omni</item>
+        <item>Suzuki Wagon</item>
+        <item>Tata</item>
+        <item>Tata 1512 FC</item>
+        <item>Tata 1616</item>
+        <item>Tata 207 DI Rx</item>
+        <item>Tata Ace</item>
+        <item>Tata Ace EX2</item>
+        <item>Tata ACE Mega</item>
+        <item>Tata Bus</item>
+        <item>Tata Bus 42</item>
+        <item>Tata Bus 42</item>
+        <item>Tata Deer Ex</item>
+        <item>Tata EX2</item>
+        <item>Tata Gold</item>
+        <item>Tata HT2</item>
+        <item>Tata Indigo</item>
+        <item>Tata INTRA V-10</item>
+        <item>Tata King</item>
+        <item>Tata LP 407</item>
+        <item>Tata LP 709</item>
+        <item>Tata LP 712</item>
+        <item>Tata LP 909</item>
+        <item>Tata LPK</item>
+        <item>Tata LPO 1316</item>
+        <item>Tata LPO 1512</item>
+        <item>Tata LPO 1515</item>
+        <item>Tata LPO 1618</item>
+        <item>Tata Mega EX2</item>
+        <item>Tata Mega XL</item>
+        <item>Tata Starbus School</item>
+        <item>Tata Super Ace</item>
+        <item>Tata TC 1109</item>
+        <item>Tata TC 1510</item>
+        <item>Tata Xenon</item>
+        <item>Tiking</item>
+        <item>Toyota</item>
+        <item>Toyota</item>
+        <item>Toyota 2C</item>
+        <item>Toyota Allion</item>
+        <item>Toyota Aqua</item>
+        <item>Toyota Auris</item>
+        <item>Toyota Avanza</item>
+        <item>Toyota Axio Fielder</item>
+        <item>Toyota Camry</item>
+        <item>Toyota Carina</item>
+        <item>Toyota C-HR</item>
+        <item>Toyota coaster</item>
+        <item>Toyota Corolla</item>
+        <item>Toyota Corsa</item>
+        <item>Toyota Crown</item>
+        <item>Toyota Duet</item>
+        <item>Toyota DYNA</item>
+        <item>Toyota Dyna</item>
+        <item>Toyota Esquire</item>
+        <item>Toyota Fielder</item>
+        <item>Toyota Fortuner</item>
+        <item>Toyota Harrier</item>
+        <item>Toyota Hias</item>
+        <item>Toyota Hias DX</item>
+        <item>Toyota Hias Freezer</item>
+        <item>Toyota Hias GL</item>
+        <item>Toyota Hias Grand Cabin</item>
+        <item>Toyota Hias Super GL</item>
+        <item>Toyota Highlander</item>
+        <item>Toyota Hilux</item>
+        <item>Toyota ist</item>
+        <item>Toyota Kluger</item>
+        <item>Toyota Land Cruiser</item>
+        <item>Toyota LC 200</item>
+        <item>Toyota Liteace</item>
+        <item>Toyota M. Crop</item>
+        <item>Toyota Mark</item>
+        <item>Toyota Mini coaster</item>
+        <item>Toyota Navara</item>
+        <item>Toyota Noah</item>
+        <item>Toyota passo</item>
+        <item>Toyota Platz</item>
+        <item>Toyota prado</item>
+        <item>Toyota premio</item>
+        <item>Toyota Prius</item>
+        <item>Toyota probox</item>
+        <item>Toyota Ractis</item>
+        <item>Toyota Ragius</item>
+        <item>Toyota RAV 4</item>
+        <item>Toyota Rush</item>
+        <item>Toyota Spacio</item>
+        <item>Toyota Starlet</item>
+        <item>Toyota Succeeed</item>
+        <item>Toyota Townance</item>
+        <item>Toyota Vios</item>
+        <item>Toyota Vista</item>
+        <item>Toyota Vitz</item>
+        <item>Toyota Voxy</item>
+        <item>Toyota Yaris</item>
+        <item>Volvo Tourist bus</item>
+    </string-array>
+
+    <string-array name="vehicle_type">
+        <item>Pickup</item>
+        <item>Truck</item>
+        <item>Trailer</item>
+        <item>Private Car</item>
+        <item>Micro Bus</item>
+        <item>Tour Bus</item>
+    </string-array>
+
+    <string-array name="openCovered">
+        <item>Open</item>
+        <item>Covered</item>
+    </string-array>
+    <string-array name="acNonAc">
+        <item>AC</item>
+        <item>Non AC</item>
+    </string-array>
+
+
+    <string-array name="year">
+        <item>2000</item>
+        <item>2001</item>
+        <item>2002</item>
+        <item>2003</item>
+        <item>2004</item>
+        <item>2005</item>
+        <item>2006</item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+        <item>2031</item>
+        <item>2032</item>
+        <item>2033</item>
+        <item>2034</item>
+        <item>2035</item>
+        <item>2036</item>
+        <item>2037</item>
+        <item>2038</item>
+        <item>2039</item>
+        <item>2040</item>
+    </string-array>
+
+    <string-array name="metro">
+        <item>Dhaka Metro</item>
+        <item>Chatta Metro</item>
+        <item>Khulna Metro</item>
+        <item>Rajshahi Metro</item>
+        <item>Barishal Metro</item>
+        <item>Sylhet Metro</item>
+        <item>Rangpur Metro</item>
+        <item>Jashore</item>
+        <item>Bogura</item>
+        <item>Habiganj</item>
+        <item>Moulvibazar</item>
+        <item>Netrokona</item>
+        <item>Mymensing</item>
+        <item>Kishorganj</item>
+        <item>Tangail</item>
+        <item>Gazipur</item>
+        <item>Narsingdi</item>
+        <item>Dhaka</item>
+        <item>Manikganj</item>
+        <item>Munshiganj</item>
+        <item>Cumilla</item>
+        <item>Chandpur</item>
+        <item>Brahmanbaria</item>
+        <item>Laxmipur</item>
+        <item>Noakhali</item>
+        <item>Feni</item>
+        <item>Chattogram</item>
+        <item>Rangamati</item>
+        <item>Khagrachhari</item>
+        <item>Bandarban</item>
+        <item>Cox\'s Bazar</item>
+        <item>Borguna</item>
+        <item>Pirojpur</item>
+        <item>Jhalkati</item>
+        <item>Bhola</item>
+        <item>Khulna</item>
+        <item>Baherhat</item>
+        <item>Satkhira</item>
+        <item>Magura</item>
+        <item>Narail</item>
+        <item>Jhenaidah</item>
+        <item>Chuadanga</item>
+        <item>Maherpur</item>
+        <item>Kushtia</item>
+        <item>Faridpur</item>
+        <item>Madaripur</item>
+        <item>Gopalganj</item>
+        <item>Rajbari</item>
+        <item>Rajshahi</item>
+        <item>Nator</item>
+        <item>Noagoan</item>
+        <item>Chapai Nowabganj</item>
+        <item>Pabna</item>
+        <item>Sirajganj</item>
+        <item>Gaibandha</item>
+        <item>Kurigram</item>
+        <item>Nilphamari</item>
+        <item>Dinajpur</item>
+        <item>Thakurgoan</item>
+        <item>Panchagarh</item>
+        <item>Sherpur</item>
+        <item>Jamalpur</item>
+        <item>Lalmonirhat</item>
+        <item>Jiapurhat</item>
+        <item>Narayanganj</item>
+        <item>Sylhet</item>
+        <item>Barishal</item>
+        <item>Rangpur</item>
+        <item>Patuakhali</item>
+
+    </string-array>
+
+    <string-array name="serial">
+        <item>Ta</item>
+        <item>Tha</item>
+        <item>Ma</item>
+        <item>Na</item>
+    </string-array>
+
+
+    <string name="language">Language: </string>
+    <string name="all_trip">All Trip</string>
+    <string name="running_trip">Running Trip</string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="writer_vehicle_brand_select">Write Vehicle Brand &amp; Select</string>
+    <string name="select_metro">Select Metro</string>
+    <string name="reg._sl_number">Reg. SL &amp; Number</string>
+    <string name="model_year">Model Year</string>
+    <string name="vehicles_documents_and_others">Vehicles Documents and Others</string>
+    <string name="vehicle_image_with_numberplate">Vehicle Image with Numberplate</string>
+    <string name="upload_any_vehicle_documents">Upload Any Vehicle Documents</string>
+    <string name="upload_nid">Upload NID</string>
+    <string name="time_expired">Time Expired</string>
+    <string name="form">Form</string>
+    <string name="to">To</string>
+    <string name="participate_budding">Participate Budding</string>
+    <string name="bid_continue">Bid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue</string>
+        <string name="confirm_a_bidded_within_bid_end_time">Confirm a Bidder Within Bid End Time\t\t\t\tConfirm a Bidder Within Bid End Time\t\t\t\tConfirm a Bidder Within Bid End Time\t\t\t\t</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="log_out">Log out</string>
+    <string name="payment">Payment</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="pay_now_click_to_pay">Pay Now/Click to Pay</string>
+    <string name="due">Due</string>
+    <string name="trip_start_from">Trip Start From</string>
+    <string name="write_city_district_select_from">Write City/ District &amp; Select From</string>
+    <string name="save">Save</string>
+    <string name="click_add_vehicle">Click &amp; add Vehicle</string>
+    <string name="your_vehicle_list">Your Vehicle List</string>
+    <string name="stop_point_info_optional">Stop point info(Optional)</string>
+    <string name="write_stop_point_person_name">Write Stop Point Person Name</string>
+    <string name="stop_point_person_mobile_number">Stop point Person Mobile Number</string>
+    <string name="if_with_return_trip">If with Return Trip(separate cost)</string>
+    <string name="writer_return_point">Write Return Point</string>
+    <string name="set_return_scheduled">Set Return Schedule</string>
+    <string name="area">Area</string>
+    <string name="full_address">Full Address</string>
+    <string name="publish_for_budding">Publish For Bidding</string>
+    <string name="thank_you_for_publishing_a_bid.driver_will_tell_you_the_rate_wait_and_confirmed">Thank you for Publishing a Bid.Driver will Tell You the Rate Wait and Confirm</string>
+    <string name="write_city_district_and_select_from_pop_up">Write City /District and Select From Pop up</string>
+    <string name="weite_area">Weite Area</string>
+    <string name="for_village">For Village</string>
+    <string name="house_name_point">House Name /Point</string>
+    <string name="for_town_city">For Town/city</string>
+    <string name="house_number">House Number</string>
+    <string name="road">Road</string>
+    <string name="block">Block</string>
+    <string name="nearby_school_mosque_others">Nearby School /Mosque /Others</string>
+    <string name="alternative_person_mobile_number">alternative Person Mobile Number</string>
+    <string name="unload_location">Unload Location</string>
+    <string name="load_location">load Location</string>
+    <string name="you_have_not_any_running_trip">You Have not any Running Trip</string>
+    <string name="create_now">Create Now</string>
+    <string name="click_to_create_trip">Click To Create Trip</string>
+    <string name="trip">Trip</string>
+    <string name="profile">Profile</string>
+    <string name="create_trip">Create Trip</string>
+    <string name="select_vehicles">Select Vehicles</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="truck">Truck</string>
+    <string name="trailer">Trailer</string>
+    <string name="private_car">Private Car</string>
+    <string name="micro_bus">Micro Bus</string>
+    <string name="tour_bus">Tour Bus</string>
+    <string name="contain_animal">Contain Animal</string>
+    <string name="fragile">Fragile</string>
+    <string name="perishable">Perishable</string>
+    <string name="labor_needed_saparate_cost">Labor Needed ( Saparate Cost)</string>
+    <string name="weight_not_more_than_capacity_of_truck_booked"> Weight of materials not more than Capacity of Truck Booked</string>
+    <string name="length_of_material_are_not_more_than_truck_length_booked">Length of Material are not more than Truck Length Booked</string>
+    <string name="raw_materials">Raw Materials</string>
+    <string name="agricultural_inputs">Agricultural Inputs</string>
+    <string name="educational_inputs">Educational Inputs</string>
+    <string name="supporting_inputs">Supporting Inputs</string>
+    <string name="garments_and_textiles">Garments and Textiles</string>
+    <string name="medical_and_life_supporting_inputs">Medical and life Supporting Inputs</string>
+    <string name="event_management_items">Event Management Items</string>
+    <string name="live_animal">Live Animal</string>
+    <string name="machineries_and_heavy_equipment">Machineries and Heavy Equipment</string>
+    <string name="transport_and_transport_related_items">Transport and Transport Related Items</string>
+    <string name="everyday_products">Everyday Products</string>
+    <string name="industrial_products">Industrial Products</string>
+    <string name="consumable_items">Consumable Items</string>
+    <string name="electronics_electrical_items">Electronics Electrical Items</string>
+    <string name="agricultural_commodities">Agricultural Commodities</string>
+    <string name="household_items">Household Items</string>
+    <string name="chemical_and_combustible_products">Chemical and Combustible Products</string>
+    <string name="animal_feed">Animal Feed</string>
+    <string name="_7_feet_1_ton">7 feet 1 Ton</string>
+    <string name="_9_feet_1.5_ton">9 feet 1.5 Ton</string>
+    <string name="_12_feet_2_ton">12 feet 2 Ton</string>
+    <string name="_12_feet_3_ton">12 feet 3 Ton</string>
+    <string name="_13_feet_1.5_ton_light_weight">13 feet 1.5 Ton -light weight</string>
+    <string name="_14_feet_3.5_ton_light_weight">14 feet 3.5 Ton -light weight</string>
+    <string name="_16_feet_3.5_ton_light_weight">16 feet 3.5 Ton-light weight</string>
+    <string name="_16_feet_5_ton_medium_weight">16 feet 5 Ton - medium weight</string>
+    <string name="_16_feet_8.5_ton_medium_weight">16 feet 8.5 Ton -medium weight</string>
+    <string name="_20_feet_5.5_ton_medium_weight">20 feet 5.5 Ton -medium weight</string>
+    <string name="_19.5_feet_7.5_ton_medium_weight">19.5 feet 7.5 Ton -medium weight</string>
+    <string name="_24_feet_8_ton_medium_weight">24 feet 8 Ton -medium weight</string>
+    <string name="_32_feet_7.5_ton_medium_weight">32 feet 7.5 Ton -medium weight</string>
+    <string name="_14_feet_15_ton_heavy_weight">14 feet 15 Ton -heavy weight</string>
+    <string name="_17.5_feet_9_ton_heavy_weight">17.5 feet 9 Ton -heavy weight</string>
+    <string name="_20_feet_11_ton_heavy_weight">20 feet 11 Ton -heavy weight</string>
+    <string name="_20_feet_15_ton_heavy_weight">20 feet 15 Ton -heavy weight</string>
+    <string name="_22_feet_19_ton_heavy_weight">22 feet 19 Ton -heavy weight</string>
+    <string name="_23_feet_20_ton_heavy_weight">23 feet 20 Ton -heavy weight</string>
+    <string name="_23_feet_25_ton_heavy_weight">23 feet 25 Ton -heavy weight</string>
+    <string name="_24_feet_25_ton_heavy_weight">24 feet 25 Ton -heavy weight</string>
+    <string name="_28_feet_30_ton_heavy_weight">28 feet 30 Ton -heavy weight</string>
+    <string name="_20_feet_16_ton_heavy_weight">20 feet 16 Ton -heavy weight</string>
+    <string name="_24_feet_16_ton_heavy_weight">24 feet 16 Ton -heavy weight</string>
+    <string name="_32_feet_16_ton_heavy_weight">32 feet 16 Ton -heavy weight</string>
+    <string name="_10_wheel_30_ton_flatbed">10 wheel 30 Ton flatbed</string>
+    <string name="_14_wheel_40_ton_flatbed">14 wheel 40 Ton flatbed</string>
+    <string name="_18_wheel_47_ton_flatbed">18 wheel 47 Ton flatbed</string>
+    <string name="_22_wheel_49_ton_flatbed">22 wheel 49 Ton flatbed</string>
+    <string name="_26_wheel_52_ton_flatbed">26 wheel 52 Ton flatbed</string>
+    <string name="_40_feet_33_ton_flatbed">40 feet 33 Ton flatbed</string>
+    <string name="_40_feet_34_ton_flatbed">40 feet 34 Ton flatbed</string>
+    <string name="_10_wheel_30_ton_lowbed">10 wheel 30 Ton lowbed</string>
+    <string name="_14_wheel_40_ton_lowbed">14 wheel 40 Ton lowbed</string>
+    <string name="_18_wheel_47_ton_lowbed">18 wheel 47 Ton lowbed</string>
+    <string name="_22_wheel_49_ton_lowbed">22 wheel 49 Ton lowbed</string>
+    <string name="_26_wheel_52_ton_lowbed">26 wheel 52 Ton lowbed</string>
+    <string name="_40_feet_33_ton_lowbed">40 feet 33 Ton lowbed</string>
+    <string name="_40_feet_34_ton_lowbed">40 feet 34 Ton lowbed</string>
+    <string name="_45_feet_31_ton_box">45 feet 31 Ton box</string>
+    <string name="open">Open</string>
+    <string name="covered">Covered</string>
+    <string name="ac">AC</string>
+    <string name="non_ac">Non Ac</string>
+
+
+    <string name="selectType">Select Type</string>
+    <string name="selectSize">Select Size</string>
+    <string name="SetSchedule">Set Schedule (trip date &amp; time)</string>
+    <string name="informationonloadlocation">Information on load location</string>
+    <string name="detailsInformationonloadlocation">Details Information on load location</string>
+    <string name="informationonloadlocationmustenglish">Information on load location </string>
+
+    <string name="informationonunloadLocationmustenglish">Information on unload location</string>
+
+    <string name="informationonunloadLocation">Information on unload Location</string>
+    <string name="detailsInformationonunloadLocation">Details Information on unload Location</string>
+    <string name="selectcategoryofproductneedtocarry">Select category of product need to carry</string>
+    <string name="productInfoMainItemsAmountQuantity">Product Info( Main Items, Amount /Quantity) </string>
+    <string name="youhavenotanyrunningTripCreateNow">You have not any running Trip Create Now</string>
+    <string name="deleteCurrentTrip">Delete Current Trip</string>
+    <string name="bidContinue">Bid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\t</string>
+    <string name="lateStartFeeOnlyforreturntrip125tkHourornegotiation">Late Start Fee(Only for return trip:125tk/Hour or negotiation) </string>
+    <string name="choose_bidders">Choose Bidders:</string>
+    <string name="review">Review</string>
+    <string name="add_trip_information">Give Trip info to Driver</string>
+    <string name="write_area_within_above_chosen_place">Where in</string>
+    <string name="name_of_person_at_unload_location">Name of person at unload location (Optional)</string>
+    <string name="mobile_num_of_person_at_unload_location">Mobile num of person at unload location (Optional)</string>
+    <string name="write_stop_point_address">Write Stop point address</string>
+    <string name="click_to_submit_information">Click to Submit Information</string>
+    <string name="select_seat">Select Seat</string>
+    <string name="okay">Okay</string>
+    <string name="helpline">Helpline:</string>
+    <string name="now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you_now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you">Now you have confirmed bid. You can call or driver will call you. Now you have confirmed bid. You can call or driver will call you.</string>
+    <string name="product_information">Product Information</string>
+    <string name="driver_details">Driver Details</string>
+    <string name="add_more_trip_information">Add more Trip Information.\t\t\tAdd more Trip Information.\t\t\tAdd more Trip Information.\t\t\t</string>
+    <string name="confirm">Confirm</string>
+    <string name="product_description">Product Description</string>
+    <string name="bidding">Bidding…</string>
+    <string name="name">Name</string>
+    <string name="email_optional">Email (optional)</string>
+    <string name="phone_number_01xxxxxxxxx">Phone Number (01xxxxxxxxx)</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="submit">Submit</string>
+    <string name="country_code">Country Code</string>
+    <string name="_88">+88</string>
+    <string name="if_you_don_t_have_any_account_sign_up">If you don\'t have any Account, registration first…</string>
+    <string name="log_in">Log In</string>
+    <string name="registration">Registration</string>
+    <string name="register_using_mobile_number">Register using Mobile Number</string>
+    <string name="we_will_send_an_one_time">We will send an one time</string>
+    <string name="verification_code">Verification code</string>
+    <string name="on_this_mobile_number">on this mobile number</string>
+    <string name="enter_your_11_digit_mobile_number">Enter your 11 Digit Mobile Number</string>
+    <string name="if_you_have_any_account_sign_in">If you have any Account, Log in…</string>
+    <string name="register">Register</string>
+    <string name="verify_mobile_number_using_otp">Verify Mobile Number using OTP</string>
+    <string name="we_sent_otp_to">We sent OTP to</string>
+    <string name="check_your_mobile">Check your mobile</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="enter_the_otp">Enter the OTP</string>
+    <string name="verify_number">Verify Number</string>
+    <string name="fragile_product_you_have_to_carry_it_very_safely">Fragile Product, You have to carry it very safely</string>
+    <string name="up_down_trip" translatable="false">✔ Up-Down Trip</string>
+    <string name="welcome_text">Welcome Text</string>
+    <string name="bangla">বাংলা</string>
+    <string name="english">English</string>
+
+
+    <string name="detailinfoontripstartlocation">Detail info on trip start location</string>
+    <string name="detailinfoontripEndlocation">Detail info on trip end location</string>
+    <string name="infoontripstartlocation">Detail info on trip start location</string>
+    <string name="infoontripEndlocation">Detail info on trip end location</string>
+
+    <string name="detailinfoontripstartlocationmustenglish">Detail info on trip start location</string>
+    <string name="detailinfoontripEndlocationmustenglish">Detail info on trip end location</string>
+
+    <string name="writefromkeypadinBanglaorEnglishasyouwish">write from keypad in Bangla or English as you wish</string>
+
+
+    <string name="forVillagers">For villagers-\nHouse Name/Point: \n\nFor town/city-\nHouse no:\nRoad:\nBlock:</string>
+
+    <string name="sorryhoumissedsomeinfogivealltheinfo">Sorry, you missed some info.give all the info</string>
+    <string name="goto_reset_password">Forget your password?\nReset now…</string>
+    <string name="reset_password">Reset password</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="title_activity_signed_in">SignedInActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="toCallDriver">To call driver: %1$s</string>
+
+
+    <string name="agree">I Agree</string>
+
+    <string name="continueWithGoogle">Don\'t get OTP Code? Registration/Log in with google</string>
+
+
+</resources>

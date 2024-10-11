@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.UpdateTripInfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_trip_information"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:paddingTop="7dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_languagewritingalert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_header"
+            android:layout_marginBottom="15dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="5dp"
+            android:text="@string/writefromkeypadinBanglaorEnglishasyouwish"
+            android:textAlignment="center"
+            android:textColor="#3F51B5"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_loading_point"
+            android:layout_below="@id/tv_languagewritingalert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+            <RelativeLayout
+                android:id="@+id/rl_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_loading_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detailsInformationonloadlocation"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="5dp"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_loadingArea"
+                    android:layout_below="@id/tv_loading_header"
+                    android:hint="@string/write_area_within_above_chosen_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_area"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_full_loading_address"
+                    android:layout_below="@id/text_input_layout_loadingArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:layout_marginTop="5dp"
+                    app:hintEnabled="false"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_full_loading_address"
+                        android:text="@string/forVillagers"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_loading_landmark"
+                    android:layout_below="@id/text_input_layout_full_loading_address"
+                    android:hint="@string/nearby_school_mosque_others"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_loading_landmark"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_loadingAlternative_person_number"
+                    android:layout_below="@id/text_input_layout_loading_landmark"
+                    android:hint="@string/alternative_person_mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_loading_alternative_person_number"
+                        android:inputType="phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_unloading_point"
+            android:layout_below="@id/cv_loading_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+            <RelativeLayout
+                android:id="@+id/rl_unloading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_unloading_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detailsInformationonloadlocation"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="5dp"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_unloading_area"
+                    android:layout_below="@id/tv_unloading_header"
+                    android:hint="@string/write_area_within_above_chosen_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_unloading_area"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_full_unloading_address"
+                    android:layout_below="@id/text_input_layout_unloading_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_full_unloading_address"
+                        android:text="@string/forVillagers"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_unloading_landmark"
+                    android:layout_below="@id/text_input_layout_full_unloading_address"
+                    android:hint="@string/nearby_school_mosque_others"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_unloading_landmark"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_unloading_personName"
+                    android:layout_below="@id/text_input_layout_unloading_landmark"
+                    android:hint="@string/name_of_person_at_unload_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_unloading_person"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_unloading_mobileNumber"
+                    android:layout_below="@id/text_input_layout_unloading_personName"
+                    android:hint="@string/mobile_num_of_person_at_unload_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_unloading_mobile"
+                        android:inputType="phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_stop_point"
+            android:visibility="gone"
+            android:layout_below="@id/cv_unloading_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+            <RelativeLayout
+                android:id="@+id/rl_stop_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <TextView
+                    android:id="@+id/tv_stop_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stop_point_info_optional"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="5dp"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_stop_point_address"
+                    android:layout_below="@id/tv_stop_header"
+                    android:visibility="gone"
+                    android:hint="@string/write_stop_point_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_stop_point_address"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_stopPointPerson_name"
+                    android:layout_below="@id/text_input_layout_stop_point_address"
+                    android:hint="@string/write_stop_point_person_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_stopPointPerson_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_stopPointPerson_mobile_number"
+                    android:layout_below="@id/text_input_layout_stopPointPerson_name"
+                    android:hint="@string/stop_point_person_mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:textColorHint="@color/black"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    app:endIconMode="clear_text"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_person_mobile_number"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdateTrip"
+            android:layout_below="@id/cv_stop_point"
+            android:layout_marginBottom="20dp"
+            android:text="@string/click_to_submit_information"
+            android:textAllCaps="false"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>

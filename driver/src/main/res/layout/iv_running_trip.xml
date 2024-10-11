@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_trip_header"
+        android:id="@+id/cv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -25,7 +25,6 @@
                 android:id="@+id/tv_car_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pickup, 7 feet 1 Ton (Open)"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -35,7 +34,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1500 tk"
                 android:layout_marginRight="10dp"
                 android:textColor="#116815"
                 android:layout_centerHorizontal="true"
@@ -59,7 +57,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trip Running"
+                android:text="@string/trip_running"
                 android:textColor="@color/white"
                 android:layout_centerHorizontal="true"
                 android:textSize="14sp"
@@ -69,7 +67,7 @@
                 android:paddingRight="7dp"
                 android:paddingTop="1dp"
                 android:paddingBottom="1dp"
-                android:background="@drawable/bg_txtv_ontheway"
+                android:background="@drawable/bg_txtv_bid_placed"
                 android:layout_below="@id/tv_trip_price"
                 android:singleLine="true"
                 android:ellipsize="marquee"
@@ -87,7 +85,6 @@
                 android:paddingTop="2dp"
                 android:paddingRight="7dp"
                 android:paddingBottom="2dp"
-                android:text="T_547357645647"
                 android:textSize="12sp" />
 
             <TextView
@@ -101,7 +98,6 @@
                 android:paddingTop="0dp"
                 android:paddingRight="7dp"
                 android:paddingBottom="2dp"
-                android:text="9 AM , 18/11/2022"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -127,7 +123,7 @@
                         android:id="@+id/t1"
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
-                        android:text="Fr"
+                        android:text="@string/Fr"
                         android:layout_alignParentTop="true"/>
 
                     <ImageView
@@ -144,7 +140,7 @@
                         android:id="@+id/t2"
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
-                        android:text="To"
+                        android:text="@string/to"
                         android:layout_alignBaseline="@id/tv_unloading_upazila_district"
                   />
 
@@ -154,7 +150,6 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Upazila: Mirpur, District: Dhaka"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
@@ -168,50 +163,65 @@
                         android:layout_below="@+id/tv_loading_upazila_district"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Full Address: Mirpur-1, Dhaka-1207"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
+                        android:autoLink="phone"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textIsSelectable="true"
                         />
                     <TextView
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:id="@+id/tv_loading_PersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_loading_full_address"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Name: "
+                        android:text="@string/name"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
+                        android:autoLink="phone"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textIsSelectable="true"
                         />
                     <TextView
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:id="@+id/tv_loading_PersonMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_loading_PersonName"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Mobile: "
+                        android:text="@string/mobile"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
-                        />
+
+                        android:autoLink="phone"
+                        android:textIsSelectable="true"
+                        android:clickable="true"
+                        android:focusable="true" />
                     <TextView
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:id="@+id/tv_loading_AlterPersonMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_loading_PersonMobile"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Alternative Mobile: "
+                        android:text="@string/alternative_person_mobile_number"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
-                        />
+
+                        android:autoLink="phone"
+                        android:textIsSelectable="true"
+                        android:clickable="true"
+                        android:focusable="true" />
 
                     <View
                         android:id="@+id/view_1"
@@ -232,7 +242,6 @@
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
                         android:textColor="#0E023C"
-                        android:text="Upazila: Dhanmondi, District: Dhaka"
                         android:textSize="14sp"
                         android:layout_marginStart="20dp"
                         />
@@ -243,49 +252,80 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unloading_upazila_district"
-                        android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:textColor="#0E023C"
-                        android:text="Full Address: Dhanmondi-1, \10Dhaka-1205"
                         android:textSize="14sp"
                         android:layout_marginBottom="10dp"
                         android:layout_marginStart="20dp"
+                        app:drawableLeftCompat="@drawable/ic_outline_play_arrow_24"
+                        android:autoLink="phone"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:textIsSelectable="true"
                         />
                     <TextView
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:id="@+id/tv_unloading_PersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unloading_full_address"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Name: "
+                        android:text="@string/name"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
                         />
                     <TextView
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:id="@+id/tv_unloading_PersonMobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unloading_PersonName"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Mobile: "
+                        android:text="@string/mobile"
                         android:textSize="14sp"
                         android:textColor="#185A09"
                         android:layout_marginStart="20dp"
-                        />
+
+                        android:autoLink="phone"
+                        android:textIsSelectable="true"
+                        android:clickable="true"
+                        android:focusable="true" />
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tv_description_header"
+                android:visibility="gone"
+                android:id="@+id/tv_stopPoint_header"
                 android:layout_below="@id/cv_loading_unloading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Product Info"
+                android:text="@string/stop_point_info_optional"
                 android:layout_marginTop="0dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_stopPointPersonNameMobileAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_stopPoint_header"
+                android:layout_marginTop="5dp"
+                android:textSize="14sp"
+
+                android:autoLink="phone"
+                android:textIsSelectable="true"
+                android:clickable="true"/>
+
+            <TextView
+                android:id="@+id/tv_description_header"
+                android:layout_below="@id/tv_stopPointPersonNameMobileAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/product_info"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -294,7 +334,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_description_header"
-                android:text="▷ Fragile Product, You have to carry it very safely"
+                android:text="@string/fragile_product_you_have_to_carry_it_very_safely"
                 android:textSize="14sp" />
 
 
@@ -305,7 +345,7 @@
         android:id="@+id/lay_trip_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cv_trip_header"
+        android:layout_below="@+id/cv_main"
         android:visibility="visible">
 
         <com.google.android.material.card.MaterialCardView
@@ -333,7 +373,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="✔ Up-Down Trip"
+                    android:text="@string/up_down_trip"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -343,7 +383,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_up_down_trip"
                     android:layout_marginTop="5dp"
-                    android:text="✔ Contain Animal"
+                    android:text="@string/contain_animal"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -353,7 +393,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_contain_animal"
                     android:layout_marginTop="5dp"
-                    android:text="✔ Fragile Product"
+                    android:text="@string/fragile"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -363,7 +403,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_fragile_product"
                     android:layout_marginTop="5dp"
-                    android:text="✔ Perishable Product"
+                    android:text="@string/perishable"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -373,7 +413,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_perishable_product"
                     android:layout_marginTop="5dp"
-                    android:text="✔ Labor Needed"
+                    android:text="@string/labor_needed_saparate_cost"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
                 <TextView
@@ -381,7 +421,7 @@
                     android:layout_below="@id/tv_labor_needed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="✔ Material Length not more than vehicle length booked"
+                    android:text="@string/length_of_material_are_not_more_than_truck_length_booked"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:layout_marginTop="5dp"
@@ -391,7 +431,7 @@
                     android:layout_below="@id/tv_lengthAlert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="✔ Material Weight not more than vehicle weight booked"
+                    android:text="@string/weight_not_more_than_capacity_of_truck_booked"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:layout_marginTop="5dp"
@@ -401,14 +441,15 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_complete_trip"
+            android:layout_below="@id/cv_additional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cv_additional"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Click to Complete Trip"
+            android:layout_marginBottom="50dp"
+            android:text="@string/click_to_complete_at_trip_end"
             android:textAllCaps="false" />
     </RelativeLayout>
+
 </RelativeLayout>

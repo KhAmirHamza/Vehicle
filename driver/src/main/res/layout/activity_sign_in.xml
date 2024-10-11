@@ -44,7 +44,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:src="@drawable/logo" />
 
 
             <LinearLayout
@@ -56,7 +56,7 @@
                 android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_country_code"
-                    android:hint="Country Code"
+                    android:hint="@string/country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="150dp"
@@ -69,17 +69,18 @@
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
                         android:inputType="phone"
-                        android:text="+88"
+                        android:text="@string/_88"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_phone_number"
-                    android:hint="Phone Number (01xxxxxxxxx)"
+                    android:hint="@string/phone_number_01xxxxxxxxx"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="250dp"
+                    android:layout_marginLeft="5dp"
                     app:startIconTint="@color/black"
                     app:endIconTint="@color/black"
                     app:endIconMode="clear_text"
@@ -95,38 +96,101 @@
 
 
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_password"
+            <LinearLayout
+                android:id="@+id/ly_password"
                 android:layout_below="@+id/ly_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:hint="Password*"
-                app:startIconDrawable="@drawable/ic_password_black_24dp"
-                app:endIconMode="password_toggle"
-                app:errorEnabled="true"
-                app:startIconTint="@color/black"
-                app:endIconTint="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textPassword"
-                    android:textColor="@color/black"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:gravity="top"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="150dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="@string/password"
+                    app:startIconDrawable="@drawable/ic_password_black_24dp"
+                    app:endIconMode="password_toggle"
+                    app:errorEnabled="true"
+                    app:startIconTint="@color/black"
+                    app:endIconTint="@color/black"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="textPassword"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_goto_rest_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+
+                    android:insetTop="0dp"
+                    android:insetLeft="0dp"
+                    android:insetBottom="0dp"
+                    android:insetRight="0dp"
+                    android:layout_marginTop="0dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="@string/goto_reset_password"
+                    android:textSize="12sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_security"
+                android:layout_below="@+id/ly_password"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/productOrPassengerSecurity"/>
+                <RadioGroup
+                    android:id="@+id/radio_security"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/security_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/yes"/>
+                    <RadioButton
+                        android:id="@+id/security_no"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"/>
+                </RadioGroup>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/txtv_hint1"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/textInputLayout_password"
+                android:layout_below="@+id/lay_security"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="If you don't have any Account, sign up..."
+                android:text="@string/if_you_don_t_have_any_account_sign_up"
                 android:layout_marginBottom="2.5dp"
                 android:textColor="@color/black"
+                android:textAlignment="textEnd"
                 android:textSize="12sp"/>
 
             <com.google.android.material.button.MaterialButton
@@ -134,22 +198,41 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtv_hint1"
-                android:text="Log In"
+                android:text="@string/log_in"
                 android:textAllCaps="false"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_goto_sign_up"
                 android:layout_toRightOf="@id/btn_sign_in"
-                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtv_hint1"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:text="Registration"
+                android:text="@string/registration"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:layout_marginBottom="200dp"
                 />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue_google"
+                android:layout_marginStart="0dp"
+                android:textAlignment="textStart"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_sign_in"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@string/continueWithGoogle"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/google"
+                android:drawablePadding="50dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                />
+
 
 
         </RelativeLayout>
@@ -157,7 +240,7 @@
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/progressbarSignIn"
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:layout_width="wrap_content"

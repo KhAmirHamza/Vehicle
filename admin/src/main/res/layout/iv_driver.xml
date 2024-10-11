@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgvDriver"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+
+        <TextView
+            android:id="@+id/txtv_driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imgvDriver"
+            android:layout_marginStart="10dp"
+            android:paddingStart="2dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="2dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Khandakar Amir Hamza"/>
+        <TextView
+            android:id="@+id/txtv_driver_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtv_driver_name"
+            android:paddingStart="2dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="2dp"
+            android:layout_toEndOf="@id/imgvDriver"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:text="01705187083"
+            android:autoLink="phone"
+            android:textIsSelectable="true"
+            android:clickable="true"
+            />
+        <TextView
+            android:id="@+id/txtv_driver_due"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtv_driver_phone_number"
+            android:paddingStart="2dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="2dp"
+            android:layout_toEndOf="@id/imgvDriver"
+            android:text="Due: 500 tk"
+            android:layout_marginStart="10dp"
+            android:textSize="14sp"
+            android:textColor="#F45"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_due_alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/imgvDriver"
+            android:layout_below="@id/txtv_driver_due"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Send Due Alert Message..."
+            android:textAllCaps="false"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

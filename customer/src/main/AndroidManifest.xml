@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_customer"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_customer_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vehicle"
         tools:targetApi="31">
-
-     <!--   <meta-data
+        <activity
+            android:name=".view.UpdateTripInfoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <!--
+           <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_ic_notification" />
         &lt;!&ndash; Set color used with incoming notification messages. This is used when no color is set for the incoming
@@ -28,8 +36,8 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-         [END fcm_default_channel] -->
-
+         [END fcm_default_channel]
+        -->
         <activity
             android:name=".view.CreateTripActivity"
             android:exported="false">
@@ -85,11 +93,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
-        <!-- [START firebase_service] -->
-
-
     </application>
 
 </manifest>

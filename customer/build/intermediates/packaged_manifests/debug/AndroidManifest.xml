@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.vehicle.customer"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.tripbd.user"
+    android:versionCode="3"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="32" />
+        android:targetSdkVersion="33" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -18,20 +18,32 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
+    <permission
+        android:name="com.tripbd.user.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.tripbd.user.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:debuggable="true"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_customer"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_customer_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vehicle" >
-
+        <activity
+            android:name="com.tripbd.user.view.UpdateTripInfoActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <!--
-        <meta-data
+           <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_ic_notification" />
         &lt;!&ndash; Set color used with incoming notification messages. This is used when no color is set for the incoming
@@ -46,37 +58,36 @@
             android:value="@string/default_notification_channel_id" />
          [END fcm_default_channel]
         -->
-
         <activity
-            android:name="com.vehicle.customer.view.CreateTripActivity"
+            android:name="com.tripbd.user.view.CreateTripActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.ProfileSetUpActivity"
+            android:name="com.tripbd.user.view.ProfileSetUpActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.VerificationActivity"
+            android:name="com.tripbd.user.view.VerificationActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.BiddingActivity"
+            android:name="com.tripbd.user.view.BiddingActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.SignInActivity"
+            android:name="com.tripbd.user.view.SignInActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,21 +100,19 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.SignUpActivity"
+            android:name="com.tripbd.user.view.SignUpActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vehicle.customer.view.MainActivity"
+            android:name="com.tripbd.user.view.MainActivity"
             android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <!-- [START firebase_service] -->
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"
@@ -131,7 +140,7 @@
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="com.vehicle.customer.com.squareup.picasso"
+            android:authorities="com.tripbd.user.com.squareup.picasso"
             android:exported="false" />
 
         <activity
@@ -192,17 +201,17 @@
             </intent-filter>
         </service>
 
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.tripbd.user.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <provider
-            android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.vehicle.customer.firebaseinitprovider"
-            android:directBootAware="true"
-            android:exported="false"
-            android:initOrder="100" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -210,7 +219,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.vehicle.customer.androidx-startup"
+            android:authorities="com.tripbd.user.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

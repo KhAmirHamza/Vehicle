@@ -1,41 +1,65 @@
 {
   "project_info": {
-    "project_number": "903534237677",
-    "project_id": "vehicle-198c4",
-    "storage_bucket": "vehicle-198c4.appspot.com"
+    "project_number": "305024146036",
+    "project_id": "tripbd-904af",
+    "storage_bucket": "tripbd-904af.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903534237677:android:3b738fdc691aedb54639e4",
+        "mobilesdk_app_id": "1:305024146036:android:bc3c6aa6a42560f330cf21",
         "android_client_info": {
-          "package_name": "com.vehicle.customer"
+          "package_name": "com.tripbd.driver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903534237677-vc25e6oo35b344qesng4lvtroj4f3s0e.apps.googleusercontent.com",
+          "client_id": "305024146036-g9lrl407fh8l9ao1gga82efdos56lgek.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.vehicle.customer",
+            "package_name": "com.tripbd.driver",
             "certificate_hash": "2e29f7a37046eca45f3d026afb3ccbdc1a537351"
           }
         },
         {
-          "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+          "client_id": "305024146036-i4ml03bd0aqv9hil6e8tjugk4djioqdd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripbd.driver",
+            "certificate_hash": "b0c014ef1f6f23ebbc32818f0dd17054a270a510"
+          }
+        },
+        {
+          "client_id": "305024146036-m6r337ujpp8p25tp3tug0bh9lmru4pja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripbd.driver",
+            "certificate_hash": "bec43b69877e0ed3de80c4b2f3492c76ca0631a6"
+          }
+        },
+        {
+          "client_id": "305024146036-upde4lis2eiabnplu28hc1s1hc8aa4n9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripbd.driver",
+            "certificate_hash": "74d1b8cd71d93c7d758022a953ddb953a6ca49a5"
+          }
+        },
+        {
+          "client_id": "305024146036-6muj0a1fei595v9fa6koi67m0hj7r2p3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBoLrlRV-oazq_vtvjJ4OqAjUdaMsBMKj4"
+          "current_key": "AIzaSyA35BFH09rAGv-RtxfPg4rq6rUVTeWghts"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+              "client_id": "305024146036-6muj0a1fei595v9fa6koi67m0hj7r2p3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -44,35 +68,51 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903534237677:android:e70c911cd12277c24639e4",
+        "mobilesdk_app_id": "1:305024146036:android:f72f42741155c9f330cf21",
         "android_client_info": {
-          "package_name": "com.vehicle.driver"
+          "package_name": "com.tripbd.user"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903534237677-otptucj7f13ao323gafmoc1umm8951le.apps.googleusercontent.com",
+          "client_id": "305024146036-j4gn0leu6578vagnff12g2t8m6veeta3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.vehicle.driver",
+            "package_name": "com.tripbd.user",
+            "certificate_hash": "aff2d8030b0cec0c780d2af768fb4d6375e7f2bf"
+          }
+        },
+        {
+          "client_id": "305024146036-ktd6f2dkd3taevih5gk9gnl9mtlq7063.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripbd.user",
             "certificate_hash": "2e29f7a37046eca45f3d026afb3ccbdc1a537351"
           }
         },
         {
-          "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+          "client_id": "305024146036-r8svet95n73nkl9oj69hrr1d2u2h75gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tripbd.user",
+            "certificate_hash": "f41cbd4c316dbae335fe0b001ce6b3421fcbdd6f"
+          }
+        },
+        {
+          "client_id": "305024146036-6muj0a1fei595v9fa6koi67m0hj7r2p3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBoLrlRV-oazq_vtvjJ4OqAjUdaMsBMKj4"
+          "current_key": "AIzaSyA35BFH09rAGv-RtxfPg4rq6rUVTeWghts"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "903534237677-351faej5n5439mn5uqbbnjhroi7o8365.apps.googleusercontent.com",
+              "client_id": "305024146036-6muj0a1fei595v9fa6koi67m0hj7r2p3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

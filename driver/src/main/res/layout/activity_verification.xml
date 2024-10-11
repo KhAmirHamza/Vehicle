@@ -32,17 +32,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="50dp">
+            android:paddingBottom="30dp">
             <ImageView
                 android:id="@+id/imgv_otp_icon"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/otp_verification"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="70dp"/>
+                android:layout_marginTop="30dp"/>
 
             <TextView
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:id="@+id/txtv1"
                 android:layout_below="@+id/imgv_otp_icon"
                 android:layout_centerHorizontal="true"
@@ -51,7 +51,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Verify Mobile Number using OTP"/>
+                android:text="@string/verify_mobile_number_using_otp"/>
 
             <RelativeLayout
                 android:id="@+id/lay_4"
@@ -76,7 +76,7 @@
                             android:id="@+id/txtv2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="We sent OTP to "
+                            android:text="@string/we_sent_otp_to"
                             android:textAlignment="center"
                             android:textSize="16sp"
                             android:gravity="center_horizontal" />
@@ -85,7 +85,6 @@
                             android:id="@+id/txtv3"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"
-                            android:text="+8801705187083"
                             android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -96,7 +95,7 @@
                         android:layout_below="@+id/lay_5"
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
-                        android:text="Check your mobile"
+                        android:text="@string/check_your_mobile"
                         android:textAlignment="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -107,7 +106,7 @@
                     android:visibility="gone"
                     android:id="@+id/btn_resend_code"
                     android:layout_marginTop="20dp"
-                    android:text="Resend Code"
+                    android:text="@string/resend_code"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="50dp"
@@ -118,17 +117,34 @@
                     style="@style/Widget.MaterialComponents.Button"
                     />
             </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue_google"
+                android:visibility="visible"
+                android:layout_marginStart="0dp"
+                android:textAlignment="textStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@string/continueWithGoogle"
+                android:textAllCaps="false"
+                android:drawableLeft="@drawable/google"
+                android:drawablePadding="50dp"
+                android:layout_below="@+id/lay_4"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                />
             <LinearLayout
                 android:id="@+id/lay_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lay_4"
+                android:layout_below="@+id/btn_continue_google"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="30dp">
                 <TextView
                     android:id="@+id/txtv5"
                     android:textSize="16sp"
-                    android:text="Enter the OTP"
+                    android:text="@string/enter_the_otp"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,7 +208,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_verify_number"
                 android:layout_marginTop="50dp"
-                android:text="Verify Number"
+                android:text="@string/verify_number"
                 android:textAllCaps="false"
                 android:layout_below="@+id/lay_2"
                 android:layout_centerHorizontal="true"
@@ -204,6 +220,7 @@
                 android:textSize="16sp"
 
                 />
+
 
             <ProgressBar
                 android:id="@+id/progressbar"

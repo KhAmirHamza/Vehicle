@@ -51,7 +51,6 @@
                     android:layout_marginBottom="5dp"
                     android:drawableLeft="@drawable/ic_outline_name_24"
                     android:drawablePadding="5dp"
-                    android:text="Khandakar Amir Hamza"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -66,7 +65,6 @@
                     android:layout_marginBottom="5dp"
                     android:drawableLeft="@drawable/ic_email_black_24dp"
                     android:drawablePadding="5dp"
-                    android:text="kh1amirhamza@gmail.com"
                     android:textSize="14sp"
                     android:visibility="visible" />
 
@@ -81,13 +79,12 @@
                     android:layout_marginBottom="5dp"
                     android:drawableLeft="@drawable/ic_call_black_24dp"
                     android:drawablePadding="5dp"
-                    android:text="01705187083"
                     android:textSize="14sp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Log Out"
+                    android:text="@string/log_out"
                     android:id="@+id/btnLogOut"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     app:strokeWidth="0dp"
@@ -102,6 +99,69 @@
                     android:layout_marginStart="3dp"
                     android:drawableLeft="@android:drawable/ic_lock_power_off"/>
 
+                <TextView
+                    android:id="@+id/tvHelplineHeader"
+                    android:layout_below="@id/btnLogOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/helpline"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    />
+                <TextView
+                    android:id="@+id/tvHelpline"
+                    android:layout_below="@id/btnLogOut"
+                    android:layout_toRightOf="@id/tvHelplineHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:autoLink="phone"
+                    android:textIsSelectable="true"
+                    android:clickable="true"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tvLanguageHeader"
+                    android:layout_below="@id/tvHelpline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+
+                    />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupLanguage"
+                    android:layout_toRightOf="@id/tvHelplineHeader"
+                    android:layout_alignBottom="@+id/tvLanguageHeader"
+                    android:layout_alignTop="@+id/tvLanguageHeader"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RadioButton
+                        android:id="@+id/radioBtnBangla"
+                        android:text="@string/bangla"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/radioBtnEnglish"
+                        android:checked="true"
+                        android:text="@string/english"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
 

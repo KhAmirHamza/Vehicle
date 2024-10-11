@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Driver</string>
+    <string name="app_name" translatable="false">Tripbd-Driver/Owner</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
-    <string name="hintWriteCityDistrict">
+    <string name="hintWriteCityDistrict" translatable="false">
         <font size="25">Write City/District and select from popup</font>
     </string>
     <string-array name="vehicle_model">
@@ -232,6 +232,23 @@
         <item>Toyota Voxy</item>
         <item>Toyota Yaris</item>
         <item>Volvo Tourist bus</item>
+        <item>Fuso</item>
+        <item>Emma</item>
+        <item>Suzuki Super Carry</item>
+
+        <item>Suzuki Ravi</item>
+        <item>Jac HFC1020KN/KND</item>
+        <item>Jac HFC1021K</item>
+        <item>Isuzu D-Max</item>
+        <item>Tata Prima LX</item>
+        <item>Ashok Leyland Taurus</item>
+        <item>Ford</item>
+        <item>Volvo</item>
+        <item>Bharat Benze</item>
+        <item>Refrezerator Van</item>
+        <item>Tata Intra V10</item>
+        <item>Ashok Leyland Ecomet</item>
+
     </string-array>
 
     <string-array name="pickupSize">
@@ -462,6 +479,7 @@
         <item>Eicher 1212 K</item>
         <item>Eicher 190 L</item>
         <item>Eicher 1060</item>
+
     </string-array>
 
     <string-array name="privateCarSeat">
@@ -599,7 +617,7 @@
         <item>Barishal Metro</item>
         <item>Sylhet Metro</item>
         <item>Rangpur Metro</item>
-        <item>Jessore</item>
+        <item>Jashore</item>
         <item>Bogura</item>
         <item>Habiganj</item>
         <item>Moulvibazar</item>
@@ -618,7 +636,7 @@
         <item>Laxmipur</item>
         <item>Noakhali</item>
         <item>Feni</item>
-        <item>Chattagram</item>
+        <item>Chattogram</item>
         <item>Rangamati</item>
         <item>Khagrachhari</item>
         <item>Bandarban</item>
@@ -658,17 +676,333 @@
         <item>Jiapurhat</item>
         <item>Narayanganj</item>
         <item>Sylhet</item>
-        <item>Barishal </item>
+        <item>Barishal</item>
         <item>Rangpur</item>
         <item>Patuakhali</item>
 
     </string-array>
 
     <string-array name="serial">
-        <item>Letter</item>
+        <item>Select Letter</item>
+
+<!--        <item>U</item>-->
+<!--        <item>V</item>-->
+<!--        <item>W</item>-->
+<!--        <item>b</item>-->
+<!--        <item>g</item>-->
+<!--        <item>TA</item>-->
+<!--        <item>THA</item>-->
+<!--        <item>Da</item>-->
+<!--        <item>No</item>-->
+<!--        <item>Mo</item>-->
+
+  <!--      <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>c</item>
+        <item>f</item>
+        <item>Ka</item>
+        <item>Kha</item>
+        <item>Ga</item>
+        <item>Po</item>
+        <item>Vo</item>
+
+        <item>P</item>
+        <item>Q</item>
+        <item>Ch</item>
+        <item>Cha</item>
+
+        <item>R</item>
+        <item>S</item>
+        <item>e</item>
+        <item>Ja</item>
+        <item>Jha</item>
+        <item>Ba</item>-->
+
         <item>Ta</item>
         <item>Tha</item>
-        <item>Ma</item>
-        <item>Na</item>
+        <item>Da</item>
+        <item>No</item>
+        <item>Mo</item>
+        <item>Ka</item>
+        <item>Kha</item>
+        <item>Ga</item>
+        <item>Po</item>
+        <item>Vo</item>
+        <item>Ch</item>
+        <item>Cha</item>
+        <item>Ja</item>
+        <item>Jha</item>
+        <item>Ba</item>
+
     </string-array>
+
+
+
+
+
+
+
+
+
+
+
+    <string name="language">Language: </string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="writer_vehicle_brand_select">Writer Vehicle Brand &amp; Select</string>
+    <string name="select_metro">Select Metro</string>
+    <string name="reg._sl_number">Reg. SL &amp; Number</string>
+    <string name="vehicles_documents_and_others">Vehicles Documents and Others</string>
+    <string name="vehicle_image_with_numberplate">Vehicle Image with Numberplate</string>
+    <string name="upload_any_vehicle_documents">Upload Any Vehicle Documents</string>
+    <string name="upload_nid">Upload NID</string>
+    <string name="time_expired">Time Expired</string>
+    <string name="form">Form</string>
+    <string name="participate_budding">Participate Budding</string>
+    <string name="bid_continue">Bid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\tBid Continue\t\t\t\t</string>
+    <string name="confirm_a_bidded_within_bid_end_time">Confirm a Bidded Within Bid End Time</string>
+    <string name="log_out">Log out</string>
+    <string name="pay_now_click_to_pay">Pay Now/Click to Pay</string>
+  <!--  <string name="write_city_district_select_from">Write City/ District &amp; Select From</string>-->
+    <string name="click_add_vehicle">Click &amp; add Vehicle</string>
+    <string name="stop_point_info_optional">Stop point info(Optional)</string>
+    <string name="write_stop_point_person_name">Write Stop Point Person Name</string>
+    <string name="stop_point_person_mobile_number">Stop point Person Mobile Number</string>
+    <string name="if_with_return_trip">If with Return Trip</string>
+    <string name="writer_return_point">Writer Return Point</string>
+    <string name="set_return_scheduled">Set Return Scheduled</string>
+    <string name="location">Location</string>
+    <string name="area">Area</string>
+    <string name="full_address">Full Address</string>
+    <string name="publish_for_budding">Publish For Budding</string>
+    <string name="thank_you_for_publishing_a_bid.driver_will_tell_you_the_rate_wait_and_confirmed">Thank you for Publishing a Bid.Driver will Tell You the Rate Wait and Confirm</string>
+    <string name="write_city_district_and_select_from_pop_up">Write City /District and Select From Pop up</string>
+    <string name="weite_area">Weite Area</string>
+    <string name="for_village">For Village</string>
+    <string name="house_name_point">House Name /Point</string>
+    <string name="for_town_city">For Town/city</string>
+    <string name="house_number">House Number</string>
+    <string name="road">Road</string>
+    <string name="block">Block</string>
+    <string name="nearby_school_mosque_others">Nearby School /Mosque /Others</string>
+    <string name="alternative_person_mobile_number">alternative Person Mobile Number</string>
+    <string name="unload_location">Unload Location (Optional)</string>
+    <string name="load_location">load Location</string>
+    <string name="you_have_not_any_running_trip">You Have not any Running Trip</string>
+    <string name="create_now">Create Now</string>
+    <string name="click_to_create_trip">Click To Create Trip</string>
+    <string name="trip">Trip</string>
+    <string name="create_trip">Create Trip</string>
+    <string name="select_vehicles">Select Vehicles</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="truck">Truck</string>
+    <string name="trailer">Trailer</string>
+    <string name="private_car">Private Car</string>
+    <string name="micro_bus">Micro Bus</string>
+    <string name="tour_bus">Tour Bus</string>
+    <string name="contain_animal">Contain Animal</string>
+    <string name="fragile">Fragile</string>
+    <string name="perishable">Perishable</string>
+    <string name="labor_needed_saparate_cost">Labor Needed ( Saparate Cost)</string>
+    <string name="weight_not_more_than_capacity_of_truck_booked">Weight not more than Capacity of Truck Booked</string>
+    <string name="length_of_material_are_not_more_than_truck_length_booked">Length of Material are not more than Truck Length Booked</string>
+    <string name="raw_materials">Raw Materials</string>
+    <string name="agricultural_inputs">Agricultural Inputs</string>
+    <string name="educational_inputs">Educational Inputs</string>
+    <string name="supporting_inputs">Supporting Inputs</string>
+    <string name="garments_and_textiles">Garments and Textiles</string>
+    <string name="medical_and_life_supporting_inputs">Medical and life Supporting Inputs</string>
+    <string name="event_management_items">Event Management Items</string>
+    <string name="live_animal">Live Animal</string>
+    <string name="machineries_and_heavy_equipment">Machineries and Heavy Equipment</string>
+    <string name="transport_and_transport_related_items">Transport and Transport Related Items</string>
+    <string name="everyday_products">Everyday Products</string>
+    <string name="industrial_products">Industrial Products</string>
+    <string name="consumable_items">Consumable Items</string>
+    <string name="electronics_electrical_items">Electronics Electrical Items</string>
+    <string name="agricultural_commodities">Agricultural Commodities</string>
+    <string name="household_items">Household Items</string>
+    <string name="chemical_and_combustible_products">Chemical and Combustible Products</string>
+    <string name="animal_feed">Animal Feed</string>
+    <string name="_7_feet_1_ton">7 feet 1 Ton</string>
+    <string name="_9_feet_1.5_ton">9 feet 1.5 Ton</string>
+    <string name="_12_feet_2_ton">12 feet 2 Ton</string>
+    <string name="_12_feet_3_ton">12 feet 3 Ton</string>
+    <string name="_13_feet_1.5_ton_light_weight">13 feet 1.5 Ton -light weight</string>
+    <string name="_14_feet_3.5_ton_light_weight">14 feet 3.5 Ton -light weight</string>
+    <string name="_16_feet_3.5_ton_light_weight">16 feet 3.5 Ton-light weight</string>
+    <string name="_16_feet_5_ton_medium_weight">16 feet 5 Ton - medium weight</string>
+    <string name="_16_feet_8.5_ton_medium_weight">16 feet 8.5 Ton -medium weight</string>
+    <string name="_20_feet_5.5_ton_medium_weight">20 feet 5.5 Ton -medium weight</string>
+    <string name="_19.5_feet_7.5_ton_medium_weight">19.5 feet 7.5 Ton -medium weight</string>
+    <string name="_24_feet_8_ton_medium_weight">24 feet 8 Ton -medium weight</string>
+    <string name="_32_feet_7.5_ton_medium_weight">32 feet 7.5 Ton -medium weight</string>
+    <string name="_14_feet_15_ton_heavy_weight">14 feet 15 Ton -heavy weight</string>
+    <string name="_17.5_feet_9_ton_heavy_weight">17.5 feet 9 Ton -heavy weight</string>
+    <string name="_20_feet_11_ton_heavy_weight">20 feet 11 Ton -heavy weight</string>
+    <string name="_20_feet_15_ton_heavy_weight">20 feet 15 Ton -heavy weight</string>
+    <string name="_22_feet_19_ton_heavy_weight">22 feet 19 Ton -heavy weight</string>
+    <string name="_23_feet_20_ton_heavy_weight">23 feet 20 Ton -heavy weight</string>
+    <string name="_23_feet_25_ton_heavy_weight">23 feet 25 Ton -heavy weight</string>
+    <string name="_24_feet_25_ton_heavy_weight">24 feet 25 Ton -heavy weight</string>
+    <string name="_28_feet_30_ton_heavy_weight">28 feet 30 Ton -heavy weight</string>
+    <string name="_20_feet_16_ton_heavy_weight">20 feet 16 Ton -heavy weight</string>
+    <string name="_24_feet_16_ton_heavy_weight">24 feet 16 Ton -haeavy weight</string>
+    <string name="_32_feet_16_ton_heavy_weight">32 feet 16 Ton -heavy weight</string>
+    <string name="_10_wheel_30_ton_flatbed">10 wheel 30 Ton flatbed</string>
+    <string name="_14_wheel_40_ton_flatbed">14 wheel 40 Ton flatbed</string>
+    <string name="_18_wheel_47_ton_flatbed">18 wheel 47 Ton flatbed</string>
+    <string name="_22_wheel_49_ton_flatbed">22 wheel 49 Ton flatbed</string>
+    <string name="_26_wheel_52_ton_flatbed">26 wheel 52 Ton flatbed</string>
+    <string name="_40_feet_33_ton_flatbed">40 feet 33 Ton flatbed</string>
+    <string name="_40_feet_34_ton_flatbed">40 feet 34 Ton flatbed</string>
+    <string name="_10_wheel_30_ton_lowbed">10 wheel 30 Ton lowbed</string>
+    <string name="_14_wheel_40_ton_lowbed">14 wheel 40 Ton lowbed</string>
+    <string name="_18_wheel_47_ton_lowbed">18 wheel 47 Ton lowbed</string>
+    <string name="_22_wheel_49_ton_lowbed">22 wheel 49 Ton lowbed</string>
+    <string name="_26_wheel_52_ton_lowbed">26 wheel 52 Ton lowbed</string>
+    <string name="_40_feet_33_ton_lowbed">40 feet 33 Ton lowbed</string>
+    <string name="_40_feet_34_ton_lowbed">40 feet 34 Ton lowbed</string>
+    <string name="_45_feet_31_ton_box">45 feet 31 Ton box</string>
+    <string name="open">Open</string>
+    <string name="covered">Covered</string>
+    <string name="ac">AC</string>
+    <string name="non_ac">Non Ac</string>
+
+
+
+    <string name="selectType">Select Type</string>
+    <string name="selectSize">Select Size</string>
+    <string name="SetSchedule">Set Schedule</string>
+    <string name="detailsInformationonloadlocation">Details Information on load location</string>
+    <string name="detailsInformationonunloadLocation">Details Information on unload Location</string>
+    <string name="selectcategoryofproductneedtocarry">Select category of product need to carry</string>
+    <string name="productInfoMainItemsAmountQuantity">Product Info( Main Items, Amount /Quantity) </string>
+    <string name="youhavenotanyrunningTripCreateNow">You have not any running Trip Create Now</string>
+    <string name="deleteCurrentTrip">Delete Current Trip</string>
+    <string name="bidContinue">Bid Continue</string>
+    <string name="lateStartFeeOnlyforreturntrip125tkHourornegotiation">Late Start Fee(Only for return trip:125tk/Hour or negotiation) </string>
+
+
+
+
+
+<string name="helpline">Helpline</string>
+<string name="phone_number">phone number</string>
+<string name="password">password</string>
+<string name="payment">payment</string>
+<string name="due">Payment Due</string>
+<string name="pay_now">Pay now</string>
+<string name="trip_fcmArea">Trip Notification Area: </string>
+<!--<string name="write_city_district_and_select_from">write city/district and select from</string>-->
+<string name="save">save</string>
+<string name="click_and_add_vehicle_">click and add vehicle </string>
+<string name="your_vehicle_list">your vehicle list</string>
+<string name="all_trip">All Trip</string>
+<string name="running_trip">Running Trip</string>
+<string name="profile">profile</string>
+<string name="add_vehicle">add vehicle</string>
+<string name="select_vehicle">select vehicle</string>
+<string name="vehicle_type">vehicle type</string>
+<string name="select_size">select size</string>
+<string name="vehicle_details_">vehicle details </string>
+<string name="write_vehicle_brand_and_then_select">write vehicle brand and then select</string>
+<string name="select_metro_">select metro </string>
+<string name="letter">letter</string>
+<string name="reg_SI_and_numbed">reg SI and numbed</string>
+<string name="model_year">model year</string>
+<string name="vehicle_documents_and_other">vehicle documents and other</string>
+<string name="upload_NID">upload NID</string>
+<string name="upload_any_vehicle_document_">upload any vehicle document </string>
+<string name="vehicle_image_with_number_plate_">vehicle image with number plate </string>
+<string name="submit_vehicle">submit vehicle</string>
+<string name="Fr">Fr</string>
+<string name="to">to</string>
+<!--
+<string name="write_city_district_and_select_from_popup">write city/district and select from popup</string>
+-->
+<string name="click_to_filter">click to filter</string>
+<string name="bid_continue_">bid continue </string>
+<string name="participate_bidding_">participate bidding </string>
+<string name="enter_required_bidding_information_">enter required bidding information </string>
+<string name="enter_bid_price_">Enter bid price (Taka)</string>
+<string name="owner_owners_amount">owner/owners\' amount</string>
+<string name="service_charge">service charge</string>
+<string name="late_start_fee_only_for_return_trip_tk_125_hour_or_negotiation_">late start fee(only for return trip):tk 125/hour or negotiation </string>
+<string name="enter_advace_Tk">enter advace Tk</string>
+<string name="enter_requirement_enter_more_info_if_any">enter requirement /enter more info(if any)</string>
+<string name="select_payment_method">select payment method</string>
+<string name="bKash_Rocket_Nogad">bKash/Rocket/Nogad</string>
+<string name="select_vehicle_">select vehicle </string>
+<string name="submit_bid">submit bid</string>
+<string name="time_expired_">time expired </string>
+<string name="bid_placed__bid_confirmed_">bid placed, bid confirmed </string>
+<string name="thank_you_for_participating_in_the_bid_If_you_win_the_bid_it_would_be_added_to_your_running_trip_">thank you for participating in the bid.If you win the bid, it would be added to your running trip </string>
+<string name="okay">okay</string>
+<string name="you_confirmed_bid_you_can_call_or_driver_will_call_you_customer_app">you confirmed bid, you can call or driver will call you(user app</string>
+<string name="click_to_complete_at_trip_end">click to complete at trip end</string>
+<string name="you_have_completed_trip">you have completed trip</string>
+    <string name="select_seat">Select Seat</string>
+    <string name="vehicle_model_name">Vehicle Model Name</string>
+    <string name="hand_cash">Hand Cash</string>
+    <string name="paymentSystem">bKash/Nagad/Rocket</string>
+    <string name="product_info">Product Info</string>
+    <string name="up_down_trip" translatable="false">✔ Up-Down Trip</string>
+    <string name="start_bidding">Start Bidding</string>
+    <string name="name">Name</string>
+    <string name="email_only_for_office_user">Email (only for office user)</string>
+    <string name="phone_number_01xxxxxxxxx">Phone Number (01xxxxxxxxx)</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="refer_code_01xxxxxxxxx">Refer Code (01xxxxxxxxx)</string>
+    <string name="submit">Submit</string>
+    <string name="country_code">Country Code</string>
+    <string name="_88">+88</string>
+    <string name="if_you_don_t_have_any_account_sign_up">If you don\'t have any Account, registration first...</string>
+    <string name="log_in">Log In</string>
+    <string name="registration">Registration</string>
+    <string name="register_using_mobile_number">Register using Mobile Number</string>
+    <string name="we_will_send_an_one_time">We will send an one time</string>
+    <string name="verification_code">Verification code</string>
+    <string name="on_this_mobile_number">on this mobile number</string>
+    <string name="enter_your_11_digit_mobile_number">Enter your 11 Digit Mobile Number</string>
+    <string name="if_you_have_any_account_sign_in">If you have any Account, sign in...</string>
+    <string name="register">Register</string>
+    <string name="verify_mobile_number_using_otp">Verify Mobile Number using OTP</string>
+    <string name="we_sent_otp_to">We sent OTP to</string>
+    <string name="check_your_mobile">Check your mobile</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="enter_the_otp">Enter the OTP</string>
+    <string name="verify_number">Verify Number</string>
+    <string name="welcome_text">Welcome Text</string>
+    <string name="bangla">বাংলা</string>
+    <string name="english">English</string>
+    <string name="trip_running">Trip Running</string>
+    <string name="mobile">Mobile:</string>
+    <string name="fragile_product_you_have_to_carry_it_very_safely">▷ Fragile Product, You have to carry it very safely</string>
+    <string name="address">\"▷ Address: \"</string>
+    <string name="personname">\"▷ Person Name: \"</string>
+    <string name="phonenumber">\"▷ Phone Number: \"</string>
+    <string name="tk">\" Tk\"</string>
+    <string name="seat">\"Seat: \"</string>
+    <string name="haveyoucompletedtrip" >Have you completed trip?</string>
+    <string name="payusingbkshrocketnagad" >Pay Using Bkash/Rocket/Nagad Number</string>
+    <string name="sendmoneyto" >Send Money to this Personal Number: 01763414164</string>
+    <string name="doyouwanttologout" >Do you want to log out?</string>
+    <string name="selectpicture">Select Picture</string>
+    <string name="reset_password">Reset password</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="goto_reset_password">Forget your password?\nReset now…</string>
+    <string name="productOrPassengerSecurity">Are you willing to provide security for Products/passengers during the journey?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="securityAgreeAlert">You must give yes in check box to get trip from  the app</string>
+    <string name="nameUnloadLocationPerson">Name of the person at the Unload Location</string>
+    <string name="stopPointPersonMobileNumber">Stop point person mobile number</string>
+    <string name="mobile_num_of_person_at_unload_location">Mobile num of person at unload location</string>
+    <string name="stopPointPersonName">Stop point person name</string>
+
+    <string name="agree">I Agree</string>
+    <string name="continueWithGoogle">Don\'t get OTP Code? Registration/Log in with google</string>
+
 </resources>

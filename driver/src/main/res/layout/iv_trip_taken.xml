@@ -7,7 +7,7 @@
     >
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_trip_header"
+        android:id="@+id/cv_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -28,7 +28,6 @@
                 android:id="@+id/tv_car_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pickup, 7 feet 1 Ton (Open)"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -38,7 +37,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="13:50"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/black"
                 android:layout_centerHorizontal="true"
@@ -62,7 +60,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="Bid Continue - Bid Continue - Bid Continue -"
                 android:textColor="@color/white"
                 android:layout_centerHorizontal="true"
                 android:textSize="14sp"
@@ -71,7 +68,7 @@
                 android:paddingRight="7dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
-                android:background="@drawable/bg_txtv_ontheway"
+                android:background="@drawable/bg_txtv_bid_placed"
                 android:layout_below="@id/tv_trip_remainingTime"
                 android:singleLine="true"
                 android:ellipsize="marquee"
@@ -90,7 +87,6 @@
                 android:paddingTop="2dp"
                 android:paddingRight="7dp"
                 android:paddingBottom="2dp"
-                android:text="T_547357645647"
                 android:textSize="12sp" />
 
             <TextView
@@ -104,7 +100,6 @@
                 android:paddingTop="0dp"
                 android:paddingRight="7dp"
                 android:paddingBottom="2dp"
-                android:text="9 AM , 18/11/2022"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -142,7 +137,6 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Upazila: Mirpur, District: Dhaka"
                         android:textSize="14sp" />
 
                     <TextView
@@ -152,7 +146,6 @@
                         android:layout_below="@+id/tv_loading_upazila_district"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Full Address: Mirpur-1, Dhaka-1207"
                         android:textSize="14sp" />
 
                     <View
@@ -171,7 +164,6 @@
                         android:layout_marginTop="5dp"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
                         android:paddingBottom="5dp"
-                        android:text="Upazila: Dhanmondi, District: Dhaka"
                         android:textSize="14sp" />
 
                     <TextView
@@ -180,7 +172,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_unloading_upazila_district"
                         android:drawableLeft="@drawable/ic_outline_play_arrow_24"
-                        android:text="Full Address: Dhanmondi-1, \10Dhaka-1205"
                         android:textSize="14sp" />
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -217,7 +208,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="7dp"
-                            android:text="Product Description"
+                            android:text="@string/product_info"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -226,7 +217,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_description_header"
-                            android:text="▷ Fragile Product, You have to carry it very safely"
                             android:textSize="14sp" />
 
                         <TextView
@@ -235,7 +225,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_description"
                             android:layout_marginTop="10dp"
-                            android:text="✔ Up-Down Trip"
+                            android:text="@string/up_down_trip"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -245,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_up_down_trip"
                             android:layout_marginTop="5dp"
-                            android:text="✔ Contain Animal"
+                            android:text="@string/contain_animal"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -255,7 +245,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_contain_animal"
                             android:layout_marginTop="5dp"
-                            android:text="✔ Fragile Product"
+                            android:text="@string/fragile"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -265,7 +255,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_fragile_product"
                             android:layout_marginTop="5dp"
-                            android:text="✔ Perishable Product"
+                            android:text="@string/perishable"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -275,7 +265,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_perishable_product"
                             android:layout_marginTop="5dp"
-                            android:text="✔ Labor Needed"
+                            android:text="@string/labor_needed_saparate_cost"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -284,7 +274,7 @@
                             android:layout_below="@id/tv_labor_needed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="✔ Material Length not more than vehicle length booked"
+                            android:text="@string/length_of_material_are_not_more_than_truck_length_booked"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:layout_marginTop="5dp"
@@ -294,7 +284,7 @@
                             android:layout_below="@id/tv_lengthAlert"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="✔ Material Weight not more than vehicle weight booked"
+                            android:text="@string/weight_not_more_than_capacity_of_truck_booked"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:layout_marginTop="5dp"
@@ -314,7 +304,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="Start Bidding"
+                    android:text="@string/start_bidding"
                     android:textAllCaps="false" />
           <!--  </LinearLayout>-->
 

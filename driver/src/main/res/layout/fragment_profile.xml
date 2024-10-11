@@ -16,46 +16,58 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imgv_profile_image"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginTop="15dp"
-                app:civ_border_color="#8D9694"
-                app:civ_border_width="2dp"
-                android:src="@drawable/ic_outline_person_24"/>
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardview_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imgv_profile_image"
-                android:layout_margin="5dp"
-                android:layout_marginLeft="5dp"
+
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp">
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp">
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp"
+                    android:background="#F9FBE7"
+                    >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/imgv_profile_image"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_marginTop="15dp"
+                        app:civ_border_color="#8D9694"
+                        app:civ_border_width="2dp"
+                        android:src="@drawable/ic_outline_person_24"/>
 
                     <TextView
                         android:id="@+id/txtv_name"
+                        android:layout_below="@+id/imgv_profile_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:drawableLeft="@drawable/ic_outline_name_24"
                         android:drawablePadding="5dp"
-                        android:text="Khandakar Amir Hamza"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:autoLink="phone"
+                        android:textIsSelectable="true"
+                        android:clickable="true"
+                        android:focusable="true" />
 
                     <TextView
                         android:id="@+id/txtv_email"
@@ -66,11 +78,10 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
-                        android:drawableLeft="@drawable/ic_email_black_24dp"
                         android:drawablePadding="5dp"
-                        android:text="kh1amirhamza@gmail.com"
                         android:textSize="14sp"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        app:drawableLeftCompat="@drawable/ic_email_black_24dp" />
 
                     <TextView
                         android:id="@+id/txtv_phone_number"
@@ -81,29 +92,113 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
-                        android:drawableLeft="@drawable/ic_call_black_24dp"
                         android:drawablePadding="5dp"
-                        android:text="01705187083"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        app:drawableLeftCompat="@drawable/ic_call_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/tvHelplineHeader"
+                        android:layout_below="@id/txtv_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/helpline"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:id="@+id/tvHelpline"
+                        android:layout_below="@id/txtv_phone_number"
+                        android:layout_toEndOf="@id/tvHelplineHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="01763414164"
+                        android:textColor="@color/black"
+                        android:autoLink="phone"
+                        android:textIsSelectable="true"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardview_1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    >
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Log Out"
+                        android:text="@string/log_out"
                         android:id="@+id/btnLogOut"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        app:strokeWidth="0dp"
-                        android:layout_below="@id/txtv_phone_number"
+                        app:strokeWidth="1dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:textAllCaps="false"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        android:padding="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
                         android:textColor="#B6003E"
                         android:layout_marginStart="3dp"
-                        android:drawableLeft="@android:drawable/ic_lock_power_off"/>
+                        app:strokeColor="#B6003E"
+                        android:drawableStart="@android:drawable/ic_lock_power_off"/>
+                    <TextView
+                        android:id="@+id/tvLanguageHeader"
+                        android:layout_below="@id/btnLogOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/black"
 
+                        />
 
+                    <RadioGroup
+                        android:id="@+id/radioGroupLanguage"
+                        android:layout_toEndOf="@id/tvLanguageHeader"
+                        android:layout_alignBottom="@+id/tvLanguageHeader"
+                        android:layout_alignTop="@+id/tvLanguageHeader"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <RadioButton
+                            android:id="@+id/radioBtnBangla"
+                            android:text="@string/bangla"
+                            android:minHeight="0dp"
+                            android:minWidth="0dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <RadioButton
+                            android:id="@+id/radioBtnEnglish"
+                            android:checked="true"
+                            android:text="@string/english"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RadioGroup>
 
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -111,16 +206,20 @@
                 android:id="@+id/cardview_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview_1"
-                android:layout_margin="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp">
+                android:layout_below="@+id/cardview_settings"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp">
+                    android:padding="10dp"
+                    android:background="#EEFFBE">
 
                     <TextView
                         android:id="@+id/txtv_2"
@@ -128,12 +227,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
                         android:drawablePadding="5dp"
-                        android:text="Payment:"
+                        android:text="@string/payment"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:visibility="visible" />
+                        android:textSize="17sp"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txtv_due"
@@ -142,12 +240,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
                         android:drawableLeft="@drawable/ic_outline_info_24"
                         android:drawablePadding="5dp"
-                        android:text="Due : 500tk"
+                        android:text="@string/due"
                         android:textColor="#FF0000"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnPayNow"
@@ -158,26 +255,13 @@
                         android:minHeight="0dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        android:text="Pay Now"
+                        android:minWidth="0dp"
+                        android:backgroundTint="#388C3B"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="0dp"
+                        android:text="@string/pay_now"
                         android:textAllCaps="false"
-                        android:layout_marginLeft="20dp"
                         />
-
-
-                    <TextView
-                        android:id="@+id/txtv_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/txtv_due"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:drawablePadding="5dp"
-                        android:textColor="@color/black"
-                        android:text="Trip start from:"
-                        android:textSize="14sp"
-                        android:visibility="visible" />
                     <!--  <TextView
                           android:id="@+id/txtv_notification_area"
                           android:layout_width="wrap_content"
@@ -200,105 +284,203 @@
 
                             android:layout_height="wrap_content"
                             style="@style/spinner_style"/>-->
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNotification"
+                android:layout_below="@id/cardview_2"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    android:background="#9DFFB9">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/txtv_3"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:minHeight="0dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/purple_700"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:textAllCaps="false"
+                        android:text="@string/trip_fcmArea"
+                        android:textAlignment="textStart"
+                        android:textSize="14sp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/load_location"
+                        />
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_notifi_thana"
+                        android:id="@+id/text_input_layout_notifi_loading_thana"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtv_3"
-                        android:hint="Write City/District and select from popup"
+                        android:hint="@string/write_city_district_and_select_from_pop_up"
                         android:minWidth="12dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_toLeftOf="@id/btn_notification_area"
+                        android:layout_marginTop="0dp"
                         android:textColorHint="@color/black"
                         app:endIconMode="clear_text"
                         app:endIconTint="@color/black"
                         app:startIconTint="@color/black">
 
                         <AutoCompleteTextView
-                            android:id="@+id/autocomplete_notificationArea"
+                            android:id="@+id/autocomplete_notificationLoadingArea"
                             android:layout_width="fill_parent"
                             android:layout_height="56dp"
                             android:baselineAligned="false"
+                            android:completionThreshold="1"
                             android:paddingLeft="16dp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unload_location"
+                        android:layout_marginTop="5dp"
+                        />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_notifi_unloading_thana"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/write_city_district_and_select_from_pop_up"
+                        android:minWidth="12dp"
+                        android:layout_marginTop="0dp"
+                        android:textColorHint="@color/black"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/black"
+                        app:startIconTint="@color/black">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/autocomplete_notificationUnloadingArea"
+                            android:layout_width="fill_parent"
+                            android:layout_height="56dp"
+                            android:baselineAligned="false"
+                            android:completionThreshold="1"
+                            android:paddingLeft="16dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_notification_area"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:text="Save"
+                        android:layout_marginTop="10dp"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:text="@string/save"
+                        android:textSize="16sp"
                         android:textAllCaps="false"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_alignBaseline="@id/text_input_layout_notifi_thana"
-                        android:layout_below="@id/txtv_3"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:elevation="0dp"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:minWidth="0dp"
+                        android:layout_below="@id/text_input_layout_notifi_unloading_thana"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
 
                         />
 
-
-
-
-
-                </RelativeLayout>
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add_vehicle"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:text="Click &amp; Add Vehicle"
-                android:layout_marginEnd="5dp"
-                android:textAllCaps="false"
-                android:textSize="13dp"
-                android:layout_marginStart="10dp"
-                android:layout_below="@id/cardview_2"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:layout_marginTop="10dp"
 
-                />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/txtv_1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_below="@id/btn_add_vehicle"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:textAlignment="textStart"
-                android:text="Your Vehicle List"
-                android:textSize="13dp"
-                android:insetTop="0dp"
-
-                android:insetBottom="0dp"
-                android:textAllCaps="false"
-                android:textStyle="bold"/>
-
-
-            <!--android:drawableLeft="@drawable/ic_outline_directions_car_24"
-    -->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recy_vehicles"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_below="@id/txtv_1"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/iv_vehicle"
-                />
+                android:layout_below="@id/cardNotification"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="10dp"
+                    android:background="#64FFDA"
+                    >
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_add_vehicle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="@string/click_and_add_vehicle_"
+                        android:layout_marginEnd="5dp"
+                        android:textAllCaps="false"
+                        app:strokeColor="@color/purple_700"
+                        app:strokeWidth="2dp"
+                        app:cornerRadius="15dp"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+
+                        />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/txtv_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_below="@id/btn_add_vehicle"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
+                        android:textAlignment="textStart"
+                        app:strokeColor="@color/purple_700"
+                        app:strokeWidth="1dp"
+                        android:text="@string/your_vehicle_list"
+                        android:textSize="13sp"
+                        android:minHeight="0dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recy_vehicles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_below="@id/txtv_1"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/iv_vehicle"
+                        />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-    <!-- TODO: Update blank fragment layout -->
-
-
 </LinearLayout>

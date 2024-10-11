@@ -27,7 +27,7 @@
                 android:layout_below="@id/imgv_car"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Vehicle"
+                android:text="@string/add_vehicle"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -58,7 +58,7 @@
                         android:id="@+id/tv_vehicle_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select Vehicle"
+                        android:text="@string/select_vehicles"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -69,8 +69,7 @@
                         android:id="@+id/spinner_vehicle"
                         android:layout_below="@id/tv_vehicle_header"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"/>
+                        android:layout_height="wrap_content"/>
 
 
                     <TextView
@@ -78,7 +77,7 @@
                         android:layout_below="@id/spinner_vehicle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle Type"
+                        android:text="@string/vehicle_type"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -88,14 +87,13 @@
                         android:id="@+id/spinner_vehicleVariety"
                         android:layout_below="@id/tv_vehicle_variety_header"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"/>
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/tv_vehicle_size"
                         android:layout_below="@id/spinner_vehicleVariety"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select Size"
+                        android:text="@string/selectSize"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -105,15 +103,14 @@
                         android:id="@+id/spinner_vehicle_size"
                         android:layout_below="@id/tv_vehicle_size"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"/>
+                        android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/tv_vehicle_seat"
                         android:visibility="gone"
                         android:layout_below="@id/spinner_vehicle_size"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select Seat"
+                        android:text="@string/select_seat"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -124,8 +121,7 @@
                         android:visibility="gone"
                         android:layout_below="@id/tv_vehicle_seat"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"/>
+                        android:layout_height="wrap_content"/>
 
 
                 </RelativeLayout>
@@ -153,7 +149,7 @@
                         android:id="@+id/tv_vehicle_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle Details"
+                        android:text="@string/vehicle_details"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -165,7 +161,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_layout_model_name1"
                         android:layout_below="@id/tv_vehicle_details"
-                        android:hint="Vehicle Model Name"
+                        android:hint="@string/vehicle_model_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minWidth="150dp"
@@ -188,7 +184,7 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Write vehicle brand then select"
+                        android:hint="@string/write_vehicle_brand_and_then_select"
                         app:hintTextAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
                         android:minWidth="150dp"
                         android:textColorHint="@color/black"
@@ -224,6 +220,7 @@
                       android:layout_marginTop="10dp"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
+                      android:layout_marginStart="10dp"
                       style="@style/spinner_style"
                       />
 
@@ -233,11 +230,12 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_layout_vehicle_number"
                         android:layout_below="@id/text_input_layout_model_name"
-                        android:hint="Reg Sl &amp; num"
+                        android:hint="@string/reg._sl_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:minWidth="110dp"
+                        android:layout_marginTop="10dp"
                         android:textColorHint="@color/black"
                         app:startIconTint="@color/black"
                         app:endIconTint="@color/black"
@@ -255,7 +253,7 @@
                         android:layout_below="@id/text_input_layout_vehicle_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Model year"
+                        android:text="@string/model_year"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -266,7 +264,6 @@
                         android:layout_below="@id/tv_vehicle_year"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tooltipText="Select Vehicle Size or Capacity"
                         style="@style/spinner_style"
                         />
 
@@ -299,7 +296,7 @@
                         android:id="@+id/tv_vehicle_licence"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Vehicle documents and others"
+                        android:text="@string/upload_any_vehicle_document_"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="16sp"
@@ -325,6 +322,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
+                                android:maxHeight="150dp"
                                 android:src="@drawable/pick_image"
                                 />
                             <TextView
@@ -333,7 +331,7 @@
                                 android:textAlignment="center"
                                 android:maxLines="2"
                                 android:textSize="12sp"
-                                android:text="Vehicle Image With Num Plate"
+                                android:text="@string/vehicle_image_with_number_plate_"
                                 android:textColor="@color/black"/>
 
                         </LinearLayout>
@@ -350,6 +348,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
+                                android:maxHeight="150dp"
                                 android:src="@drawable/pick_image"
                                 />
                             <TextView
@@ -358,7 +357,7 @@
                                 android:textAlignment="center"
                                 android:maxLines="2"
                                 android:textSize="12sp"
-                                android:text="Upload any vehicle document"
+                                android:text="@string/upload_any_vehicle_document_"
                                 android:textColor="@color/black"/>
 
                         </LinearLayout>
@@ -374,6 +373,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
+                                android:maxHeight="150dp"
                                 android:src="@drawable/pick_image"
                                 />
                             <TextView
@@ -382,7 +382,7 @@
                                 android:textAlignment="center"
                                 android:maxLines="2"
                                 android:textSize="12sp"
-                                android:text="Upload NID"
+                                android:text="@string/upload_nid"
                                 android:textColor="@color/black"/>
 
                         </LinearLayout>
@@ -398,7 +398,7 @@
                 android:layout_below="@id/cv_vehicle_licence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Submit Vehicle"
+                android:text="@string/submit_vehicle"
                 android:layout_marginTop="5dp"
                 android:textAllCaps="false"
                 android:layout_marginBottom="50dp"

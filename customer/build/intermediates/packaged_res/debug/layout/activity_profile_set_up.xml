@@ -38,16 +38,7 @@
             android:paddingLeft="30dp"
             android:paddingRight="30dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_choose_image"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@color/teal_700"
-                android:textColor="@color/black"
-                android:text="Choose Image"
-                android:textAllCaps="false" />
+
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -55,7 +46,6 @@
                 android:id="@+id/imgv_pharmacy_image"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_below="@id/btn_choose_image"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginTop="15dp"
@@ -72,7 +62,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:minWidth="300dp"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_outline_person_24">
@@ -91,7 +81,7 @@
                 android:layout_below="@+id/text_input_layout_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
-                android:hint="Email (optional)"
+                android:hint="@string/email_optional"
                 android:minWidth="300dp"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_outline_email_24">
@@ -110,7 +100,7 @@
                 android:layout_below="@+id/text_input_layout_email"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
-                android:hint="Phone Number (01xxxxxxxxx)"
+                android:hint="@string/phone_number_01xxxxxxxxx"
                 android:minWidth="300dp"
                 app:endIconMode="clear_text"
                 app:startIconDrawable="@drawable/ic_call_black_24dp">
@@ -129,7 +119,7 @@
                 android:layout_below="@+id/text_input_layout_phone_number"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:minWidth="300dp"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_password_black_24dp">
@@ -147,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_input_layout_password"
                 android:layout_centerHorizontal="true"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password"
                 android:minWidth="300dp"
                 app:endIconMode="password_toggle"
                 android:layout_marginBottom="5dp"
@@ -167,7 +157,7 @@
                 android:layout_below="@+id/text_input_layout_confirm_pass"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
-                android:hint="Enter your address"
+                android:hint="@string/enter_your_address"
                 android:visibility="gone"
                 android:minWidth="300dp"
                 app:endIconMode="clear_text"
@@ -187,7 +177,7 @@
                 android:layout_below="@id/text_input_layout_address"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="100dp"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 

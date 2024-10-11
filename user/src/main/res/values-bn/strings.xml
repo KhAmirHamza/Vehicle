@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="productCategory">
+        <item>ভোগ্য পণ্য</item>
+        <item>ইলেকট্রনিক্স ইলেকট্রিক্যাল আইটেম</item>
+        <item>নির্মাণ সামগ্রী</item>
+        <item>কৃষি পণ্য</item>
+        <item>গৃহস্থালী পণ্য</item>
+        <item>রাসায়নিক এবং দাহ্য পণ্য</item>
+        <item>পশুর খাদ্য</item>
+        <item>জীবন্ত প্রাণী</item>
+        <item>যন্ত্রপাতি এবং ভারী যন্ত্রপাতি</item>
+        <item>পরিবহন এবং পরিবহন সম্পর্কিত আইটেম</item>
+        <item>প্রতিদিনের পণ্য</item>
+        <item>শিল্প পণ্য</item>
+        <item>কাচামাল</item>
+        <item>কৃষি উপকরণ</item>
+        <item>শিক্ষাগত উপকরণ</item>
+        <item>সাপোর্টিং উপকরণ</item>
+        <item>গার্মেন্টস এবং টেক্সটাইল</item>
+        <item>ওষুধ এবং জীবন সহায়ক উপকরণ</item>
+        <item>ইভেন্ট ম্যানেজমেন্ট আইটেম</item>
+    </string-array>
+
+
+    <string name="language">ভাষা: </string>
+    <string name="all_trip">সকল ট্রিপ</string>
+    <string name="running_trip">চলতি ট্রিপ</string>
+    <string name="vehicle_details">গাড়ির বিস্তারিত তথ্য</string>
+    <string name="writer_vehicle_brand_select">গাড়ির ব্রান্ড লিখুন অতপর নির্বাচন করুন</string>
+    <string name="select_metro">সিলেক্ট মেট্রো</string>
+    <string name="reg._sl_number">রেজি সিরিয়েল ও নাম্বার</string>
+    <string name="model_year"> মডেল সাল</string>
+    <string name="vehicles_documents_and_others">গাড়ির কাগজপত্র এবং অন্যান্য</string>
+    <string name="vehicle_image_with_numberplate">নাম্বার প্লেটসহ গাড়ির ছবি</string>
+    <string name="upload_any_vehicle_documents">গাড়ির কোন একটি ডকুমেন্টস আপলোড করুন।</string>
+    <string name="upload_nid">এনআইডি আপলোড করুন</string>
+    <string name="time_expired">সময় শেষ হয়েছে</string>
+    <string name="form">হইতে</string>
+    <string name="to">পর্যন্ত</string>
+    <string name="participate_budding">বিডে অংশগ্রহণ করুন</string>
+    <string name="bid_continue">বিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\tবিড চলমান আছে\t\t\t\t</string>
+    <string name="confirm_a_bidded_within_bid_end_time">বিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন\t\t\t\tবিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন\t\t\t\tবিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন\t\t\t\t</string>
+    <string name="phone_number">ফোন নাম্বার</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="log_out">লগ আউট</string>
+    <string name="payment">পেমেন্ট</string>
+    <string name="pay_now">পে করুন এখানে</string>
+    <string name="pay_now_click_to_pay">ক্লিক করে পে করুন</string>
+    <string name="due">বকেয়া</string>
+    <string name="trip_start_from">যাত্রা শুরুর স্থান</string>
+    <string name="write_city_district_select_from">সিটি / জেলা লিখুন এবং নির্বাচন করুন</string>
+    <string name="save">সেভ</string>
+    <string name="click_add_vehicle">ক্লিক করুন এবং গাড়ি যোগ করুন</string>
+    <string name="your_vehicle_list">আপনার গাড়ির লিস্ট</string>
+    <string name="stop_point_info_optional">ষ্টপ পয়েন্ট তথ্য (অপশনাল)</string>
+    <string name="write_stop_point_person_name">ষ্টপ পয়েন্টের ব্যাক্তির নাম</string>
+    <string name="stop_point_person_mobile_number">ষ্টপ পয়েন্টের ব্যাক্তির মোবাইল নাম্বার</string>
+    <string name="if_with_return_trip">রিটার্ন ট্রিপসহ হলে (আলাদা খরচ)</string>
+    <string name="writer_return_point">রিটার্ন পয়েন্টের নাম লিখুন</string>
+    <string name="set_return_scheduled">রিটার্ন সিডিউল সেট করুন</string>
+    <string name="area">এরিয়া</string>
+    <string name="full_address">পূর্ণ ঠিকানা</string>
+    <string name="publish_for_budding">বিড পাবলিশ করুন</string>
+    <string name="thank_you_for_publishing_a_bid.driver_will_tell_you_the_rate_wait_and_confirmed">বিড পাবলিশ করার জন্য ধন্যবাদ। চালকগন আপনাকে রেট জানাবে।অপেক্ষা করুন এবং বিড কনফার্ম করুন</string>
+    <string name="write_city_district_and_select_from_pop_up">সিটি/জেলা লিখুন এবং তারপর পপআপ হতে নির্বাচন করুন</string>
+    <string name="weite_area">এরিয়া লিখুন (উপরে নির্বাচিত স্থান হতে)</string>
+    <string name="for_village">গ্রামের ক্ষেত্রে</string>
+    <string name="house_name_point">বাড়ির নাম /পয়েন্ট</string>
+    <string name="for_town_city">সিটি /শহরের জন্য</string>
+    <string name="house_number">বাসা নাম্বার</string>
+    <string name="road">রোড</string>
+    <string name="block">ব্লক</string>
+    <string name="nearby_school_mosque_others">কাছাকাছি স্কুল /মসজিদ /অন্যান্য স্থাপনার নাম</string>
+    <string name="alternative_person_mobile_number">বিকল্প ব্যাক্তির মোবাইল নাম্বার</string>
+    <string name="unload_location">আনলোড লোকেশন</string>
+    <string name="load_location">লোড লোকেশন</string>
+    <string name="you_have_not_any_running_trip">আপনার কোন চলমান ট্রিপ নেই</string>
+    <string name="create_now">এখন তৈরি করুন</string>
+    <string name="click_to_create_trip">ট্রিপ তৈরি করতে ক্লিক করুন</string>
+    <string name="trip">ট্রিপ</string>
+    <string name="profile">প্রোফাইল</string>
+    <string name="create_trip">ট্রিপ তৈরি করুন</string>
+    <string name="select_vehicles">গাড়ি নির্বাচন করুন</string>
+    <string name="pick_up">পিকআপ</string>
+    <string name="truck">ট্রাক</string>
+    <string name="trailer">ট্রেইলার</string>
+    <string name="private_car">প্রাইভেট কার</string>
+    <string name="micro_bus">মাইক্রো বাস</string>
+    <string name="tour_bus">ট্যুর বাস</string>
+    <string name="contain_animal">জীবন্ত প্রাণী</string>
+    <string name="fragile">ভঙ্গুর</string>
+    <string name="perishable">পচনশীল</string>
+    <string name="labor_needed_saparate_cost">লেবার প্রয়োজন ( আলাদা খরচ)</string>
+    <string name="weight_not_more_than_capacity_of_truck_booked">বুকড্ করা মালামালের ওজন ট্রাকের ধারণ ক্ষমতার বেশি নয়</string>
+    <string name="length_of_material_are_not_more_than_truck_length_booked">উপাদানের দৈর্ঘ্য বুক করা ট্রাকের দৈর্ঘ্যের বেশি নয়</string>
+    <string name="raw_materials">কাঁচামাল</string>
+    <string name="agricultural_inputs">কৃষি উপকরণ</string>
+    <string name="educational_inputs">শিক্ষাগত উপকরণ</string>
+    <string name="supporting_inputs">সাপোর্টিং উপকরণ</string>
+    <string name="garments_and_textiles">গার্মেন্টস এবং টেক্সটাইল</string>
+    <string name="medical_and_life_supporting_inputs">চিকিৎসা এবং জীবন সহায়ক উপকরণ</string>
+    <string name="event_management_items">ইভেন্ট ম্যানেজমেন্ট আইটেম</string>
+    <string name="live_animal">জীবন্ত প্রাণী</string>
+    <string name="machineries_and_heavy_equipment">যন্ত্রপাতি এবং ভারী যন্ত্রপাতি</string>
+    <string name="transport_and_transport_related_items">পরিবহন এবং পরিবহন সম্পর্কিত আইটেমস্</string>
+    <string name="everyday_products">প্রতিদিনের পণ্য</string>
+    <string name="industrial_products">শিল্প পণ্য</string>
+    <string name="consumable_items">কাচামাল</string>
+    <string name="electronics_electrical_items">ইলেকট্রনিক্স ইলেকট্রিক্যাল আইটেম</string>
+    <string name="agricultural_commodities">কৃষি পণ্য</string>
+    <string name="household_items">গৃহস্থালী পণ্য</string>
+    <string name="chemical_and_combustible_products">রাসায়নিক এবং দাহ্য পণ্য</string>
+    <string name="animal_feed">পশুর খাদ্য</string>
+    <string name="_7_feet_1_ton">৭ ফুট ১ টন</string>
+    <string name="_9_feet_1.5_ton">৯ ফুট ১.৫ টন</string>
+    <string name="_12_feet_2_ton">১২ ফুট ২ টন</string>
+    <string name="_12_feet_3_ton">১২ ফুট ৩ টন</string>
+    <string name="_13_feet_1.5_ton_light_weight">১৩ ফুট ১.৫ টন - হালকা ওজন</string>
+    <string name="_14_feet_3.5_ton_light_weight">১৪ ফুট ৩.৫ টন - হালকা ওজন</string>
+    <string name="_16_feet_3.5_ton_light_weight">১৬ ফুট ৩.৫ টন - হালকা ওজন</string>
+    <string name="_16_feet_5_ton_medium_weight">১৬ ফুট ৫ টন - মাঝারি ওজন</string>
+    <string name="_16_feet_8.5_ton_medium_weight">১৬ ফুট ৮.৫ টন - মাঝারি ওজন</string>
+    <string name="_20_feet_5.5_ton_medium_weight">২০ ফুট ৫.৫ টন মাঝারি ওজন</string>
+    <string name="_19.5_feet_7.5_ton_medium_weight">১৯.৫ ফুট ৭.৫ টন - মাঝারি ওজন</string>
+    <string name="_24_feet_8_ton_medium_weight">২৪ ফুট ৮ টন - মাঝারি ওজন</string>
+    <string name="_32_feet_7.5_ton_medium_weight">৩২ ফুট ৭.৫ টন - মাঝারি ওজন</string>
+    <string name="_14_feet_15_ton_heavy_weight">১৪ ফুট ৫ টন - ভারী ওজন</string>
+    <string name="_17.5_feet_9_ton_heavy_weight">১৭.৫ ফুট ৯ টন - ভারী ওজন</string>
+    <string name="_20_feet_11_ton_heavy_weight">২০ ফুট ১১ টন - ভারী ওজন</string>
+    <string name="_20_feet_15_ton_heavy_weight">২০ ফুট ১৫ টন - ভারী ওজন</string>
+    <string name="_22_feet_19_ton_heavy_weight">২২ ফুট ১৯ টন - ভারী ওজন</string>
+    <string name="_23_feet_20_ton_heavy_weight">২৩ ফুট ২০ টন - ভারী ওজন</string>
+    <string name="_23_feet_25_ton_heavy_weight">২৩ ফুট ২৫ টন - ভারী ওজন</string>
+    <string name="_24_feet_25_ton_heavy_weight">২৪ ফুট ২২ টন - ভারী ওজন</string>
+    <string name="_28_feet_30_ton_heavy_weight">২৮ ফুট ৩০ টন - ভারী ওজন</string>
+    <string name="_20_feet_16_ton_heavy_weight">২০ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_24_feet_16_ton_heavy_weight">২৪ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_32_feet_16_ton_heavy_weight">৩২ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_10_wheel_30_ton_flatbed">১০ চাকা ৩০ টন ফ্ল্যাটবেড</string>
+    <string name="_14_wheel_40_ton_flatbed">১৪ চাকা ৪০ টন ফ্ল্যাটবেড</string>
+    <string name="_18_wheel_47_ton_flatbed">১৮ চাকা ৪৭ টন ফ্ল্যাটবেড</string>
+    <string name="_22_wheel_49_ton_flatbed">২২ চাকা ৪৯ টন ফ্ল্যাটবেড</string>
+    <string name="_26_wheel_52_ton_flatbed">২৬ চাকা ৫২ টন ফ্ল্যাটবেড</string>
+    <string name="_40_feet_33_ton_flatbed">৪০ চাকা ৩৩ টন ফ্ল্যাটবেড</string>
+    <string name="_40_feet_34_ton_flatbed">৪০ ফুট ৩৪ টন ফ্ল্যাটবেড</string>
+    <string name="_10_wheel_30_ton_lowbed">১০ চাকা ৩০ টন লোবেড</string>
+    <string name="_14_wheel_40_ton_lowbed">১৪ চাকা ৪০ টন লোবেড</string>
+    <string name="_18_wheel_47_ton_lowbed">১৮ চাকা ৪৭ টন লোবেড</string>
+    <string name="_22_wheel_49_ton_lowbed">২২ চাকা ৪৯ টন লোবেড</string>
+    <string name="_26_wheel_52_ton_lowbed">২৬ চাকা ৫২ টন লোবেড</string>
+    <string name="_40_feet_33_ton_lowbed">৪০ ফুট ৩৩ টন লোবেড</string>
+    <string name="_40_feet_34_ton_lowbed">৪০ ফুট ৩৪ টন লোবেড</string>
+    <string name="_45_feet_31_ton_box">৪৫ ফুট ৩১ টন বক্স</string>
+    <string name="open">খোলা</string>
+    <string name="covered">কাভার্ড</string>
+    <string name="ac">এসি</string>
+    <string name="non_ac">নন এসি</string>
+
+    <string name="selectType">ধরণ নির্বাচন করুন</string>
+    <string name="selectSize">সাইজ নির্বাচন করুন </string>
+    <string name="SetSchedule">সিডিউল সেট করুন (ট্রিপের তারিখ ও সময় )</string>
+    <string name="helpline">হেল্পলাইন</string>
+    <string name="detailsInformationonloadlocation"> লোড লোকেশনের বিস্তারিত তথ্য </string>
+    <string name="detailsInformationonunloadLocation">আনলোড লোকেশনের বিস্তারিত তথ্য</string>
+
+    <string name="selectcategoryofproductneedtocarry">যে পণ্য পরিবহন করবেন তার ক্যাটাগরি</string>
+    <string name="productInfoMainItemsAmountQuantity">পণ্যের তথ্য ( প্রধান প্রধান পণ্যসমূহ,সংখ্যা / পরিমাণ) </string>
+    <string name="youhavenotanyrunningTripCreateNow">আপনার চলমান কোন ট্রিপ নেই, তৈরি করুন</string>
+    <string name="deleteCurrentTrip">চলতি ট্রিপ মুছুন</string>
+    <string name="bidContinue">বিড চলমান\t\t\t\t বিড চলমান\t\t\t\tবিড চলমান\t\t\t\tবিড চলমান\t\t\t\tবিড চলমান\t\t\t\t</string>
+    <string name="lateStartFeeOnlyforreturntrip125tkHourornegotiation">বিলম্বে শুরুর জন্য ফি ( কেবল ফিরতি ট্রিপের জন্য :১২৫ টাকা / প্রতি ঘন্টা  বা আলোচনা সাপেক্ষে)</string>
+
+    <string name="choose_bidders">বিডার নির্বাচনকরুন:</string>
+    <string name="review">রিভিউ করুন</string>
+    <string name="write_area_within_above_chosen_place">আপনার লোকাশন লিখুন</string>
+    <string name="name_of_person_at_unload_location">আনলোড লোকাশনে থাকা ব্যক্তির নাম  (অপশনাল)</string>
+    <string name="mobile_num_of_person_at_unload_location">আনলোড লোকাশনে থাকা ব্যক্তির মোবাইল নাম্বার (অপশনাল)</string>
+    <string name="write_stop_point_address">স্টপ পয়েন্ট এড্রেস লিখুন</string>
+    <string name="click_to_submit_information">তথ্যসমূহ জমা দিতে ক্লিক করুন</string>
+
+    <string name="product_information">পণ্যের তথ্য</string>
+    <string name="driver_details">ড্রাইভার ডিটেলস্</string>
+    <string name="add_more_trip_information">ট্রিপের আরো তথ্য দিন\t\t\tট্রিপের আরো তথ্য দিন\t\t\tট্রিপের আরো তথ্য দিন\t\t\t</string>
+    <string name="confirm">কনফার্ম করুন</string>
+    <string name="product_description">পণ্যের বিস্তারিত</string>
+    <string name="now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you_now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you">আপনি ট্রিপ কনফার্ম করেছেন. আপনি ড্রাইভারকে কল করতে পারেন অথবা ড্রাইভার আপনাকে কল করবে.</string>
+    <string name="add_trip_information">ড্রাইভারকে ট্রিপের তথ্য প্রদান করুন</string>
+
+
+    <string name="bidding">বিডিং…</string>
+    <string name="email_optional">ইমেইল (অপশনাল)</string>
+    <string name="enter_your_address">আপনার ঠিকানা লিখুন</string>
+
+    /////////////////////////////
+
+    <string name="select_seat">সিট নির্বাচন করুন</string>
+
+    <string name="name">নাম</string>
+
+    <string name="phone_number_01xxxxxxxxx">ফোন নম্বর (01xxxxxxxx)</string>
+    <string name="confirm_password">কনফার্ম পাসওয়ার্ড</string>
+    <string name="submit">জমা দিন</string>
+    <string name="country_code">কান্ট্রি কোড</string>
+    <string name="_88">+88</string>
+    <string name="if_you_don_t_have_any_account_sign_up">আপনার যদি কোনো অ্যাকাউন্ট না থাকে, রেজিস্ট্রেশন করুন…</string>
+    <string name="log_in">লগ ইন</string>
+    <string name="registration">রেজিস্ট্রেশন</string>
+    <string name="register_using_mobile_number">মোবাইল নম্বর ব্যবহার করে রেজিস্ট্রেশন করুন</string>
+    <string name="we_will_send_an_one_time">আমরা একটি এককালীন পাসওয়ার্ড পাঠাব</string>
+    <string name="verification_code">ভেরিফিকেশন কোড</string>
+    <string name="on_this_mobile_number">এই মোবাইল নম্বরে</string>
+    <string name="enter_your_11_digit_mobile_number">আপনার 11 ডিজিটের মোবাইল নম্বর লিখুন</string>
+    <string name="if_you_have_any_account_sign_in">আপনার যদি কোনো অ্যাকাউন্ট থাকে, লগ ইন করুন…</string>
+    <string name="register">রেজিস্ট্রেশন</string>
+    <string name="verify_mobile_number_using_otp">ওটিপি(OTP) ব্যবহার করে মোবাইল নম্বর যাচাই করুন</string>
+    <string name="we_sent_otp_to">আমরা ওটিপি(OTP) পাঠিয়েছি</string>
+    <string name="check_your_mobile">আপনার মোবাইল চেক করুন</string>
+    <string name="resend_code">পুনরায় কোড পাঠান</string>
+    <string name="enter_the_otp">OTP লিখুন</string>
+    <string name="verify_number">নম্বর যাচাই করুন</string>
+    <string name="welcome_text">স্বাগতম টেক্সট</string>
+    <string name="bangla">বাংলা</string>
+    <string name="english">English</string>
+    <string name="fragile_product_you_have_to_carry_it_very_safely">▷ ভঙ্গুর পণ্য, আপনাকে এটি খুব নিরাপদে বহন করতে হবে</string>
+    <string name="okay">ঠিক আছে</string>
+
+    <string name="detailinfoontripstartlocation">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য</string>
+    <string name="detailinfoontripEndlocation">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য</string>
+
+    <string name="detailinfoontripstartlocationmustenglish">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য (must write in English word)</string>
+    <string name="detailinfoontripEndlocationmustenglish">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য (must write in English word)</string>
+
+    <string name="informationonloadlocation">লোড লোকেশনের তথ্য</string>
+    <string name="informationonunloadLocation">আনলোড লোকেশনের তথ্য</string>
+
+    <string name="informationonloadlocationmustenglish">লোড লোকেশনের তথ্য(must write in English word) </string>
+    <string name="informationonunloadLocationmustenglish">আনলোড লোকেশনের তথ্য(must write in English word)</string>
+
+    <string name="infoontripstartlocation">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য</string>
+    <string name="infoontripEndlocation">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য</string>
+
+    <string name="forVillagers">গ্রামবাসীদের জন্য-\nবাড়ির নাম/পয়েন্ট: \n\nশহর/শহরের জন্য-\nহাউজ নং:\nরোড নং:\nব্লক:</string>
+
+    <string name="writefromkeypadinBanglaorEnglishasyouwish">তথ্যসমূহ লিখতে বাংলা কিংবা ইংরেজি যে কোন কিপেড ব্যবহার করুন</string>
+    <string name="sorryhoumissedsomeinfogivealltheinfo">আপনি কিছু তথ্য প্রদান করেননি, সমস্ত তথ্যসমূহ প্রদান করুন</string>
+    <string name="goto_reset_password">পাসওয়ার্ড ভুলে গেছেন?\nরিসেট করুন…</string>
+    <string name="reset_password">রিসেট পাসওয়ার্ড</string>
+    <string name="send_otp">OTP পাঠান</string>
+    <string name="enter_new_password">নতুন পাসওয়ার্ড লিখুন</string>
+    <string name="toCallDriver">ড্রাইভারকে কল করতে: %1$s</string>
+
+
+    <string name="agree">আমি রাজী</string>
+
+    <string name="continueWithGoogle">ওটিপি কোড না পেলে গুগল দিয়ে রেজিস্ট্রেশন/লগইন করুন</string>
+
+</resources>

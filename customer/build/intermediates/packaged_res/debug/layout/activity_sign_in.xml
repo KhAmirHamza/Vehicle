@@ -56,7 +56,7 @@
                 android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_country_code"
-                    android:hint="Country Code"
+                    android:hint="@string/country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="150dp"
@@ -69,14 +69,14 @@
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
                         android:inputType="phone"
-                        android:text="+88"
+                        android:text="@string/_88"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_phone_number"
-                    android:hint="Phone Number (01xxxxxxxxx)"
+                    android:hint="@string/phone_number_01xxxxxxxxx"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="250dp"
@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="Password*"
+                android:hint="@string/password"
                 app:startIconDrawable="@drawable/ic_password_black_24dp"
                 app:endIconMode="password_toggle"
                 app:errorEnabled="true"
@@ -124,7 +124,7 @@
                 android:layout_below="@+id/textInputLayout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="If you don't have any Account, sign up..."
+                android:text="@string/if_you_don_t_have_any_account_sign_up"
                 android:layout_marginBottom="2.5dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
@@ -134,7 +134,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtv_hint1"
-                android:text="Log In"
+                android:text="@string/log_in"
                 android:textAllCaps="false"
                 />
             <com.google.android.material.button.MaterialButton
@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtv_hint1"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:text="Registration"
+                android:text="@string/registration"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:layout_marginBottom="200dp"

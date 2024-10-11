@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <string-array name="productCategory">
+        <item>ভোগ্য পণ্য</item>
+        <item>ইলেকট্রনিক্স ইলেকট্রিক্যাল আইটেম</item>
+        <item>নির্মাণ সামগ্রী</item>
+        <item>কৃষি পণ্য</item>
+        <item>গৃহস্থালী পণ্য</item>
+        <item>রাসায়নিক এবং দাহ্য পণ্য</item>
+        <item>পশুর খাদ্য</item>
+        <item>জীবন্ত প্রাণী</item>
+        <item>যন্ত্রপাতি এবং ভারী যন্ত্রপাতি</item>
+        <item>পরিবহন এবং পরিবহন সম্পর্কিত আইটেম</item>
+        <item>প্রতিদিনের পণ্য</item>
+        <item>শিল্প পণ্য</item>
+        <item>কাচামাল</item>
+        <item>কৃষি উপকরণ</item>
+        <item>শিক্ষাগত উপকরণ</item>
+        <item>সাপোর্টিং উপকরণ</item>
+        <item>গার্মেন্টস এবং টেক্সটাইল</item>
+        <item>ওষুধ এবং জীবন সহায়ক উপকরণ</item>
+        <item>ইভেন্ট ম্যানেজমেন্ট আইটেম</item>
+    </string-array>
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%dটি নতুন বিজ্ঞপ্তি</item>
+    <item quantity="other">%dটি নতুন বিজ্ঞপ্তি</item>
+  </plurals>
+    <string name="SetSchedule">সিডিউল সেট করুন</string>
+    <string name="_10_wheel_30_ton_flatbed">১০ চাকা ৩০ টন ফ্ল্যাটবেড</string>
+    <string name="_10_wheel_30_ton_lowbed">১০ চাকা ৩০ টন লোবেড</string>
+    <string name="_12_feet_2_ton">১২ ফুট ২ টন</string>
+    <string name="_12_feet_3_ton">১২ ফুট ৩ টন</string>
+    <string name="_13_feet_1.5_ton_light_weight">১৩ ফুট ১.৫ টন - হালকা ওজন</string>
+    <string name="_14_feet_15_ton_heavy_weight">১৪ ফুট ৫ টন - ভারী ওজন</string>
+    <string name="_14_feet_3.5_ton_light_weight">১৪ ফুট ৩.৫ টন - হালকা ওজন</string>
+    <string name="_14_wheel_40_ton_flatbed">১৪ চাকা ৪০ টন ফ্ল্যাটবেড</string>
+    <string name="_14_wheel_40_ton_lowbed">১৪ চাকা ৪০ টন লোবেড</string>
+    <string name="_16_feet_3.5_ton_light_weight">১৬ ফুট ৩.৫ টন - হালকা ওজন</string>
+    <string name="_16_feet_5_ton_medium_weight">১৬ ফুট ৫ টন - মাঝারি ওজন</string>
+    <string name="_16_feet_8.5_ton_medium_weight">১৬ ফুট ৮.৫ টন - মাঝারি ওজন</string>
+    <string name="_17.5_feet_9_ton_heavy_weight">১৭.৫ ফুট ৯ টন - ভারী ওজন</string>
+    <string name="_18_wheel_47_ton_flatbed">১৮ চাকা ৪৭ টন ফ্ল্যাটবেড</string>
+    <string name="_18_wheel_47_ton_lowbed">১৮ চাকা ৪৭ টন লোবেড</string>
+    <string name="_19.5_feet_7.5_ton_medium_weight">১৯.৫ ফুট ৭.৫ টন - মাঝারি ওজন</string>
+    <string name="_20_feet_11_ton_heavy_weight">২০ ফুট ১১ টন - ভারী ওজন</string>
+    <string name="_20_feet_15_ton_heavy_weight">২০ ফুট ১৫ টন - ভারী ওজন</string>
+    <string name="_20_feet_16_ton_heavy_weight">২০ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_20_feet_5.5_ton_medium_weight">২০ ফুট ৫.৫ টন মাঝারি ওজন</string>
+    <string name="_22_feet_19_ton_heavy_weight">২২ ফুট ১৯ টন - ভারী ওজন</string>
+    <string name="_22_wheel_49_ton_flatbed">২২ চাকা ৪৯ টন ফ্ল্যাটবেড</string>
+    <string name="_22_wheel_49_ton_lowbed">২২ চাকা ৪৯ টন লোবেড</string>
+    <string name="_23_feet_20_ton_heavy_weight">২৩ ফুট ২০ টন - ভারী ওজন</string>
+    <string name="_23_feet_25_ton_heavy_weight">২৩ ফুট ২৫ টন - ভারী ওজন</string>
+    <string name="_24_feet_16_ton_heavy_weight">২৪ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_24_feet_25_ton_heavy_weight">২৪ ফুট ২২ টন - ভারী ওজন</string>
+    <string name="_24_feet_8_ton_medium_weight">২৪ ফুট ৮ টন - মাঝারি ওজন</string>
+    <string name="_26_wheel_52_ton_flatbed">২৬ চাকা ৫২ টন ফ্ল্যাটবেড</string>
+    <string name="_26_wheel_52_ton_lowbed">২৬ চাকা ৫২ টন লোবেড</string>
+    <string name="_28_feet_30_ton_heavy_weight">২৮ ফুট ৩০ টন - ভারী ওজন</string>
+    <string name="_32_feet_16_ton_heavy_weight">৩২ ফুট ১৬ টন - ভারী ওজন</string>
+    <string name="_32_feet_7.5_ton_medium_weight">৩২ ফুট ৭.৫ টন - মাঝারি ওজন</string>
+    <string name="_40_feet_33_ton_flatbed">৪০ চাকা ৩৩ টন ফ্ল্যাটবেড</string>
+    <string name="_40_feet_33_ton_lowbed">৪০ ফুট ৩৩ টন লোবেড</string>
+    <string name="_40_feet_34_ton_flatbed">৪০ ফুট ৩৪ টন ফ্ল্যাটবেড</string>
+    <string name="_40_feet_34_ton_lowbed">৪০ ফুট ৩৪ টন লোবেড</string>
+    <string name="_45_feet_31_ton_box">৪৫ ফুট ৩১ টন বক্স</string>
+    <string name="_7_feet_1_ton">৭ ফুট ১ টন</string>
+    <string name="_88">+88</string>
+    <string name="_9_feet_1.5_ton">৯ ফুট ১.৫ টন</string>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"হোমে নেভিগেট করুন"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"উপরে নেভিগেট করুন"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"আরও বিকল্প"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"হয়ে গেছে"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"সবগুলি দেখুন"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"একটি অ্যাপ বেছে নিন"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"বন্ধ আছে"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"চালু করুন"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"মুছুন"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"সার্চ করুন…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"কোয়েরি মুছে ফেলুন"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"সার্চ কোয়েরি"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"সার্চ করুন"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"কোয়েরি জমা দিন"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"ভয়েস সার্চ করুন"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"শেয়ার করুন"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>-এর সাথে শেয়ার করুন"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"সঙ্কুচিত করুন"</string>
+    <string name="ac">এসি</string>
+    <string name="add_more_trip_information">ট্রিপের আরো তথ্য দিন</string>
+    <string name="add_trip_information">ড্রাইভারকে ট্রিপের তথ্য প্রদান করুন</string>
+    <string name="agricultural_commodities">কৃষি পণ্য</string>
+    <string name="agricultural_inputs">কৃষি উপকরণ</string>
+    <string name="all_trip">সকল ট্রিপ</string>
+    <string name="alternative_person_mobile_number">বিকল্প ব্যাক্তির মোবাইল নাম্বার</string>
+    <string name="animal_feed">পশুর খাদ্য</string>
+    <string name="area">এরিয়া</string>
+    <string name="bangla">বাংলা</string>
+    <string name="bidContinue">বিড চলমান</string>
+    <string name="bid_continue">বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  বিড চলমান আছে  </string>
+    <string name="bidding">বিডিং…</string>
+    <string name="block">ব্লক</string>
+    <string name="bottomsheet_action_collapse">স্ক্রিনের নিচে অ্যাটাচ করা শিট আড়াল করুন</string>
+    <string name="bottomsheet_action_expand">স্ক্রিনের নিচে অ্যাটাচ করা শিট বড় করুন</string>
+    <string name="bottomsheet_action_expand_halfway">অর্ধেক প্রসারিত করুন</string>
+    <string name="bottomsheet_drag_handle_clicked">টেনে আনার হ্যান্ডেলে ডবল ট্যাপ করা হয়েছে</string>
+    <string name="bottomsheet_drag_handle_content_description">টেনে আনার হ্যান্ডেল</string>
+    <string name="character_counter_content_description">%2$dটির মধ্যে %1$dটি অক্ষর লেখা হয়েছে</string>
+    <string name="character_counter_overflowed_content_description">অক্ষরের সীমা %1$d এর %2$d অতিক্রম করেছে</string>
+    <string name="check_your_mobile">আপনার মোবাইল চেক করুন</string>
+    <string name="chemical_and_combustible_products">রাসায়নিক এবং দাহ্য পণ্য</string>
+    <string name="choose_bidders">বিডার নির্বাচনকরুন:</string>
+    <string name="clear_text_end_icon_content_description">টেক্সট মুছুন</string>
+    <string name="click_add_vehicle">ক্লিক করুন এবং গাড়ি যোগ করুন</string>
+    <string name="click_to_create_trip">ট্রিপ তৈরি করতে ক্লিক করুন</string>
+    <string name="click_to_submit_information">তথ্যসমূহ জমা দিতে ক্লিক করুন</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">সক্ষম করুন</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">আপনি Google Play পরিষেবা সক্ষম না করা পর্যন্ত %1$s কাজ করবে না।</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Google Play পরিষেবা সক্ষম করুন</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">ইনস্টল করুন</string>
+    <string name="common_google_play_services_install_text">Google Play পরিষেবা ছাড়া %1$s চলবে না, যা আপনার ডিভাইসে অনুপস্থিত।</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Google Play পরিষেবা পান</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play পরিষেবার উপলভ্যতা</string>
+    <string name="common_google_play_services_notification_ticker">Google Play পরিষেবার ত্রুটি</string>
+    <string name="common_google_play_services_unknown_issue">Google Play পরিষেবাগুলির সাথে %1$s এর সমস্যা হচ্ছে৷ অনুগ্রহ করে আবার চেষ্টা করুন৷</string>
+    <string name="common_google_play_services_unsupported_text">Google Play পরিষেবা ছাড়া %1$s চলবে না, যেটি আপনার ডিভাইসে সমর্থিত নয়৷</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">আপডেট করুন</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">আপনি Google Play পরিষেবা আপডেট না করা পর্যন্ত %1$s চলবে না।</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Google Play পরিষেবা আপডেট করুন</string>
+    <string name="common_google_play_services_updating_text">Google Play পরিষেবা ছাড়া %1$s চলবে না যা বর্তমানে আপডেট হচ্ছে।</string>
+    <string name="common_google_play_services_wear_update_text">Google Play পরিষেবার নতুন ভার্সন প্রয়োজন৷ খুব শীঘ্রই এটা নিজেই আপডেট হবে৷</string>
+    <string name="common_open_on_phone">ফোনে খুলুন</string>
+    <string name="common_signin_button_text">সাইন-ইন করুন</string>
+    <string name="common_signin_button_text_long">Google এর মাধ্যমে সাইন-ইন করুন</string>
+    <string name="confirm">কনফার্ম করুন</string>
+    <string name="confirm_a_bidded_within_bid_end_time">বিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন     বিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন    বিডের সময় শেষ হওয়ার মধ্যে চালক নির্বাচন করুন</string>
+    <string name="confirm_password">কনফার্ম পাসওয়ার্ড</string>
+    <string name="consumable_items">কাচামাল</string>
+    <string name="contain_animal">জীবন্ত প্রাণী</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে"</string>
+    <string name="country_code">কান্ট্রি কোড</string>
+    <string name="covered">কাভার্ড</string>
+    <string name="create_now">এখন তৈরি করুন</string>
+    <string name="create_trip">ট্রিপ তৈরি করুন</string>
+    <string name="deleteCurrentTrip">চলতি ট্রিপ মুছুন</string>
+    <string name="detailinfoontripEndlocation">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য</string>
+    <string name="detailinfoontripEndlocationmustenglish">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য (must write in English word)</string>
+    <string name="detailinfoontripstartlocation">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য</string>
+    <string name="detailinfoontripstartlocationmustenglish">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য (must write in English word)</string>
+    <string name="detailsInformationonloadlocation"> লোড লোকেশনের বিস্তারিত তথ্য </string>
+    <string name="detailsInformationonunloadLocation">আনলোড লোকেশনের বিস্তারিত তথ্য</string>
+    <string name="driver_details">ড্রাইভার ডিটেলস্</string>
+    <string name="due">বকেয়া</string>
+    <string name="educational_inputs">শিক্ষাগত উপকরণ</string>
+    <string name="electronics_electrical_items">ইলেকট্রনিক্স ইলেকট্রিক্যাল আইটেম</string>
+    <string name="email_optional">ইমেইল (অপশনাল)</string>
+    <string name="english">English</string>
+    <string name="enter_the_otp">OTP লিখুন</string>
+    <string name="enter_your_11_digit_mobile_number">আপনার 11 ডিজিটের মোবাইল নম্বর লিখুন</string>
+    <string name="enter_your_address">আপনার ঠিকানা লিখুন</string>
+    <string name="error_icon_content_description">সমস্যা</string>
+    <string name="event_management_items">ইভেন্ট ম্যানেজমেন্ট আইটেম</string>
+    <string name="everyday_products">প্রতিদিনের পণ্য</string>
+    <string name="exposed_dropdown_menu_content_description">ড্রপ-ডাউন মেনু দেখুন</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"লিঙ্ক কপি করুন"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"ব্রাউজারে খুলুন"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"লিঙ্ক শেয়ার করুন"</string>
+    <string name="forVillagers">গ্রামবাসীদের জন্য-\nবাড়ির নাম/পয়েন্ট: \n\nশহর/শহরের জন্য-\nহাউজ নং:\nরোড নং:\nব্লক:</string>
+    <string name="for_town_city">সিটি /শহরের জন্য</string>
+    <string name="for_village">গ্রামের ক্ষেত্রে</string>
+    <string name="form">হইতে</string>
+    <string name="fragile">ভঙ্গুর</string>
+    <string name="fragile_product_you_have_to_carry_it_very_safely">▷ ভঙ্গুর পণ্য, আপনাকে এটি খুব নিরাপদে বহন করতে হবে</string>
+    <string name="full_address">পূর্ণ ঠিকানা</string>
+    <string name="garments_and_textiles">গার্মেন্টস এবং টেক্সটাইল</string>
+    <string name="helpline">হেল্পলাইন</string>
+    <string name="house_name_point">বাড়ির নাম /পয়েন্ট</string>
+    <string name="house_number">বাসা নাম্বার</string>
+    <string name="household_items">গৃহস্থালী পণ্য</string>
+    <string name="icon_content_description">ডায়ালগ আইকন</string>
+    <string name="if_with_return_trip">রিটার্ন ট্রিপসহ হলে</string>
+    <string name="if_you_don_t_have_any_account_sign_up">আপনার যদি কোনো অ্যাকাউন্ট না থাকে, সাইন আপ করুন…</string>
+    <string name="if_you_have_any_account_sign_in">আপনার যদি কোনো অ্যাকাউন্ট থাকে, সাইন ইন করুন…</string>
+    <string name="industrial_products">শিল্প পণ্য</string>
+    <string name="infoontripEndlocation">ট্রিপ শেষের স্থান সম্পর্কিত তথ্য</string>
+    <string name="infoontripstartlocation">ট্রিপ শুরুর স্থান সম্পর্কিত তথ্য</string>
+    <string name="informationonloadlocation">লোড লোকেশনের তথ্য</string>
+    <string name="informationonloadlocationmustenglish">লোড লোকেশনের তথ্য(must write in English word) </string>
+    <string name="informationonunloadLocation">আনলোড লোকেশনের তথ্য</string>
+    <string name="informationonunloadLocationmustenglish">আনলোড লোকেশনের তথ্য(must write in English word)</string>
+    <string name="item_view_role_description">ট্যাব</string>
+    <string name="labor_needed_saparate_cost">লেবার প্রয়োজন ( আলাদা খরচ)</string>
+    <string name="language">ভাষা: </string>
+    <string name="lateStartFeeOnlyforreturntrip125tkHourornegotiation">বিলম্বে শুরুর জন্য ফি ( কেবল ফিরতি ট্রিপের জন্য :১২৫ টাকা / প্রতি ঘন্টা  বা আলোচনা সাপেক্ষে)</string>
+    <string name="length_of_material_are_not_more_than_truck_length_booked">উপাদানের দৈর্ঘ্য বুক করা ট্রাকের দৈর্ঘ্যের বেশি নয়</string>
+    <string name="live_animal">জীবন্ত প্রাণী</string>
+    <string name="load_location">লোড লোকেশন</string>
+    <string name="log_in">লগ ইন</string>
+    <string name="log_out">লগ আউট</string>
+    <string name="machineries_and_heavy_equipment">যন্ত্রপাতি এবং ভারী যন্ত্রপাতি</string>
+    <string name="material_clock_toggle_content_description">AM অথবা PM বেছে নিন</string>
+    <string name="material_hour_24h_suffix">%1$s ঘণ্টা</string>
+    <string name="material_hour_selection">ঘণ্টা বেছে নিন</string>
+    <string name="material_hour_suffix">%1$sটা বাজে</string>
+    <string name="material_minute_selection">মিনিট বেছে নিন</string>
+    <string name="material_minute_suffix">%1$s মিনিট</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">সময় ইনপুট দেওয়ার জন্য ঘড়ি মোডে যান।</string>
+    <string name="material_timepicker_hour">ঘণ্টা</string>
+    <string name="material_timepicker_minute">মিনিট</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">সময় বেছে নিন</string>
+    <string name="material_timepicker_text_input_mode_description">সময় ইনপুট দেওয়ার জন্য পাঠ্য ইনপুট মোডে যান।</string>
+    <string name="medical_and_life_supporting_inputs">চিকিৎসা এবং জীবন সহায়ক উপকরণ</string>
+    <string name="micro_bus">মাইক্রো বাস</string>
+    <string name="mobile_num_of_person_at_unload_location">আনলোড লোকাশনে থাকা ব্যক্তির মোবাইল নাম্বার (অপশনাল)</string>
+    <string name="model_year"> মডেল সাল</string>
+    <string name="mtrl_badge_numberless_content_description">নতুন বিজ্ঞপ্তি</string>
+    <string name="mtrl_chip_close_icon_content_description">%1$s সরিয়ে দিন</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">%1$dটির বেশি নতুন বিজ্ঞপ্তি</string>
+    <string name="mtrl_picker_a11y_next_month">আগামী মাসে যান</string>
+    <string name="mtrl_picker_a11y_prev_month">আগের মাসে যান</string>
+    <string name="mtrl_picker_announce_current_selection">বর্তমান বাছাই: %1$s</string>
+    <string name="mtrl_picker_cancel">বাতিল করুন</string>
+    <string name="mtrl_picker_confirm">ঠিক আছে</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">তারিখ বেছে নিন</string>
+    <string name="mtrl_picker_date_header_unselected">বেছে নেওয়া তারিখ</string>
+    <string name="mtrl_picker_day_of_week_column_header">সপ্তাহের দিনগুলির কলাম: %1$s</string>
+    <string name="mtrl_picker_invalid_format">ভুল ফর্ম্যাট।</string>
+    <string name="mtrl_picker_invalid_format_example">উদাহরণ: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">%1$s ফর্ম্যাটে লিখুন</string>
+    <string name="mtrl_picker_invalid_range">তারিখ সঠিক নয়।</string>
+    <string name="mtrl_picker_navigate_to_year_description">নেভিগেট করে %1$s সালে যান</string>
+    <string name="mtrl_picker_out_of_range">নির্দিষ্ট তারিখের বাইরে: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">শুরুর তারিখ – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – সমাপ্তির তারিখ</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">রেঞ্জ বেছে নিন</string>
+    <string name="mtrl_picker_range_header_unselected">শুরুর তারিখ - সমাপ্তির তারিখ</string>
+    <string name="mtrl_picker_save">সেভ করুন</string>
+    <string name="mtrl_picker_text_input_date_hint">তারিখ</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">সমাপ্তির তারিখ</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">শুরুর তারিখ</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">y</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">ক্যালেন্ডার ইনপুট মোডে বদল করুন</string>
+    <string name="mtrl_picker_toggle_to_day_selection">দিন বেছে নেওয়ার মোডে বদল করতে ট্যাপ করুন</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">টেক্সট ইনপুট মোডে বদল করুন</string>
+    <string name="mtrl_picker_toggle_to_year_selection">বছর বেছে নেওয়ার মোডে বদল করতে ট্যাপ করুন</string>
+    <string name="mtrl_timepicker_cancel">বাতিল করুন</string>
+    <string name="mtrl_timepicker_confirm">ঠিক আছে</string>
+    <string name="name">নাম</string>
+    <string name="name_of_person_at_unload_location">আনলোড লোকাশনে থাকা ব্যক্তির নাম  (অপশনাল)</string>
+    <string name="nearby_school_mosque_others">কাছাকাছি স্কুল /মসজিদ /অন্যান্য স্থাপনার নাম</string>
+    <string name="non_ac">নন এসি</string>
+    <string name="now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you_now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you">আপনি ট্রিপ কনফার্ম করেছেন. আপনি ড্রাইভারকে কল করতে পারেন অথবা ড্রাইভার আপনাকে কল করবে.</string>
+    <string name="okay">ঠিক আছে</string>
+    <string name="on_this_mobile_number">এই মোবাইল নম্বরে</string>
+    <string name="open">খোলা</string>
+    <string name="participate_budding">বিডে অংশগ্রহণ করুন</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="password_toggle_content_description">পাসওয়ার্ড দেখান</string>
+    <string name="pay_now">পে করুন এখানে</string>
+    <string name="pay_now_click_to_pay">ক্লিক করে পে করুন</string>
+    <string name="payment">পেমেন্ট</string>
+    <string name="perishable">পচনশীল</string>
+    <string name="phone_number">ফোন নাম্বার</string>
+    <string name="phone_number_01xxxxxxxxx">ফোন নম্বর (01xxxxxxxx)</string>
+    <string name="pick_up">পিকআপ</string>
+    <string name="private_car">প্রাইভেট কার</string>
+    <string name="productInfoMainItemsAmountQuantity">পণ্যের তথ্য ( প্রধান প্রধান পণ্যসমূহ,সংখ্যা / পরিমাণ) </string>
+    <string name="product_description">পণ্যের বিস্তারিত</string>
+    <string name="product_information">পণ্যের তথ্য</string>
+    <string name="profile">প্রোফাইল</string>
+    <string name="publish_for_budding">বিড পাবলিশ করুন</string>
+    <string name="raw_materials">কাঁচামাল</string>
+    <string name="reg._sl_number">রেজি সিরিয়েল ও নাম্বার</string>
+    <string name="register">রেজিস্ট্রেশন</string>
+    <string name="register_using_mobile_number">মোবাইল নম্বর ব্যবহার করে রেজিস্ট্রেশন করুন</string>
+    <string name="registration">রেজিস্ট্রেশন</string>
+    <string name="resend_code">পুনরায় কোড পাঠান</string>
+    <string name="review">রিভিউ করুন</string>
+    <string name="road">রোড</string>
+    <string name="running_trip">চলতি ট্রিপ</string>
+    <string name="save">সেভ</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"সার্চ করুন"</string>
+    <string name="selectSize">সাইজ নির্বাচন করুন </string>
+    <string name="selectType">ধরণ নির্বাচন করুন</string>
+    <string name="select_metro">সিলেক্ট মেট্রো</string>
+    <string name="select_seat">সিট নির্বাচন করুন</string>
+    <string name="select_vehicles">গাড়ি নির্বাচন করুন</string>
+    <string name="selectcategoryofproductneedtocarry">যে পণ্য পরিবহন করবেন তার ক্যাটাগরি</string>
+    <string name="set_return_scheduled">রিটার্ন সিডিউল সেট করুন</string>
+    <string name="sorryhoumissedsomeinfogivealltheinfo">আপনি কিছু তথ্য প্রদান করেননি, সমস্ত তথ্যসমূহ প্রদান করুন</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"৯৯৯+"</string>
+    <string name="stop_point_info_optional">ষ্টপ পয়েন্ট তথ্য (অপশনাল)</string>
+    <string name="stop_point_person_mobile_number">ষ্টপ পয়েন্টের ব্যাক্তির মোবাইল নাম্বার</string>
+    <string name="submit">জমা দিন</string>
+    <string name="supporting_inputs">সাপোর্টিং উপকরণ</string>
+    <string name="thank_you_for_publishing_a_bid.driver_will_tell_you_the_rate_wait_and_confirmed">বিড পাবলিশ করার জন্য ধন্যবাদ। চালকগন আপনাকে রেট জানাবে।অপেক্ষা করুন এবং বিড কনফার্ম করুন</string>
+    <string name="time_expired">সময় শেষ হয়েছে</string>
+    <string name="to">পর্যন্ত</string>
+    <string name="tour_bus">ট্যুর বাস</string>
+    <string name="trailer">ট্রেইলার</string>
+    <string name="transport_and_transport_related_items">পরিবহন এবং পরিবহন সম্পর্কিত আইটেমস্</string>
+    <string name="trip">ট্রিপ</string>
+    <string name="trip_start_from">যাত্রা শুরুর স্থান</string>
+    <string name="truck">ট্রাক</string>
+    <string name="unload_location">আনলোড লোকেশন</string>
+    <string name="upload_any_vehicle_documents">গাড়ির কোন একটি ডকুমেন্টস আপলোড করুন।</string>
+    <string name="upload_nid">এনআইডি আপলোড করুন</string>
+    <string name="vehicle_details">গাড়ির বিস্তারিত তথ্য</string>
+    <string name="vehicle_image_with_numberplate">নাম্বার প্লেটসহ গাড়ির ছবি</string>
+    <string name="vehicles_documents_and_others">গাড়ির কাগজপত্র এবং অন্যান্য</string>
+    <string name="verification_code">ভেরিফিকেশন কোড</string>
+    <string name="verify_mobile_number_using_otp">ওটিপি(OTP) ব্যবহার করে মোবাইল নম্বর যাচাই করুন</string>
+    <string name="verify_number">নম্বর যাচাই করুন</string>
+    <string name="we_sent_otp_to">আমরা ওটিপি(OTP) পাঠিয়েছি</string>
+    <string name="we_will_send_an_one_time">আমরা একটি এককালীন পাসওয়ার্ড পাঠাব</string>
+    <string name="weight_not_more_than_capacity_of_truck_booked">বুকড্ করা মালামালের ওজন ট্রাকের ধারণ ক্ষমতার বেশি নয়</string>
+    <string name="weite_area">এরিয়া লিখুন (উপরে নির্বাচিত স্থান হতে)</string>
+    <string name="welcome_text">স্বাগতম টেক্সট</string>
+    <string name="write_area_within_above_chosen_place">আপনার লোকাশন লিখুন</string>
+    <string name="write_city_district_and_select_from_pop_up">সিটি/জেলা লিখুন এবং তারপর পপআপ হতে নির্বাচন করুন</string>
+    <string name="write_city_district_select_from">সিটি / জেলা লিখুন এবং নির্বাচন করুন</string>
+    <string name="write_stop_point_address">স্টপ পয়েন্ট এড্রেস লিখুন</string>
+    <string name="write_stop_point_person_name">ষ্টপ পয়েন্টের ব্যাক্তির নাম</string>
+    <string name="writefromkeypadinBanglaorEnglishasyouwish">তথ্যসমূহ লিখতে বাংলা কিংবা ইংরেজি যে কোন কিপেড ব্যবহার করুন</string>
+    <string name="writer_return_point">রিটার্ন পয়েন্টের নাম লিখুন</string>
+    <string name="writer_vehicle_brand_select">গাড়ির ব্রান্ড লিখুন অতপর নির্বাচন করুন</string>
+    <string name="you_have_not_any_running_trip">আপনার কোন চলমান ট্রিপ নেই</string>
+    <string name="youhavenotanyrunningTripCreateNow">আপনার চলমান কোন ট্রিপ নেই, তৈরি করুন</string>
+    <string name="your_vehicle_list">আপনার গাড়ির লিস্ট</string>
+</resources>

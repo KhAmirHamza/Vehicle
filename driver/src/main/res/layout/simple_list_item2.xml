@@ -9,7 +9,3 @@
     android:paddingStart="2dp"
     android:paddingEnd="2dp"
     android:minHeight="?android:attr/listPreferredItemHeightSmall" />
-
-<!--
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
--->

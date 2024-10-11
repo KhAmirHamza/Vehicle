@@ -30,7 +30,7 @@
                    android:id="@+id/tv_h1"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Enter required bidding info"
+                   android:text="@string/enter_required_bidding_information_"
                    android:textAlignment="center"
                    android:textColor="@color/black"
                    android:textStyle="bold"
@@ -46,7 +46,7 @@
                    <com.google.android.material.textfield.TextInputLayout
                        android:layout_below="@id/tv_h1"
                        android:id="@+id/text_input_layout_bid_price"
-                       android:hint="Enter Bid Price"
+                       android:hint="@string/enter_bid_price_"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:minWidth="150dp"
@@ -70,7 +70,7 @@
                        android:layout_below="@id/text_input_layout_bid_price"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="Owners Amount: "
+                       android:text="@string/owner_owners_amount"
                        android:textStyle="bold"
                        android:textColor="@color/black"
                        android:layout_marginTop="2dp"/>
@@ -80,7 +80,7 @@
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textColor="@color/black"
-                       android:text="Service Charge: "
+                       android:text="@string/service_charge"
                        android:textStyle="bold"
                        android:textSize="12sp"
                        android:layout_marginTop="2dp"/>
@@ -89,7 +89,7 @@
                    android:layout_below="@id/txtvServiceCharge"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Late Start Fee (only for return trip): 125tk/hour or Negotiation"
+                   android:text="@string/late_start_fee_only_for_return_trip_tk_125_hour_or_negotiation_"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -101,7 +101,7 @@
                <com.google.android.material.textfield.TextInputLayout
                    android:id="@+id/text_input_layout_advance"
                    android:layout_below="@id/txtvLateFee"
-                   android:hint="Enter Advance Tk"
+                   android:hint="@string/enter_advace_Tk"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:minWidth="150dp"
@@ -121,7 +121,7 @@
                <com.google.android.material.textfield.TextInputLayout
                    android:id="@+id/text_input_layout_description"
                    android:layout_below="@id/text_input_layout_advance"
-                   android:hint="Enter Requirements (If Any)"
+                   android:hint="@string/enter_requirement_enter_more_info_if_any"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:minWidth="150dp"
@@ -144,7 +144,7 @@
                    android:layout_below="@id/text_input_layout_description"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Select Payment Method"
+                   android:text="@string/select_payment_method"
                    android:textColor="@color/black"
                    android:textStyle="bold"
                    android:textSize="16sp"
@@ -163,14 +163,14 @@
                        android:id="@+id/hand_cash"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Hand Cash"
+                       android:text="@string/hand_cash"
                        android:checked="true"/>
 
                    <RadioButton
                        android:id="@+id/bkash"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="bKash"/>
+                       android:text="@string/paymentSystem"/>
                </RadioGroup>
 
                <TextView
@@ -178,7 +178,7 @@
                    android:layout_below="@id/radio_groupPayment"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Select Vehicle"
+                   android:text="@string/select_vehicle_"
                    android:textColor="@color/black"
                    android:textStyle="bold"
                    android:textSize="16sp"
@@ -204,7 +204,7 @@
                    android:layout_below="@+id/spinnerSelectVehicle"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Submit Bid"
+                   android:text="@string/submit_bid"
                    android:textAllCaps="false"
                    />
 

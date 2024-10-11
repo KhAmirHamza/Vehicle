@@ -57,7 +57,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register using Mobile Number" />
+                android:text="@string/register_using_mobile_number" />
 
             <LinearLayout
                 android:id="@+id/lay_1"
@@ -70,7 +70,7 @@
                 <TextView
                     android:id="@+id/txtv2"
                     android:textSize="12sp"
-                    android:text="We will send an one time "
+                    android:text="@string/we_will_send_an_one_time"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                     android:id="@+id/txtv3"
                     android:textSize="12sp"
                     android:textColor="@android:color/black"
-                    android:text="verirification code"
+                    android:text="@string/verification_code"
                     android:textAlignment="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="12sp"
                 android:textColor="@color/black"
-                android:text="on this mobile number"
+                android:text="@string/on_this_mobile_number"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="12sp"
                 android:textColor="@color/black"
-                android:text="Enter your 11 Digit Mobile Number"
+                android:text="@string/enter_your_11_digit_mobile_number"
                 android:textAlignment="center"
                 android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                 android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_countryCode"
-                    android:hint="Country Code"
+                    android:hint="@string/country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="150dp"
@@ -140,20 +140,19 @@
                         android:layout_width="wrap_content"
                         android:textColor="@color/black"
                         android:inputType="phone"
-                        android:text="+88"
+                        android:text="@string/_88"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_phone_number"
-                    android:hint="Phone Number (01xxxxxxxxx)"
+                    android:hint="@string/phone_number_01xxxxxxxxx"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="250dp"
                     app:hintTextColor="@color/black"
                     app:startIconTint="@color/black"
                     app:endIconTint="@color/black"
-                    android:layout_centerHorizontal="true"
                     app:endIconMode="clear_text"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
@@ -176,7 +175,7 @@
                     android:id="@+id/txtv_hint1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="If you have any Account, sign in..."
+                    android:text="@string/if_you_have_any_account_sign_in"
                     android:layout_marginBottom="2.5dp"
                     android:textSize="12sp"
                     android:textColor="@color/black"/>
@@ -186,7 +185,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtv_hint1"
-                    android:text="Register"
+                    android:text="@string/register"
                     android:textAllCaps="false"
                     />
                 <com.google.android.material.button.MaterialButton
@@ -197,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtv_hint1"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:text="Log in"
+                    android:text="@string/log_in"
                     android:textColor="@color/black"
                     android:textAllCaps="false"
                     />

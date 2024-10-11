@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.vehicle.customer",
+  "applicationId": "com.tripbd.customer",
   "variantName": "debug",
   "elements": []
 }

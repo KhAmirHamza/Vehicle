@@ -3,24 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.TripFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvNoTrip"
-            android:visibility="gone"
-            android:layout_width="match_parent"
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fabCreateTrip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:layout_marginTop="300dp"
-            android:text="You have not any running Trip!\n Create now..."/>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="18dp"
+            android:text="@string/click_to_create_trip"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:icon="@android:drawable/ic_input_add"
+            app:layout_anchorGravity="bottom|right|end" />
+
+
         <RelativeLayout
             android:id="@+id/rlTripFragment"
+            android:layout_below="@id/fabCreateTrip"
             android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -40,26 +53,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="Delete Current Trip"
+                android:text="@string/deleteCurrentTrip"
                 android:textSize="14sp"
                 android:textAllCaps="false"
                 android:insetBottom="0dp"
                 android:insetTop="0dp"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
-                android:padding="3dp"
+                android:padding="5dp"
+                app:cornerRadius="10dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="2dp"
-                android:backgroundTint="#FF69B7"
+                android:backgroundTint="#FFF2F9"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:textColor="#000000"/>
+                android:textColor="#FF0000"/>
 
 
-
+            <TextView
+                android:id="@+id/tvTripConfirmMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you_now_you_have_confirmed_bid_you_can_call_or_driver_will_call_you"
+                android:layout_below="@id/imgv_vehicle"
+                android:visibility="gone"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                android:textColor="@android:color/holo_green_dark"
+                android:layout_marginTop="5dp"
+                android:marqueeRepeatLimit ="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:padding="10dp"
+                android:focusableInTouchMode="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_1"
-                android:layout_below="@id/imgv_vehicle"
+                android:layout_below="@id/tvTripConfirmMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
@@ -67,7 +98,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="5dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -78,7 +109,6 @@
                         android:id="@+id/tv_car_details"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pickup, 7 feet 1 Ton (Open)"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         />
@@ -88,15 +118,14 @@
                         android:layout_alignParentEnd="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="13:50"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/black"
                         android:layout_centerHorizontal="true"
-                        android:textSize="20sp"
+                        android:textSize="25sp"
                         android:textStyle="bold"
                         android:paddingLeft="7dp"
                         android:paddingRight="7dp"
-                        android:paddingTop="2dp"
+                        android:paddingTop="0dp"
                         android:paddingBottom="2dp"
 
                         android:singleLine="true"
@@ -110,19 +139,21 @@
                     <TextView
                         android:id="@+id/tv_trip_status"
                         android:layout_alignParentEnd="true"
-                        android:layout_width="80dp"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="Bid Continue - Bid Continue - Bid Continue -"
+                        android:text="@string/bid_continue"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:textSize="14sp"
+                        android:textSize="17sp"
                         android:textStyle="bold"
-                        android:paddingLeft="7dp"
-                        android:paddingRight="7dp"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingRight="10dp"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
                         android:background="@drawable/bg_txtv_ontheway"
                         android:layout_below="@id/tv_trip_remainingTime"
+
                         android:singleLine="true"
                         android:ellipsize="marquee"
                         android:marqueeRepeatLimit ="marquee_forever"
@@ -136,7 +167,6 @@
                         android:layout_below="@+id/tv_car_details"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="T_547357645647"
                         android:textSize="12sp"
                         android:layout_marginTop="5dp"
                         android:paddingRight="7dp"
@@ -148,8 +178,6 @@
                         android:layout_below="@id/txtv_trip_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9 AM , 18/11/2022"
-
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -171,6 +199,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
@@ -182,10 +211,10 @@
 
                     <TextView
                         android:id="@+id/tv_show_bidding"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
+
                         android:layout_height="wrap_content"
-                        android:text="Trip Continue - Confirm a bidder within bid end time"
+                        android:text="@string/confirm_a_bidded_within_bid_end_time"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -193,7 +222,7 @@
                         android:paddingRight="10dp"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
-                        android:textAlignment="center"
+                        android:textAlignment="textStart"
                         android:background="@drawable/bg_txtv_completed"
 
                         android:singleLine="true"
@@ -207,12 +236,13 @@
                         android:id="@+id/txtvLateFee"                        android:layout_below="@id/tv_show_bidding"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Late Start Fee (only for return trip): 125tk/hour or Negotiation"
+                        android:text="@string/lateStartFeeOnlyforreturntrip125tkHourornegotiation"
                         android:textSize="12sp"
+
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:textAlignment="center"
-                        android:layout_marginTop="2dp"/>
+                        android:layout_marginTop="5dp"/>
 
 
 
@@ -250,7 +280,7 @@
                         android:id="@+id/tv_loading_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Loading Location"
+                        android:text="@string/load_location"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:paddingTop="7dp"
@@ -260,7 +290,6 @@
                         android:layout_below="@+id/tv_loading_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="▷ Upazila: Mirpur, District: Dhaka"
                         android:textSize="14sp"
                         android:paddingBottom="5dp"
                         />
@@ -269,7 +298,6 @@
                         android:layout_below="@+id/tv_loading_upazila_district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="▷ Full Address: Mirpur-1, Dhaka-1207"
                         android:textSize="14sp"
                         android:paddingBottom="5dp"
                         />
@@ -278,7 +306,7 @@
                         android:layout_below="@+id/tv_loading_full_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Unloading Location"
+                        android:text="@string/unload_location"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:layout_marginTop="5dp"
@@ -288,7 +316,6 @@
                         android:layout_below="@+id/tv_unloading_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="▷ Upazila: Dhanmondi, District: Dhaka"
                         android:textSize="14sp"
                         android:paddingBottom="5dp"
                         />
@@ -297,7 +324,6 @@
                         android:layout_below="@+id/tv_unloading_upazila_district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="▷ Full Address: Dhanmondi-1, Dhaka-1205"
                         android:textSize="14sp"
                         android:paddingBottom="5dp"
                         />
@@ -337,7 +363,7 @@
                         android:id="@+id/tv_description_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Product Information"
+                        android:text="@string/product_information"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:paddingTop="7dp"
@@ -347,26 +373,25 @@
                         android:layout_below="@+id/tv_description_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="▷ Fragile Product, You have to carry it very safely"
+                        android:text="@string/fragile_product_you_have_to_carry_it_very_safely"
                         android:textSize="14sp"
                         />
                     <TextView
                         android:visibility="gone"
                         android:id="@+id/tv_up_down_trip"
-                        android:layout_below="@id/tv_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Up-Down Trip"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="10dp"
                         />
+
                     <TextView
                         android:id="@+id/tv_contain_animal"
-                        android:layout_below="@+id/tv_up_down_trip"
+                        android:layout_below="@id/tv_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Contain Animal"
+                        android:text="@string/contain_animal"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -376,7 +401,7 @@
                         android:layout_below="@+id/tv_contain_animal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Fragile Product"
+                        android:text="@string/fragile"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -386,7 +411,7 @@
                         android:layout_below="@+id/tv_fragile_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Perishable Product"
+                        android:text="@string/perishable"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -396,7 +421,7 @@
                         android:layout_below="@+id/tv_perishable_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Labor Needed"
+                        android:text="@string/labor_needed_saparate_cost"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -406,7 +431,7 @@
                         android:layout_below="@id/tv_labor_needed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Material Length not more than vehicle length booked"
+                        android:text="@string/length_of_material_are_not_more_than_truck_length_booked"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -416,7 +441,7 @@
                         android:layout_below="@id/tv_lengthAlert"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="✔ Material Weight not more than vehicle weight booked"
+                        android:text="@string/weight_not_more_than_capacity_of_truck_booked"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="5dp"
@@ -432,7 +457,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="8dp"
-                android:layout_marginBottom="50dp">
+                android:layout_marginBottom="10dp">
 
                 <LinearLayout
                     android:id="@+id/laySelectedDriverInfo"
@@ -449,7 +474,7 @@
                             android:id="@+id/txtv_h2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Driver Details"
+                            android:text="@string/driver_details"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_marginBottom="5dp"/>
@@ -468,7 +493,6 @@
                             android:layout_toRightOf="@id/imgv_driver"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Md. ............"
                             android:textColor="@color/black"
                             android:textSize="16sp"/>
                         <TextView
@@ -477,7 +501,6 @@
                             android:layout_toRightOf="@id/imgv_driver"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=".......@gmail.com"
                             android:textSize="14sp"/>
                         <TextView
                             android:id="@+id/txtv_driver_phone_number"
@@ -485,11 +508,11 @@
                             android:layout_toRightOf="@id/imgv_driver"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="+880111........"
                             android:textSize="14sp"
                             android:autoLink="phone"
                             android:textIsSelectable="true"
-                            android:clickable="true"/>
+                            android:clickable="true"
+                            android:focusable="true" />
 
 
                     </RelativeLayout>
@@ -502,7 +525,7 @@
                             android:id="@+id/txtv_h3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Vehicle Details"
+                            android:text="@string/vehicle_details"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_marginBottom="5dp"/>
@@ -526,7 +549,6 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="5dp"
-                            android:text="sm-tha-00-0166"
                             android:textSize="16sp"
                             android:visibility="visible"
                             android:layout_below="@id/txtv_h3"
@@ -543,7 +565,6 @@
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="3dp"
                             android:drawablePadding="5dp"
-                            android:text="..."
                             android:textColor="@color/black"
                             android:textSize="18sp" />
 
@@ -556,7 +577,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="5dp"
-                            android:text="Model Year: 2005"
+                            android:text="@string/model_year"
                             android:textSize="16sp"
                             android:visibility="visible" />
 
@@ -569,18 +590,31 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="5dp"
-                            android:text="1 ton, 7 feet"
                             android:textSize="14sp"
                             android:textColor="@color/black"
                             android:visibility="visible" />
+
 
                     </RelativeLayout>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpdateTrip"
+                android:visibility="visible"
+                android:layout_below="@id/cv_driver_details"
+                android:text="@string/add_more_trip_information"
+                android:textAllCaps="false"
+                android:layout_alignParentStart="true"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textAlignment="textStart"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="70dp"/>
 
         </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

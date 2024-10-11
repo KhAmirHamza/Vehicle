@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903534237677:android:3b738fdc691aedb54639e4",
+        "mobilesdk_app_id": "1:903534237677:android:7bff635995be9fad4639e4",
         "android_client_info": {
-          "package_name": "com.vehicle.customer"
+          "package_name": "com.tripbd.customer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903534237677-vc25e6oo35b344qesng4lvtroj4f3s0e.apps.googleusercontent.com",
+          "client_id": "903534237677-70usbjr5kt36jpdqehkos7cnfiseg7e7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.vehicle.customer",
+            "package_name": "com.tripbd.customer",
             "certificate_hash": "2e29f7a37046eca45f3d026afb3ccbdc1a537351"
           }
         },
@@ -44,14 +44,14 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:903534237677:android:e70c911cd12277c24639e4",
+        "mobilesdk_app_id": "1:903534237677:android:e57bb407262e613f4639e4",
         "android_client_info": {
           "package_name": "com.vehicle.driver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "903534237677-otptucj7f13ao323gafmoc1umm8951le.apps.googleusercontent.com",
+          "client_id": "903534237677-u9aaholrt22ksfgo5ger0b1i9mb8sn4q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.vehicle.driver",

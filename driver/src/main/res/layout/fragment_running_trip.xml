@@ -12,13 +12,25 @@
         >
 
         <TextView
+
             android:id="@+id/tv_h1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Running Trips"
-            android:textSize="16sp"
+            android:text="@string/running_trip"
+            android:textSize="18sp"
             android:padding="5dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/purple_700"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:marqueeRepeatLimit ="marquee_forever"
+            android:scrollHorizontally="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recy_running_trips"
@@ -26,7 +38,7 @@
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/iv_trip"/>
+            tools:listitem="@layout/iv_running_trip"/>
 
     </RelativeLayout>
 
